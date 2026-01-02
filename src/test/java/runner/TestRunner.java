@@ -28,7 +28,7 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(features = {"src/test/resources/features"},glue = {
-		"stepdefinition" },plugin = { "pretty",
+		"stepdefinition" },tags="@Report",plugin = { "pretty",
 
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber.json",
 				"html:report/html/cucumber.html" }, monochrome = true, dryRun = false) // true=create step
