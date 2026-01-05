@@ -32,8 +32,8 @@ public class Sign_In_Functionality_Step {
 	ActionClass actionClass = new ActionClass();
 	JSExecutor js = new JSExecutor();
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
-	 String fakeMobileNumber =dataGenerator.generateFakeMobileNumber();
-	
+	String fakeMobileNumber = dataGenerator.generateFakeMobileNumber();
+
 	Sign_In_Functionality_Page sp = new Sign_In_Functionality_Page();
 	Create_an_Account_Form_Page cp = new Create_an_Account_Form_Page();
 
@@ -96,7 +96,7 @@ public class Sign_In_Functionality_Step {
 		wait.waitForElementVisible(sp.goToMyProfileBtn);
 		Thread.sleep(2000);
 		js.jsClickWithWait(sp.goToMyProfileBtn);
-		Thread.sleep(3000);
+		wait.waitForElementVisible(sp.signOutBtn);
 
 	}
 
@@ -106,22 +106,23 @@ public class Sign_In_Functionality_Step {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-		// Wait until Sign Out button is visible
-		wait.until(ExpectedConditions.visibilityOf(sp.signOutBtn));
+		By pageLoader = By.cssSelector("div.page-loader");
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(pageLoader));
 
-		js.executeScript("arguments[0].scrollIntoView(true);", sp.signOutBtn);
+		WebElement signOut = wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
 
-		// Wait until clickable and click
-		wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
-		sp.signOutBtn.click();
+		// 3️⃣ Scroll & click via JS (safe)
+		js.executeScript("arguments[0].scrollIntoView({block:'center'});", signOut);
+		js.executeScript("arguments[0].click();", signOut);
 
 		System.out.println("Clicked on 'Sign Out' button");
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 
 	}
 
 	@Then("User should see a popup with the message Are you sure you want to logout? and selects {string}")
-	public void user_should_see_a_popup_with_the_message_are_you_sure_you_want_to_logout_and_selects(String answer) throws InterruptedException {
+	public void user_should_see_a_popup_with_the_message_are_you_sure_you_want_to_logout_and_selects(String answer)
+			throws InterruptedException {
 		sp.clickLogoutPopupButton(answer);
 		Thread.sleep(2000);
 	}

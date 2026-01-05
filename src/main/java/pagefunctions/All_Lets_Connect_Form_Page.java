@@ -64,12 +64,25 @@ public class All_Lets_Connect_Form_Page {
 	    @FindBy(xpath = "//div[contains(@class,'cmp-teaser__description')]//p[normalize-space()='For Reaching out to us !']")
 	    public WebElement thankYouDescription;
 	    
-	    //senarios2
+	    //Scenario2
 	    @FindBy(xpath = "//div[contains(@class,'error-txt') and normalize-space()='This field is required']")
 	    public WebElement  mandatoryFieldErrors;
 	    
+	    //Scenario3
+	    @FindBy(xpath = "//button[normalize-space()='Book a free consultation']")
+	    public WebElement  BookfreeConsultationButton;
 	    
 	    
+	    @FindBy(xpath = "(//input[@name='pinCode'])[6]")
+	    public WebElement  PincodeInputFiledBookfreeConsultation;
+	    
+
+	    @FindBy(xpath = "(//button[normalize-space()='Continue'])[1]")
+	    public WebElement  ContinueButtonBookfreeConsultation;
+	   
+	    @FindBy(xpath = "//button[@id='button-39d73f9229']")
+	    public WebElement  BackButtonBookfreeConsultation;
+
 
 
 	

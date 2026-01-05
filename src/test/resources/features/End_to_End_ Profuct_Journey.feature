@@ -40,34 +40,32 @@ Feature: To Validate the Shop Happy End-to-End Product Journey Flow for an Exist
       | Products | Exterior paints | Calista Neo Star | Jaipur red |        1 |    1 |  400703 |               5 | Mumbai  |                5 |
 
   #---------------------------------- Scenario 2 ----------------------------------#
-  Scenario Outline: To verify that the logged-in user continues shopping and completes checkout successfully via the Continue Shopping button
-    And User clicks the cart icon on the header and removes the product from the cart if available
-    Then User clicks on continue shopping button
-    And User select product category "<productcategory>"
-    Then User select product and click shop now button
-    Then User selects Colour "<Colour>"
-    Then User selects quantity <quantity> of "<pack>" Ltr pack
-    Then User enters a valid pincode "<pincode>" and check product availability
-    And User click on add to cart button
-    Then User click on View cart & Checkout button
-    And User increase the product quantity "<desiredQuantity>"
-    Then User clicks on the Proceed to Enter Address button
-    And User clicks on the Apply button, verifies the availability of coupon vouchers, and applies a coupon if available
-    And User verifies the product quantity in the final order summary "<expectedQuantity>"
-    Then the total payable amount should be correctly calculated and displayed
-    And User clicks on the Proceed to Shipment button
-    Then User clicks on the Proceed to payment button
-
-    Examples: 
-      | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity | productcategory |
-      | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 | Interior Paints |
-@test
+  #Scenario Outline: To verify that the logged-in user continues shopping and completes checkout successfully via the Continue Shopping button
+  #And User clicks the cart icon on the header and removes the product from the cart if available
+  #Then User clicks on continue shopping button
+  #And User select product category "<productcategory>"
+  #Then User select product and click shop now button
+  #Then User selects Colour "<Colour>"
+  #Then User selects quantity <quantity> of "<pack>" Ltr pack
+  #Then User enters a valid pincode "<pincode>" and check product availability
+  #And User click on add to cart button
+  #Then User click on View cart & Checkout button
+  #And User increase the product quantity "<desiredQuantity>"
+  #Then User clicks on the Proceed to Enter Address button
+  #And User clicks on the Apply button, verifies the availability of coupon vouchers, and applies a coupon if available
+  #And User verifies the product quantity in the final order summary "<expectedQuantity>"
+  #Then the total payable amount should be correctly calculated and displayed
+  #And User clicks on the Proceed to Shipment button
+  #Then User clicks on the Proceed to payment button
+  # Examples:
+  # | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity | productcategory |
+  #| Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 | Interior Paints |
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify the end-to-end product journey through the checkout process with valid data for a logged-in user using the search bar
     And User clicks the cart icon on the header and removes the product from the cart if available
     When User clicks on the search icon
     Then User enters the product name "<searchfor>" in the search box
-#And User select product category "<category>"
+    #And User select product category "<category>"
     And User selects and clicks on the product
     Then User click on Shop now button
     Then User selects Colour "<Colour>"

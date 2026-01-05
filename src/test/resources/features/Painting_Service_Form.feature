@@ -39,7 +39,8 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
     And validation message for Pincode empty input fields should get displayed "This field is required"
 
   #---------------------------------- Scenario 4 ----------------------------------#
-  Scenario: To erify Back button works after entering form data
+  Scenario Outline: To verify that the Back button works after entering form data in the Painting Service Request form
+
     And User clicks on the Sign up for free button
     And User clicks on the Back button
    Then User should be navigated to the previous page

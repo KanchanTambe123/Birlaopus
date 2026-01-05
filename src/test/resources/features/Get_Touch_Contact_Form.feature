@@ -2,9 +2,9 @@ Feature: To Validate Get in Touch Contact Form Subscription
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
-    
+
   #----------------------------------1---------------------------------------------------->
-  Scenario Outline: To Verify successful submission of the Get in Touch form with updated mandatory data
+  Scenario Outline: To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user
     When User clicks on the profile icon
     And User clicks on the Sign In button
     And User enters valid mobile number mobile number on the Sign In page
@@ -23,9 +23,9 @@ Feature: To Validate Get in Touch Contact Form Subscription
     Examples: 
       | Pincode |
       |  400001 |
-@test
+
   #----------------------------------2---------------------------------------------------->
-  Scenario Outline: To Verify validation message is displayed when user enters an invalid pincode
+  Scenario Outline: To verify that a validation message is displayed when the user enters an invalid pincode on the Get in Touch form
     When User clicks on the profile icon
     And User clicks on the Sign In button
     And User enters valid mobile number mobile number on the Sign In page
@@ -43,7 +43,7 @@ Feature: To Validate Get in Touch Contact Form Subscription
       |   40000 |
 
   #----------------------------------3---------------------------------------------------->
-  Scenario Outline: To Verify validation message is displayed when all empty field(without login)
+  Scenario Outline: To verify that validation messages are displayed when all fields are left empty on the Get in Touch form (without login)
     When User hovers over the Get in Touch popup
     And User clicks on the Get in Touch option
     And User clicks submits the Get in Touch form

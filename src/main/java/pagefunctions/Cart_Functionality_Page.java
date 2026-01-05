@@ -55,43 +55,37 @@ public class Cart_Functionality_Page {
 	
 
 	public void selectSecondVisibleProduct() {
+
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	    // Locate all product cards
-	    List<WebElement> products = wait.until(
-	        ExpectedConditions.presenceOfAllElementsLocatedBy(
-	            By.xpath("//div[@id='products-container']//div[contains(@class,'product-info')]")
-	        )
+	    // Locator for visible product cards
+	    By visibleProductCards = By.xpath(
+	            "//div[@id='products-container']//div[contains(@class,'product-info') and not(contains(@style,'display: none'))]"
 	    );
 
-	    // Filter only visible products
-	    List<WebElement> visibleProducts = products.stream()
-	        .filter(WebElement::isDisplayed)
-	        .collect(Collectors.toList());
+	    // 1️Wait until at least 2 visible products are present
+	    wait.until(d -> d.findElements(visibleProductCards).size() >= 2);
 
-	    if (visibleProducts.size() < 2) {
-	        throw new RuntimeException("Less than 2 visible products available on the page");
-	    }
+	    // 2️Re-fetch elements from fresh DOM
+	    List<WebElement> products = driver.findElements(visibleProductCards);
 
-	    WebElement secondProductCard = visibleProducts.get(1);
+	    // 3️Select second product (index 1)
+	    WebElement secondProductCard = products.get(1);
 
-	    // Locate the actual clickable element inside the product (link or image)
-	    WebElement clickableElement = secondProductCard.findElement(
-	        By.xpath(".//a[contains(@class,'cmp-product__image-link-hover')] | .//a[contains(@class,'cmp-product__image-link')]")
+	    // 4️Find clickable element inside product card
+	    By clickableProduct = By.xpath(
+	            ".//a[contains(@class,'cmp-product__image-link-hover') or contains(@class,'cmp-product__image-link')]"
 	    );
 
-	    // Scroll element into view
-	    ((JavascriptExecutor) driver).executeScript(
-	        "arguments[0].scrollIntoView({block:'center'});", clickableElement
-	    );
+	    WebElement productLink = secondProductCard.findElement(clickableProduct);
 
-	    // Wait
-	    wait.until(ExpectedConditions.elementToBeClickable(clickableElement));
+	    // scroll
+	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", productLink);
+	    wait.until(ExpectedConditions.elementToBeClickable(productLink));
+	    js.executeScript("arguments[0].click();", productLink);
 
-	    // Click 
-	    ((JavascriptExecutor) driver).executeScript(
-	        "arguments[0].click();", clickableElement
-	    );
+	    System.out.println("Second visible product clicked successfully");
 	}
 
 }

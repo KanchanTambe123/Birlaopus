@@ -7,14 +7,14 @@ Feature: To Validate Sign-In (User Login)Functionality
     And User clicks on the Sign In button
 
   #---------------------------------- Scenario 1 ----------------------------------#
-  Scenario Outline: To Verify sign-in functionality with valid mobile number and OTP
+  Scenario Outline: To verify sign-in functionality with valid mobile number and OTP
     And User enters valid mobile number mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     And the User should successfully sign in
 
   #---------------------------------- Scenario 2 ----------------------------------#
-  Scenario Outline: To Verify sign-in form with invalid mobile number
+  Scenario Outline: To verify sign-in form with invalid mobile number
     And User enters invalid mobile number "<mobile number>" on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     Then Validation message mobile number should get displayed to user "Please enter valid mobile number"
@@ -24,14 +24,11 @@ Feature: To Validate Sign-In (User Login)Functionality
       |         12345 |
 
   #---------------------------------- Scenario 3 ----------------------------------#
-  Scenario Outline: To Verify sign-in form with empty mobile number field
-    And User enters invalid mobile number "<mobile number>" on the Sign In page
+  Scenario Outline: To verify sign-in form with empty mobile number field
+   
     And the User clicks on the Sign In button after entering the mobile number
     Then Validation message mobile number filed empty should get displayed to user "This field is required"
 
-    Examples: 
-      | mobile number |
-      |               |
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify user is able to log out successfully

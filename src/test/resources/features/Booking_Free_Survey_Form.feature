@@ -1,3 +1,4 @@
+@Report
 Feature: To Validate Survey Booking Form
 
   Background: 
@@ -28,7 +29,7 @@ Feature: To Validate Survey Booking Form
       | Exteriors       |       1200 | 2 BHK   |
 
   #---------------------------------- Scenario 2 ----------------------------------#
-  Scenario Outline: To verify user navigates to previous step using Back button
+  Scenario Outline: To verify that the user navigates to the previous step using the Back button on the survey booking form
     When User clicks on the Book a Free Survey button
     Then User clicks on the Next button on the Book a Free Survey form
     And User clicks on the Back button in the Book a Free Survey form

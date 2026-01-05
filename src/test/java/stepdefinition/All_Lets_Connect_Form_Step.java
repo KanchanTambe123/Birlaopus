@@ -36,7 +36,7 @@ public class All_Lets_Connect_Form_Step {
 
 	ColourLetter_SignUp_Page cl = new ColourLetter_SignUp_Page();
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
-
+	String previousPageUrl;
 	End_to_End_Flow_Page ep = new End_to_End_Flow_Page();
 	All_Lets_Connect_Form_Page lp = new All_Lets_Connect_Form_Page();
 
@@ -168,4 +168,68 @@ public class All_Lets_Connect_Form_Step {
 		lp.selectHowCanWeHelpYou(string);
 	}
 
+	@Then("User navigates to the Book a free consultation form section")
+	public void user_navigates_to_the_book_a_free_consultation_form_section() {
+		js.scrollUntilElementVisible(lp.BookfreeConsultationButton);
+		wait.waitForElementVisible(lp.BookfreeConsultationButton);
+	}
+
+	@Then("User clicks on Book a Free Consultation button")
+	public void user_clicks_on_book_a_free_consultation_button() throws InterruptedException {
+		Thread.sleep(3000);
+		js.jsClickWithWait(lp.BookfreeConsultationButton);
+		wait.waitForElementVisible(lp.PincodeInputFiledBookfreeConsultation);
+	}
+
+	@Then("User enters a valid pincode on the Book a Free Consultation form  {string}")
+	public void user_enters_a_valid_pincode_on_the_book_a_free_consultation_form(String string)
+			throws InterruptedException {
+		wait.waitForElementVisible(lp.PincodeInputFiledBookfreeConsultation);
+		js.scrollUntilElementVisible(lp.PincodeInputFiledBookfreeConsultation);
+		lp.PincodeInputFiledBookfreeConsultation.clear();
+		Thread.sleep(2000);
+		common.SendInput(string, lp.PincodeInputFiledBookfreeConsultation);
+	}
+
+	@Then("the user clicks on the Continue button on the Book a Free Consultation form")
+	public void the_user_clicks_on_the_continue_button_on_the_book_a_free_consultation_form()
+			throws InterruptedException {
+		wait.waitForElementVisible(lp.ContinueButtonBookfreeConsultation);
+		Thread.sleep(2000);
+		js.scrollUntilElementVisible(lp.ContinueButtonBookfreeConsultation);
+		Thread.sleep(2000);
+		js.jsClickWithWait(lp.ContinueButtonBookfreeConsultation);
+		Thread.sleep(4000);
+	}
+
+	@Then("the user clicks on the Back button on the Book a Free Consultation form")
+	public void the_user_clicks_on_the_back_button_on_the_book_a_free_consultation_form() throws InterruptedException {
+		previousPageUrl = DriverManager.getDriver().getCurrentUrl();
+		wait.waitForElementVisible(lp.BackButtonBookfreeConsultation);
+		Thread.sleep(2000);
+		js.scrollUntilElementVisible(lp.BackButtonBookfreeConsultation);
+		Thread.sleep(2000);
+		js.jsClickWithWait(lp.BackButtonBookfreeConsultation);
+		Thread.sleep(2000);
+	}
+
+	@Then("the user should be navigated to the previous page of the Book a Free Consultation form")
+	public void the_user_should_be_navigated_to_the_previous_page_of_the_book_a_free_consultation_form() {
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+
+		wait.until(ExpectedConditions.urlToBe(previousPageUrl));
+
+		Assert.assertEquals(DriverManager.getDriver().getCurrentUrl(), previousPageUrl,
+				"User did NOT navigate to the previous page");
+	}
+
+	@Then("User enters a invalid pincode on the Book a Free Consultation form  {string}")
+	public void user_enters_a_invalid_pincode_on_the_book_a_free_consultation_form(String string)
+			throws InterruptedException {
+		wait.waitForElementVisible(lp.PincodeInputFiledBookfreeConsultation);
+		js.scrollUntilElementVisible(lp.PincodeInputFiledBookfreeConsultation);
+		//lp.PincodeInputFiledBookfreeConsultation.clear();
+		Thread.sleep(2000);
+		common.SendInput(string, lp.PincodeInputFiledBookfreeConsultation);
+	}
 }

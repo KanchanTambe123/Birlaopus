@@ -276,56 +276,59 @@ public class End_to_End_Flow_Page {
 	}
 
 	public void enterPincodeAndCheck(String pincode) {
+
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	    JavascriptExecutor jsExec = (JavascriptExecutor) driver;
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	    // Scroll to Pincode field
-	    jsExec.executeScript("arguments[0].scrollIntoView(true);", PincodeField);
+	    // 1️⃣ Wait for any overlay / container to settle
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	            By.cssSelector(".page-loader, .loading, .shimmer")
+	    ));
 
-	    // Wait and click
-	    wait.until(ExpectedConditions.elementToBeClickable(PincodeField)).click();
+	    // 2️Scroll input into view
+	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", PincodeField);
 
-	    // Clear existing value
-	    jsExec.executeScript("arguments[0].value='';", PincodeField);
+	    // 3click
+	    js.executeScript("arguments[0].focus();", PincodeField);
 
-	    // Enter pincode via JS and trigger input event
-	    jsExec.executeScript(
-	        "arguments[0].value=arguments[1]; arguments[0].dispatchEvent(new Event('input'));",
+	    // 4️Clear & enter pincode via JS + input event
+	    js.executeScript(
+	        "arguments[0].value='';" +
+	        "arguments[0].value=arguments[1];" +
+	        "arguments[0].dispatchEvent(new Event('input', {bubbles:true}));" +
+	        "arguments[0].dispatchEvent(new Event('change', {bubbles:true}));",
 	        PincodeField, pincode
 	    );
 
-	    // Move focus out to trigger any change event
-	    PincodeField.sendKeys(Keys.TAB);
+	    // 5️Validate value is set
+	    wait.until(d -> pincode.equals(PincodeField.getAttribute("value")));
 
-	    // Wait until value is set correctly
-	    wait.until(driver -> pincode.equals(PincodeField.getAttribute("value")));
+	    // 6️ Click Check button via JS
+	    wait.until(ExpectedConditions.visibilityOf(checkButtonPincode));
+	    js.executeScript("arguments[0].click();", checkButtonPincode);
 
-	    // Click the Check button via JS
-	    wait.until(ExpectedConditions.elementToBeClickable(checkButtonPincode));
-	    jsExec.executeScript("arguments[0].click();", checkButtonPincode);
+	    // 7️Wait for validation result
+	    By errorMsg = By.cssSelector("div.error-txt");
 
-	    // Locator for error message
-	    By errorMsgLocator = By.cssSelector("div.error-txt");
-
-	    // Wait for either validation success or error message
-	    wait.until(driver -> {
+	    wait.until(d -> {
 	        String classes = PincodeField.getAttribute("class");
 	        boolean isValid = classes.contains("isValid");
 
-	        List<WebElement> errorElems = driver.findElements(errorMsgLocator);
-	        boolean hasError = !errorElems.isEmpty() && errorElems.get(0).isDisplayed()
-	                           && !errorElems.get(0).getText().isEmpty();
+	        boolean hasError = !d.findElements(errorMsg).isEmpty()
+	                && d.findElement(errorMsg).isDisplayed();
+
 	        return isValid || hasError;
 	    });
 
-	    // Check for error and throw if exists
-	    List<WebElement> errorElems = driver.findElements(errorMsgLocator);
-	    if (!errorElems.isEmpty() && errorElems.get(0).isDisplayed()) {
-	        throw new AssertionError("Pincode validation failed: " + errorElems.get(0).getText());
+	    // 8.Assertion
+	    List<WebElement> errors = driver.findElements(errorMsg);
+	    if (!errors.isEmpty() && errors.get(0).isDisplayed()) {
+	        throw new AssertionError("Pincode validation failed: " + errors.get(0).getText());
 	    }
 
-	    System.out.println("Pincode " + pincode + " entered and validated successfully.");
+	    System.out.println(" Pincode " + pincode + " validated successfully");
 	}
+
 
 	// add to cart
 	public void clickAddToCart() {

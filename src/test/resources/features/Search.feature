@@ -6,11 +6,11 @@ Feature: To Validate search Functionality
     When User clicks on the search icon
 
   #----------------------------------1---------------------------------------------------->
-  Scenario Outline: To Verify that clicking on the search icon displays the search panel
+  Scenario Outline: To verify that clicking on the search icon displays the search panel
     Then The search panel should appear
 
   #----------------------------------2---------------------------------------------------->
-  Scenario Outline: To Verify User enters a valid keyword for search bar
+  Scenario Outline: To verify User enters a valid keyword for search bar
     When User enters the product name "<searchfor>" in the search box
     And The results count should be greater than 0
 
@@ -19,7 +19,7 @@ Feature: To Validate search Functionality
       | Exterior paints |
 
   #----------------------------------3---------------------------------------------------->
-  Scenario Outline: To Verify User enters an invalid keyword for search bar
+  Scenario Outline: To verify User enters an invalid keyword for search bar
     When User enters the product name "<searchfor>" in the search box
     Then User should see a message for the invalid keyword containing "Showing 0 results"
 
@@ -28,7 +28,7 @@ Feature: To Validate search Functionality
       | xyz123    |
 
   #----------------------------------4---------------------------------------------------->
-  Scenario Outline: To Verify that User sees trending searches when clicking the search box
+  Scenario Outline: To verify that User sees trending searches when clicking the search box
     Then User should see the trending search "<TrendingSearch>"
 
     Examples: 

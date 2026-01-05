@@ -55,7 +55,7 @@ public class Sign_In_Functionality_Page {
     @FindBy(xpath = "//span[contains(text(),'Go to my profile')]")
     public WebElement goToMyProfileBtn;
 
-    @FindBy(xpath = "(//span[@class='cmp-text-btn-text'][normalize-space()='Sign Out'])[1]")
+    @FindBy(xpath = "(//a[contains(@class,'logout-button') and .//span[text()='Sign Out']])[1]")
     public WebElement signOutBtn;
     
     
