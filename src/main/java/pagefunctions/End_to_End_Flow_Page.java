@@ -280,18 +280,18 @@ public class End_to_End_Flow_Page {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	    // 1️⃣ Wait for any overlay / container to settle
+	    // 1️. Wait for any overlay / container to settle
 	    wait.until(ExpectedConditions.invisibilityOfElementLocated(
 	            By.cssSelector(".page-loader, .loading, .shimmer")
 	    ));
 
-	    // 2️Scroll input into view
+	    // 2️.Scroll input into view
 	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", PincodeField);
 
-	    // 3click
+	    // 3.click
 	    js.executeScript("arguments[0].focus();", PincodeField);
 
-	    // 4️Clear & enter pincode via JS + input event
+	    // 4️.Clear & enter pincode via JS 
 	    js.executeScript(
 	        "arguments[0].value='';" +
 	        "arguments[0].value=arguments[1];" +
@@ -300,14 +300,14 @@ public class End_to_End_Flow_Page {
 	        PincodeField, pincode
 	    );
 
-	    // 5️Validate value is set
+	    // 5️.Validate value is set
 	    wait.until(d -> pincode.equals(PincodeField.getAttribute("value")));
 
-	    // 6️ Click Check button via JS
+	    // 6️.Click Check button via JS
 	    wait.until(ExpectedConditions.visibilityOf(checkButtonPincode));
 	    js.executeScript("arguments[0].click();", checkButtonPincode);
 
-	    // 7️Wait for validation result
+	    // 7️.Wait for validation result
 	    By errorMsg = By.cssSelector("div.error-txt");
 
 	    wait.until(d -> {
@@ -436,7 +436,7 @@ public class End_to_End_Flow_Page {
 	            By.cssSelector("button.apply__coupons-btn")));
 	    wait.until(ExpectedConditions.elementToBeClickable(couponBtn));
 
-	    // Scroll into view and click safely
+	    // Scroll into view
 	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", couponBtn);
 	    couponBtn.click();
 

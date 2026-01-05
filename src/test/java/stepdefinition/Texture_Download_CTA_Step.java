@@ -33,51 +33,40 @@ public class Texture_Download_CTA_Step {
 	JSExecutor js = new JSExecutor();
 
 	Search_Page sp = new Search_Page();
-	
-	Texture_Download_CTA_Page td=new Texture_Download_CTA_Page();
-	   public String downloadDir = System.getProperty("user.dir") + "/downloads/";
-	    public File downloadedFile;
-	
+
+	Texture_Download_CTA_Page td = new Texture_Download_CTA_Page();
+	public String downloadDir = System.getProperty("user.dir") + "/downloads/";
+	public File downloadedFile;
+
 	@Given("User is on BirlaOpus TexturePage {string}")
 	public void user_is_on_birla_opus_texture_page(String textureUrl) {
 		WebsiteLaunch.webLaunch(textureUrl);
 	}
+
 	@And("User clicks on the Download now CTA for the Latest Patterns")
 	public void user_clicks_on_the_download_now_cta_for_the_latest_patterns() throws InterruptedException {
-	  js.scrollUntilElementVisible(td.DownloadnowButton);
-	  
-	  Thread.sleep(2000);
-	  js.jsClickWithWait(td.DownloadnowButton);
-	  
-	  Thread.sleep(3000);
+		js.scrollUntilElementVisible(td.DownloadnowButton);
+
+		Thread.sleep(2000);
+		js.jsClickWithWait(td.DownloadnowButton);
+
+		Thread.sleep(3000);
 	}
-	
-	
-	
+
 	@Then("The Texture PDF should open successfully")
-	public void the_texture_pdf_should_open_successfully () throws Exception {
-		
-		  Thread.sleep(2000); // allow time for navigation OR download
+	public void the_texture_pdf_should_open_successfully() throws Exception {
 
-		    String currentUrl = DriverManager.getDriver().getCurrentUrl();
-		    System.out.println("After clicking CTA, current URL: " + currentUrl);
+		Thread.sleep(2000); 
 
-		    // PDF opens in browser (URL ends with .pdf)
-		    if (currentUrl.contains(".pdf")) {
-		        System.out.println("PDF opened in browser successfully.");
-		        return;
-		    }
-		    
-		    
-		    
-		  
+		String currentUrl = DriverManager.getDriver().getCurrentUrl();
+		System.out.println("After clicking CTA, current URL: " + currentUrl);
 
-
-		  
-	}
-	
-	
+		// PDF opens in browser 
+		if (currentUrl.contains(".pdf")) {
+			System.out.println("PDF opened in browser successfully.");
+			return;
+		}
 
 	}
 
-
+}

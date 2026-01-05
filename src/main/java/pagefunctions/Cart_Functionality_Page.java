@@ -26,7 +26,9 @@ public class Cart_Functionality_Page {
 	JSExecutor js = new JSExecutor();
 	ClickElement click = new ClickElement();
 	
+	// Page Elements
 	
+	// ------------------- Scenario 1 ------------------------
 	
 	@FindBy(id = "cart-icon")
 	private WebElement cartIcon;

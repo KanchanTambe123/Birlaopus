@@ -111,7 +111,7 @@ public class Sign_In_Functionality_Step {
 
 		WebElement signOut = wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
 
-		// 3️⃣ Scroll & click via JS (safe)
+		// Scroll & click via JS 
 		js.executeScript("arguments[0].scrollIntoView({block:'center'});", signOut);
 		js.executeScript("arguments[0].click();", signOut);
 
@@ -132,7 +132,7 @@ public class Sign_In_Functionality_Step {
 
 		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
 
-		// Wait for Sign Out button to disappear
+		// Wait for Sign Out button 
 		boolean isLoggedOut = wait.until(ExpectedConditions.invisibilityOf(sp.signOutBtn));
 
 		Assert.assertTrue(isLoggedOut, "User is not logged out successfully.");

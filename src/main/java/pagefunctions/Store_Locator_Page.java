@@ -99,13 +99,13 @@ public class Store_Locator_Page {
 
 	    WebElement firstButton = getNumberButtons.get(0);
 
-	    // Scroll to center (important)
+	    // Scroll 
 	    js.executeScript(
 	        "arguments[0].scrollIntoView({block:'center'});",
 	        firstButton
 	    );
 
-	    // Small pause for layout stabilization
+	    // wait
 	    try { Thread.sleep(300); } catch (InterruptedException ignored) {}
 
 	    //JS click (bypasses overlay interception)
