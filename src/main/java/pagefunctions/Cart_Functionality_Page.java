@@ -66,16 +66,16 @@ public class Cart_Functionality_Page {
 	            "//div[@id='products-container']//div[contains(@class,'product-info') and not(contains(@style,'display: none'))]"
 	    );
 
-	    // 1️Wait until at least 2 visible products are present
+	    // 1️.Wait until at least 2 visible products are present
 	    wait.until(d -> d.findElements(visibleProductCards).size() >= 2);
 
-	    // 2️Re-fetch elements from fresh DOM
+	    // 2️.Re-fetch elements from fresh DOM
 	    List<WebElement> products = driver.findElements(visibleProductCards);
 
-	    // 3️Select second product (index 1)
+	    // 3️.Select second product (index 1)
 	    WebElement secondProductCard = products.get(1);
 
-	    // 4️Find clickable element inside product card
+	    // 4️.Find clickable element inside product card
 	    By clickableProduct = By.xpath(
 	            ".//a[contains(@class,'cmp-product__image-link-hover') or contains(@class,'cmp-product__image-link')]"
 	    );

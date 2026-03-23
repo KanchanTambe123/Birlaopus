@@ -1,3 +1,4 @@
+@SCOPE1
 Feature: To Validate Painting Service Request Form(Homepage Search Form)
 
   Background: 
@@ -25,7 +26,8 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
     And User clicks on the Sign up for free button
     And User enters an invalid pin code "<PinCode>" in the Painting Service Form
     And User clicks on the Submit button in the Painting Service Form
-    Then An error message should be displayed for invalid pin code "Please enter a valid Pincode"
+    Then 
+    An error message should be displayed for invalid pin code "Please enter a valid Pincode"
 
     Examples: 
       | PinCode |

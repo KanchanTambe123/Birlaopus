@@ -1,3 +1,4 @@
+@SCOPE1
 Feature: To Validate Wishlist add and remove functionality(Single Product)
 
   Background: 

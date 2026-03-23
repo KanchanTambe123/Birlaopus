@@ -65,12 +65,12 @@ public class DriverManager {
         prefs.put("profile.default_content_setting_values.media_stream", 2);
         opt.setExperimentalOption("prefs", prefs);
 
-        // ✅ CREATE DRIVER
+        //  CREATE DRIVER
         driver = new ChromeDriver(opt);
         setDriver(driver);
         getDriver().manage().deleteAllCookies();
 
-        // ✅ INIT DEVTOOLS FOR API CAPTURE
+        // INIT DEVTOOLS FOR API CAPTURE
         initDevTools();
     }
 

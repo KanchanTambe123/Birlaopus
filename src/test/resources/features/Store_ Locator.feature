@@ -1,4 +1,4 @@
-
+@SCOPE1
 Feature: To Validate Store Locator Functionality
 
   Background: 
@@ -43,7 +43,7 @@ Feature: To Validate Store Locator Functionality
     Examples: 
       | pincode |
       |  411033 |
-@test
+
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify validation message is displayed when user enters an invalid pincode(find store-without login)
     When User hovers over the Get in Touch popup

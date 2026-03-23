@@ -1,10 +1,11 @@
+@SCOPE1
 Feature: To Validate Sign-In (User Login)Functionality
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
-@test
+
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify sign-in functionality with valid mobile number and OTP
     And User enters valid mobile number on the Sign In page

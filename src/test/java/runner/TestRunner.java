@@ -27,8 +27,8 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
-@CucumberOptions(features = {"src/test/resources/features/Sign_In_Functionality.feature"},glue = {
-		"stepdefinition" },plugin = { "pretty",
+@CucumberOptions(features = {"src/test/resources/features"},glue = {
+		"stepdefinition" },tags="@SCOPE1",plugin = { "pretty",
 
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber.json",
 				"html:report/html/cucumber.html" }, monochrome = true, dryRun = false) // true=create step
@@ -94,7 +94,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	        e.printStackTrace();
 	    }
 	}*/
-	//@AfterSuite //html and pdf
+	@AfterSuite //html and pdf
 	public void after_all() throws IOException, InterruptedException {
 
 		List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");

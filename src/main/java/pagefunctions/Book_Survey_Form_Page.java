@@ -180,7 +180,7 @@ public class Book_Survey_Form_Page {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			ExtentCucumberAdapter.addTestStepLog("❌ Exception during Lead API verification: " + e.getMessage());
+			ExtentCucumberAdapter.addTestStepLog(" Exception during Lead API verification: " + e.getMessage());
 		}
 	}
 
@@ -189,10 +189,10 @@ public class Book_Survey_Form_Page {
 			if (!expected.equals(actual)) {
 				throw new AssertionError("Expected: " + expected + ", Actual: " + actual);
 			}
-			ExtentCucumberAdapter.addTestStepLog("✅ " + paramName + " matched: " + actual);
+			ExtentCucumberAdapter.addTestStepLog("" + paramName + " matched: " + actual);
 		} catch (AssertionError e) {
 			// Log mismatch but continue
-			ExtentCucumberAdapter.addTestStepLog("❌ " + paramName + " mismatch! " + e.getMessage());
+			ExtentCucumberAdapter.addTestStepLog("" + paramName + " mismatch! " + e.getMessage());
 		}
 	}
 

@@ -1,4 +1,4 @@
-
+@SCOPE1
 Feature: Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage.
 
   Background: 
@@ -9,7 +9,7 @@ Feature: Validate the Brand Inquiry Form and Book a Free Consultation form on th
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-@test
+
   #----------------------------------1---------------------------------------------------->
   Scenario Outline: To verify mandatory fields with valid data on the Let’s Connect form in the Brands section for a logged-in user
     Given User is on the Birla Opus Brands page  "BrandUrl"

@@ -1,4 +1,4 @@
-
+@SCOPE1
 Feature: To Validate Newsletter Subscription Sign-Up Functionality
 
   Background: 
@@ -20,7 +20,7 @@ Feature: To Validate Newsletter Subscription Sign-Up Functionality
     When User enters an invalid email ID "asd@gmail" in the newsletter subscription field
     And User clicks on the Sign up for colour letter button
     Then An error message should be displayed for invalid email ID "Please enter valid email ID"
-@test
+
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify that a validation message appears when the email field is left empty on the newsletter subscription form
     When User leaves the email field empty

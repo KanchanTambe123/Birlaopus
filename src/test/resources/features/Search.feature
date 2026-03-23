@@ -1,3 +1,4 @@
+@SCOPE1
 Feature: To Validate search Functionality
 
   Background: 
