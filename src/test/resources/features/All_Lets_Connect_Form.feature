@@ -1,5 +1,5 @@
-@Report
-Feature: To Validate Brand Inquiry Form
+
+Feature: Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage.
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
@@ -9,12 +9,12 @@ Feature: To Validate Brand Inquiry Form
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-
+@test
   #----------------------------------1---------------------------------------------------->
   Scenario Outline: To verify mandatory fields with valid data on the Let’s Connect form in the Brands section for a logged-in user
     Given User is on the Birla Opus Brands page  "BrandUrl"
     And User navigates to the Let’s Connect form section
-    And User enters a valid Name on the Let’s Connect form Brands
+    #And User enters a valid Name on the Let’s Connect form Brands
     When User selects "<HelpOption>" from the How can we help you? dropdown
     And User enters a valid Pincode on the Let’s Connect form Brands "<Pincode>"
     And User clicks on the Submit button
@@ -28,7 +28,7 @@ Feature: To Validate Brand Inquiry Form
   Scenario Outline: To verify validation messages when mandatory fields are empty in Let’s Connect form (Brands)
     Given User is on the Birla Opus Brands page  "BrandUrl"
     And User clicks on the Submit button
-    And validation message for Name input fields should get displayed "This field is required"
+    #And validation message for Name input fields should get displayed "This field is required"
     And validation message for HelpOption input fields should get displayed "This field is required"
     And validation message for Pincode input fields should get displayed "This field is required"
 

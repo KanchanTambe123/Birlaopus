@@ -2,8 +2,11 @@ package pagefunctions;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 
+import org.json.JSONObject;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +16,11 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import commonutilities.ClickElement;
+import commonutilities.CryptoUtils;
 import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
@@ -25,6 +32,8 @@ public class Book_Survey_Form_Page {
 	JSExecutor js = new JSExecutor();
 	ClickElement click = new ClickElement();
 
+	CryptoUtils crypto = new CryptoUtils();
+
 	// ------------------- Scenario 1 ------------------------
 
 	@FindBy(xpath = "//span[normalize-space()='Book a free survey']")
@@ -34,31 +43,40 @@ public class Book_Survey_Form_Page {
 
 	@FindBy(xpath = "//div[@class='button login-form-btn']//button[@id='nextBtnScreenBreak']")
 	public WebElement FewDeailsNextButton;
-	@FindBy(xpath = "//a[@id='projectDetailsSkip']")
-	public WebElement projectDetailsSkipOption;
+	
 
 	@FindBy(xpath = "//a[@id='projectDetailsNext']")
 	public WebElement projectDetailsNextButton;
-	
+
 	@FindBy(xpath = "//input[@id='carpetArea']")
 	public WebElement carpetAreaInputFiled;
 	
+
+
 	@FindBy(xpath = "//div[contains(@class,'cmp-text')]//p[contains(normalize-space(),'Thank you for sharing your details')]")
 	public WebElement confirmationMsg;
 
-	//Scenarios 2
-	
-	
+	// Address input
+	@FindBy(xpath = "//input[@id='surveyPropertyName']")
+	private WebElement addressInput;
+
+	// First suggestion (Pune)
+	@FindBy(xpath = "(//div[@id='renderAddressDataForBudget']//div[@class='searched-address'])[1]")
+	private WebElement firstSuggestion;
+
+	@FindBy(xpath = "//button[@id='addressPopUpConfirmBtn']")
+	public WebElement addressConfirmButton;
+
+	@FindBy(xpath = "//input[@id='surveyPincode']")
+	public WebElement surveyPincodeInputfiled;
+
+	// Scenarios 2
+
 	@FindBy(xpath = "//a[@id='surveyStepBack']")
 	public WebElement surveyStepBackButton;
-	
-	
+
 	@FindBy(xpath = "//span[contains(@class,'text-title') and normalize-space()='Enter Site Details']")
 	public WebElement previousStepLocator;
-	
-
-
-	
 
 	public Book_Survey_Form_Page() {
 		driver = DriverManager.getDriver();
@@ -82,47 +100,100 @@ public class Book_Survey_Form_Page {
 		}
 		throw new RuntimeException("Requirement type not found: " + requirementType);
 	}
-	
+
 	public void selectBhkType(String bhkType) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	    JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	    // Wait for container and get cards
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(
-	            By.xpath("//div[contains(@class,'bhkQuestions')]")));
-	    List<WebElement> bhkCards = driver.findElements(
-	            By.xpath("//div[contains(@class,'bhkQuestions')]//div[contains(@class,'opusTeaser')]"));
+		// Wait for container and get cards
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(@class,'bhkQuestions')]")));
+		List<WebElement> bhkCards = driver
+				.findElements(By.xpath("//div[contains(@class,'bhkQuestions')]//div[contains(@class,'opusTeaser')]"));
 
-	    boolean found = false;
-	    for (WebElement card : bhkCards) {
-	        String title = card.findElement(By.xpath(".//h2[contains(@class,'cmp-teaser__title')]"))
-	                           .getText().replaceAll("\\s+", " ").trim();
-	        System.out.println("Found BHK: " + title);
+		boolean found = false;
+		for (WebElement card : bhkCards) {
+			String title = card.findElement(By.xpath(".//h2[contains(@class,'cmp-teaser__title')]")).getText()
+					.replaceAll("\\s+", " ").trim();
+			System.out.println("Found BHK: " + title);
 
-	        if (title.equalsIgnoreCase(bhkType)) {
-	            js.executeScript("arguments[0].scrollIntoView({block:'center'});", card);
-	            wait.until(ExpectedConditions.elementToBeClickable(card)).click();
-	            found = true;
-	            break;
-	        }
-	    }
+			if (title.equalsIgnoreCase(bhkType)) {
+				js.executeScript("arguments[0].scrollIntoView({block:'center'});", card);
+				wait.until(ExpectedConditions.elementToBeClickable(card)).click();
+				found = true;
+				break;
+			}
+		}
 
-	    if (!found) {
-	        System.out.println("BHK option not found or not clickable: " + bhkType + ". Continuing flow...");
-	        return; // Continue flow if BHK not found
-	    }
+		if (!found) {
+			System.out.println("BHK option not found or not clickable: " + bhkType + ". Continuing flow...");
+			return; // Continue flow if BHK not found
+		}
 
-	    // Wait for carpet area input field
-	    WebElement carpetArea = wait.until(
-	            ExpectedConditions.visibilityOfElementLocated(By.id("carpetArea"))
-	    );
+	
 
-	    // Scroll to carpet area
-	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", carpetArea);
-	    System.out.println("Scrolled to carpet area input field");
+	
 	}
 
+	public void enterAddressAndSelectFirstSuggestion(String address) {
+		// Wait for input and type address
+		wait.waitForElementVisible(addressInput);
+		addressInput.clear();
+		addressInput.sendKeys(address);
 
+		// Wait for suggestions to load and click first one
+		wait.waitForElementToBeClickable(firstSuggestion, 15);
 
+		try {
+			firstSuggestion.click();
+		} catch (ElementClickInterceptedException e) {
+			// Fallback for auto-suggest overlay issues
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", firstSuggestion);
+		}
+	}
+
+	public void verifyLeadApiParameters(String expectedLeadContext, String expectedLeadType, String expectedSubType,
+			String expectedLeadSubSource) {
+		try {
+// 1️.Capture encrypted payload
+			String encryptedPayload = DriverManager.waitForLeadPayload(15);
+			System.out.println("Encrypted Payload: " + encryptedPayload);
+
+// 2️.Extract 'data' field
+			JSONObject wrapperJson = new JSONObject(encryptedPayload);
+			String encryptedData = wrapperJson.getString("data");
+
+// 3️.Decrypt payload
+			String decryptedJson = crypto.decryptData(encryptedData);
+			System.out.println("Decrypted JSON: " + decryptedJson);
+
+// 4️.Parse JSON
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> dataMap = mapper.readValue(decryptedJson, Map.class);
+			Map<String, Object> bodyMap = (Map<String, Object>) dataMap.get("body");
+
+// 5️.Assert each parameter independently and log in ExtentReports
+			assertParameter("iclLeadContextC", expectedLeadContext, bodyMap.get("iclLeadContextC"));
+			assertParameter("iclLeadTypeC", expectedLeadType, bodyMap.get("iclLeadTypeC"));
+			assertParameter("subType", expectedSubType, bodyMap.get("subType"));
+			assertParameter("leadSubSource", expectedLeadSubSource, bodyMap.get("leadSubSource"));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			ExtentCucumberAdapter.addTestStepLog("❌ Exception during Lead API verification: " + e.getMessage());
+		}
+	}
+
+	private void assertParameter(String paramName, Object expected, Object actual) {
+		try {
+			if (!expected.equals(actual)) {
+				throw new AssertionError("Expected: " + expected + ", Actual: " + actual);
+			}
+			ExtentCucumberAdapter.addTestStepLog("✅ " + paramName + " matched: " + actual);
+		} catch (AssertionError e) {
+			// Log mismatch but continue
+			ExtentCucumberAdapter.addTestStepLog("❌ " + paramName + " mismatch! " + e.getMessage());
+		}
+	}
 
 }

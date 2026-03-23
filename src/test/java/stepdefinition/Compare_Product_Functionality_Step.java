@@ -117,7 +117,7 @@ public class Compare_Product_Functionality_Step {
 
 		Assert.assertTrue(title.isDisplayed(), "Compare Page title is not displayed");
 		System.out.println("Compare Page is displayed successfully.");
-		
+
 	}
 
 	@Then("All selected products should be visible with their details")
@@ -126,17 +126,17 @@ public class Compare_Product_Functionality_Step {
 		cp.validateMinimumProducts(2);
 
 	}
-	
+
 	@Then("User should see the correct product titles on the Compare page.")
 	public void user_should_see_the_correct_product_titles_on_the_compare_page() {
-	    cp.VerifyProductsDetailsOnComparePage(firstProduct, secondProduct);;
-	}
-	
-	
-	@Then("User should see and verify that the product count is {string}")
-	public void user_should_see_and_verify_that_the_product_count_is(String string) {
-		cp.VerifyCompareCountOnComparePage(string);;
+		cp.VerifyProductsDetailsOnComparePage(firstProduct, secondProduct);
+		;
 	}
 
+	@Then("User should see and verify that the product count is {string}")
+	public void user_should_see_and_verify_that_the_product_count_is(String string) {
+		cp.VerifyCompareCountOnComparePage(string);
+		;
+	}
 
 }

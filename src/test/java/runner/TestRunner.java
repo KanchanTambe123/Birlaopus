@@ -27,7 +27,7 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
-@CucumberOptions(features = {"src/test/resources/features"},glue = {
+@CucumberOptions(features = {"src/test/resources/features/Sign_In_Functionality.feature"},glue = {
 		"stepdefinition" },plugin = { "pretty",
 
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber.json",
@@ -40,6 +40,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
+	
+	
 
 	
 

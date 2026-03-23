@@ -213,7 +213,19 @@ public class End_to_End_Flow_Page {
 		if (!productClicked) {
 			throw new RuntimeException("Product not found: " + productName);
 		}
+
+
+	
+		
+		
 	}
+	
+	
+	
+	
+	
+	
+	
 
 	// Select color by name
 	public void selectColorByName(String colorName) {
@@ -379,7 +391,7 @@ public class End_to_End_Flow_Page {
 
 			// (increment/decrement)
 			try {
-				Thread.sleep(1000); // 1-sec each click
+				Thread.sleep(1500); // 1-sec each click
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -571,10 +583,10 @@ public class End_to_End_Flow_Page {
 	            wait.until(ExpectedConditions.elementToBeClickable(shopNow));
 	            js.executeScript("arguments[0].click();", shopNow);
 
-	            // ⏳ wait for page load
+	            // wait for page load
 	            Thread.sleep(3000);
 
-	            // 🔍 Check for 404 image
+	            // Check for 404 image
 	            boolean is404 = driver.findElements(
 	                    By.xpath("//img[contains(@alt,'404')]")
 	            ).size() > 0;
@@ -588,7 +600,7 @@ public class End_to_End_Flow_Page {
 	                continue;
 	            }
 
-	            // ✅ Valid product page found
+	            // Valid product page found
 	            System.out.println("Valid product page opened for Shop Now index: " + i);
 	            break;
 

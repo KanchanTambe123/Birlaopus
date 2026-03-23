@@ -16,8 +16,7 @@ import pagefunctions.Sign_In_Functionality_Page;
 import pagefunctions.Wishlist_Functionality_Page;
 
 public class Wishlist_Functionality_Step {
-	
-	
+
 	ConfigReader config = new ConfigReader();
 	WebDriverWaitHelper wait = new WebDriverWaitHelper();
 	ClickElement click = new ClickElement();
@@ -33,10 +32,7 @@ public class Wishlist_Functionality_Step {
 	String fakeEmailId = dataGenerator.generateFakeEmail();
 
 	End_to_End_Flow_Page ep = new End_to_End_Flow_Page();
-	Wishlist_Functionality_Page wf=new Wishlist_Functionality_Page();
-	
-	
-	
+	Wishlist_Functionality_Page wf = new Wishlist_Functionality_Page();
 
 	@Then("User click whishlist icon on top page")
 	public void user_click_whishlist_icon_on_top_page() throws InterruptedException {
@@ -44,14 +40,15 @@ public class Wishlist_Functionality_Step {
 		js.topOfPage();
 		Thread.sleep(2000);
 		js.jsClickWithWait(wf.filledHeartIcon);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 	}
+
 	@Then("User removes the product from the wishlist if it is already added {string}")
-	public void user_removes_the_product_from_the_wishlist_if_it_is_already_added(String string) throws InterruptedException {
+	public void user_removes_the_product_from_the_wishlist_if_it_is_already_added(String string)
+			throws InterruptedException {
 		wf.selectProductOptionIfVisible(string);
 		Thread.sleep(6000);
 	}
-	
 
 	@When("User click whishlist icon on product")
 	public void user_click_whishlist_icon_on_product() throws InterruptedException {
@@ -65,18 +62,12 @@ public class Wishlist_Functionality_Step {
 
 	@Then("Product should be added to the wishlist successfully")
 	public void product_should_be_added_to_the_wishlist_successfully() {
-	    Assert.assertTrue(
-	            wf.isProductAddedToWishlist(),
-	            "Wishlist icon is NOT filled"
-	        );
+		Assert.assertTrue(wf.isProductAddedToWishlist(), "Wishlist icon is NOT filled");
 	}
-	
+
 	@Then("Product should be removed from the wishlist successfully")
 	public void product_should_be_removed_from_the_wishlist_successfully() {
-		   Assert.assertTrue(
-		            wf.isProductRemovedFromWishlist(),
-		            "Wishlist icon is NOT filled"
-		        );
+		Assert.assertTrue(wf.isProductRemovedFromWishlist(), "Wishlist icon is NOT filled");
 	}
 
 }

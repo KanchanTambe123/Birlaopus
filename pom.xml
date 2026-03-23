@@ -25,7 +25,10 @@
 		<maven.compiler.version>3.8.0</maven.compiler.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
 		<lombok.version>1.18.30</lombok.version>
-		<selenium.version>4.22.0</selenium.version>
+		<selenium.version>4.38.0</selenium.version>
+
+
+
 		<extentreports-cucumber7-adapter.version>1.14.0</extentreports-cucumber7-adapter.version>
 		<extentreports.version>5.0.9</extentreports.version>
 		<testng.version>7.8.0</testng.version>
@@ -64,6 +67,17 @@
 			<version>${cucumber.version}</version>
 			
 		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-devtools-v142</artifactId>
+			<version>4.38.0</version>
+		</dependency>
+		<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20240303</version>
+</dependency>
+
 
 
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -175,6 +189,12 @@
     <artifactId>webdrivermanager</artifactId>
     <version>5.7.0</version>
 </dependency>
+<dependency>
+    <groupId>org.awaitility</groupId>
+    <artifactId>awaitility</artifactId>
+    <version>4.2.0</version>
+</dependency>
+
 
 
 

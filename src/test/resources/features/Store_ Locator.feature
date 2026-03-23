@@ -1,4 +1,4 @@
-@Report
+
 Feature: To Validate Store Locator Functionality
 
   Background: 
@@ -43,12 +43,12 @@ Feature: To Validate Store Locator Functionality
     Examples: 
       | pincode |
       |  411033 |
-
+@test
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify validation message is displayed when user enters an invalid pincode(find store-without login)
     When User hovers over the Get in Touch popup
     Then User clicks on the Find a Store option
-    Then User enters a valid pincode "<pincode>"
+    Then User enters a invalid pincode "<pincode>"
     And User clicks on the submit button
     Then validation message for invalid pincode input field should get displayed "Please enter a valid Pincode"
 

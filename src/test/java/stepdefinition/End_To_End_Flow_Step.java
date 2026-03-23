@@ -249,11 +249,12 @@ public class End_To_End_Flow_Step {
 		js.scrollUntilElementVisible(ep.ProceedPaymentbutton);
 		Thread.sleep(2000);
 		js.jsClickWithWait(ep.ProceedPaymentbutton);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 	}
 
 	@Then("the validation message should be displayed as {string}")
 	public void the_validation_message_should_be_displayed_as(String expectedValidationMessage) {
+
 		String actualFullNameErr = common.getElementText(ep.minimumCartValueMessage);
 		common.compareText(actualFullNameErr, expectedValidationMessage);
 	}

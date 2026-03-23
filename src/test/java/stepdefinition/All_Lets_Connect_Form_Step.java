@@ -228,7 +228,7 @@ public class All_Lets_Connect_Form_Step {
 			throws InterruptedException {
 		wait.waitForElementVisible(lp.PincodeInputFiledBookfreeConsultation);
 		js.scrollUntilElementVisible(lp.PincodeInputFiledBookfreeConsultation);
-		//lp.PincodeInputFiledBookfreeConsultation.clear();
+		// lp.PincodeInputFiledBookfreeConsultation.clear();
 		Thread.sleep(2000);
 		common.SendInput(string, lp.PincodeInputFiledBookfreeConsultation);
 	}

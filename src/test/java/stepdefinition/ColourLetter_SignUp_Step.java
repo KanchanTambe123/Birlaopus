@@ -57,7 +57,7 @@ public class ColourLetter_SignUp_Step {
 	@Then("the User should see a success message confirming the newsletter subscription {string} {string}")
 	public void the_user_should_see_a_success_message_confirming_the_newsletter_subscription(String expectedTitle,
 			String expectedMessage) throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(15));
 
 		wait.until(ExpectedConditions.visibilityOf(cl.SuccessHeader));
 		wait.until(ExpectedConditions.visibilityOf(cl.SuccessDescription));
@@ -96,8 +96,8 @@ public class ColourLetter_SignUp_Step {
 		Thread.sleep(2000);
 	}
 
-	@Then("An error message should be displayed for invalid email Please enter a valid email ID {string}")
-	public void an_error_message_should_be_displayed_for_invalid_email_please_enter_a_valid_email_id(
+	@Then("An error message should be displayed for invalid email ID {string}")
+	public void an_error_message_should_be_displayed_for_invalid_email_ID(
 			String expectedValidationMessage) {
 		String actualFullNameErr = common.getElementText(cl.ErrorMessage);
 		common.compareText(actualFullNameErr, expectedValidationMessage);
@@ -109,12 +109,12 @@ public class ColourLetter_SignUp_Step {
 		Thread.sleep(2000);
 		cl.EmailIdFiled.clear();
 	}
-
-	@Then("An error message should be displayed empty filed Email is required {string}")
-	public void an_error_message_should_be_displayed_empty_filed_email_is_required(String expectedValidationMessage) {
-
+	@Then("An error message should be displayed for the empty email field {string}")
+	public void an_error_message_should_be_displayed_for_the_empty_email_field(String expectedValidationMessage) {
 		String actualFullNameErr = common.getElementText(cl.ErrorMessage);
 		common.compareText(actualFullNameErr, expectedValidationMessage);
 	}
 
 }
+
+

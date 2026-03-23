@@ -6,126 +6,131 @@ import java.util.Map;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v142.network.Network;
+import org.openqa.selenium.devtools.v142.network.model.RequestWillBeSent;
+import java.util.Optional;
+import org.openqa.selenium.devtools.v142.emulation.Emulation;
 import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverManager {
 
-	WebDriver driver;
-	
-	// ThreadLocal to handle WebDriver instances in a thread safe manner
-	private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
-	public static void setDriver(WebDriver driver) {
-		tlDriver.set(driver);
-	}
+    public WebDriver driver;
 
-	
-	public static WebDriver getDriver() {
-		return tlDriver.get();
-	}
+    // ===================== DRIVER & DEVTOOLS =====================
+    private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
+    private static final ThreadLocal<DevTools> tlDevTools = new ThreadLocal<>();
 
-	// Path to project directory
-	private static final String project_directory_path = System.getProperty("user.dir");
+    // ===================== STATIC PAYLOAD =====================
+    private static volatile String leadRequestPayload; // ⚡ thread-safe for Cucumber
 
-	// ConfigReader to read the configuration properties
-	private static final ConfigReader config = new ConfigReader();
+    private static final ConfigReader config = new ConfigReader();
 
-	/*
-	 * this method used to initialize the thread local driver on the basis of given
-	 * browser
-	 * 
-	 * @param browser The Browser Type (e.g. "chrome","firefox")
-	 * 
-	 * @return The initialized WebDriver instance
-	 * 
-	 */
-	public void init_driver(String browser) {
+    // ===================== DRIVER GET/SET =====================
+    public static void setDriver(WebDriver driver) {
+        tlDriver.set(driver);
+    }
 
-		// Initialized the WebDriver base on the provided browser type
-		switch (browser.toLowerCase()) {
+    public static WebDriver getDriver() {
+        return tlDriver.get();
+    }
 
-		case "chrome":
+    // ===================== INIT DRIVER =====================
+    public void init_driver(String browser) {
 
-			// set the Chrome driver properties
-			
-			 WebDriverManager.chromedriver().setup();
+        if (!browser.equalsIgnoreCase("chrome")) {
+            throw new IllegalArgumentException("Unsupported browser: " + browser);
+        }
 
-	            //System.out.println("Launching Chrome Browser with WebDriverManager");
-			/*System.setProperty(config.getProb("chrome_property"),
-					project_directory_path + config.getProb("chrome_path"));
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions opt = new ChromeOptions();
 
-			System.out.println("Driver path: " + project_directory_path + config.getProb("chrome_path"));*/
-			 
-			 
-			// set Chrome Options
-			ChromeOptions opt = new ChromeOptions();
-		
-		
-	    opt.addArguments(config.getProb("runHeadless").replace("--headless", "--headless=new")); // ensure new headless mode
-			opt.addArguments("--" + config.getProb("headlessBrowserSize"));
+        // Headless config
+        //opt.addArguments(config.getProb("runHeadless").replace("--headless", "--headless=new"));
+        opt.addArguments("--" + config.getProb("headlessBrowserSize"));
+        opt.addArguments("--no-sandbox");
+        opt.addArguments("--remote-allow-origins=*");
+        opt.addArguments("--incognito");
+        opt.addArguments("--disable-popup-blocking");
+        opt.addArguments("--disable-geolocation");
+        opt.addArguments("--disable-notifications");
+        opt.addArguments("--disable-infobars");
+        opt.addArguments("--disable-dev-shm-usage");
 
-			opt.addArguments("--no-sandbox");
-			opt.addArguments("--remote-allow-origins=*");
-			opt.addArguments("--incognito");
-			opt.addArguments("--disable-popup-blocking");
-			opt.addArguments("--disable-geolocation");
-			opt.addArguments("--disable-notifications");
-			opt.addArguments("--disable-infobars");
-			opt.addArguments("--disable-dev-shm-usage");
-		
-			
-			Map<String, Object> prefs = new HashMap<>();
-		    prefs.put("profile.default_content_setting_values.geolocation", 2); // Block location
-		    prefs.put("profile.default_content_setting_values.notifications", 2);
-		    prefs.put("profile.default_content_setting_values.media_stream", 2);
-		    opt.setExperimentalOption("prefs", prefs);
+        Map<String, Object> prefs = new HashMap<>();
+        prefs.put("profile.default_content_setting_values.geolocation", 2);
+        prefs.put("profile.default_content_setting_values.notifications", 2);
+        prefs.put("profile.default_content_setting_values.media_stream", 2);
+        opt.setExperimentalOption("prefs", prefs);
 
+        // ✅ CREATE DRIVER
+        driver = new ChromeDriver(opt);
+        setDriver(driver);
+        getDriver().manage().deleteAllCookies();
 
-			// Initialized Chrome driver with options
-			driver = new ChromeDriver(opt);
-			setDriver(driver);
-			getDriver().manage().deleteAllCookies();
-		      
-			break;
+        // ✅ INIT DEVTOOLS FOR API CAPTURE
+        initDevTools();
+    }
 
-		default:
+    // ===================== DEVTOOLS =====================
+    public static void initDevTools() {
+        ChromeDriver chromeDriver = (ChromeDriver) getDriver();
+        DevTools devTools = chromeDriver.getDevTools();
+        devTools.createSession();
 
-			// Throw exception for unsupported browsers
-			throw new IllegalArgumentException("Unsupported browser " + browser);
-		}
+        // Enable Network
+        devTools.send(Network.enable(
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty()
+        ));
 
-		// If driver initialized set it in the ThreadLocal and configure the browser
-		// settings
+        // Capture Lead API request
+        devTools.addListener(Network.requestWillBeSent(), request -> {
+            String url = request.getRequest().getUrl();
+            //System.out.println("API CALL => " + url);
 
-		// return getDriver();
+            if (url.contains("/lead/leadForm")) {
+                System.out.println("Lead API matched");
+                request.getRequest().getPostData().ifPresent(payload -> {
+                    System.out.println(" Payload captured");
+                    leadRequestPayload = payload; // ⚡ static volatile for thread-safe access
+                });
+            }
+        });
 
-	}
+        tlDevTools.set(devTools);
+    }
 
-	/**
-	 * Retrieve the WebDriver instance from the ThreadLocal.
-	 * 
-	 * @return The WebDriver Instance
-	 */
+    // ===================== GETTER =====================
+    public static String getLeadRequestPayload() {
+        return leadRequestPayload;
+    }
 
-	public static synchronized void quitDriver() {
+    // ===================== WAIT FOR PAYLOAD =====================
+    public static String waitForLeadPayload(int timeoutSeconds) throws InterruptedException {
+        int attempts = 0;
+        while (leadRequestPayload == null && attempts < timeoutSeconds * 2) {
+            Thread.sleep(500);
+            attempts++;
+        }
+        return leadRequestPayload;
+    }
 
-		WebDriver driver = getDriver();
+    // ===================== QUIT DRIVER =====================
+    public static synchronized void quitDriver() {
+        WebDriver driver = getDriver();
+        if (driver != null) {
+            driver.quit();
+            tlDriver.remove();
+            tlDevTools.remove();
+            leadRequestPayload = null;
+        }
+    }
 
-		// check if WebDriver instance exists
-		if (driver != null) {
-			// quite the webdriver instance
-			try {
-				// driver.close();
-				driver.quit();
-				// cleanup the threadLocal variable to prevent the memory leaks
-				tlDriver.remove();
-			} catch (Exception e) {
-				System.err.println("error closing webdriver :");
-			}
-
-		}
-	}
 
 }

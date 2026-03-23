@@ -99,13 +99,15 @@ public class Create_an_Account_Form_Step {
 		js.jsClickWithWait(cp.saveDetailButton);
 	}
 
-	@Then("User should see the welcome message with name")
-	public void user_should_see_the_welcome_message_with_name() {
+	
+	
+	
+	@Then("the user should be welcomed with their name and see the Go to my profile button.")
+	public void the_user_should_be_welcomed_with_their_name_and_see_the_go_to_my_profile_button() {
 		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
 
 		WebElement welcomeName = wait.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//span[contains(text(),'Welcome')]/span[@class='dynamic-name']")));
-
 
 		wait.until(d -> !welcomeName.getText().trim().isEmpty());
 
@@ -113,13 +115,18 @@ public class Create_an_Account_Form_Step {
 		Assert.assertEquals(displayedName, firstName,
 				"Welcome message does not contain the correct user name. Expected: " + firstName + ", Actual: "
 						+ displayedName);
-	}
+		
+		WebElement goToProfileBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
+		        By.xpath("//span[normalize-space()='Go to my profile']")
+		));
+		Assert.assertTrue(goToProfileBtn.isDisplayed(), "❌ 'Go to my profile' button is not displayed");
+	}	
 
 	@Then("User enters an already registered mobile number on the Create an Account page")
 	public void user_enters_an_already_registered_mobile_number_on_the_create_an_account_page()
 			throws InterruptedException {
 		wait.waitForElementVisible(cp.CreateAccountMobileNumberFiled);
-		cp.CreateAccountMobileNumberFiled.sendKeys("8208025065");
+		cp.CreateAccountMobileNumberFiled.sendKeys("7019144066");
 		Thread.sleep(2000);
 	}
 
@@ -137,7 +144,5 @@ public class Create_an_Account_Form_Step {
 		cp.enterBypassOtpAndVerify(fakeMobileNumber);
 
 	}
-	
-
 
 }

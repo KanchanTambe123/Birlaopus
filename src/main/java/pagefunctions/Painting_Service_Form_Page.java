@@ -49,9 +49,14 @@ public class Painting_Service_Form_Page {
     @FindBy(xpath = "(//div[@class='error-txt dsp-block'])[1]")
     public WebElement ErrMessageInvalidPincode;
     
+    @FindBy(xpath = "//a[normalize-space()='Painting made easy']")
+    public WebElement PaintingmadeEasySection;
+    
+    @FindBy(xpath = "(//a[normalize-space()='Get free quote'])[1]")
+    public WebElement GetfreequoteButton;
+    
 
-    
-    
+
 
 
 	

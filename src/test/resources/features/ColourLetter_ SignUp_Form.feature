@@ -1,4 +1,4 @@
-@Report
+
 Feature: To Validate Newsletter Subscription Sign-Up Functionality
 
   Background: 
@@ -19,10 +19,10 @@ Feature: To Validate Newsletter Subscription Sign-Up Functionality
   Scenario Outline: To verify that the newsletter subscription fails with an invalid email address on the newsletter subscription form
     When User enters an invalid email ID "asd@gmail" in the newsletter subscription field
     And User clicks on the Sign up for colour letter button
-    Then An error message should be displayed for invalid email Please enter a valid email ID "Please enter valid email ID"
-
+    Then An error message should be displayed for invalid email ID "Please enter valid email ID"
+@test
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify that a validation message appears when the email field is left empty on the newsletter subscription form
     When User leaves the email field empty
     And User clicks on the Sign up for colour letter button
-    Then An error message should be displayed empty filed Email is required "This field is required"
+    Then An error message should be displayed for the empty email field "This field is required"

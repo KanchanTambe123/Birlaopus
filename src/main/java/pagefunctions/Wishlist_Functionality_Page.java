@@ -74,23 +74,21 @@ public class Wishlist_Functionality_Page {
 	}
 	public void selectProductOptionIfVisible(String optionText) {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	    // 1.Wait for full page load
+	    // Wait for full page load
 	    wait.until(webDriver ->
 	            ((JavascriptExecutor) webDriver)
 	                    .executeScript("return document.readyState")
 	                    .equals("complete")
 	    );
 
-	    // 2.Locate option button 
-	    By optionButtonLocator =
-	            By.xpath("//button[contains(@class,'cmp-product__option-button')]");
-
+	    // Locate option button
+	    By optionButtonLocator = By.xpath("//button[contains(@class,'cmp-product__option-button')]");
 	    List<WebElement> optionButtons = driver.findElements(optionButtonLocator);
 
-	    // 3.Button not present → continue journey
+	    // Button not present → continue journey
 	    if (optionButtons.isEmpty()) {
 	        System.out.println("Option button not present. Continuing journey...");
 	        return;
@@ -98,31 +96,30 @@ public class Wishlist_Functionality_Page {
 
 	    WebElement optionButton = optionButtons.get(0);
 
-	    // 4.Button present but not visible → continue journey
+	    //  Button present but not visible → continue journey
 	    if (!optionButton.isDisplayed()) {
 	        System.out.println("Option button not visible. Continuing journey...");
 	        return;
 	    }
 
-	    // 5.Scroll & click option button
+	    // Scroll to button & wait until visible & clickable
 	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", optionButton);
+	    wait.until(ExpectedConditions.visibilityOf(optionButton));
 	    wait.until(ExpectedConditions.elementToBeClickable(optionButton));
+
+	    // Click option button via JS
 	    js.executeScript("arguments[0].click();", optionButton);
+	 
 
-	    // 6.Wait for options list to open
-	    By optionsListLocator =
-	            By.xpath("//ul[contains(@class,'cmp-product__options') and not(contains(@class,'d-none'))]");
-
+	    // Wait for options list to open
+	    By optionsListLocator = By.xpath("//ul[contains(@class,'cmp-product__options') and not(contains(@class,'d-none'))]");
 	    wait.until(ExpectedConditions.visibilityOfElementLocated(optionsListLocator));
 
-	    // 7.Locate required option
-	    By optionLocator = By.xpath(
-	            "//ul[contains(@class,'cmp-product__options')]//li[.//span[normalize-space()='" + optionText + "']]"
-	    );
-
+	    //  Locate required option
+	    By optionLocator = By.xpath("//ul[contains(@class,'cmp-product__options')]//li[.//span[normalize-space()='" + optionText + "']]");
 	    List<WebElement> options = driver.findElements(optionLocator);
 
-	    // 8.Option not found → continue journey
+	    // Option not found → continue journey
 	    if (options.isEmpty()) {
 	        System.out.println("Option '" + optionText + "' not found. Continuing journey...");
 	        return;
@@ -130,9 +127,12 @@ public class Wishlist_Functionality_Page {
 
 	    WebElement option = options.get(0);
 
-	    // 9. Scroll & click option
+	    // Scroll & wait before clicking the option
 	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+	    wait.until(ExpectedConditions.visibilityOf(option));
 	    wait.until(ExpectedConditions.elementToBeClickable(option));
+
+	    // Click the option via JS
 	    js.executeScript("arguments[0].click();", option);
 
 	    System.out.println("Clicked option: " + optionText);

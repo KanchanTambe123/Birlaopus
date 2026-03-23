@@ -43,8 +43,8 @@ Feature: To Validate Get in Touch Contact Form Subscription
       |   40000 |
 
   #----------------------------------3---------------------------------------------------->
-  Scenario Outline: To verify that validation messages are displayed when all fields are left empty on the Get in Touch form (without login)
+  Scenario Outline: To verify mandatory field validation messages on the Get in Touch form without login
     When User hovers over the Get in Touch popup
     And User clicks on the Get in Touch option
     And User clicks submits the Get in Touch form
-    Then validation message for empty pincode input field should get displayed " This field is required"
+    Then validation message for all input field should get displayed "This field is required"

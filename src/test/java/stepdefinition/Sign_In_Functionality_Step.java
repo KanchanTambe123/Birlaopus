@@ -44,10 +44,10 @@ public class Sign_In_Functionality_Step {
 		Thread.sleep(2000);
 	}
 
-	@When("User enters valid mobile number mobile number on the Sign In page")
-	public void user_enters_valid_mobile_number_mobile_number_on_the_sign_in_page() throws InterruptedException {
+	@When("User enters valid mobile number on the Sign In page")
+	public void user_enters_valid_mobile_number_on_the_sign_in_page() throws InterruptedException {
 		wait.waitForElementVisible(sp.signInMobileNumberFiled);
-		sp.signInMobileNumberFiled.sendKeys("8208025065");
+		sp.signInMobileNumberFiled.sendKeys("7019144066");
 		Thread.sleep(2000);
 	}
 
@@ -75,13 +75,17 @@ public class Sign_In_Functionality_Step {
 		sp.signInMobileNumberFiled.sendKeys(string);
 		Thread.sleep(2000);
 	}
-
-	@Then("Validation message mobile number should get displayed to user {string}")
-	public void validation_message_mobile_number_should_get_displayed_to_user(String expectedValidationMessage) {
-
+	@Then("the validation message for an invalid mobile number should be displayed to the user {string}")
+	public void the_validation_message_for_an_invalid_mobile_number_should_be_displayed_to_the_user(String  expectedValidationMessage) {
 		String actualErrmessage = common.getElementText(sp.MobileNumberErrMsg);
 		common.compareText(actualErrmessage, expectedValidationMessage);
 
+	}
+	@When("the User clicks on the Sign In button")
+	public void the_user_clicks_on_the_sign_in_button() {
+	  wait.waitForElementVisible(sp.signButtonAfterMobileNumber);
+	  js.scrollUntilElementVisible(sp.signButtonAfterMobileNumber);
+	  js.jsClickWithWait(sp.signButtonAfterMobileNumber);
 	}
 
 	@Then("Validation message mobile number filed empty should get displayed to user {string}")

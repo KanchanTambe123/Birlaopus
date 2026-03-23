@@ -1,11 +1,10 @@
-@Report
 Feature: To Validate Painting Service Request Form(Homepage Search Form)
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
@@ -26,7 +25,7 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
     And User clicks on the Sign up for free button
     And User enters an invalid pin code "<PinCode>" in the Painting Service Form
     And User clicks on the Submit button in the Painting Service Form
-    Then An error message should be displayed for invalid pin code Please enter a valid Pincode  "Please enter a valid Pincode"
+    Then An error message should be displayed for invalid pin code "Please enter a valid Pincode"
 
     Examples: 
       | PinCode |
@@ -40,7 +39,8 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify that the Back button works after entering form data in the Painting Service Request form
-
     And User clicks on the Sign up for free button
     And User clicks on the Back button
-   Then User should be navigated to the previous page
+    Then User should be navigated to the previous page
+
+  

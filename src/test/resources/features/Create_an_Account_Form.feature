@@ -1,4 +1,4 @@
-@Report
+
 Feature: To Validate Create an Account(Account Registration) Functionality(Form)
 
   Background: 
@@ -14,7 +14,8 @@ Feature: To Validate Create an Account(Account Registration) Functionality(Form)
     Then User enters valid first name
     And User enters valid last name
     Then User clicks on the Save Details button
-    And User should see the welcome message with name
+    #And User should see the welcome message with name
+   And the user should be welcomed with their name and see the Go to my profile button.
 
   #----------------------------------2---------------------------------------------------->
   Scenario Outline: To verify Create an Account functionality with duplicate mobile number

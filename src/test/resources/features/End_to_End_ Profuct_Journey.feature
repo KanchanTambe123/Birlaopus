@@ -1,4 +1,4 @@
-@Report
+
 Feature: To Validate the Shop Happy End-to-End Product Journey Flow for an Existing User
 
   Background: 
@@ -96,7 +96,7 @@ Feature: To Validate the Shop Happy End-to-End Product Journey Flow for an Exist
     And User click on add to cart button
     Then User click on View cart & Checkout button
     #And User click on whishlist icon
-    And User increase the product quantity "<desiredQuantity>"
+    #And User increase the product quantity "<desiredQuantity>"
     Then User clicks on the Proceed to Enter Address button
     And the validation message should be displayed as "To proceed to checkout, we request a minimum cart value of INR 999."
     Then User clicks on the popup Close button

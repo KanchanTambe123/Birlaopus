@@ -108,4 +108,12 @@ public class Get_Touch_Contact_Form_Step {
 		String Errmsg = common.getElementText(gp.ErrMsg);
 		common.compareText(Errmsg, string);
 	}
+	
+	
+	@Then("validation message for all input field should get displayed {string}")
+	public void validation_message_for_all_input_field_should_get_displayed(String string) {
+		js.scrollUntilElementVisible(gp.ErrMsg);
+		String Errmsg = common.getElementText(gp.ErrMsg);
+		common.compareText(Errmsg, string);
+	}
 }

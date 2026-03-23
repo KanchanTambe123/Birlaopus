@@ -64,6 +64,13 @@ public class Search_Step {
 		sp.searchPanel.sendKeys(Keys.ENTER);
 		Thread.sleep(4000);
 	}
+	
+	@Then("User should be redirected to the search results page, and the results count should be displayed as greater than {int}")
+	public void user_should_be_redirected_to_the_search_results_page_and_the_results_count_should_be_displayed_as_greater_than(Integer minCount) {
+		int count = sp.getNumberFromText(sp.resultMessage, 30);
+
+		Assert.assertTrue("Expected results count > " + minCount + ", but was: " + count, count > minCount);
+	}
 
 	@When("The results count should be greater than {int}")
 	public void the_results_count_should_be_greater_than(Integer minCount) {
@@ -91,7 +98,13 @@ public class Search_Step {
 
 		Thread.sleep(2000);
 	}
+	@When("User click on serch box then selects the suggestion {string}")
+	public void user_click_on_serch_box_then_selects_the_suggestion(String suggestion) throws InterruptedException {
+		boolean clicked = sp.clickTrendingSuggestion(sp.searchPanel, sp.trendingSearchList, suggestion, 20);
 
+		Assert.assertTrue("Trending suggestion '" + suggestion + "' not found.", clicked);
+		Thread.sleep(2000);
+	}
 	@When("User selects the suggestion {string}")
 	public void user_selects_the_suggestion(String suggestion) throws InterruptedException {
 		boolean clicked = sp.clickTrendingSuggestion(sp.searchPanel, sp.trendingSearchList, suggestion, 20);

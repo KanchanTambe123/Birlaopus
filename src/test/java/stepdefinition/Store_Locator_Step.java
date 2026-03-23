@@ -50,6 +50,15 @@ public class Store_Locator_Step {
 		Thread.sleep(2000);
 		common.SendInput(string, sl.pincodeInput);
 	}
+	@Then("User enters a invalid pincode {string}")
+	public void user_enters_a_invalid_pincode(String string) throws InterruptedException {
+		wait.waitForElementVisible(sl.pincodeInput);
+		js.scrollUntilElementVisible(sl.pincodeInput);
+		sl.pincodeInput.clear();
+		Thread.sleep(2000);
+		common.SendInput(string, sl.pincodeInput);
+	}
+
 
 	@Then("User clicks on the submit button")
 	public void user_clicks_on_the_submit_button() throws InterruptedException {
@@ -96,6 +105,7 @@ public class Store_Locator_Step {
 
 		Assert.assertTrue(sl.successTitleText.isDisplayed(), "Confirmation success message is not displayed");
 	}
+
 	@Then("User clicks on the submit button on lead details form")
 	public void user_clicks_on_the_submit_button_on_lead_details_form() throws InterruptedException {
 		wait.waitForElementVisible(sl.submitButtonLeadDetailsForm);
