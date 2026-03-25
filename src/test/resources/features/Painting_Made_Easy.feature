@@ -1,12 +1,14 @@
 Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
 
   Background: 
+   
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
     And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
+
     Then User clicks on the close icon
     When User clicks on Painting made easy
     Then User clicks on Get free quote

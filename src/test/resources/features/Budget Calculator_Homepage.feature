@@ -5,11 +5,13 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
 
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: Validate Budget Calculator functionality using valid mandatory data
-    When User clicks on the profile icon
+     When User clicks on the profile icon
     And User clicks on the Sign In button
     And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
+
+ 
     Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"

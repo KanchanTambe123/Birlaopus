@@ -8,7 +8,7 @@ Feature: To Validate Get in Touch Contact Form Subscription
   Scenario Outline: To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user
     When User clicks on the profile icon
     And User clicks on the Sign In button
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
@@ -29,7 +29,7 @@ Feature: To Validate Get in Touch Contact Form Subscription
   Scenario Outline: To verify that a validation message is displayed when the user enters an invalid pincode on the Get in Touch form
     When User clicks on the profile icon
     And User clicks on the Sign In button
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon

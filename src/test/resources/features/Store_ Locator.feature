@@ -8,7 +8,7 @@ Feature: To Validate Store Locator Functionality
   Scenario Outline: To verify store locator displays results for valid pincode
     When User clicks on the profile icon
     And User clicks on the Sign In button
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
@@ -26,7 +26,7 @@ Feature: To Validate Store Locator Functionality
   Scenario Outline: To verify Store Locator lead details submission with valid data
     When User clicks on the profile icon
     And User clicks on the Sign In button
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon

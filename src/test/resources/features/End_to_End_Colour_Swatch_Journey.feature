@@ -1,12 +1,15 @@
+
 Feature: To validate the happy end-to-end colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
 
   Background: 
+    
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
+
     Then User clicks on the close icon
 
   #---------------------------------- Scenario 1 ----------------------------------#

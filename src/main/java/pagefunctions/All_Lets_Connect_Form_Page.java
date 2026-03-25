@@ -82,6 +82,11 @@ public class All_Lets_Connect_Form_Page {
 	   
 	    @FindBy(xpath = "//button[@id='button-39d73f9229']")
 	    public WebElement  BackButtonBookfreeConsultation;
+	    
+	    @FindBy(xpath = "//div[contains(@class,'error-txt') and contains(normalize-space(),'valid Pincode')]")
+	    public WebElement  invalidPincodeErrMsgBookfreeConsultation;
+	    
+	
 
 
 

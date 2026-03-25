@@ -18,6 +18,7 @@ import org.testng.annotations.DataProvider;
 
 import commonutilities.CommonMethods;
 import commonutilities.GoogleDriveUploader;
+import commonutilities.ReportUtil;
 import commonutilities.SendMail;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -27,8 +28,8 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
-@CucumberOptions(features = {"src/test/resources/features"},glue = {
-		"stepdefinition" },tags="@SCOPE1",plugin = { "pretty",
+@CucumberOptions(features = {"src/test/resources/features/All_Lets_Connect_Form.feature"},glue = {
+		"stepdefinition" },tags="@test",plugin = { "pretty",
 
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber.json",
 				"html:report/html/cucumber.html" }, monochrome = true, dryRun = false) // true=create step
@@ -94,31 +95,35 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	        e.printStackTrace();
 	    }
 	}*/
-	@AfterSuite //html and pdf
-	public void after_all() throws IOException, InterruptedException {
+	//@AfterSuite
+	public void after_all() throws Exception {
 
-		List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
+	    ReportUtil.readCucumberReport();
 
-		String subject = "BirlaOpus Regression Suite Report ";
+	    List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
 
-		String body = "Please find the attached report for Today's Regression suite. Thank you for your attention to this report, and we look forward to any feedback or insights you may have.";
+	    String subject = "BirlaOpus Regression Suite Report";
 
-		String attachmentPath = "./report/pdf/Birlaopus_extent.pdf";
-		List<String> attachmentPaths = Arrays.asList("./report/pdf/Birlaopus_extent.pdf",
-				"./report/html/Birlaopus.html");
+	    String body = "Hi Team,\n\n"
+	            + "The regression suite for today has been executed successfully.\n"
+	            + "Please find the detailed report attached.\n\n"
+	            + "Execution Summary:\n\n"
+                + "Scenarios:\n"
+	            + "Total Passed: " + ReportUtil.passed + "\n"
+	            + "Total Failed: " + ReportUtil.failed + "\n"
+	          
 
-		try {
+	           
 
-			SendMail.sendEmailWithAttachment(recipients, subject, body, attachmentPaths);
+	            + "Best regards,\n"
+	            + "Kanchan Tambe\n"
+	            + "Automation Test Engineer";
 
-		} catch (MessagingException e) {
+	    List<String> attachmentPaths = Arrays.asList(
+	            "./report/pdf/Birlaopus_extent.pdf",
+	            "./report/html/Birlaopus.html"
+	    );
 
-			// Handle any exceptions here
-
-			e.printStackTrace();
-
-		}
-
+	    SendMail.sendEmailWithAttachment(recipients, subject, body, attachmentPaths);
 	}
-
 }

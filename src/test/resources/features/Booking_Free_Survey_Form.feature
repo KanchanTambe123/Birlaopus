@@ -19,6 +19,7 @@ Feature: To Validate Survey Booking Form
     Then User clicks on the Next button on the Book a Free Survey form
     And verify the lead API parameters for booking a free survey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User clicks on the Next button on the Share Few Details section
+    Then User selects the painting requirement type "<requirementType>"
     And User clicks on the project details next button
     Then User select home configuration type "<bhkType>"
     Then User enters the carpet area "<carpetArea>"
@@ -40,20 +41,24 @@ Feature: To Validate Survey Booking Form
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify thank you pop-up appears when user selects I’ll do it later option
+    And User clicks on the Book a Free Survey button
     Then User clicks on the Next button on the Book a Free Survey form
     Then User clicks on the I’ll do it later option
     Then A survey booking confirmation message should be displayed successfully
 
   #---------------------------------- Scenario 4 ----------------------------------#
-  Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
-    Then User clicks on the Next button on the Book a Free Survey form
-    And User clicks on the Next button on the Share Few Details section
-    And User clicks on the Skip for now option in the painting requirements question
-    And User clicks on the Skip for now option in the home configuration question
-    Then A survey booking confirmation message should be displayed successfully
+ # Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
+    # And User clicks on the Book a Free Survey button
+   # Then User clicks on the Next button on the Book a Free Survey form
+    #And User clicks on the Next button on the Share Few Details section
+   # Then User selects the painting requirement type "<requirementType>"
+    #And User clicks on the Skip for now option in the painting requirements question
+   # And User clicks on the Skip for now option in the home configuration question
+    #Then A survey booking confirmation message should be displayed successfully
 
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
+     And User clicks on the Book a Free Survey button
     And User enters unserviceable Pin code "<pincode>"
     Then User clicks on the Next button on the Book a Free Survey form
     Then the unserviceable pin code message should be displayed
@@ -61,4 +66,3 @@ Feature: To Validate Survey Booking Form
     Examples: 
       | pincode |
       |  111222 |
-

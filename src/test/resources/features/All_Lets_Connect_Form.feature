@@ -5,7 +5,7 @@ Feature: Validate the Brand Inquiry Form and Book a Free Consultation form on th
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
@@ -58,39 +58,26 @@ Feature: Validate the Brand Inquiry Form and Book a Free Consultation form on th
   #| Painter / Contractor |  400703 | Crew / Grasim relationship |
   #| Painter / Contractor |  411033 | General Enquiries / Others |
   #----------------------------------3---------------------------------------------------->
-  Scenario Outline: To verify mandatory fields with valid data on the Book a Free Consultation form on the homepage for a logged-in user
-    And User navigates to the Book a free consultation form section
-    Then User clicks on Book a Free Consultation button
-    And User enters a valid pincode on the Book a Free Consultation form  "<Pincode>"
-    Then the user clicks on the Continue button on the Book a Free Consultation form
-    And User should see the acknowledgment message after successful submission
-
-    Examples: 
-      | Pincode |
-      |  411033 |
-
-  #----------------------------------4---------------------------------------------------->
   Scenario Outline: To verify that the Back button works after entering form data in the Book a Free Consultation form on the homepage
     And User navigates to the Book a free consultation form section
     Then User clicks on Book a Free Consultation button
     And the user clicks on the Back button on the Book a Free Consultation form
     Then the user should be navigated to the previous page of the Book a Free Consultation form
 
-  #----------------------------------5---------------------------------------------------->
+  #----------------------------------4---------------------------------------------------->
   Scenario Outline: To verify validation messages when mandatory fields are empty in the Book a Free Consultation form on the homepage
     And User navigates to the Book a free consultation form section
     Then User clicks on Book a Free Consultation button
     Then the user clicks on the Continue button on the Book a Free Consultation form
     And validation message for Pincode input fields should get displayed "This field is required"
-
-
-  #----------------------------------6---------------------------------------------------->
+@test
+  #----------------------------------5---------------------------------------------------->
   Scenario Outline: To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user
     And User navigates to the Book a free consultation form section
     Then User clicks on Book a Free Consultation button
     And User enters a invalid pincode on the Book a Free Consultation form  "<PinCode>"
     Then the user clicks on the Continue button on the Book a Free Consultation form
-    Then An error message should be displayed for invalid pin code Please enter a valid Pincode  "Please enter a valid Pincode"
+    Then error message should be displayed for invalid pin code "Please enter a valid Pincode"
 
     Examples: 
       | PinCode |

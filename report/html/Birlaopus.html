@@ -48,7 +48,7 @@
 </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Mar 16, 2026 14:00:51</span></a>
+<a href="#"><span class="badge badge-primary">Mar 25, 2026 17:47:08</span></a>
 </li>
 </ul>
 </div>
@@ -92,7 +92,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@test</a>
+<a class="dropdown-item" href="#">@test</a><a class="dropdown-item" href="#">@SCOPE1</a>
 </ul>
 </li>
 </ul>
@@ -103,9 +103,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">To Validate Sign-In (User Login)Functionality</p>
+            <p class="name">Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage.</p>
             <p class="text-sm">
-              <span>2:00:53 PM</span> / <span>00:00:40:804</span>
+              <span>5:47:09 PM</span> / <span>00:00:41:135</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -113,10 +113,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">To Validate Sign-In (User Login)Functionality</h5>
-<span class='badge badge-success'>03.16.2026 2:00:53 PM</span>
-<span class='badge badge-danger'>03.16.2026 2:01:33 PM</span>
-<span class='badge badge-default'>00:00:40:804</span>
+<h5 class="test-status text-pass">Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage.</h5>
+<span class='badge badge-success'>03.25.2026 5:47:09 PM</span>
+<span class='badge badge-danger'>03.25.2026 5:47:50 PM</span>
+<span class='badge badge-default'>00:00:41:135</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -128,47 +128,79 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify sign-in functionality with valid mobile number and OTP</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</div>
       </div>
     </div>
-        <div class="collapse">
-          <div class="card-body">
-              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_is_on_birla_opus_home_page(java.lang.String)">
-                <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_clicks_on_the_profile_icon()">
-                <span>When User clicks on the profile icon</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When User clicks on the profile icon</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_clicks_on_the_sign_in_button()">
-                <span>And User clicks on the Sign In button</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Sign In button</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_enters_valid_mobile_number_on_the_sign_in_page()">
-                <span>And User enters valid mobile number on the Sign In page</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid mobile number on the Sign In page</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.the_user_clicks_on_the_sign_in_button_after_entering_the_mobile_number()">
-                <span>And the User clicks on the Sign In button after entering the mobile number</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_and_clicks_on_the_verify_otp_button()">
-                <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
       <div>
       </div>
-              </div>
-              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.the_user_should_successfully_sign_in()">
-                <span>And the User should successfully sign in</span>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on the close icon</span>
       <div>
       </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User navigates to the Book a free consultation form section</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on Book a Free Consultation button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters a invalid pincode on the Book a Free Consultation form  "123"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the user clicks on the Continue button on the Book a Free Consultation form</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then error message should be displayed for invalid pin code "Please enter a valid Pincode"</span>
+      <div>
+      </div>
+                  </div>
               </div>
-          </div>
+            </div>
         </div>
   </div>
 </div>
@@ -187,7 +219,7 @@
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
 <ul class="test-list-item">
@@ -215,11 +247,47 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>14:00:53 PM</td>
+<td>17:47:09 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='2'>To verify sign-in functionality with valid mobile number and OTP</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</a>
 <div class="">
-<span class="badge badge-default">To Validate Sign-In (User Login)Functionality.To verify sign-in functionality with valid mobile number and OTP</span>
+<span class="badge badge-default">Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage..To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@SCOPE1</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@SCOPE1</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:47:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</a>
+<div class="">
+<span class="badge badge-default">Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage..To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</span>
 </div>
 </td>
 </tr>
@@ -240,13 +308,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Mar 16, 2026 14:00:51</h3>
+<h3>Mar 25, 2026 17:47:08</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Mar 16, 2026 14:01:33</h3>
+<h3>Mar 25, 2026 17:47:50</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -317,7 +385,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>7</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>12</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -336,7 +404,7 @@
 </div></div>
 <script>
 var timeline = {
-"To Validate Sign-In (User Login)Functionality":40.804
+"Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage.":41.135
 };
 </script>
 <div class="row">
@@ -347,6 +415,14 @@ var timeline = {
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
 <td>@test</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@SCOPE1</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -373,7 +449,7 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 7,
+passGrandChild: 12,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,

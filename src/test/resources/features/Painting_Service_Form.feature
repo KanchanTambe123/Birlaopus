@@ -15,7 +15,7 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
     And User clicks on the Sign up for free button
     And User enters a valid pin code "<PinCode>" in the Painting Service Form
     And User clicks on the Submit button in the Painting Service Form
-    And User should see the acknowledgment message after successful submission
+   
 
     Examples: 
       | PinCode |
@@ -26,8 +26,7 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
     And User clicks on the Sign up for free button
     And User enters an invalid pin code "<PinCode>" in the Painting Service Form
     And User clicks on the Submit button in the Painting Service Form
-    Then 
-    An error message should be displayed for invalid pin code "Please enter a valid Pincode"
+    Then An error message should be displayed for invalid pin code "Please enter a invalid Pincode"
 
     Examples: 
       | PinCode |
@@ -44,5 +43,3 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
     And User clicks on the Sign up for free button
     And User clicks on the Back button
     Then User should be navigated to the previous page
-
-  

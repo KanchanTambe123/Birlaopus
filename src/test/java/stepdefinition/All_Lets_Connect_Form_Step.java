@@ -88,7 +88,7 @@ public class All_Lets_Connect_Form_Step {
 			throws InterruptedException {
 		wait.waitForElementVisible(lp.pincodeField);
 		js.scrollUntilElementVisible(lp.pincodeField);
-		lp.pincodeField.clear();
+		
 		Thread.sleep(2000);
 		common.SendInput(string, lp.pincodeField);
 	}
@@ -100,7 +100,7 @@ public class All_Lets_Connect_Form_Step {
 		js.scrollUntilElementVisible(lp.submitButton);
 		Thread.sleep(2000);
 		js.jsClickWithWait(lp.submitButton);
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 	}
 
 	@When("User should see the acknowledgment message after successful submission")
@@ -232,4 +232,17 @@ public class All_Lets_Connect_Form_Step {
 		Thread.sleep(2000);
 		common.SendInput(string, lp.PincodeInputFiledBookfreeConsultation);
 	}
+	
+
+@Then("error message should be displayed for invalid pin code {string}")
+public void error_message_should_be_displayed_for_invalid_pin_code(String expectedMsg) {
+	 wait.waitForElementVisible(lp.invalidPincodeErrMsgBookfreeConsultation);  //
+
+	    js.scrollUntilElementVisible(lp.invalidPincodeErrMsgBookfreeConsultation); // 
+
+	    String actualMsg = common.getElementText(lp.invalidPincodeErrMsgBookfreeConsultation);
+
+	    common.compareText(actualMsg.trim(), expectedMsg.trim());
+}
+
 }

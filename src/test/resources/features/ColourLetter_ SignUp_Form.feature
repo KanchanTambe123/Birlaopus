@@ -9,7 +9,7 @@ Feature: To Validate Newsletter Subscription Sign-Up Functionality
     When User enters a valid email ID in the newsletter subscription field
     And User clicks on the Sign up for colour letter button
     Then the User should see a success message confirming the newsletter subscription "<Title>" "<Message>"
-    And User closes the newsletter success popup
+
 
     Examples: 
       | Title     | Message                         |

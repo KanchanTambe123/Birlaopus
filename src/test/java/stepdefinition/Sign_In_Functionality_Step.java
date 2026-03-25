@@ -47,8 +47,10 @@ public class Sign_In_Functionality_Step {
 	@When("User enters valid mobile number on the Sign In page")
 	public void user_enters_valid_mobile_number_on_the_sign_in_page() throws InterruptedException {
 		wait.waitForElementVisible(sp.signInMobileNumberFiled);
-		sp.signInMobileNumberFiled.sendKeys("7019144066");
-		Thread.sleep(2000);
+		Thread.sleep(1000); // small stabilization
+		sp.signInMobileNumberFiled.click();
+		sp.signInMobileNumberFiled.sendKeys("8208025065");
+		Thread.sleep(1000);
 	}
 
 	@When("the User clicks on the Sign In button after entering the mobile number")
@@ -103,23 +105,62 @@ public class Sign_In_Functionality_Step {
 		wait.waitForElementVisible(sp.signOutBtn);
 
 	}
+	@When("User clicks on the Log Out button")
+	public void user_clicks_on_the_log_out_button() throws InterruptedException {
+		WebDriver driver = DriverManager.getDriver();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
+	    // Wait for loader to disappear
+	    By pageLoader = By.cssSelector("div.page-loader");
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(pageLoader));
+
+	    // Wait for element presence first
+	    wait.until(ExpectedConditions.visibilityOf(sp.signOutBtn));
+	    wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
+
+	    // Scroll to element
+	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", sp.signOutBtn);
+
+	    // Wait until visible
+	    wait.until(ExpectedConditions.visibilityOf(sp.signOutBtn));
+
+	    // Wait until clickable
+	    wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
+
+	    // Normal click (preferred)
+	    sp.signOutBtn.click();
+
+	    System.out.println("Clicked on 'Log Out' button");
+		Thread.sleep(4000);
+	}
 	@When("User clicks on the Sign Out button")
 	public void user_clicks_on_the_sign_out_button() throws InterruptedException {
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
-		By pageLoader = By.cssSelector("div.page-loader");
-		wait.until(ExpectedConditions.invisibilityOfElementLocated(pageLoader));
+	    // Wait for loader to disappear
+	    By pageLoader = By.cssSelector("div.page-loader");
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(pageLoader));
 
-		WebElement signOut = wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
+	    // Wait for element presence first
+	    wait.until(ExpectedConditions.visibilityOf(sp.signOutBtn));
+	    wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
 
-		// Scroll & click via JS 
-		js.executeScript("arguments[0].scrollIntoView({block:'center'});", signOut);
-		js.executeScript("arguments[0].click();", signOut);
+	    // Scroll to element
+	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", sp.signOutBtn);
 
-		System.out.println("Clicked on 'Sign Out' button");
+	    // Wait until visible
+	    wait.until(ExpectedConditions.visibilityOf(sp.signOutBtn));
+
+	    // Wait until clickable
+	    wait.until(ExpectedConditions.elementToBeClickable(sp.signOutBtn));
+
+	    // Normal click (preferred)
+	    sp.signOutBtn.click();
+
+	    System.out.println("Clicked on 'Sign Out' button");
 		Thread.sleep(4000);
 
 	}

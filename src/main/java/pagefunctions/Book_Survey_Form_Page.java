@@ -36,7 +36,7 @@ public class Book_Survey_Form_Page {
 
 	// ------------------- Scenario 1 ------------------------
 
-	@FindBy(xpath = "//span[normalize-space()='Book a free survey']")
+	@FindBy(xpath = "//a[contains(@class,'site-visit-btn') and .//span[text()='Book a free survey']]")
 	public WebElement BookfreesurveyButton;
 	@FindBy(xpath = "(//div[@class='button login-form-btn']//button[normalize-space()='Next'])[1]")
 	public WebElement SiteDetailsNextButton;

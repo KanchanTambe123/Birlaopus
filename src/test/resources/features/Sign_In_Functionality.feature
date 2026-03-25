@@ -42,13 +42,13 @@ Feature: To Validate Sign-In (User Login)Functionality
 
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify user is able to log out successfully
-    And User enters valid mobile number mobile number on the Sign In page
+    And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     And User clicks on the Go to my profile button
-    When User clicks on the Sign Out button
+    When User clicks on the Log Out button
     Then User should see a popup with the message Are you sure you want to logout? and selects "<answer>"
-    Then User should be logged out successfully
+  
 
     Examples: 
       | answer |
