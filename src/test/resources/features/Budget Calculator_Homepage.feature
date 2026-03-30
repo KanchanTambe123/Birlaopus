@@ -2,17 +2,15 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
-
-  #---------------------------------- Scenario 1 ----------------------------------#
-  Scenario Outline: Validate Budget Calculator functionality using valid mandatory data
-     When User clicks on the profile icon
+    When User clicks on the profile icon
     And User clicks on the Sign In button
     And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
-
- 
     Then User clicks on the close icon
+
+  #---------------------------------- Scenario 1 ----------------------------------#
+  Scenario Outline: To validate Budget Calculator functionality using valid mandatory data
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -37,7 +35,7 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
       | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
 
   #---------------------------------- Scenario 2 ----------------------------------#
-  Scenario Outline: Verify other categories remain locked when Premium category is selected without login
+  Scenario Outline: To verify other categories remain locked when Premium category is selected without login
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -50,13 +48,7 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
       | Studio    |       1000 |  400066 |
 
   #---------------------------------- Scenario 3 ----------------------------------#
-  Scenario Outline: Verify Book a Free Survey button visibility on other tabs after booking a survey from the Premium tab
-    When User clicks on the profile icon
-    And User clicks on the Sign In button
-    And User enters valid mobile number on the Sign In page
-    And the User clicks on the Sign In button after entering the mobile number
-    And User enters valid OTP and clicks on the Verify OTP button
-    Then User clicks on the close icon
+  Scenario Outline: To verify Book a Free Survey button visibility on other tabs after booking a survey from the Premium tab
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -76,12 +68,6 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify thank you pop-up appears when user selects I’ll do it later option
-    When User clicks on the profile icon
-    And User clicks on the Sign In button
-    And User enters valid mobile number on the Sign In page
-    And the User clicks on the Sign In button after entering the mobile number
-    And User enters valid OTP and clicks on the Verify OTP button
-    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -98,37 +84,23 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
       | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
 
   #---------------------------------- Scenario 5----------------------------------#
-  Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
-    When User clicks on the profile icon
-    And User clicks on the Sign In button
-    And User enters valid mobile number on the Sign In page
-    And the User clicks on the Sign In button after entering the mobile number
-    And User enters valid OTP and clicks on the Verify OTP button
-    Then User clicks on the close icon
-    When the User scrolls to the Budget Calculator
-    Then the User selects the space name to paint "<spaceName>"
-    And the User enters a valid carpet area "<carpetArea>"
-    And the User enters a valid serviceable pincode "<pincode>"
-    Then the User clicks on the Calculate Now button
-    Then click on Budget Calculator book free survey button
-    Then User clicks on the Next button on the Book a Free Survey form
-    And User clicks on the Next button on the Share Few Details section
-    And User clicks on the Skip for now option in the painting requirements question
-    And User clicks on the Skip for now option in the home configuration question
-    Then A survey booking confirmation message should be displayed successfully
-
-    Examples: 
-      | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
-      | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
-
+  #Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
+  # When the User scrolls to the Budget Calculator
+  #Then the User selects the space name to paint "<spaceName>"
+  #And the User enters a valid carpet area "<carpetArea>"
+  #And the User enters a valid serviceable pincode "<pincode>"
+  #Then the User clicks on the Calculate Now button
+  #Then click on Budget Calculator book free survey button
+  #Then User clicks on the Next button on the Book a Free Survey form
+  # And User clicks on the Next button on the Share Few Details section
+  #And User clicks on the Skip for now option in the painting requirements question
+  #And User clicks on the Skip for now option in the home configuration question
+  # Then A survey booking confirmation message should be displayed successfully
+  #Examples:
+  # | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
+  #| Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
   #---------------------------------- Scenario 6----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
-    When User clicks on the profile icon
-    And User clicks on the Sign In button
-    And User enters valid mobile number on the Sign In page
-    And the User clicks on the Sign In button after entering the mobile number
-    And User enters valid OTP and clicks on the Verify OTP button
-    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -144,9 +116,67 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | Pincode_Unserviceable |
       | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    |                111222 |
 
-      
-     
-  #---------------------------------- Scenario 7----------------------------------# 
-  Scenario Outline: To verify Edit Carpet Area and Verify Price Update
+  #---------------------------------- Scenario 7----------------------------------#
+  Scenario Outline: To verify whether the carpet area can be edited and if the price updates correctly.
+    When the User scrolls to the Budget Calculator
+    Then the User selects the space name to paint "<spaceName>"
+    And the User enters a valid carpet area "<carpetArea>"
+    And the User enters a valid serviceable pincode "<pincode>"
+    Then the User clicks on the Calculate Now button
+    And the User verifies the edit button is clickable and clicks on the carpet area edit button
+    And the User enters a valid Recalculate estimate carpet area "<UpdatecarpetArea>"
+    Then the User clicks on the Recalculate Estimate button and verifies the price is updated
 
-  
+    Examples: 
+      | spaceName         | carpetArea | pincode | requirementType | bhkType | address | UpdatecarpetArea |
+      | Villa or Bungalow |       2000 |  411033 | Exteriors       | 2 BHK   | pune    |             2500 |
+
+  #---------------------------------- Scenario 8----------------------------------#
+  Scenario Outline: To verify that an error message is displayed when an invalid pincode is entered.
+    When the User scrolls to the Budget Calculator
+    And the User enters a invalid pincode "<pincode>"
+    Then the User should see the error message "Invalid Input."
+
+    Examples: 
+      | pincode |
+      |    4110 |
+      |       0 |
+
+  #---------------------------------- Scenario 9----------------------------------#
+  Scenario Outline: To verify error message when alphabet is entered in pincode field
+    When the User scrolls to the Budget Calculator
+    And the User enters a invalid pincode "<pincode>"
+    Then the user should see the error message "This field is required." when an alphabet is entered in the pincode field.
+
+    Examples: 
+      | pincode |
+      | a       |
+
+  #---------------------------------- Scenario 10----------------------------------#
+  Scenario Outline: To verify that clicking on "View Products" displays products based on carpet area and a particular pincode(Premium category)
+    When the User scrolls to the Budget Calculator
+    Then the User selects the space name to paint "<spaceName>"
+    And the User enters a valid carpet area "<carpetArea>"
+    And the User enters a valid serviceable pincode "<pincode>"
+    Then the User clicks on the Calculate Now button
+    And the User clicks on view products
+
+    #Then the User should see the list of products matching the carpet area "<carpetArea>" and pincode "<pincode>"
+    Examples: 
+      | spaceName         | carpetArea | pincode |
+      | Villa or Bungalow |       2000 |  411033 |
+
+  #---------------------------------- Scenario 11----------------------------------#
+  Scenario Outline: To verify Download Estimate button is clickable
+    When the User scrolls to the Budget Calculator
+    Then the User selects the space name to paint "<spaceName>"
+    And the User enters a valid carpet area "<carpetArea>"
+    And the User enters a valid serviceable pincode "<pincode>"
+    Then the User clicks on the Calculate Now button
+    When the User scrolls to the Download Estimate button
+    Then the Download Estimate should be visible
+    And the Download Estimate should be clickable
+
+    Examples: 
+      | spaceName         | carpetArea | pincode |
+      | Villa or Bungalow |       2000 |  411033 |

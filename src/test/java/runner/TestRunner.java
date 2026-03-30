@@ -28,7 +28,7 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
-@CucumberOptions(features = {"src/test/resources/features/All_Lets_Connect_Form.feature"},glue = {
+@CucumberOptions(features = {"src/test/resources/features/Budget Calculator_Homepage.feature"},glue = {
 		"stepdefinition" },tags="@test",plugin = { "pretty",
 
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber.json",
