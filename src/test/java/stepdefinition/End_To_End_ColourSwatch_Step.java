@@ -1,5 +1,7 @@
 package stepdefinition;
 
+import org.testng.Assert;
+
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonDataGenerator;
@@ -10,6 +12,7 @@ import config.ConfigReader;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pagefunctions.End_To_End_ColourSwatch_Page;
+import pagefunctions.End_to_End_Flow_Page;
 
 public class End_To_End_ColourSwatch_Step {
 	
@@ -21,7 +24,7 @@ public class End_To_End_ColourSwatch_Step {
 	JSExecutor js = new JSExecutor();
 	int cartQuantity;
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
-
+	End_to_End_Flow_Page ep = new End_to_End_Flow_Page();
 	String fakeFirstName = dataGenerator.generateFakeFirstName();
 	String fakeLastName = dataGenerator.generateFakeLastName();
 	String fakeMobileNumber = dataGenerator.generateFakeMobileNumber();
@@ -53,6 +56,20 @@ public void user_removes_the_colour_swatch_from_the_wishlist_if_it_is_already_ad
 }
 
 
+@Then("User enters an invalid pincode {string} and check product availability")
+public void user_enters_an_invalid_pincode_and_check_product_availability(String string) throws InterruptedException {
+	wait.waitForElementVisible(cp.PincodeField);
+	js.scrollUntilElementVisible(cp.PincodeField);
+     cp.enterInvalidPincodeAndCheck(string);
+	
+}
+@Then("User should see an error message for invalid pincode for colour swatch {string}")
+public void user_should_see_an_error_message_for_invalid_pincode_for_colour_swatch(String expectedMessage) {
+	wait.waitForElementVisible(cp.ErrMessageInvalidPincode);
+	js.scrollUntilElementVisible(cp.ErrMessageInvalidPincode);
+	String actualMessage = cp.ErrMessageInvalidPincode.getText();
+	Assert.assertEquals(actualMessage, expectedMessage, "error message mismatch");
+}
 	
 
 }

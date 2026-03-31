@@ -1,15 +1,12 @@
-
 Feature: To validate the happy end-to-end colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
 
   Background: 
-    
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
     And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
-
     Then User clicks on the close icon
 
   #---------------------------------- Scenario 1 ----------------------------------#
@@ -85,3 +82,63 @@ Feature: To validate the happy end-to-end colour swatch journey flow for a logge
     Examples: 
       | navmenu | navtab       | productname   | optionText          |
       | Shop    | Colour Tools | Colour Swatch | Delete colour story |
+
+  #---------------------------------- Scenario 6 ----------------------------------#
+  Scenario Outline: To verify error message when user enters invalid pincode for colour swatch
+    When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    Then User selects Colour for colour swatch "<Colour>"
+    Then User selects colour swatch quantity <quantity>
+    Then User enters an invalid pincode "<pincode>" and check product availability
+    Then User should see an error message for invalid pincode for colour swatch "<errorMessage>"
+
+    Examples: 
+      | navmenu | navtab       | productname   | Colour    | quantity | pincode | errorMessage                 |
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |     123 | Please enter a valid pincode |
+   @test  
+  #---------------------------------- Scenario 7 ----------------------------------#
+  Scenario Outline: To verify error message when pincode field is empty
+    When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    Then User selects Colour for colour swatch "<Colour>"
+    Then User selects colour swatch quantity <quantity>
+    Then User leaves the pincode field empty
+    Then User should see the error message when pincode field is empty "This field is required."
+
+    Examples: 
+      | navmenu | navtab       | productname   | Colour    | quantity |
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |
+
+  #---------------------------------- Scenario 8 ----------------------------------#
+  Scenario Outline: To verify error when user tries to add colour swatch without selecting colour
+    When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    Then User selects colour swatch quantity <quantity>
+    Then User enters a valid pincode "<pincode>" and check product availability
+    And User click on add to cart button
+    Then User should see error message "<errorMessage>"
+
+    Examples: 
+      | navmenu | navtab       | productname   | quantity | pincode | errorMessage         |
+      | Shop    | Colour Tools | Colour Swatch |        1 |  400703 | Please select colour |
+
+  #---------------------------------- Scenario 9 ----------------------------------#
+  Scenario Outline: To verify error when user tries to add to cart without entering pincode
+    When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    Then User selects Colour for colour swatch "<Colour>"
+    Then User selects colour swatch quantity <quantity>
+    And User click on add to cart button
+    Then User should see error message "<errorMessage>"
+
+    Examples: 
+      | navmenu | navtab       | productname   | Colour    | quantity | errorMessage         |
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 | Please enter pincode |
+
+  #---------------------------------- Scenario 10 ----------------------------------#
+  Scenario Outline: To verify user cannot select invalid quantity for colour swatch
+    When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    Then User selects Colour for colour swatch "<Colour>"
+    Then User enters invalid quantity "<quantity>"
+    Then User should see error message "<errorMessage>"
+
+    Examples: 
+      | navmenu | navtab       | productname   | Colour    | quantity | errorMessage                      |
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |        0 | Quantity should be greater than 0 |
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |       -1 | Invalid quantity                  |

@@ -44,18 +44,39 @@ public class Painting_Made_Easy_Page {
 	// Scenario 2
 	@FindBy(xpath = "//button[@id='doLaterBtnScreenBreak']")
 	public WebElement DoLetterButton;
-	
+
 	// Scenario 3
-	
+
 	@FindBy(xpath = "(//a[@id='projectDetailsSkip'])[2]")
 	public WebElement SkipQuestion;
-	
-	
 
 	// Scenario 4
 
 	@FindBy(xpath = "//div[contains(@class,'cmp-teaser__description')][.//h4[normalize-space()='Coming soon'] and .//p[contains(normalize-space(),'Painting services are currently not available')]]")
 	public WebElement unserviceablePinPopup;
+
+	// Scenario 5,6,7,8,9
+
+	@FindBy(xpath = "//div[@class='error-txt dsp-block']")
+	public WebElement mobileNoErrorMsg;
+
+	@FindBy(xpath = "//input[@id='fName']")
+	public WebElement firstNameField;
+
+	@FindBy(xpath = "//input[@id='lName']")
+	public WebElement lastNameField;
+
+	@FindBy(xpath = "//input[@id='save-mail']")
+	public WebElement emailIDField;
+
+	@FindBy(xpath = "//button[@id='save-detail-btn']")
+	public WebElement saveDetailsCta;
+
+	@FindBy(xpath = "//div[@class='error-txt dsp-block']")
+	public WebElement firstLastNameErrorMsg;
+
+	@FindBy(id = "sign-in-input")
+	public WebElement mobileNoSignInField;
 
 	public Painting_Made_Easy_Page() {
 		driver = DriverManager.getDriver();
@@ -160,6 +181,4 @@ public class Painting_Made_Easy_Page {
 		element.sendKeys(pinCode);
 	}
 
-	
-	
 }

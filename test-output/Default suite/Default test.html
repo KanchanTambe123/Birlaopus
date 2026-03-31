@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>8/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Mar 27 17:47:23 IST 2026</td>
+<td>Started on:</td><td>Tue Mar 31 13:31:52 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>73 seconds (73441 ms)</td>
+<tr><td>Total time:</td><td>446 seconds (446473 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,42 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify thank you pop-up is displayed when user skips all questions", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (2a9ad99b7c447ff90c0467342a788cda)] -&gt; xpath: (//a[@id=&apos;projectDetailsSkip&apos;])[2]] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53236}, goog:processID: 276640, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53236/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2a9ad99b7c447ff90c0467342a788cda
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Painting_Made_Easy_Step.user_clicks_on_the_skip_for_now_option_in_the_painting_requirements_question(Painting_Made_Easy_Step.java:97)
+	at ✽.User clicks on the Skip for now option in the painting requirements question(file:///C:/Backup/Birla/Birlaopus_selenium/com.BirlaOpus/Birlaopus/src/test/resources/features/Painting_Made_Easy.feature:58)
+</pre></div><a href='#' onClick='toggleBox("stack-trace64361528", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace64361528'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (2a9ad99b7c447ff90c0467342a788cda)] -&gt; xpath: (//a[@id=&apos;projectDetailsSkip&apos;])[2]] (tried for 20 second(s) with 500 milliseconds interval)
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53236}, goog:processID: 276640, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53236/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2a9ad99b7c447ff90c0467342a788cda
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Painting_Made_Easy_Step.user_clicks_on_the_skip_for_now_option_in_the_painting_requirements_question(Painting_Made_Easy_Step.java:97)
+	at ✽.User clicks on the Skip for now option in the painting requirements question(file:///C:/Backup/Birla/Birlaopus_selenium/com.BirlaOpus/Birlaopus/src/test/resources/features/Painting_Made_Easy.feature:58)
+</pre></div></td>
+<td>74</td>
+<td>runner.TestRunner@480d3575</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,9 +111,44 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify Download Estimate button is clickable", "Validate the Budget Calculator homepage for a logged-in user(single"</td>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify thank you pop-up appears when user selects I’ll do it later option", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
 <td></td>
-<td>69</td>
+<td>62</td>
+<td>runner.TestRunner@480d3575</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify error message is displayed to the user when entered incorrect email id", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td></td>
+<td>30</td>
+<td>runner.TestRunner@480d3575</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify error message is displayed to the user when entered incorrect mobile number on sign-in", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td></td>
+<td>26</td>
+<td>runner.TestRunner@480d3575</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify Painting made easy Get Free Quote flow including questionnaire, date & time selection, and confirmation for logged-in user", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td></td>
+<td>109</td>
+<td>runner.TestRunner@480d3575</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify error message is displayed to the user when entered incorrect mobile number on create an account option", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td></td>
+<td>26</td>
+<td>runner.TestRunner@480d3575</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify error message is displayed to the user when entered incorrect last name", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td></td>
+<td>31</td>
+<td>runner.TestRunner@480d3575</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify pop-up is displayed when an unserviceable PIN code is entered", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td></td>
+<td>48</td>
+<td>runner.TestRunner@480d3575</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify error message is displayed to the user when entered incorrect first name", "To Validate Painting Made Easy Form-Get Free Quote functionality"</td>
+<td></td>
+<td>31</td>
 <td>runner.TestRunner@480d3575</td></tr>
 </table><p>
 </body>

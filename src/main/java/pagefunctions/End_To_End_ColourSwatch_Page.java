@@ -4,8 +4,10 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,6 +25,16 @@ public class End_To_End_ColourSwatch_Page {
 	ClickElement click = new ClickElement();
 
 	
+	@FindBy(xpath = "//div[contains(@class,'error-txt') and contains(text(),'valid pincode')]")
+	public WebElement ErrMessageInvalidPincode;
+	
+	@FindBy(xpath = "//div[contains(@class,'cmp-product__pincode')]//input[@name='pinCode']")
+	public WebElement PincodeField;
+	
+	@FindBy(xpath = "//form[contains(@class,'cmp-product__delivery-check')]//button[@type='submit']")
+	public WebElement PincodeCheckButton;
+	
+
 	
 	
 	
@@ -162,6 +174,18 @@ public class End_To_End_ColourSwatch_Page {
 	    System.out.println("Wishlist icon clicked and state updated successfully");
 	}
 
-	
+	public void enterInvalidPincodeAndCheck(String pincode) throws InterruptedException {
+		PincodeField.clear();
+		PincodeField.sendKeys(pincode);
+
+	    // Trigger validation
+		PincodeField.sendKeys(Keys.TAB);
+		
+		Thread.sleep(2000);
+		 PincodeCheckButton.click();
+		
+
+	    
+	}
 	
 }

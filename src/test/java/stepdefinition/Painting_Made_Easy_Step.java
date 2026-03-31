@@ -19,6 +19,7 @@ import config.ConfigReader;
 import io.cucumber.java.en.Then;
 import pagefunctions.Book_Survey_Form_Page;
 import pagefunctions.ColourLetter_SignUp_Page;
+import pagefunctions.Create_an_Account_Form_Page;
 import pagefunctions.Painting_Made_Easy_Page;
 import pagefunctions.Painting_Service_Form_Page;
 
@@ -31,9 +32,15 @@ public class Painting_Made_Easy_Step {
 	JSExecutor js = new JSExecutor();
 	Painting_Service_Form_Page pf = new Painting_Service_Form_Page();
 	ColourLetter_SignUp_Page cl = new ColourLetter_SignUp_Page();
-	CommonDataGenerator dataGenerator = new CommonDataGenerator();
+
 	Painting_Made_Easy_Page pm = new Painting_Made_Easy_Page();
 	Book_Survey_Form_Page bs = new Book_Survey_Form_Page();
+	Create_an_Account_Form_Page cfp = new Create_an_Account_Form_Page();
+
+	CommonDataGenerator dataGenerator = new CommonDataGenerator();
+	String fakeFirstName = dataGenerator.generateFakeFirstName();
+	String fakeLastName = dataGenerator.generateFakeLastName();
+	String fakeEmail = dataGenerator.generateFakeEmail();
 
 	@Then("verify the lead API parameters for Painting Made Easy form: iclLeadContextC against value {string},  iclLeadTypeC against value {string},  iclSubType against value {string},  leadSubSource against value {string}")
 	public void verify_the_lead_api_parameters_for_painting_made_easy_form_icl_lead_context_c_against_value_icl_lead_type_c_against_value_icl_sub_type_against_value_lead_sub_source_against_value(
@@ -74,7 +81,7 @@ public class Painting_Made_Easy_Step {
 
 	@Then("User enters unserviceable Pin code {string}")
 	public void user_enters_unserviceable_pin_code(String string) throws InterruptedException {
-	
+
 		pm.enterSurveyPinCode(string, bs.surveyPincodeInputfiled);
 	}
 
@@ -84,9 +91,10 @@ public class Painting_Made_Easy_Step {
 		Assert.assertTrue(pm.unserviceablePinPopup.isDisplayed(),
 				"unserviceable pincode pop up message is not displayed");
 	}
-	
+
 	@Then("User clicks on the Skip for now option in the painting requirements question")
-	public void user_clicks_on_the_skip_for_now_option_in_the_painting_requirements_question() throws InterruptedException {
+	public void user_clicks_on_the_skip_for_now_option_in_the_painting_requirements_question()
+			throws InterruptedException {
 		wait.waitForElementVisible(pm.SkipQuestion);
 		Thread.sleep(2000);
 		js.scrollUntilElementVisible(pm.SkipQuestion);
@@ -94,14 +102,89 @@ public class Painting_Made_Easy_Step {
 		js.jsClickWithWait(pm.SkipQuestion);
 		Thread.sleep(2000);
 	}
+
 	@Then("User clicks on the Skip for now option in the home configuration question")
-	public void user_clicks_on_the_skip_for_now_option_in_the_home_configuration_question() throws InterruptedException {
+	public void user_clicks_on_the_skip_for_now_option_in_the_home_configuration_question()
+			throws InterruptedException {
 		wait.waitForElementVisible(pm.SkipQuestion);
 		Thread.sleep(2000);
 		js.scrollUntilElementVisible(pm.SkipQuestion);
 		Thread.sleep(2000);
 		js.jsClickWithWait(pm.SkipQuestion);
 		Thread.sleep(2000);
+	}
+
+	@Then("User enter invalid mobile number {string}")
+	public void user_enter_invalid_mobile_number(String string) {
+		wait.waitForElementVisible(cfp.CreateAccountMobileNumberFiled);
+		cfp.CreateAccountMobileNumberFiled.sendKeys(string);
+
+	}
+
+	@Then("User should see an message Please enter valid mobile number {string}")
+	public void user_should_see_an_message_please_enter_valid_mobile_number(String expectedMessage)
+			throws InterruptedException {
+
+		wait.waitForElementVisible(pm.mobileNoErrorMsg);
+		String actualMessage = pm.mobileNoErrorMsg.getText();
+
+		Assert.assertEquals(actualMessage, expectedMessage, "Duplicate user error message mismatch");
+		Thread.sleep(5000);
+	}
+
+	@Then("User enter invalid first name on painting made easy {string}")
+	public void user_enter_invalid_first_name_on_painting_made_easy(String string) {
+		wait.waitForElementToBeVisible(pm.firstNameField, 10);
+		pm.firstNameField.sendKeys(string);
+	}
+
+	@Then("User enter valid last name on painting made easy")
+	public void user_enter_valid_last_name_on_painting_made_easy() throws InterruptedException {
+		wait.waitForElementVisible(pm.lastNameField);
+		js.scrollUntilElementVisible(pm.lastNameField);
+		pm.lastNameField.sendKeys(fakeLastName);
+		Thread.sleep(2000);
+
+	}
+
+	@Then("User enter valid email id on painting made easy")
+	public void user_enter_valid_email_id_on_painting_made_easy() throws InterruptedException {
+		wait.waitForElementVisible(pm.emailIDField);
+		js.scrollUntilElementVisible(pm.emailIDField);
+		pm.emailIDField.sendKeys(fakeEmail);
+		Thread.sleep(2000);
+	}
+
+	@Then("User clicks on save details button")
+	public void user_clicks_on_save_details_button() {
+		wait.waitForElementToBeClickable(pm.saveDetailsCta, 10);
+		pm.saveDetailsCta.click();
+	}
+
+	@Then("User enter valid first name on painting made easy")
+	public void user_enter_valid_first_name_on_painting_made_easy() throws InterruptedException {
+		wait.waitForElementVisible(pm.firstNameField);
+		js.scrollUntilElementVisible(pm.firstNameField);
+		pm.firstNameField.sendKeys(fakeFirstName);
+		Thread.sleep(2000);
+	}
+
+	@Then("User enter invalid last name on painting made easy {string}")
+	public void user_enter_invalid_last_name_on_painting_made_easy(String string) {
+		wait.waitForElementToBeVisible(pm.lastNameField, 10);
+		pm.lastNameField.sendKeys(string);
+	}
+
+	@Then("User enter invalid email id on painting made easy {string}")
+	public void user_enter_invalid_email_id_on_painting_made_easy(String string) {
+		wait.waitForElementToBeVisible(pm.emailIDField, 10);
+		pm.emailIDField.sendKeys(string);
+	}
+
+	@Then("User enter invalid mobile number on sign in {string}")
+	public void user_enter_invalid_mobile_number_on_sign_in(String string) {
+		wait.waitForElementVisible(pm.mobileNoSignInField);
+		pm.mobileNoSignInField.sendKeys(string);
 	}
 
 }
