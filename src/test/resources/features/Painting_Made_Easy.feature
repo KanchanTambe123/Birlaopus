@@ -46,19 +46,18 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
   #---------------------------------- Scenario 3 ----------------------------------#
   #Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
   #  When User clicks on the profile icon
-   # And User clicks on the Sign In button
-   # And User enters valid mobile number on the Sign In page
-   # And the User clicks on the Sign In button after entering the mobile number
-   # And User enters valid OTP and clicks on the Verify OTP button
-    #Then User clicks on the close icon
-   # When User clicks on Painting made easy
-    #Then User clicks on Get free quote
-   # Then User clicks on the Next button on the Book a Free Survey form
-   # And User clicks on the Next button on the Share Few Details section
-    #And User clicks on the Skip for now option in the painting requirements question
-   # And User clicks on the Skip for now option in the home configuration question
-    #Then A survey booking confirmation message should be displayed successfully
-
+  # And User clicks on the Sign In button
+  # And User enters valid mobile number on the Sign In page
+  # And the User clicks on the Sign In button after entering the mobile number
+  # And User enters valid OTP and clicks on the Verify OTP button
+  #Then User clicks on the close icon
+  # When User clicks on Painting made easy
+  #Then User clicks on Get free quote
+  # Then User clicks on the Next button on the Book a Free Survey form
+  # And User clicks on the Next button on the Share Few Details section
+  #And User clicks on the Skip for now option in the painting requirements question
+  # And User clicks on the Skip for now option in the home configuration question
+  #Then A survey booking confirmation message should be displayed successfully
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
     When User clicks on the profile icon
@@ -153,3 +152,39 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     Examples: 
       | invalid_mobile_no |
       |              4444 |
+
+  #---------------------------------- Scenario 10----------------------------------#
+  Scenario Outline: To verify that an error message is displayed when a required field is left empty.
+    When User clicks on Painting made easy
+    Then User clicks on Get free quote
+    And User enter valid mobile number on sign in "<valid_mobile_no>"
+    And User click on sign in button
+    And User enter valid otp "<valid_otp>"
+    And User click on verify button
+    And User empty flat no field.
+    And User empty property name field.
+    And User should see an error message for flat no. "This field is required."
+    And User should see an error message for property name "This field is required."
+
+    Examples: 
+      | valid_mobile_no | valid_otp |
+      |      7019144066 |      1111 |
+
+      
+      @test
+       #---------------------------------- Scenario 11----------------------------------#
+ Scenario Outline: To verify error message is displayed when user does not select any option for Tell us about your project	
+    When User clicks on Painting made easy
+    Then User clicks on Get free quote
+    And User enter valid mobile number on sign in "<valid_mobile_no>"
+    And User click on sign in button
+    And User enter valid otp "<valid_otp>"
+    And User click on verify button
+    And User click on next button on Site Details
+  	 And User click next button on just a few more details
+  	 And User click next button on tell us about your project
+  	 And User should see an error message as please select an option "Please select an option"
+  	   	
+  	Examples:
+  	|valid_mobile_no|valid_otp|
+  	| 7019144066    | 1111    |

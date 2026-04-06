@@ -1,11 +1,14 @@
 package stepdefinition;
 
 import java.time.Duration;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
 import commonutilities.ActionClass;
@@ -16,12 +19,14 @@ import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
 import config.ConfigReader;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pagefunctions.Book_Survey_Form_Page;
 import pagefunctions.ColourLetter_SignUp_Page;
 import pagefunctions.Create_an_Account_Form_Page;
 import pagefunctions.Painting_Made_Easy_Page;
 import pagefunctions.Painting_Service_Form_Page;
+import pagefunctions.Sign_In_Functionality_Page;
 
 public class Painting_Made_Easy_Step {
 	ConfigReader config = new ConfigReader();
@@ -35,6 +40,7 @@ public class Painting_Made_Easy_Step {
 
 	Painting_Made_Easy_Page pm = new Painting_Made_Easy_Page();
 	Book_Survey_Form_Page bs = new Book_Survey_Form_Page();
+	Sign_In_Functionality_Page sp = new Sign_In_Functionality_Page();
 	Create_an_Account_Form_Page cfp = new Create_an_Account_Form_Page();
 
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
@@ -185,6 +191,105 @@ public class Painting_Made_Easy_Step {
 	public void user_enter_invalid_mobile_number_on_sign_in(String string) {
 		wait.waitForElementVisible(pm.mobileNoSignInField);
 		pm.mobileNoSignInField.sendKeys(string);
+	}
+
+	@Then("User enter valid otp {string}")
+	public void user_enter_valid_otp(String string) throws InterruptedException {
+		wait.waitForElementToBeVisible(pm.otpField, 10);
+		pm.otpField.sendKeys(string);
+		Thread.sleep(5000);
+	}
+
+	@Then("User click on verify button")
+	public void user_click_on_verify_button() {
+		wait.waitForElementToBeClickable(pm.verifyButton, 10);
+		pm.verifyButton.click();
+	}
+	@Then("User empty flat no field.")
+	public void user_empty_flat_no_field() {
+		wait.waitForElementVisible(pm.flatNoField);
+
+		pm.flatNoField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		pm.flatNoField.sendKeys(Keys.BACK_SPACE);  
+		pm.flatNoField.sendKeys(Keys.TAB); 
+	}
+	@Then("User empty property name field.")
+	public void user_empty_property_name_field() {
+		wait.waitForElementVisible(pm.propertyNameField);
+		
+		pm.propertyNameField.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		pm.propertyNameField.sendKeys(Keys.BACK_SPACE);  
+		pm.propertyNameField.sendKeys(Keys.TAB); 
+	}
+
+
+ @Then("User should see an error message for flat no. {string}")
+	public void user_should_see_an_error_message_for_flat_no(String expectedMessage) throws InterruptedException {
+		wait.waitForElementVisible(pm.flatNoErrorMsg);
+		String actualMessage = pm.flatNoErrorMsg.getText();
+
+		Assert.assertEquals(actualMessage, expectedMessage, "Duplicate user error message mismatch");
+		Thread.sleep(5000);
+	}
+
+	@Then("User should see an error message for property name {string}")
+	public void user_should_see_an_error_message_for_property_name(String expectedMessage) throws InterruptedException {
+		wait.waitForElementVisible(pm.propertyNameErrorMsg);
+		String actualMessage = pm.propertyNameErrorMsg.getText();
+
+		Assert.assertEquals(actualMessage, expectedMessage, "Duplicate user error message mismatch");
+		Thread.sleep(5000);
+	}
+	
+	@Given("User enter valid mobile number on sign in {string}")
+	public void user_enter_valid_mobile_number_on_sign_in(String string) throws InterruptedException {
+		wait.waitForElementVisible(sp.signInMobileNumberFiled);
+		Thread.sleep(1000); // small stabilization
+		sp.signInMobileNumberFiled.click();
+		sp.signInMobileNumberFiled.sendKeys(string);
+		Thread.sleep(1000);
+	}
+	@Then("User click on sign in button")
+	public void user_click_on_sign_in_button() throws InterruptedException {
+		js.jsClickWithWait(sp.signButtonAfterMobileNumber);
+		Thread.sleep(2000);
+	}
+	@Then("User click next button on just a few more details")
+	public void user_click_next_button_on_just_a_few_more_details() {
+		js.scrollUntilElementVisible(pm.justFewMoreDetailsNextButton);
+		wait.waitForElementVisible(pm.justFewMoreDetailsNextButton);
+		pm.justFewMoreDetailsNextButton.click();
+	}
+
+	@Then("User click next button on tell us about your project")
+	public void user_click_next_button_on_tell_us_about_your_project() {
+		
+		js.scrollUntilElementVisible(pm.tellUsAboutYourProjectNextButton);
+		wait.waitForElementVisible(pm.tellUsAboutYourProjectNextButton);
+		pm.tellUsAboutYourProjectNextButton.click();
+	}
+
+	@Then("User should see an error message as please select an option {string}")
+	public void user_should_see_an_error_message_as_please_select_an_option(String expectedMessage) throws InterruptedException {
+
+	    Wait<WebDriver> wait = new FluentWait<>(DriverManager.getDriver())
+	            .withTimeout(Duration.ofSeconds(10))
+	            .pollingEvery(Duration.ofMillis(200));
+
+	    boolean isMessagePresent = wait.until(driver ->
+	            driver.getPageSource().contains(expectedMessage)
+	    );
+
+	    Assert.assertTrue(isMessagePresent, "Toast message not found: " + expectedMessage);
+
+	    System.out.println("Toast captured: " + expectedMessage);
+	}
+	
+	@Then("User click on next button on Site Details")
+	public void user_click_on_next_button_on_site_details() {
+	  wait.waitForElementVisible(pm.nextButton);
+	  js.scrollUntilElementVisible(pm.nextButton);
+	  js.jsClickWithWait(pm.nextButton);
 	}
 
 }

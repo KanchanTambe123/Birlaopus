@@ -70,7 +70,7 @@ Feature: Validate the Brand Inquiry Form and Book a Free Consultation form on th
     Then User clicks on Book a Free Consultation button
     Then the user clicks on the Continue button on the Book a Free Consultation form
     And validation message for Pincode input fields should get displayed "This field is required"
-@test
+
   #----------------------------------5---------------------------------------------------->
   Scenario Outline: To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user
     And User navigates to the Book a free consultation form section

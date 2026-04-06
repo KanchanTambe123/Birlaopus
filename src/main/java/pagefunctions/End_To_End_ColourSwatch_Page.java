@@ -1,6 +1,7 @@
 package pagefunctions;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -11,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.openqa.selenium.WebElement;  
 import commonutilities.ClickElement;
 import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
@@ -24,7 +25,7 @@ public class End_To_End_ColourSwatch_Page {
 	JSExecutor js = new JSExecutor();
 	ClickElement click = new ClickElement();
 
-	
+	//Scenarios 6
 	@FindBy(xpath = "//div[contains(@class,'error-txt') and contains(text(),'valid pincode')]")
 	public WebElement ErrMessageInvalidPincode;
 	
@@ -36,7 +37,13 @@ public class End_To_End_ColourSwatch_Page {
 	
 
 	
-	
+	//Scenarios 7
+	@FindBy(xpath = "(//input[@name='pinCode']/following-sibling::div[contains(@class,'error-txt')])[4]")
+	public WebElement ErrMessageEmptyPincode;
+	//Scenarios 8
+	@FindBy(xpath =  "//button[contains(@class,'cmp-product__cart-button') and contains(@class,'disabled')]")
+	public WebElement AddTocartButtonDisable;
+
 	
 	public End_To_End_ColourSwatch_Page() {
 		driver = DriverManager.getDriver();
@@ -186,6 +193,51 @@ public class End_To_End_ColourSwatch_Page {
 		
 
 	    
+	}
+	
+	
+	
+	public void clickTabFromList(String tabName) {
+
+	    By tabsLocator = By.xpath("//ol[@role='tablist']//li[@role='tab']");
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	    List<WebElement> tabs = driver.findElements(
+	    	    By.xpath("//ol[@role='tablist']//li[@role='tab']")
+	    	);
+
+	    boolean isFound = false;
+
+	    for (int i = 0; i < tabs.size(); i++) {
+
+	        // Re-fetch elements to avoid stale element issue
+	        List<WebElement> updatedTabs = driver.findElements(tabsLocator);
+
+	        WebElement tab = updatedTabs.get(i);
+	        String name = tab.getText().trim();
+
+	        if (name.equalsIgnoreCase(tabName)) {
+
+	            wait.until(ExpectedConditions.elementToBeClickable(tab));
+
+	            // Normal click
+	            try {
+	                tab.click();
+	            } catch (Exception e) {
+	                // Fallback JS click
+	                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", tab);
+	            }
+
+	            System.out.println("Clicked Tab: " + name);
+	            isFound = true;
+	            break;
+	        }
+	    }
+
+	    if (!isFound) {
+	        throw new RuntimeException("Tab not found: " + tabName);
+	    }
 	}
 	
 }

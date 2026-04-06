@@ -78,6 +78,43 @@ public class Painting_Made_Easy_Page {
 	@FindBy(id = "sign-in-input")
 	public WebElement mobileNoSignInField;
 
+	// Scenario 10
+
+	@FindBy(xpath = "//form[@id='headerSearchContainer']//input[@name='otpInput']")
+	public WebElement otpField;
+
+	@FindBy(xpath = "(//button[@id='verify-otp-btn'])[1]")
+	public WebElement verifyButton;
+
+	@FindBy(xpath = "//input[@id='flatNo']")
+	public WebElement flatNoField;
+
+	@FindBy(xpath = "//input[@id='surveyPropertyName']")
+	public WebElement propertyNameField;
+
+	@FindBy(xpath = "//input[@name='saveaddress']")
+	public WebElement saveAddress;
+
+	@FindBy(xpath = "(//button[@type='BUTTON'])[2]")
+	public WebElement nextButton;
+
+	@FindBy(xpath = "(//div[@class='error-txt dsp-block'])[1]")
+	public WebElement flatNoErrorMsg;
+
+	@FindBy(xpath = "(//div[@class='error-txt dsp-block'])[2]")
+	public WebElement propertyNameErrorMsg;
+	
+	// Scenario 11
+	
+	@FindBy(xpath = "//button[@id='nextBtnScreenBreak']")
+	public WebElement justFewMoreDetailsNextButton;
+	
+	@FindBy(xpath = "//a[@id='projectDetailsNext']")
+	public WebElement tellUsAboutYourProjectNextButton;
+	
+	@FindBy(xpath = "//span[@class='simple-toast']")
+	public WebElement errorMsgText;
+
 	public Painting_Made_Easy_Page() {
 		driver = DriverManager.getDriver();
 		PageFactory.initElements(driver, this);
