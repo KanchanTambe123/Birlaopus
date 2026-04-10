@@ -28,8 +28,8 @@ import io.cucumber.testng.CucumberOptions;
 
 
 
-@CucumberOptions(features = {"src/test/resources/features/Painting_Made_Easy.feature"},glue = {
-		"stepdefinition" },tags="@test",plugin = { "pretty",
+@CucumberOptions(features = {"src/test/resources/features"},glue = {
+		"stepdefinition" },plugin = { "pretty",
  
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber.json",
 				"html:report/html/cucumber.html" }, monochrome = true, dryRun = false) // true=create step
@@ -95,7 +95,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	        e.printStackTrace();
 	    }
 	}*/
-	//@AfterSuite
+	@AfterSuite
 	public void after_all() throws Exception {
 
 	    ReportUtil.readCucumberReport();

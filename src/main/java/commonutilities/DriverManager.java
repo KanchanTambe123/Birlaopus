@@ -48,7 +48,7 @@ public class DriverManager {
         ChromeOptions opt = new ChromeOptions();
 
         // Headless config
-        //opt.addArguments(config.getProb("runHeadless").replace("--headless", "--headless=new"));
+        opt.addArguments(config.getProb("runHeadless").replace("--headless", "--headless=new"));
         opt.addArguments("--" + config.getProb("headlessBrowserSize"));
         opt.addArguments("--no-sandbox");
         opt.addArguments("--remote-allow-origins=*");

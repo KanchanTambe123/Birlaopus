@@ -53,7 +53,11 @@ public class WebsiteLaunch extends DriverManager {
       		DriverManager.getDriver().navigate().to(AppConfig.BecontractorUrl);
   			break;
     			
-    			
+         case "AssuranceUrl":
+       		DriverManager.getDriver().navigate().to(AppConfig.AssuranceUrl);
+   			break;
+     			
+
     		
  			
  			

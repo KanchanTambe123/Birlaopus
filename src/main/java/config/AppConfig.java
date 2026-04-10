@@ -23,8 +23,7 @@ public static final String BecomedealerUrl ="https://uat.birlaopus.com/contact-u
 public static final String BecontractorUrl ="https://uat.birlaopus.com/contact-us?contactUsQuery=Painter/Contractor,Become%20a%20painter/%20Contractor#letsConnectContainer";
 
 	
-
-	
+public static final String AssuranceUrl = "https://admin:Admin$123@uat.birlaopus.com/birla-opus-assurance";
 
 	
 

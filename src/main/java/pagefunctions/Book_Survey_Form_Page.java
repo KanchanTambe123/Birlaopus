@@ -85,7 +85,7 @@ public class Book_Survey_Form_Page {
 
 	public void selectRequirementType(String requirementType) {
 		List<WebElement> requirementTypes = driver.findElements(
-				By.xpath("//div[contains(@class,'survey-grid-options')]//h2[contains(@class,'cmp-teaser__title')]"));
+				By.xpath("//div[contains(@class,'survey-grid-options')]//p[contains(@class,'cmp-teaser__title')]"));
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 

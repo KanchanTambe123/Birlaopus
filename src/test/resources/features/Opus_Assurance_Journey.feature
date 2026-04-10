@@ -2,11 +2,10 @@
 Feature: To Validate Sign-In (User Login)Functionality
 
   Background: 
-    Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
+    Given User is on Opus Assurance Journey "AssuranceUrl"
 
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify create account functionality with valid mobile number and OTP(new user)
-    When User clicks on Register Now Cta on home page
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -28,7 +27,6 @@ Feature: To Validate Sign-In (User Login)Functionality
 
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify whether user is able to see error message for email id field when user enter invalid email id
-    When User clicks on Register Now Cta on home page
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -50,7 +48,6 @@ Feature: To Validate Sign-In (User Login)Functionality
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify whether user is able to see error message for last name when user enter invalid last name
-    When User clicks on Register Now Cta on home page
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -72,7 +69,6 @@ Feature: To Validate Sign-In (User Login)Functionality
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify whether user is able to see error message for first name when user enter invalid first name
-    When User clicks on Register Now Cta on home page
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -94,7 +90,6 @@ Feature: To Validate Sign-In (User Login)Functionality
 
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify whether user is able to see error message for first name when user enter invalid first name
-    When User clicks on Register Now Cta on home page
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -112,10 +107,112 @@ Feature: To Validate Sign-In (User Login)Functionality
 
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify that the user is shown an error message when the paintable area is less than 2000 sq ft
-    When User clicks on Register Now Cta on home page
     And User enter paintable area "<paintable_area>"
     Then User should see an error message for paintable area  "Paintable area should be more than or equal to 2000 sqft to avail Opus Assurance"
 
     Examples: 
       | paintable_area | pin_code |
       | 1000 sqft      | 400 060  |
+
+  #---------------------------------- Scenario 7 ----------------------------------#
+  Scenario Outline: To verify that an existing user can complete the end-to-end flow by submitting all mandatory details (new project-Sign Up for PaintCraft button)
+    Given User enter valid paintable area "<paintable_area>"
+    And User click on Next button
+    Then User should click on Yet to Start Cta
+    And User click on Pre-register now Cta
+    And User enter valid mobile number on sign in "<valid_mobile_no>"
+    And User click on sign in button
+    And User enter valid otp "<valid_otp>"
+    And User click on verify otp button
+    Then User click on start new project
+    And User enter valid pin code on enter details "<pin_code>"
+    Then User click on submit button on enter details
+    And User enter Site Details project name
+    And User enter update pin code on site details "<Update_pin_code>"
+    Then User click submit button on Site Details
+    And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
+    And User click next button on Just a Few More Details
+    Then User clcik on Sign Up for PaintCraft button
+    Then User selects the painting requirement type "<requirementType>"
+    And User clicks on the project details next button
+    Then User select home configuration type "<bhkType>"
+    Then User enters the carpet area "<carpetArea>"
+    And User clicks on the project details next button
+    And User selects a schedule visit date and timeslot "<time>"
+    And User clicks on the Schedule button
+    Then Birla Opus Assurance confirmation message should be displayed successfully
+
+    Examples: 
+      | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  |
+      | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance |
+
+  #---------------------------------- Scenario 8 ----------------------------------#
+  Scenario Outline: To verify that an existing user can complete the end-to-end flow by submitting all mandatory details (new project-Find Contractor button)
+    Given User enter valid paintable area "<paintable_area>"
+    And User click on Next button
+    Then User should click on Yet to Start Cta
+    And User click on Pre-register now Cta
+    And User enter valid mobile number on sign in "<valid_mobile_no>"
+    And User click on sign in button
+    And User enter valid otp "<valid_otp>"
+    And User click on verify otp button
+    Then User click on start new project
+    And User enter valid pin code on enter details "<pin_code>"
+    Then User click on submit button on enter details
+    And User enter Site Details project name
+    And User enter update pin code on site details "<Update_pin_code>"
+    Then User click submit button on Site Details
+    And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
+    And User click next button on Just a Few More Details
+    Then User clcik on Find Contractor button
+    And User selects a contractor as needed
+    Then User click on Next button in Find Contractor section
+    Then User selects the painting requirement type "<requirementType>"
+    And User clicks on the project details next button
+    Then User select home configuration type "<bhkType>"
+    Then User enters the carpet area "<carpetArea>"
+    And User clicks on the project details next button
+    And User selects a schedule visit date and timeslot "<time>"
+    And User clicks on the Schedule button
+    Then Birla Opus Assurance confirmation message should be displayed successfully
+
+    Examples: 
+      | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  |
+      | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance |
+
+  #---------------------------------- Scenario 9 ----------------------------------#
+  Scenario Outline: To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button).    Given User enter valid paintable area "<paintable_area>"
+    Given User enter valid paintable area "<paintable_area>"
+    And User click on Next button
+    Then User should click on Yet to Start Cta
+    And User click on Pre-register now Cta
+    Then User clicks create an Account option
+    And User enters valid mobile number on the Create an Account
+    And User clicks on the Create an Account button
+    And User enters bypass OTP and clicks on the Verify OTP button
+    Then User enter valid first name
+    And User enter valid last name
+    And User enter valid email id
+    And User enter valid pin code "<pin_code>"
+    And User clicks on submit button on the Create an Account
+    Then User clicks on tell us more about your site button
+    And User enter Site Details project name
+    And User enter flat number or bulding name "<flat number>"
+    And User enter proerty name "<property_name>"
+    Then User clicks on confirm and add address details
+    And User enter update pin code on site details "<Update_pin_code>"
+    Then User click submit button on Site Details
+    And User click next button on Just a Few More Details
+    Then User clcik on Sign Up for PaintCraft button
+    Then User selects the painting requirement type "<requirementType>"
+    And User clicks on the project details next button
+    Then User select home configuration type "<bhkType>"
+    Then User enters the carpet area "<carpetArea>"
+    And User clicks on the project details next button
+    And User selects a schedule visit date and timeslot "<time>"
+    And User clicks on the Schedule button
+    Then Birla Opus Assurance confirmation message should be displayed successfully
+
+    Examples: 
+      | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
+      | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |

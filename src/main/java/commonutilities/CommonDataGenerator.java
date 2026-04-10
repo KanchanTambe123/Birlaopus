@@ -126,4 +126,15 @@ public class CommonDataGenerator {
 		        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		        return String.valueOf(chars.charAt(random.nextInt(chars.length())));
 		    }
+		    
+		    public String generateProjectName() {
+		        String prefix = "Project_";
+		        StringBuilder name = new StringBuilder(prefix);
+
+		        for (int i = 0; i < 5; i++) {   // length of random part
+		            name.append(getRandomAlphaNumericChar());
+		        }
+
+		        return name.toString();
+		    }
 }

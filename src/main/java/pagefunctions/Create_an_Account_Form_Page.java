@@ -67,6 +67,11 @@ public class Create_an_Account_Form_Page {
 	public WebElement duplicateUserErrorMsg;
 	
 	
+	// ------------------- Scenario 3 ------------------------
+	
+	@FindBy(xpath = "//button[@id='form-button-640282442']")
+	public WebElement submitButton;
+	
 
 	public Create_an_Account_Form_Page() {
 		driver = DriverManager.getDriver();

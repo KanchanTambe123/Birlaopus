@@ -1,6 +1,7 @@
 package stepdefinition;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -144,5 +145,26 @@ public class Create_an_Account_Form_Step {
 		cp.enterBypassOtpAndVerify(fakeMobileNumber);
 
 	}
+
+	@Then("User should see {string} error message for all mandatory fields")
+	public void user_should_see_error_message_for_all_mandatory_fields(String expectedMessage) {
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+
+	    List<WebElement> errorMessages = wait.until(
+	        ExpectedConditions.visibilityOfAllElementsLocatedBy(
+	            By.xpath("//div[contains(@class,'error-txt dsp-block')]")
+	        )
+	    );
+
+	    System.out.println("Total error messages: " + errorMessages.size());
+
+	    for (WebElement error : errorMessages) {
+	        String actualText = error.getText().trim();
+	       
+	        Assert.assertEquals(actualText, expectedMessage);
+	    }
+	}
+
+		
 
 }

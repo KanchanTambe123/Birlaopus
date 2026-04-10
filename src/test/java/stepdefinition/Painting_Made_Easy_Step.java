@@ -201,9 +201,10 @@ public class Painting_Made_Easy_Step {
 	}
 
 	@Then("User click on verify button")
-	public void user_click_on_verify_button() {
+	public void user_click_on_verify_button() throws InterruptedException {
 		wait.waitForElementToBeClickable(pm.verifyButton, 10);
 		pm.verifyButton.click();
+		Thread.sleep(5000);
 	}
 	@Then("User empty flat no field.")
 	public void user_empty_flat_no_field() {
@@ -282,7 +283,7 @@ public class Painting_Made_Easy_Step {
 
 	    Assert.assertTrue(isMessagePresent, "Toast message not found: " + expectedMessage);
 
-	    System.out.println("Toast captured: " + expectedMessage);
+	 
 	}
 	
 	@Then("User click on next button on Site Details")
