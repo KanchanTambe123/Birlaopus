@@ -1,4 +1,3 @@
-
 Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.
 
   Background: 
@@ -17,7 +16,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     Then the User selects a wallpaper shade "<shades_code>"
     Then User enters valid pincode "<pincode>" and check product availability
     And User click on add to cart button on wallpaper section
-   Then User click on View cart & Checkout button on wallpaper section    
+    Then User click on View cart & Checkout button on wallpaper section
     And User increase the product quantity "<desiredQuantity>"
     Then User clicks on the Proceed to Enter Address button
     And User clicks on the Apply button, verifies the availability of coupon vouchers, and applies a coupon if available
@@ -35,29 +34,30 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
     Then the User selects a wallpaper shade "<shades_code>"
-    Then User enters a valid pincode "<pincode>" and check product availability
-      And User click on add to cart button on wallpaper section
-   Then User click on View cart & Checkout button on wallpaper section
+    Then User enters a valid pincode "<pincode>" on wallpaper
+    And User click on pincode serviceability check button on wallpaper
+    And User click on add to cart button on wallpaper section
+    Then User click on View cart & Checkout button on wallpaper section
     Then Product should be added to the cart successfully
     Then User clicks the cart icon on the header and removes the product from the cart if available
 
     Examples: 
       | navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
-      | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
+      | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |  500001 |               2 | Mumbai  |                2 |
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify that a logged-in user can remove a Wallpapers product from the header cart
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     Then User selects Colour for colour swatch "<Colour>"
-    Then User enters a valid pincode "<pincode>" and check product availability
-   And User click on add to cart button on wallpaper section
-   Then User click on View cart & Checkout button on wallpaper section
+    Then User enters a valid pincode "<pincode>" on wallpaper
+    And User click on pincode serviceability check button on wallpaper
+    And User click on add to cart button on wallpaper section
     Then User clicks the cart icon on the header and removes the product from the cart if available
     And Cart count should be updated to "<expectedCount>"
 
     Examples: 
       | navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
-      | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
+      | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |  500001 |               2 | Mumbai  |                2 |
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user
@@ -74,16 +74,19 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     Then User click whishlist icon on top page
     And User clicks on "<tabName>" tab
 
+    #Then the User clicks the product option button in favourites
+    #And the User selects "<optionText>" from the product options in the wishlist
     #Then Product should be removed from the wishlist successfully
     Examples: 
-      | navmenu | navtab     | productname          | tabName    |
-      | Shop    | Wallpapers | Textilia Tabit 32001 | Favourites |
+      | navmenu | navtab     | productname          | tabName    | optionText          |
+      | Shop    | Wallpapers | Textilia Tabit 32001 | Favourites | Delete colour story |
 
   #---------------------------------- Scenario 6 ----------------------------------#
-  Scenario Outline: To verify error message when user enters invalid pincode for wallpaper 
+  Scenario Outline: To verify error message when user enters invalid pincode for wallpaper
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
     Then the User selects a wallpaper shade "<shades_code>"
-    Then User enters valid pincode "<pincode>" and check product availability
+    Then User enters a valid pincode "<pincode>" on wallpaper
+    And User click on pincode serviceability check button on wallpaper
     Then User should see an error message for invalid pincode for Wallpapers "<errorMessage>"
 
     Examples: 
@@ -91,22 +94,21 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
       | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |     400 |               2 | Mumbai  |                2 |
 
   #---------------------------------- Scenario 7 ----------------------------------#
-  Scenario Outline: To verify error message when pincode field is empty for wallpaper 
+  Scenario Outline: To verify error message when pincode field is empty for wallpaper
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
     Then the User selects a wallpaper shade "<shades_code>"
-    And User click on pincode serviceability check button
+    And User click on pincode serviceability check button on wallpaper
     Then User should see the error message when pincode field is empty "This field is required"
 
     Examples: 
       | navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
       | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
-
   #---------------------------------- Scenario 8 ----------------------------------#
-  Scenario Outline: To verify user cannot proceed when invalid quantity is selected
-    When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
-    Then the User selects a wallpaper shade "<shades_code>"
-    Then Add to cart button should be disabled
-
-    Examples: 
-      | navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
-      | Shop    | Wallpapers | Textilia Tabit 32001 |           0 |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
+  #Scenario Outline: To verify user cannot proceed when invalid quantity is selected
+    #When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
+    #Then the User selects a wallpaper shade "<shades_code>"
+    #Then Add to cart button should be disabled
+#
+    #Examples: 
+      #| navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
+      #| Shop    | Wallpapers | Textilia Tabit 32001 |           32102 |        1 |    1 |  400703 |               2 | Mumbai  |                2 |

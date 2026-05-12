@@ -1,4 +1,3 @@
-
 Feature: To Validate Wishlist add and remove functionality(Single Product)
 
   Background: 
@@ -16,23 +15,25 @@ Feature: To Validate Wishlist add and remove functionality(Single Product)
     And User click whishlist icon on product
     Then Product should be added to the wishlist successfully
     Then User click whishlist icon on top page
+    And User clicks on "<tabName>" tab
     And User removes the product from the wishlist if it is already added "<optionText>"
 
     Examples: 
-      | navmenu  | navtab        | productname       | optionText       |
-      | Products | Waterproofing | Alldry Wall Fix 4 | Delete a Product |
+      | navmenu  | navtab        | productname       | optionText       | tabName    |
+      | Products | Waterproofing | Alldry Wall Fix 4 | Delete a Product | Favourites |
 
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify successful remove-to-wishlist functionality through navigation for a logged-in user.
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     And User click whishlist icon on product
     Then User click whishlist icon on top page
+    And User clicks on "<tabName>" tab
     And User removes the product from the wishlist if it is already added "<optionText>"
     Then Product should be removed from the wishlist successfully
 
     Examples: 
-      | navmenu  | navtab        | productname       | optionText       |
-      | Products | Waterproofing | Alldry Wall Fix 4 | Delete a Product |
+      | navmenu  | navtab        | productname       | optionText       | tabName    |
+      | Products | Waterproofing | Alldry Wall Fix 4 | Delete a Product | Favourites |
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify wishlist add and remove functionality through search bar for a logged-in user
@@ -42,9 +43,10 @@ Feature: To Validate Wishlist add and remove functionality(Single Product)
     And User click whishlist icon on product
     Then Product should be added to the wishlist successfully
     Then User click whishlist icon on top page
+    And User clicks on "<tabName>" tab
     And User removes the product from the wishlist if it is already added "<optionText>"
     Then Product should be removed from the wishlist successfully
 
     Examples: 
-      | navmenu  | navtab        | productname       | optionText       | searchfor       |
-      | Products | Waterproofing | Alldry Wall Fix 4 | Delete a Product | Interior paints |
+      | navmenu  | navtab        | productname       | optionText       | searchfor       | tabName    |
+      | Products | Waterproofing | Alldry Wall Fix 4 | Delete a Product | Interior paints | Favourites |

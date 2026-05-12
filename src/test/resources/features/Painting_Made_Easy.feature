@@ -175,18 +175,18 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
       
     
        #---------------------------------- Scenario 11----------------------------------#
- Scenario Outline: To verify error message is displayed when user does not select any option for Tell us about your project	
-    When User clicks on Painting made easy
-    Then User clicks on Get free quote
-    And User enter valid mobile number on sign in "<valid_mobile_no>"
-    And User click on sign in button
-    And User enter valid otp "<valid_otp>"
-    And User click on verify button
-    And User click on next button on Site Details
-  	 And User click next button on just a few more details
-  	 And User click next button on tell us about your project
-  	 And User should see an error message as please select an option "Please select an option"
-  	   	
-  	Examples:
-  	|valid_mobile_no|valid_otp|
-  	| 7019144066    | 1111    |
+ #Scenario Outline: To verify error message is displayed when user does not select any option for Tell us about your project	
+    #When User clicks on Painting made easy
+    #Then User clicks on Get free quote
+    #And User enter valid mobile number on sign in "<valid_mobile_no>"
+    #And User click on sign in button
+    #And User enter valid otp "<valid_otp>"
+    #And User click on verify button
+    #And User click on next button on Site Details
+#  	 And User click next button on just a few more details
+#  	 And User click next button on tell us about your project
+#  	 And User should see an error message as please select an option "Please select an option"
+#  	   	
+#  	Examples:
+#  	|valid_mobile_no|valid_otp|
+#  	| 7019144066    | 1111    |

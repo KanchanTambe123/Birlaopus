@@ -75,5 +75,20 @@ public class End_to_End_Wallpapers_Journey_Step {
 		String actualMessage = cp.ErrMessageInvalidPincode.getText();
 		Assert.assertEquals(actualMessage, expectedMessage, "error message mismatch");
 	}
+	
+	@Then("User click on pincode serviceability check button on wallpaper")
+	public void user_click_on_pincode_serviceability_check_button_on_wallpaper() throws InterruptedException {
+	  js.scrollUntilElementVisible(ew.PincodeCheckButton);
+	  wait.waitForElementVisible(ew.PincodeCheckButton);
+	  js.jsClickWithWait(ew.PincodeCheckButton);
+	  Thread.sleep(2000);
+	}
+	
+	@Then("User enters a valid pincode {string} on wallpaper")
+	public void user_enters_a_valid_pincode_on_wallpaper(String string) {
+	    js.scrollUntilElementVisible(ew.PincodeInputFiled);
+	    wait.waitForElementVisible(ew.PincodeInputFiled);
+	    ew.PincodeInputFiled.sendKeys(string);
+	}
 
 }

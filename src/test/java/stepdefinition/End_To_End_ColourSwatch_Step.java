@@ -97,6 +97,22 @@ public class End_To_End_ColourSwatch_Step {
 	public void user_clicks_on_tab(String string) {
 	  cp.clickTabFromList(string);
 	}
+	@Then("the User clicks the product option button in favourites")
+	public void the_user_clicks_the_product_option_button_in_favourites() {
+	    js.scrollUntilElementVisible(cp.productOptionButton);
+	    wait.waitForElementVisible(cp.productOptionButton);
+	    js.jsClickWithWait(cp.productOptionButton);
+	}
 
-
+@Then("the User selects {string} from the product options in the wishlist")
+public void the_user_selects_from_the_product_options_in_the_wishlist(String string) {
+    cp.selectOptionFromWishlist(string);
+}
+@Then("colour swatch should be removed from the wishlist successfully")
+public void colour_swatch_should_be_removed_from_the_wishlist_successfully() {
+	Assert.assertTrue(
+            cp.isProductRemovedFromWishlist(),
+            "Product was not removed from the wishlist"
+        );
+}
 }

@@ -116,4 +116,6 @@ public class Get_Touch_Contact_Form_Step {
 		String Errmsg = common.getElementText(gp.ErrMsg);
 		common.compareText(Errmsg, string);
 	}
+	
+
 }

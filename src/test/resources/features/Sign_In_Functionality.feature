@@ -39,7 +39,7 @@ Feature: To Validate Sign-In (User Login)Functionality
   Scenario Outline: To verify sign-in form with empty mobile number field (without mobile number)
     And the User clicks on the Sign In button
     Then Validation message mobile number filed empty should get displayed to user "This field is required"
-
+@test
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify user is able to log out successfully
     And User enters valid mobile number on the Sign In page

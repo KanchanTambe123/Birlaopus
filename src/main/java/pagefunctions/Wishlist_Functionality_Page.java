@@ -29,7 +29,7 @@ public class Wishlist_Functionality_Page {
 	@FindBy(xpath = "//img[@alt='Favourite']")
 	public WebElement HeaderFavouriteIcon;
 	
-	@FindBy(xpath = "//img[contains(@src,'heart-icon')]")
+	@FindBy(xpath = "//a[@id='pip-favourite']")
 	public WebElement WhishlistIcon;
 	
 	@FindBy(xpath = "//img[contains(@src,'favourite-filled')]")
@@ -61,16 +61,13 @@ public class Wishlist_Functionality_Page {
 
 	public boolean isProductRemovedFromWishlist() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
-	    try {
-	        wait.until(ExpectedConditions.visibilityOfElementLocated(
-	                By.xpath("//img[contains(@src,'header-favorite')]")
-	        ));
-	        return true;
-	    } catch (TimeoutException e) {
-	        return false;
-	    }
+	    return wait.until(driver ->
+	        driver.findElements(
+	            By.xpath("//div[contains(@class,'profileProductCard')]//div[contains(@class,'product-info')]")
+	        ).isEmpty()
+	    );
 	}
 	public void selectProductOptionIfVisible(String optionText) {
 

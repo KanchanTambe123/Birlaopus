@@ -1,155 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-05-11T10:33:17 IST" name="Default suite" finished-at="2026-05-11T10:33:20 IST" duration-ms="3622">
+  <suite started-at="2026-05-12T17:44:54 IST" name="Default suite" finished-at="2026-05-12T17:45:35 IST" duration-ms="40991">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-05-11T10:33:17 IST" name="Default test" finished-at="2026-05-11T10:33:20 IST" duration-ms="3622">
+    <test started-at="2026-05-12T17:44:54 IST" name="Default test" finished-at="2026-05-12T17:45:35 IST" duration-ms="40991">
       <class name="runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:17 IST" name="setUpClass" finished-at="2026-05-11T10:33:18 IST" duration-ms="1039" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-12T17:44:54 IST" name="setUpClass" finished-at="2026-05-12T17:44:54 IST" duration-ms="691" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@ad3f70a]]>
+                <![CDATA[org.testng.TestRunner@24eb71f6]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="319" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-12T17:44:54 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-12T17:45:32 IST" duration-ms="37722" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify the end-to-end  colour swatch journey through the checkout process with valid data for a logged-in user through navigation"]]>
+                <![CDATA["To verify user is able to log out successfully"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
+                <![CDATA["To Validate Sign-In (User Login)Functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="58" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="43" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify that a logged-in user can remove a Colour Swatch product from the header cart"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="39" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify successful colour swatch add-to-wishlist functionality through navigation for a logged-in user"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="30" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user."]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="42" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify error message when user enters invalid pincode for colour swatch"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="23" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify error message when pincode field is empty"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-05-11T10:33:18 IST" duration-ms="32" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify user cannot proceed when invalid quantity is selected"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist."]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-11T10:33:18 IST" name="tearDownClass" finished-at="2026-05-11T10:33:20 IST" duration-ms="1948" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@194fad1]" started-at="2026-05-12T17:45:32 IST" name="tearDownClass" finished-at="2026-05-12T17:45:35 IST" duration-ms="2552" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

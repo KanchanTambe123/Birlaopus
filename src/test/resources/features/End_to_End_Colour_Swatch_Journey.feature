@@ -73,16 +73,18 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Examples: 
       | navmenu | navtab       | productname   | optionText          |
       | Shop    | Colour Tools | Colour Swatch | Delete colour story |
-
+@test
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user.
     Then User click whishlist icon on top page
     And User clicks on "<tabName>" tab
+    Then the User clicks the product option button in favourites
+    And the User selects "<optionText>" from the product options in the wishlist
+    Then colour swatch should be removed from the wishlist successfully
 
-    #Then Product should be removed from the wishlist successfully
     Examples: 
-      | navmenu | navtab       | productname   | tabName    |
-      | Shop    | Colour Tools | Colour Swatch | Favourites |
+      | navmenu | navtab       | productname   | tabName    | optionText          |
+      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete colour story |
 
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify error message when user enters invalid pincode for colour swatch

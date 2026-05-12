@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -44,6 +45,9 @@ public class End_To_End_ColourSwatch_Page {
 	@FindBy(xpath =  "//button[contains(@class,'cmp-product__cart-button') and contains(@class,'disabled')]")
 	public WebElement AddTocartButtonDisable;
 
+	@FindBy(xpath = "//button[contains(@class,'cmp-product__option-button')]")
+	public WebElement productOptionButton;
+	
 	
 	public End_To_End_ColourSwatch_Page() {
 		driver = DriverManager.getDriver();
@@ -239,5 +243,47 @@ public class End_To_End_ColourSwatch_Page {
 	        throw new RuntimeException("Tab not found: " + tabName);
 	    }
 	}
+	public void selectOptionFromWishlist(String optionText) {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+	    // Step 1: Get option button
+	    WebElement optionBtn = wait.until(ExpectedConditions.presenceOfElementLocated(
+	        By.xpath("(//button[contains(@class,'cmp-product__option-button')])[1]")
+	    ));
+
+	    // Scroll to button
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", optionBtn);
+
+	    // Step 2: FORCE CLICK (important)
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", optionBtn);
+
+	    // Step 3: Wait for dropdown using size > 0 (more reliable than visibility)
+	    wait.until(driver -> driver.findElements(
+	        By.xpath("//ul[contains(@class,'cmp-product__options')]")
+	    ).size() > 0);
+
+	    // Step 4: Now click option directly (no need to wait for full visibility)
+	    WebElement option = wait.until(ExpectedConditions.presenceOfElementLocated(
+	        By.xpath("//span[normalize-space()='" + optionText + "']")
+	    ));
+
+	    // Scroll to option
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+
+	    // Step 5: Click option
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", option);
+	}
 	
+	
+	public boolean isProductRemovedFromWishlist() {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+	    return wait.until(driver ->
+	        driver.findElements(
+	            By.xpath("//div[contains(@class,'profile-swatch__info-swatch')]")
+	        ).isEmpty()
+	    );
+	}
 }

@@ -32,6 +32,16 @@ public class End_to_End_Wallpapers_Journey_Page {
 	@FindBy(xpath = "//button[normalize-space()='Add to cart']")
 	public WebElement AddToCartButton;
 	
+	@FindBy(xpath = "//button[@type='submit' and @class='cmp-wallpaper__submit']")
+	public WebElement PincodeCheckButton;
+	
+	@FindBy(xpath = "//input[@placeholder='Enter pincode to view serviceability']")
+	public WebElement PincodeInputFiled;
+	
+
+	
+
+	
 	@FindBy(xpath = "//span[@class='cmp-button__text' and text()='View Cart & Checkout']")
 	public WebElement ViewCheckoutButton;
 	

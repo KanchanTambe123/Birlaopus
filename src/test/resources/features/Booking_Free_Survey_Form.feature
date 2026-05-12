@@ -47,18 +47,17 @@ Feature: To Validate Survey Booking Form
     Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
   #---------------------------------- Scenario 4 ----------------------------------#
- # Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
-    # And User clicks on the Book a Free Survey button
-   # Then User clicks on the Next button on the Book a Free Survey form
-    #And User clicks on the Next button on the Share Few Details section
-   # Then User selects the painting requirement type "<requirementType>"
-    #And User clicks on the Skip for now option in the painting requirements question
-   # And User clicks on the Skip for now option in the home configuration question
-    #Then A survey booking confirmation message should be displayed successfully
-
+  # Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
+  # And User clicks on the Book a Free Survey button
+  # Then User clicks on the Next button on the Book a Free Survey form
+  #And User clicks on the Next button on the Share Few Details section
+  # Then User selects the painting requirement type "<requirementType>"
+  #And User clicks on the Skip for now option in the painting requirements question
+  # And User clicks on the Skip for now option in the home configuration question
+  #Then A survey booking confirmation message should be displayed successfully
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
-     And User clicks on the Book a Free Survey button
+    And User clicks on the Book a Free Survey button
     And User enters unserviceable Pin code "<pincode>"
     Then User clicks on the Next button on the Book a Free Survey form
     Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
@@ -66,11 +65,8 @@ Feature: To Validate Survey Booking Form
     Examples: 
       | pincode |
       |  111222 |
-
-      
-      
-  
-
+@test
+  #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To Verify address section with valid and invalid inputs
     And User clicks on the Book a Free Survey button
     When User enters "<FlatNo>" in Flat no / building name field
@@ -82,12 +78,11 @@ Feature: To Validate Survey Booking Form
     Then User clicks on the Next button on the Book a Free Survey form
     Then "<ExpectedResult>" should be displayed
 
-  Examples:
-    | FlatNo | AddressLine1                                      | MapOption       | City    | State        | Pincode | ExpectedResult                          |
-    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 500001 | Address saved successfully              |
-    |        | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 500001  | This field is required.       |
-    | test   |                                                   | Locate on maps  | Mumbai  | Maharashtra  |500001 | This field is required.        |
-       
-    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  |         |This field is required.       |
-    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 123     | Invalid Input.            |
-    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 500001 | Next page should be displayed           |
+    Examples: 
+      | FlatNo | AddressLine1                 | MapOption      | City   | State       | Pincode | ExpectedResult                |
+      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | Address saved successfully    |
+      |        | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | This field is required.       |
+      | test   |                              | Locate on maps | Mumbai | Maharashtra |  500001 | This field is required.       |
+      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |         | This field is required.       |
+      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |     123 | Invalid Input.                |
+      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | Next page should be displayed |

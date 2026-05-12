@@ -52,12 +52,14 @@ public class Wishlist_Functionality_Step {
 
 	@When("User click whishlist icon on product")
 	public void user_click_whishlist_icon_on_product() throws InterruptedException {
-		wait.waitForElementVisible(wf.WhishlistIcon);
-		Thread.sleep(2000);
+
+	
 		js.scrollUntilElementVisible(wf.WhishlistIcon);
+		wait.waitForElementVisible(wf.WhishlistIcon);
+	
 		Thread.sleep(2000);
 		js.jsClickWithWait(wf.WhishlistIcon);
-		Thread.sleep(6000);
+		Thread.sleep(3000);
 	}
 
 	@Then("Product should be added to the wishlist successfully")
@@ -67,7 +69,10 @@ public class Wishlist_Functionality_Step {
 
 	@Then("Product should be removed from the wishlist successfully")
 	public void product_should_be_removed_from_the_wishlist_successfully() {
-		Assert.assertTrue(wf.isProductRemovedFromWishlist(), "Wishlist icon is NOT filled");
+	    Assert.assertTrue(
+	            wf.isProductRemovedFromWishlist(),
+	            "Product was not removed from the wishlist"
+	        );
 	}
 
 }
