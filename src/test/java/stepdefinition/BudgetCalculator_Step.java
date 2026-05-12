@@ -1,8 +1,13 @@
 package stepdefinition;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import commonutilities.ActionClass;
@@ -260,4 +265,27 @@ public class BudgetCalculator_Step {
  	    .executeScript("arguments[0].click();", element);
          Thread.sleep(6000);
 	}
-}
+	
+	
+	@Then("User enters unserviceable Pin code on budget calculator form {string}")
+	public void user_enters_unserviceable_pin_code_on_budget_calculator_form(String string) throws InterruptedException {
+
+
+	js.scrollUntilElementVisible(sp.pincodeSiteDetails);
+	wait.waitForElementVisible(sp.pincodeSiteDetails);
+	sp.pincodeSiteDetails.clear();
+	sp.pincodeSiteDetails.sendKeys(string);
+	
+	
+		}
+	
+	
+	@Then("User clicks on the Next button on the share site details section")
+	public void user_clicks_on_the_next_button_on_the_share_site_details_section() {
+	   js.scrollUntilElementVisible(sp.nextSiteDetails);	
+	   js.jsClickWithWait(sp.nextSiteDetails);
+	   
+	   }
+
+	}
+

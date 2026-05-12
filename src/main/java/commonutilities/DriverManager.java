@@ -2,20 +2,18 @@ package commonutilities;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v142.network.Network;
-import org.openqa.selenium.devtools.v142.network.model.RequestWillBeSent;
-import java.util.Optional;
-import org.openqa.selenium.devtools.v142.emulation.Emulation;
+
 import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverManager {
-
 
     public WebDriver driver;
 
@@ -23,8 +21,9 @@ public class DriverManager {
     private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
     private static final ThreadLocal<DevTools> tlDevTools = new ThreadLocal<>();
 
-    // ===================== STATIC PAYLOAD =====================
-    private static volatile String leadRequestPayload; // ⚡ thread-safe for Cucumber
+    // ===================== STATIC DATA =====================
+    private static volatile String leadRequestPayload;
+    private static volatile Integer leadStatusCode; // ✅ NEW
 
     private static final ConfigReader config = new ConfigReader();
 
@@ -46,7 +45,6 @@ public class DriverManager {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions opt = new ChromeOptions();
-
         // Headless config
         opt.addArguments(config.getProb("runHeadless").replace("--headless", "--headless=new"));
         opt.addArguments("--" + config.getProb("headlessBrowserSize"));
@@ -65,12 +63,10 @@ public class DriverManager {
         prefs.put("profile.default_content_setting_values.media_stream", 2);
         opt.setExperimentalOption("prefs", prefs);
 
-        //  CREATE DRIVER
         driver = new ChromeDriver(opt);
         setDriver(driver);
         getDriver().manage().deleteAllCookies();
 
-        // INIT DEVTOOLS FOR API CAPTURE
         initDevTools();
     }
 
@@ -80,7 +76,6 @@ public class DriverManager {
         DevTools devTools = chromeDriver.getDevTools();
         devTools.createSession();
 
-        // Enable Network
         devTools.send(Network.enable(
                 Optional.empty(),
                 Optional.empty(),
@@ -89,29 +84,46 @@ public class DriverManager {
                 Optional.empty()
         ));
 
-        // Capture Lead API request
+        // ===================== REQUEST CAPTURE =====================
         devTools.addListener(Network.requestWillBeSent(), request -> {
             String url = request.getRequest().getUrl();
-            //System.out.println("API CALL => " + url);
 
             if (url.contains("/lead/leadForm")) {
-                System.out.println("Lead API matched");
+                System.out.println("Lead API matched (Request)");
+
                 request.getRequest().getPostData().ifPresent(payload -> {
                     System.out.println(" Payload captured");
-                    leadRequestPayload = payload; // ⚡ static volatile for thread-safe access
+                    leadRequestPayload = payload;
                 });
+            }
+        });
+
+        // ===================== RESPONSE CAPTURE (NEW) =====================
+        devTools.addListener(Network.responseReceived(), response -> {
+            String url = response.getResponse().getUrl();
+
+            if (url.contains("/lead/leadForm")) {
+                System.out.println("Lead API matched (Response)");
+
+                leadStatusCode = response.getResponse().getStatus().intValue();
+
+                System.out.println(" Status Code: " + leadStatusCode);
             }
         });
 
         tlDevTools.set(devTools);
     }
 
-    // ===================== GETTER =====================
+    // ===================== GETTERS =====================
     public static String getLeadRequestPayload() {
         return leadRequestPayload;
     }
 
-    // ===================== WAIT FOR PAYLOAD =====================
+    public static Integer getLeadStatusCode() {
+        return leadStatusCode;
+    }
+
+    // ===================== WAIT METHODS =====================
     public static String waitForLeadPayload(int timeoutSeconds) throws InterruptedException {
         int attempts = 0;
         while (leadRequestPayload == null && attempts < timeoutSeconds * 2) {
@@ -119,6 +131,15 @@ public class DriverManager {
             attempts++;
         }
         return leadRequestPayload;
+    }
+
+    public static int waitForLeadStatusCode(int timeoutSeconds) throws InterruptedException {
+        int attempts = 0;
+        while (leadStatusCode == null && attempts < timeoutSeconds * 2) {
+            Thread.sleep(500);
+            attempts++;
+        }
+        return leadStatusCode != null ? leadStatusCode : -1;
     }
 
     // ===================== QUIT DRIVER =====================
@@ -129,8 +150,7 @@ public class DriverManager {
             tlDriver.remove();
             tlDevTools.remove();
             leadRequestPayload = null;
+            leadStatusCode = null; // ✅ reset
         }
     }
-
-
 }

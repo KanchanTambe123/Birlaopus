@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import commonutilities.DriverManager;
+import commonutilities.NetworkUtils;
 import config.ConfigReader;
 import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
@@ -25,6 +26,8 @@ public class Hook {
 	public void browser() {
 
 		driverManager.init_driver(configReader.getProb("browser"));
+	
+      
 
 	}
 

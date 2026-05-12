@@ -1,4 +1,5 @@
-Feature: Validate the Budget Calculator homepage for a logged-in user(single
+@SCOPE
+Feature: To Validate the Budget Calculator homepage for a logged-in user(single product)
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
@@ -28,7 +29,7 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
     And User clicks on the project details next button
     And User selects a schedule visit date and timeslot "<time>"
     And User clicks on the Schedule button
-    Then A survey booking confirmation message should be displayed successfully
+    Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
@@ -77,7 +78,7 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
     Then click on Budget Calculator book free survey button
     Then User clicks on the Next button on the Book a Free Survey form
     Then User clicks on the I’ll do it later option
-    Then A survey booking confirmation message should be displayed successfully
+    Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
@@ -99,6 +100,8 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
   #Examples:
   # | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
   #| Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
+  
+  @test
   #---------------------------------- Scenario 6----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
     When the User scrolls to the Budget Calculator
@@ -107,10 +110,10 @@ Feature: Validate the Budget Calculator homepage for a logged-in user(single
     And the User enters a valid serviceable pincode "<pincode>"
     Then the User clicks on the Calculate Now button
     Then click on Budget Calculator book free survey button
-    Then User clicks on the Next button on the Book a Free Survey form
-    And User enters unserviceable Pin code "<Pincode_Unserviceable>"
-    Then User clicks on the Next button on the Book a Free Survey form
-    Then the unserviceable pin code message should be displayed
+    #Then User clicks on the Next button on the Book a Free Survey form
+    And User enters unserviceable Pin code on budget calculator form "<Pincode_Unserviceable>"
+    And User clicks on the Next button on the share site details section
+    Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | Pincode_Unserviceable |

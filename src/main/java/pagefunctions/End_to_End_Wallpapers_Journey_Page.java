@@ -28,6 +28,14 @@ public class End_to_End_Wallpapers_Journey_Page {
 
 	@FindBy(xpath = "//div[@class='cmp-wallpaper__other-combination-heading']/p")
 	public WebElement availableShadesHeading;
+	
+	@FindBy(xpath = "//button[normalize-space()='Add to cart']")
+	public WebElement AddToCartButton;
+	
+	@FindBy(xpath = "//span[@class='cmp-button__text' and text()='View Cart & Checkout']")
+	public WebElement ViewCheckoutButton;
+	
+	
 
 	public End_to_End_Wallpapers_Journey_Page() {
 		driver = DriverManager.getDriver();
@@ -133,53 +141,33 @@ public class End_to_End_Wallpapers_Journey_Page {
 	
 
 
-public void enterPincodeAndCheck(String pincode) {
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-    JavascriptExecutor js = (JavascriptExecutor) driver;
+	public void enterPincodeAndCheck(String pincode) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-    // Wait for overlays to disappear
-    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".page-loader, .loading, .shimmer")));
+	    By pincodeInput = By.xpath("//input[@name='pinCode' and contains(@class,'cmp-wallpaper__input')]");
+	    WebElement field = wait.until(ExpectedConditions.visibilityOfElementLocated(pincodeInput));
 
-    // Locate input field dynamically
-    By pincodeInput = By.xpath("//input[@name='pinCode' and contains(@class,'cmp-wallpaper__input')]");
-    WebElement PincodeField = wait.until(ExpectedConditions.presenceOfElementLocated(pincodeInput));
+	    field.clear();
+	    field.sendKeys(pincode);
 
-    // Scroll into view and focus
-    js.executeScript("arguments[0].scrollIntoView({block:'center'}); arguments[0].focus();", PincodeField);
+	    WebElement checkBtn = wait.until(ExpectedConditions.elementToBeClickable(
+	            By.cssSelector("button.cmp-wallpaper__submit")));
+	    checkBtn.click();
 
-    // Clear and set value via JS
-    js.executeScript(
-            "arguments[0].value='';" +
-            "arguments[0].value=arguments[1];" +
-            "arguments[0].dispatchEvent(new Event('input',{bubbles:true}));" +
-            "arguments[0].dispatchEvent(new Event('change',{bubbles:true}));",
-            PincodeField, pincode
-    );
+	    By errorMsg = By.cssSelector("div.error-txt");
+	    By successMsg = By.xpath("//*[contains(text(),'available') or contains(text(),'serviceable')]");
 
-    // Wait for value to be set
-    wait.until(d -> pincode.equals(PincodeField.getAttribute("value")));
+	    wait.until(driver -> {
+	        if (!driver.findElements(errorMsg).isEmpty()) return true;
+	        if (!driver.findElements(successMsg).isEmpty()) return true;
+	        return false;
+	    });
 
-    // Click check button
-    WebElement checkButtonPincode = wait.until(ExpectedConditions.elementToBeClickable(
-            By.cssSelector("button.cmp-wallpaper__submit") // Adjust if your button class is different
-    ));
-    js.executeScript("arguments[0].click();", checkButtonPincode);
+	    List<WebElement> errors = driver.findElements(errorMsg);
+	    if (!errors.isEmpty() && errors.get(0).isDisplayed()) {
+	        throw new AssertionError("Pincode validation failed: " + errors.get(0).getText());
+	    }
 
-    // Wait for validation
-    By errorMsg = By.cssSelector("div.error-txt");
-    wait.until(d -> {
-        boolean hasError = !d.findElements(errorMsg).isEmpty() && d.findElement(errorMsg).isDisplayed();
-        String classes = PincodeField.getAttribute("class");
-        boolean isValid = classes.contains("isValid");
-        return hasError || isValid;
-    });
-
-    // Assertion
-    List<WebElement> errors = driver.findElements(errorMsg);
-    if (!errors.isEmpty() && errors.get(0).isDisplayed()) {
-        throw new AssertionError("Pincode validation failed: " + errors.get(0).getText());
-    }
-
-    System.out.println("Pincode " + pincode + " validated successfully");
-}
+	    System.out.println("Pincode " + pincode + " validated successfully");
+	}
 }

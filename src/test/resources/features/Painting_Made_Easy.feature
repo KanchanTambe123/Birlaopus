@@ -1,3 +1,4 @@
+@SCOPE
 Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
 
   Background: 
@@ -23,7 +24,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     And User clicks on the project details next button
     And User selects a schedule visit date and timeslot "<time>"
     And User clicks on the Schedule button
-    Then A survey booking confirmation message should be displayed successfully
+    Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
     Examples: 
       | requirementType | carpetArea | bhkType | address | pincode | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource      | time         |
@@ -41,7 +42,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     Then User clicks on Get free quote
     Then User clicks on the Next button on the Book a Free Survey form
     Then User clicks on the I’ll do it later option
-    Then A survey booking confirmation message should be displayed successfully
+    Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
   #---------------------------------- Scenario 3 ----------------------------------#
   #Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
@@ -58,6 +59,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
   #And User clicks on the Skip for now option in the painting requirements question
   # And User clicks on the Skip for now option in the home configuration question
   #Then A survey booking confirmation message should be displayed successfully
+  
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
     When User clicks on the profile icon
@@ -70,7 +72,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     Then User clicks on Get free quote
     And User enters unserviceable Pin code "<pincode>"
     Then User clicks on the Next button on the Book a Free Survey form
-    Then the unserviceable pin code message should be displayed
+    Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 
       | pincode |
@@ -171,7 +173,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
       |      7019144066 |      1111 |
 
       
-      @test
+    
        #---------------------------------- Scenario 11----------------------------------#
  Scenario Outline: To verify error message is displayed when user does not select any option for Tell us about your project	
     When User clicks on Painting made easy

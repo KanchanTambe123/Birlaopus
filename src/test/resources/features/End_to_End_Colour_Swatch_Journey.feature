@@ -1,4 +1,5 @@
-Feature: To validate the happy end-to-end colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
+@SCOPE
+Feature: To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"

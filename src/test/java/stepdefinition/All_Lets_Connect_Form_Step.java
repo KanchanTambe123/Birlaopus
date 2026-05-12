@@ -21,6 +21,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pagefunctions.All_Lets_Connect_Form_Page;
+import pagefunctions.Book_Survey_Form_Page;
 import pagefunctions.ColourLetter_SignUp_Page;
 import pagefunctions.End_to_End_Flow_Page;
 import pagefunctions.WebsiteLaunch;
@@ -33,7 +34,7 @@ public class All_Lets_Connect_Form_Step {
 	CommonMethods common = new CommonMethods();
 	ActionClass actionClass = new ActionClass();
 	JSExecutor js = new JSExecutor();
-
+	Book_Survey_Form_Page bs = new Book_Survey_Form_Page();
 	ColourLetter_SignUp_Page cl = new ColourLetter_SignUp_Page();
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 	String previousPageUrl;
@@ -102,18 +103,28 @@ public class All_Lets_Connect_Form_Step {
 		js.jsClickWithWait(lp.submitButton);
 		Thread.sleep(6000);
 	}
+	
+	@When("User should see the acknowledgment message after successful submission {string}")
+	public void user_should_see_the_acknowledgment_message_after_successful_submission(String expectedText) {
 
-	@When("User should see the acknowledgment message after successful submission")
-	public void user_should_see_the_acknowledgment_message_after_successful_submission() {
-		wait.waitForElementVisible(lp.thankYouHeader);
-		wait.waitForElementVisible(lp.thankYouDescription);
+	    wait.waitForElementVisible(lp.thankYouHeader);
+	    wait.waitForElementVisible(lp.thankYouDescription);
 
-		Assert.assertTrue(lp.thankYouHeader.isDisplayed(), "'Thank You' header is not displayed");
-		Assert.assertTrue(lp.thankYouDescription.isDisplayed(), "Acknowledgment description is not displayed");
+	    String actualHeader = lp.thankYouHeader.getText().trim();
+	    String actualMessage = lp.thankYouDescription.getText().trim();
 
-		Assert.assertEquals(lp.thankYouHeader.getText().trim(), "Thank You");
-		Assert.assertEquals(lp.thankYouDescription.getText().trim(), "For Reaching out to us !");
+	    String actualText = actualHeader + " " + actualMessage;
+
+	    System.out.println("Actual Text: " + actualText);
+
+	    Assert.assertTrue(actualHeader.equals("Thank You"), "'Thank You' header is not displayed");
+	    Assert.assertTrue(actualMessage.contains("Reaching out to us"), "Acknowledgment description is not displayed");
+
+	    Assert.assertTrue(actualText.contains(expectedText),
+	            "Message mismatch\nExpected: " + expectedText + "\nActual: " + actualText);
 	}
+
+	
 
 	@Given("validation message for Mobile Number input fields should get displayed {string}")
 	public void validation_message_for_mobile_number_input_fields_should_get_displayed(String string) {
@@ -245,4 +256,12 @@ public void error_message_should_be_displayed_for_invalid_pin_code(String expect
 	    common.compareText(actualMsg.trim(), expectedMsg.trim());
 }
 
+
+
+
+
+@When("verify the lead API parameters for Brands Enquiry form  : iclLeadContextC against value {string},  iclLeadTypeC against value {string},  iclSubType against value {string},  leadSubSource against value {string}")
+public void verify_the_lead_api_parameters_for_brands_enquiry_form_icl_lead_context_c_against_value_icl_lead_type_c_against_value_icl_sub_type_against_value_lead_sub_source_against_value(String expectedLeadContext, String expectedLeadType, String expectedSubType, String expectedLeadSubSource) {
+	  bs.verifyLeadApiParameters(expectedLeadContext, expectedLeadType, expectedSubType, expectedLeadSubSource);
+}
 }

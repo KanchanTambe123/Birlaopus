@@ -1,4 +1,4 @@
-@SCOPE1
+@SCOPE
 Feature: To Validate Survey Booking Form
 
   Background: 
@@ -26,7 +26,7 @@ Feature: To Validate Survey Booking Form
     And User clicks on the project details next button
     And User selects a schedule visit date and timeslot "<time>"
     And User clicks on the Schedule button
-    Then A survey booking confirmation message should be displayed successfully
+    Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
     Examples: 
       | requirementType | carpetArea | bhkType | address | pincode | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource      | time         |
@@ -44,7 +44,7 @@ Feature: To Validate Survey Booking Form
     And User clicks on the Book a Free Survey button
     Then User clicks on the Next button on the Book a Free Survey form
     Then User clicks on the I’ll do it later option
-    Then A survey booking confirmation message should be displayed successfully
+    Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
   #---------------------------------- Scenario 4 ----------------------------------#
  # Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
@@ -61,8 +61,33 @@ Feature: To Validate Survey Booking Form
      And User clicks on the Book a Free Survey button
     And User enters unserviceable Pin code "<pincode>"
     Then User clicks on the Next button on the Book a Free Survey form
-    Then the unserviceable pin code message should be displayed
+    Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 
       | pincode |
       |  111222 |
+
+      
+      
+  
+
+  Scenario Outline: To Verify address section with valid and invalid inputs
+    And User clicks on the Book a Free Survey button
+    When User enters "<FlatNo>" in Flat no / building name field
+    And User enters "<AddressLine1>" in Property name / Address line 1 field
+    And User selects location using "<MapOption>"
+    And User enters "<City>" in City field
+    And User enters "<State>" in State field
+    And User enters "<Pincode>" in Pincode field
+    Then User clicks on the Next button on the Book a Free Survey form
+    Then "<ExpectedResult>" should be displayed
+
+  Examples:
+    | FlatNo | AddressLine1                                      | MapOption       | City    | State        | Pincode | ExpectedResult                          |
+    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 500001 | Address saved successfully              |
+    |        | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 500001  | This field is required.       |
+    | test   |                                                   | Locate on maps  | Mumbai  | Maharashtra  |500001 | This field is required.        |
+       
+    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  |         |This field is required.       |
+    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 123     | Invalid Input.            |
+    | test   | Testtex Laboratories Pvt Ltd                      | Locate on maps  | Mumbai  | Maharashtra  | 500001 | Next page should be displayed           |

@@ -38,6 +38,7 @@ import config.ConfigReader;
 import io.cucumber.java.en.Then;
 import pagefunctions.Book_Survey_Form_Page;
 import pagefunctions.End_to_End_Flow_Page;
+import pagefunctions.Painting_Made_Easy_Page;
 
 public class Book_Survey_Form_Step {
 	ConfigReader config = new ConfigReader();
@@ -48,7 +49,7 @@ public class Book_Survey_Form_Step {
 	JSExecutor js = new JSExecutor();
 	int cartQuantity;
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
-
+	Painting_Made_Easy_Page pm = new Painting_Made_Easy_Page();
 	String fakeFirstName = dataGenerator.generateFakeFirstName();
 	String fakeLastName = dataGenerator.generateFakeLastName();
 	String fakeMobileNumber = dataGenerator.generateFakeMobileNumber();
@@ -122,6 +123,12 @@ public class Book_Survey_Form_Step {
 		Thread.sleep(2000);
 	}
 
+	
+	@Then("A survey booking confirmation message should be displayed successfully {string}")
+	public void a_survey_booking_confirmation_message_should_be_displayed_successfully(String string) {
+		wait.waitForElementVisible(bs.confirmationMsg);
+		Assert.assertTrue(bs.confirmationMsg.isDisplayed(), "Survey booking confirmation message is not displayed");
+	}
 
 	@Then("A survey booking confirmation message should be displayed successfully")
 	public void a_survey_booking_confirmation_message_should_be_displayed_successfully() {
@@ -171,7 +178,13 @@ public class Book_Survey_Form_Step {
 		Thread.sleep(2000);
 		common.SendInput(string, bs.surveyPincodeInputfiled);
 	}
-	
+	@Then("the unserviceable pin code message should be displayed {string}")
+	public void the_unserviceable_pin_code_message_should_be_displayed(String string) {
+	wait.waitForElementVisible(pm.unserviceablePinPopup);
+		
+		Assert.assertTrue(pm.unserviceablePinPopup.isDisplayed(),
+				"unserviceable pincode pop up message is not displayed");
+	}
 	
 	@Then("verify the lead API parameters for booking a free survey: iclLeadContextC against value {string},  iclLeadTypeC against value {string},  iclSubType against value {string},  leadSubSource against value {string}")
 	public void verify_the_lead_api_parameters_for_booking_a_free_survey_icl_lead_context_c_against_value_icl_lead_type_c_against_value_icl_sub_type_against_value_lead_sub_source_against_value(String expectedLeadContext, String expectedLeadType, String expectedSubType, String expectedLeadSubSource) {

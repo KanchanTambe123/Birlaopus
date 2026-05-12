@@ -1,11 +1,11 @@
-#@SCOPE1
-Feature: To Validate Sign-In (User Login)Functionality
+@SCOPE
+Feature: To Validate Opus Assurance Journey Functionality
 
   Background: 
     Given User is on Opus Assurance Journey "AssuranceUrl"
 
   #---------------------------------- Scenario 1 ----------------------------------#
-  Scenario Outline: To verify create account functionality with valid mobile number and OTP(new user)
+  Scenario Outline: To verify the account creation functionality for a new user using a valid mobile number and OTP, with a non-serviceable pincode.
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -19,11 +19,12 @@ Feature: To Validate Sign-In (User Login)Functionality
     And User enter valid email id
     And User enter valid pin code "<pin_code>"
     Then User click on the Save Details button
-    Then User should see an message We re coming soon! "We're coming soon!"
+    Then User should see the heading "We're coming soon!"
+    And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."
 
     Examples: 
       | paintable_area | pin_code |
-      | 2500 sqft      | 400 060  |
+      | 2500 sqft      |   111222 |
 
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify whether user is able to see error message for email id field when user enter invalid email id
@@ -140,46 +141,44 @@ Feature: To Validate Sign-In (User Login)Functionality
     And User clicks on the project details next button
     And User selects a schedule visit date and timeslot "<time>"
     And User clicks on the Schedule button
-    Then Birla Opus Assurance confirmation message should be displayed successfully
+    Then Birla Opus Assurance confirmation message should be displayed successfully "Thank you for signing up for Birla Opus Assurance!"
 
     Examples: 
       | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  |
       | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance |
 
   #---------------------------------- Scenario 8 ----------------------------------#
-  Scenario Outline: To verify that an existing user can complete the end-to-end flow by submitting all mandatory details (new project-Find Contractor button)
-    Given User enter valid paintable area "<paintable_area>"
-    And User click on Next button
-    Then User should click on Yet to Start Cta
-    And User click on Pre-register now Cta
-    And User enter valid mobile number on sign in "<valid_mobile_no>"
-    And User click on sign in button
-    And User enter valid otp "<valid_otp>"
-    And User click on verify otp button
-    Then User click on start new project
-    And User enter valid pin code on enter details "<pin_code>"
-    Then User click on submit button on enter details
-    And User enter Site Details project name
-    And User enter update pin code on site details "<Update_pin_code>"
-    Then User click submit button on Site Details
-    And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
-    And User click next button on Just a Few More Details
-    Then User clcik on Find Contractor button
-    And User selects a contractor as needed
-    Then User click on Next button in Find Contractor section
-    Then User selects the painting requirement type "<requirementType>"
-    And User clicks on the project details next button
-    Then User select home configuration type "<bhkType>"
-    Then User enters the carpet area "<carpetArea>"
-    And User clicks on the project details next button
-    And User selects a schedule visit date and timeslot "<time>"
-    And User clicks on the Schedule button
-    Then Birla Opus Assurance confirmation message should be displayed successfully
-
-    Examples: 
-      | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  |
-      | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance |
-
+  # Scenario Outline: To verify that an existing user can complete the end-to-end flow by submitting all mandatory details (new project-Find Contractor button)
+  # Given User enter valid paintable area "<paintable_area>"
+  # And User click on Next button
+  #Then User should click on Yet to Start Cta
+  # And User click on Pre-register now Cta
+  #And User enter valid mobile number on sign in "<valid_mobile_no>"
+  # And User click on sign in button
+  # And User enter valid otp "<valid_otp>"
+  # And User click on verify otp button
+  # Then User click on start new project
+  # And User enter valid pin code on enter details "<pin_code>"
+  # Then User click on submit button on enter details
+  # And User enter Site Details project name
+  #And User enter update pin code on site details "<Update_pin_code>"
+  #Then User click submit button on Site Details
+  #And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
+  # And User click next button on Just a Few More Details
+  #Then User clcik on Find Contractor button
+  # And User selects a contractor as needed
+  #Then User click on Next button in Find Contractor section
+  #Then User selects the painting requirement type "<requirementType>"
+  # And User clicks on the project details next button
+  # Then User select home configuration type "<bhkType>"
+  #  Then User enters the carpet area "<carpetArea>"
+  # And User clicks on the project details next button
+  # And User selects a schedule visit date and timeslot "<time>"
+  # And User clicks on the Schedule button
+  # Then Birla Opus Assurance confirmation message should be displayed successfully
+  #Examples:
+  #  | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  |
+  #  | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance |
   #---------------------------------- Scenario 9 ----------------------------------#
   Scenario Outline: To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button).    Given User enter valid paintable area "<paintable_area>"
     Given User enter valid paintable area "<paintable_area>"
@@ -211,8 +210,96 @@ Feature: To Validate Sign-In (User Login)Functionality
     And User clicks on the project details next button
     And User selects a schedule visit date and timeslot "<time>"
     And User clicks on the Schedule button
-    Then Birla Opus Assurance confirmation message should be displayed successfully
+    Then Birla Opus Assurance confirmation message should be displayed successfully "Thank you for signing up for Birla Opus Assurance!"
 
     Examples: 
       | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
       | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |
+
+  #---------------------------------- Scenario 10----------------------------------#
+  Scenario Outline: To verify Clicking Pre-Register Now without login should open to login or register page
+    And User enter valid paintable area "<paintable_area>"
+    And User click on Next button
+    Then User should click on Yet to Start Cta
+    And User click on Pre-register now Cta
+    And User Login page should be displayed successfully
+
+    Examples: 
+      | paintable_area |
+      | 2500 sqft      |
+
+  #---------------------------------- Scenario 11----------------------------------#
+  Scenario Outline: To verify that selecting more than 5 contractors is restricted
+    Given User enter valid paintable area "<paintable_area>"
+    And User click on Next button
+    Then User should click on Yet to Start Cta
+    And User click on Pre-register now Cta
+    And User enter valid mobile number on sign in "<valid_mobile_no>"
+    And User click on sign in button
+    And User enter valid otp "<valid_otp>"
+    And User click on verify otp button
+    Then User click on start new project
+    And User enter valid pin code on enter details "<pin_code>"
+    Then User click on submit button on enter details
+    And User enter Site Details project name
+    And User enter update pin code on site details "<Update_pin_code>"
+    Then User click submit button on Site Details
+    And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
+    And User click next button on Just a Few More Details
+    Then User clcik on Find Contractor button
+    And User selects 5 contractors
+    Then User should not be able to select more than 5 contractors and validation message should be displayed
+
+    Examples: 
+      | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
+      | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |
+
+  #---------------------------------- Scenario 12----------------------------------#
+  Scenario Outline: To verify that a validation message is displayed when proceeding without selecting a contractor
+    Given User enter valid paintable area "<paintable_area>"
+    And User click on Next button
+    Then User should click on Yet to Start Cta
+    And User click on Pre-register now Cta
+    And User enter valid mobile number on sign in "<valid_mobile_no>"
+    And User click on sign in button
+    And User enter valid otp "<valid_otp>"
+    And User click on verify otp button
+    Then User click on start new project
+    And User enter valid pin code on enter details "<pin_code>"
+    Then User click on submit button on enter details
+    And User enter Site Details project name
+    And User enter update pin code on site details "<Update_pin_code>"
+    Then User click submit button on Site Details
+    And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
+    And User click next button on Just a Few More Details
+    Then User clcik on Find Contractor button
+    Then User click on Next button in Find Contractor section
+    And User should be displayed validation message Contractor section "Please select a contractor"
+
+    Examples: 
+      | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
+      | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |
+
+  #---------------------------------- Scenario 13----------------------------------#
+  Scenario Outline: To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed
+    Given User enter valid paintable area "<paintable_area>"
+    And User click on Next button
+    Then User should click on Yet to Start Cta
+    And User click on Pre-register now Cta
+    And User enter valid mobile number on sign in "<valid_mobile_no>"
+    And User click on sign in button
+    And User enter valid otp "<valid_otp>"
+    And User click on verify otp button
+    Then User click on start new project
+    And User enter valid pin code on enter details "<pin_code>"
+    Then User click on submit button on enter details
+    And User enter Site Details project name
+    And User enter update pin code on site details "<Update_pin_code>"
+    Then User click submit button on Site Details
+    And verify the lead API parameters for opus assurance journey: isAreaServiceable against value "<status>"
+    Then User should see the heading "We're coming soon!"
+    And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."
+
+    Examples: 
+      | paintable_area | pin_code | status | Update_pin_code | valid_mobile_no | valid_otp |
+      | 2500 sqft      | 400 060  | false  |          111222 |      7019144066 |      1111 |

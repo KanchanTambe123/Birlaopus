@@ -1,4 +1,5 @@
-Feature: To validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
+
+Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
@@ -15,8 +16,8 @@ Feature: To validate the happy end-to-end Wallpapers journey flow for a logged-i
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
     Then the User selects a wallpaper shade "<shades_code>"
     Then User enters valid pincode "<pincode>" and check product availability
-    And User click on add to cart button
-    Then User click on View cart & Checkout button
+    And User click on add to cart button on wallpaper section
+   Then User click on View cart & Checkout button on wallpaper section    
     And User increase the product quantity "<desiredQuantity>"
     Then User clicks on the Proceed to Enter Address button
     And User clicks on the Apply button, verifies the availability of coupon vouchers, and applies a coupon if available
@@ -35,8 +36,8 @@ Feature: To validate the happy end-to-end Wallpapers journey flow for a logged-i
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
     Then the User selects a wallpaper shade "<shades_code>"
     Then User enters a valid pincode "<pincode>" and check product availability
-    And User click on add to cart button
-    Then User click on View cart & Checkout button
+      And User click on add to cart button on wallpaper section
+   Then User click on View cart & Checkout button on wallpaper section
     Then Product should be added to the cart successfully
     Then User clicks the cart icon on the header and removes the product from the cart if available
 
@@ -49,8 +50,8 @@ Feature: To validate the happy end-to-end Wallpapers journey flow for a logged-i
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     Then User selects Colour for colour swatch "<Colour>"
     Then User enters a valid pincode "<pincode>" and check product availability
-    And User click on add to cart button
-    Then User click on View cart & Checkout button
+   And User click on add to cart button on wallpaper section
+   Then User click on View cart & Checkout button on wallpaper section
     Then User clicks the cart icon on the header and removes the product from the cart if available
     And Cart count should be updated to "<expectedCount>"
 
@@ -61,7 +62,7 @@ Feature: To validate the happy end-to-end Wallpapers journey flow for a logged-i
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
-    And User click whishlist icon on colour swatch
+    And User click whishlist icon on Wallpapers
     Then Product should be added to the wishlist successfully
 
     Examples: 
@@ -83,7 +84,7 @@ Feature: To validate the happy end-to-end Wallpapers journey flow for a logged-i
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
     Then the User selects a wallpaper shade "<shades_code>"
     Then User enters valid pincode "<pincode>" and check product availability
-    Then User should see an error message for invalid pincode for colour swatch "<errorMessage>"
+    Then User should see an error message for invalid pincode for Wallpapers "<errorMessage>"
 
     Examples: 
       | navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |

@@ -87,13 +87,14 @@ public class Painting_Made_Easy_Step {
 
 	@Then("User enters unserviceable Pin code {string}")
 	public void user_enters_unserviceable_pin_code(String string) throws InterruptedException {
-
+		
 		pm.enterSurveyPinCode(string, bs.surveyPincodeInputfiled);
 	}
 
 	@Then("the unserviceable pin code message should be displayed")
-	public void the_unserviceable_pin_code_message_should_be_displayed() {
+	public void the_unserviceable_pin_code_message_should_be_displayed() throws InterruptedException {
 		wait.waitForElementVisible(pm.unserviceablePinPopup);
+		
 		Assert.assertTrue(pm.unserviceablePinPopup.isDisplayed(),
 				"unserviceable pincode pop up message is not displayed");
 	}

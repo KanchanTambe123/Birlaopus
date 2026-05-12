@@ -13,8 +13,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import commonutilities.CommonDataGenerator;
+import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -314,14 +316,19 @@ public class Opus_Assurance_Journey_Step {
 		Thread.sleep(5000);
 	}
 
-	@Then("Birla Opus Assurance confirmation message should be displayed successfully")
-	public void birla_opus_assurance_confirmation_message_should_be_displayed_successfully() {
+	@Then("Birla Opus Assurance confirmation message should be displayed successfully {string}")
+	public void birla_opus_assurance_confirmation_message_should_be_displayed_successfully(String string) {
 		wait.waitForElementVisible(op.ConfirmationMessage);
 		String actualText = op.ConfirmationMessage.getText().trim();
 		System.out.println("Confirmation Message: " + actualText);
 
 		Assert.assertTrue(actualText.contains("Thank you for signing up"),
 				"Confirmation message not displayed properly");
+	}
+
+	@Then("Birla Opus Assurance confirmation message should be displayed successfully")
+	public void birla_opus_assurance_confirmation_message_should_be_displayed_successfully() {
+
 	}
 
 	@Then("User clcik on Find Contractor button")
@@ -353,15 +360,13 @@ public class Opus_Assurance_Journey_Step {
 			String expectedLeadContext, String expectedLeadType, String expectedSubType, String expectedLeadSubSource) {
 		bs.verifyLeadApiParameters(expectedLeadContext, expectedLeadType, expectedSubType, expectedLeadSubSource);
 	}
-	
+
 	@Then("User clicks on tell us more about your site button")
 	public void user_clicks_on_tell_us_more_about_your_site_button() {
-	   wait.waitForElementVisible(op.TellUsMoreaAoutYourSiteButton);
-	   js.scrollUntilElementVisible(op.TellUsMoreaAoutYourSiteButton);
-	   js.jsClickWithWait(op.TellUsMoreaAoutYourSiteButton);
+		wait.waitForElementVisible(op.TellUsMoreaAoutYourSiteButton);
+		js.scrollUntilElementVisible(op.TellUsMoreaAoutYourSiteButton);
+		js.jsClickWithWait(op.TellUsMoreaAoutYourSiteButton);
 	}
-
-	
 
 	@Then("User clicks on submit button on the Create an Account")
 	public void user_clicks_on_submit_button_on_the_create_an_account() {
@@ -370,38 +375,158 @@ public class Opus_Assurance_Journey_Step {
 		js.jsClickWithWait(op.submitButtoncreateAccount);
 
 	}
-	
+
 	@Then("User clicks create an Account option")
 	public void user_clicks_create_an_account_option() {
 		js.scrollUntilElementVisible(op.CreateAnaccountOptioNlink);
 		wait.waitForElementVisible(op.CreateAnaccountOptioNlink);
 		js.jsClickWithWait(op.CreateAnaccountOptioNlink);
 	}
-	
+
 	@Then("User enter flat number or bulding name {string}")
 	public void user_enter_flat_number_or_bulding_name(String string) throws InterruptedException {
 		js.scrollUntilElementVisible(op.flatNoInputField);
 		op.flatNoInputField.sendKeys(string);
 		Thread.sleep(2000);
 	}
+
 	@Then("User enter proerty name {string}")
 	public void user_enter_proerty_name(String string) throws InterruptedException {
-	   
-		js.scrollUntilElementVisible(op.propertyNameInputField);
-	
 
-	    op.propertyNameInputField.sendKeys(string);
-       wait.waitForElementVisible(op.clickFirstAddress);
-       js.jsClickWithWait(op.clickFirstAddress);
-	   
+		js.scrollUntilElementVisible(op.propertyNameInputField);
+
+		op.propertyNameInputField.sendKeys(string);
+		wait.waitForElementVisible(op.clickFirstAddress);
+		js.jsClickWithWait(op.clickFirstAddress);
+
 	}
-	
+
+	@Then("User should see the heading {string}")
+	public void user_should_see_the_heading(String expectedHeading) {
+		String heading = DriverManager.getDriver()
+				.findElement(By.xpath("//h4[normalize-space()=\"We're coming soon!\"]")).getText();
+
+		if (!heading.equals(expectedHeading)) {
+			throw new AssertionError("Heading mismatch\nExpected: " + expectedHeading + "\nActual: " + heading);
+		}
+	}
+
+	@Then("User should see the message {string}")
+	public void user_should_see_the_message(String expectedText) {
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
+
+		WebElement element = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("(//p[contains(text(),'Birla Opus Assurance')])[20]")));
+
+		// Wait until text is NOT empty
+		wait.until(driver -> !element.getText().trim().isEmpty());
+
+		String actualText = element.getText().trim();
+
+		System.out.println("Actual Text: " + actualText);
+
+		if (!actualText.contains(expectedText)) {
+			throw new AssertionError("Message mismatch\nExpected: " + expectedText + "\nActual: " + actualText);
+		}
+	}
+
 	@Then("User clicks on confirm and add address details")
 	public void user_clicks_on_confirm_and_add_address_details() {
-	    js.scrollUntilElementVisible(op.confirmAddAddressBtn);
-	    wait.waitForElementVisible(op.confirmAddAddressBtn);
+		js.scrollUntilElementVisible(op.confirmAddAddressBtn);
+		wait.waitForElementVisible(op.confirmAddAddressBtn);
 
-	    js.jsClickWithWait(op.confirmAddAddressBtn);
+		js.jsClickWithWait(op.confirmAddAddressBtn);
+	}
+
+	@Then("User should be displayed login page")
+	public void user_should_be_displayed_login_page() {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+			// Locator for "Let's get started" text
+			By loginHeader = By.xpath("//*[contains(text(),\"Let's get started\")]");
+
+			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(loginHeader));
+
+			Assert.assertTrue(element.isDisplayed(), "Login page is not displayed");
+
+		} catch (Exception e) {
+			throw new AssertionError("Login page validation failed: " + e.getMessage());
+		}
+	}
+
+	@Then("User Login page should be displayed successfully")
+	public void user_login_page_should_be_displayed_successfully() {
+		WebDriver driver = DriverManager.getDriver();
+
+		if (driver == null) {
+			throw new RuntimeException("Driver is NULL - not initialized in Hooks");
+		}
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+		By loginText = By.xpath("//*[contains(text(),\"Let's get started\")]");
+
+		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(loginText));
+
+		Assert.assertTrue(element.isDisplayed(), "Login page not displayed");
+	}
+
+	@Then("User selects {int} contractors")
+	public void user_selects_contractors(Integer count) {
+
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		By selectBtn = By.xpath("//button[normalize-space()='Select this contractor']");
+
+		for (int i = 1; i <= count; i++) {
+
+			List<WebElement> buttons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(selectBtn));
+
+			if (buttons.size() == 0) {
+				throw new RuntimeException("No more contractors available to select");
+			}
+
+			WebElement btn = buttons.get(0); // always click first available
+
+			wait.until(ExpectedConditions.elementToBeClickable(btn)).click();
+
+			System.out.println("Selected contractor: " + i);
+		}
+	}
+
+	@Then("User should not be able to select more than {int} contractors and validation message should be displayed")
+	public void user_should_not_be_able_to_select_more_than_contractors_and_validation_message_should_be_displayed(
+			Integer limit) {
+		op.clickSixthContractorAndValidate();
+	}
+
+	@Then("User should be displayed validation message Contractor section {string}")
+	public void user_should_be_displayed_validation_message_contractor_section(String expectedMessage)
+			throws InterruptedException {
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+		By messageLocator = By.xpath("//*[contains(text(),'" + expectedMessage + "')]");
+
+		boolean messageDisplayed = false;
+
+		for (int i = 0; i < 5; i++) {
+			if (driver.findElements(messageLocator).size() > 0) {
+				messageDisplayed = true;
+				break;
+			}
+			Thread.sleep(300);
+		}
+
+		Assert.assertTrue(messageDisplayed, "Validation message not displayed: " + expectedMessage);
+	}
+
+	@Then("verify the lead API parameters for opus assurance journey: isAreaServiceable against value {string}")
+	public void verify_the_lead_api_parameters_for_opus_assurance_journey_is_area_serviceable_against_value(
+			String string) {
+		op.verifyServiceableStatus(string);
 	}
 
 }

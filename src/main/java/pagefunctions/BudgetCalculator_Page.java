@@ -86,10 +86,13 @@ public class BudgetCalculator_Page {
 	@FindBy(xpath = "(//p[contains(@class,'dwnldPdf') and contains(text(),'Download estimate')])[1]")
 	public WebElement DownloadestimateButton;
 	
+	@FindBy(xpath = "//input[@id='surveyPincode']")
+	public WebElement pincodeSiteDetails;
+
+	@FindBy(xpath = "(//div[@class='button login-form-btn']//button)[9]")
+	public WebElement nextSiteDetails;
+
 	
-
-
-
 
 
 	public BudgetCalculator_Page() {

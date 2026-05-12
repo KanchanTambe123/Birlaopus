@@ -24,6 +24,7 @@ import commonutilities.CryptoUtils;
 import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
+import com.aventstack.extentreports.Status;
 
 public class Book_Survey_Form_Page {
 
@@ -31,6 +32,7 @@ public class Book_Survey_Form_Page {
 	WebDriverWaitHelper wait = new WebDriverWaitHelper();
 	JSExecutor js = new JSExecutor();
 	ClickElement click = new ClickElement();
+	private boolean isServiceable;
 
 	CryptoUtils crypto = new CryptoUtils();
 
@@ -152,48 +154,94 @@ public class Book_Survey_Form_Page {
 		}
 	}
 
-	public void verifyLeadApiParameters(String expectedLeadContext, String expectedLeadType, String expectedSubType,
-			String expectedLeadSubSource) {
-		try {
-// 1️.Capture encrypted payload
-			String encryptedPayload = DriverManager.waitForLeadPayload(15);
-			System.out.println("Encrypted Payload: " + encryptedPayload);
+	public void verifyLeadApiParameters(String expectedLeadContext, String expectedLeadType,
+	        String expectedSubType, String expectedLeadSubSource) {
 
-// 2️.Extract 'data' field
-			JSONObject wrapperJson = new JSONObject(encryptedPayload);
-			String encryptedData = wrapperJson.getString("data");
+	    try {
+	        // 1️.Get payload
+	        String encryptedPayload = DriverManager.waitForLeadPayload(15);
 
-// 3️.Decrypt payload
-			String decryptedJson = crypto.decryptData(encryptedData);
-			System.out.println("Decrypted JSON: " + decryptedJson);
+	        // 2️.Get status code
+	        int statusCode = DriverManager.waitForLeadStatusCode(15);
 
-// 4️.Parse JSON
-			ObjectMapper mapper = new ObjectMapper();
-			Map<String, Object> dataMap = mapper.readValue(decryptedJson, Map.class);
-			Map<String, Object> bodyMap = (Map<String, Object>) dataMap.get("body");
+	        System.out.println("Encrypted Payload: " + encryptedPayload);
+	        System.out.println("Status Code: " + statusCode);
 
-// 5️.Assert each parameter independently and log in ExtentReports
-			assertParameter("iclLeadContextC", expectedLeadContext, bodyMap.get("iclLeadContextC"));
-			assertParameter("iclLeadTypeC", expectedLeadType, bodyMap.get("iclLeadTypeC"));
-			assertParameter("subType", expectedSubType, bodyMap.get("subType"));
-			assertParameter("leadSubSource", expectedLeadSubSource, bodyMap.get("leadSubSource"));
+	        // Validate status code
+	        assertStatusCode(200, statusCode);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			ExtentCucumberAdapter.addTestStepLog(" Exception during Lead API verification: " + e.getMessage());
-		}
+	        // 3️.Extract 'data'
+	        JSONObject wrapperJson = new JSONObject(encryptedPayload);
+	        String encryptedData = wrapperJson.getString("data");
+
+	        // 4️. Decrypt
+	        String decryptedJson = crypto.decryptData(encryptedData);
+	        System.out.println("Decrypted JSON: " + decryptedJson);
+
+	        // 5️.Parse JSON
+	        ObjectMapper mapper = new ObjectMapper();
+	        Map<String, Object> dataMap = mapper.readValue(decryptedJson, Map.class);
+	        Map<String, Object> bodyMap = (Map<String, Object>) dataMap.get("body");
+
+	        // 6️.Existing Assertions
+	        assertParameter("iclLeadContextC", expectedLeadContext, bodyMap.get("iclLeadContextC"));
+	        assertParameter("iclLeadTypeC", expectedLeadType, bodyMap.get("iclLeadTypeC"));
+	        assertParameter("subType", expectedSubType, bodyMap.get("subType"));
+	        assertParameter("leadSubSource", expectedLeadSubSource, bodyMap.get("leadSubSource"));
+
+	        //  7️.NEW: Capture serviceable flag
+	        Object serviceableValue = bodyMap.get("isAreaServiceable");
+
+	        isServiceable = Boolean.parseBoolean(String.valueOf(serviceableValue));
+
+	        System.out.println("Serviceable Flag: " + isServiceable);
+
+	        // Optional assertion (if needed)
+	        ExtentCucumberAdapter.getCurrentStep().log(
+	                Status.INFO,
+	                "Serviceable flag value: " + isServiceable
+	        );
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        ExtentCucumberAdapter.addTestStepLog("Exception during Lead API verification: " + e.getMessage());
+	    }
+	}
+	public boolean isServiceable() {
+	    return isServiceable;
+	}
+	
+	private void assertStatusCode(int expected, int actual) {
+	    try {
+	        if (expected != actual) {
+	            throw new AssertionError("Expected Status Code: " + expected + ", Actual: " + actual);
+	        }
+	        ExtentCucumberAdapter.addTestStepLog("Status Code matched: " + actual);
+	    } catch (AssertionError e) {
+	        ExtentCucumberAdapter.addTestStepLog("Status Code mismatch! " + e.getMessage());
+	    }
 	}
 
 	private void assertParameter(String paramName, Object expected, Object actual) {
-		try {
-			if (!expected.equals(actual)) {
-				throw new AssertionError("Expected: " + expected + ", Actual: " + actual);
-			}
-			ExtentCucumberAdapter.addTestStepLog("" + paramName + " matched: " + actual);
-		} catch (AssertionError e) {
-			// Log mismatch but continue
-			ExtentCucumberAdapter.addTestStepLog("" + paramName + " mismatch! " + e.getMessage());
-		}
-	}
+	    try {
+	        if (!expected.equals(actual)) {
+	            throw new AssertionError("Expected: " + expected + ", Actual: " + actual);
+	        }
 
+	        // PASS 
+	        ExtentCucumberAdapter.getCurrentStep().log(
+	                Status.PASS,
+	                "✔ " + paramName + " matched: " + actual
+	        );
+
+	    } catch (AssertionError e) {
+
+	        // ❌ FAIL (Red + Cross)
+	        ExtentCucumberAdapter.getCurrentStep().log(
+	                Status.FAIL,
+	                "❌ " + paramName + " mismatch! " + e.getMessage()
+	        );
+	    }
+
+	}
 }

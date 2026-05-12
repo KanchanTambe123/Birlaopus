@@ -1,4 +1,4 @@
-@SCOPE1
+@SCOPE
 Feature: To Validate Compare Product Functionality(Two Product)
 
   #----------------------------------1---------------------------------------------------->
