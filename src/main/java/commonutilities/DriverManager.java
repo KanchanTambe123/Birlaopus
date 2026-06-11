@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v142.network.Network;
+import org.openqa.selenium.devtools.v145.network.Network;
 
 import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -23,7 +23,14 @@ public class DriverManager {
 
     // ===================== STATIC DATA =====================
     private static volatile String leadRequestPayload;
-    private static volatile Integer leadStatusCode; // ✅ NEW
+    private static volatile Integer leadStatusCode; //
+ // ✅ ADD BELOW
+    private static volatile long requestStartTime;
+    private static volatile long responseEndTime;
+    private static volatile long responseTime;
+    
+    private static final String SHORT_FORM_API = "/lead/shortForm";
+    private static final String LEAD_FORM_API = "/lead/leadForm";
 
     private static final ConfigReader config = new ConfigReader();
 
@@ -88,29 +95,40 @@ public class DriverManager {
         devTools.addListener(Network.requestWillBeSent(), request -> {
             String url = request.getRequest().getUrl();
 
-            if (url.contains("/lead/leadForm")) {
-                System.out.println("Lead API matched (Request)");
+            if (url.contains(SHORT_FORM_API) || url.contains(LEAD_FORM_API)) {
+
+                System.out.println(" Lead API matched (Request): " + url);
+
+                // Start Time
+                requestStartTime = System.currentTimeMillis();
 
                 request.getRequest().getPostData().ifPresent(payload -> {
-                    System.out.println(" Payload captured");
                     leadRequestPayload = payload;
+                    System.out.println(" Request Payload Captured");
                 });
             }
         });
-
         // ===================== RESPONSE CAPTURE (NEW) =====================
         devTools.addListener(Network.responseReceived(), response -> {
             String url = response.getResponse().getUrl();
 
-            if (url.contains("/lead/leadForm")) {
-                System.out.println("Lead API matched (Response)");
+            if (url.contains(SHORT_FORM_API) || url.contains(LEAD_FORM_API)) {
 
+                System.out.println(" Lead API matched (Response): " + url);
+
+                //  Status Code
                 leadStatusCode = response.getResponse().getStatus().intValue();
 
+                // End Time
+                responseEndTime = System.currentTimeMillis();
+
+                //  Calculate Response Time
+                responseTime = responseEndTime - requestStartTime;
+
                 System.out.println(" Status Code: " + leadStatusCode);
+                System.out.println(" Response Time: " + responseTime + " ms");
             }
         });
-
         tlDevTools.set(devTools);
     }
 
@@ -149,8 +167,23 @@ public class DriverManager {
             driver.quit();
             tlDriver.remove();
             tlDevTools.remove();
+
+            //  Reset all values
             leadRequestPayload = null;
-            leadStatusCode = null; // ✅ reset
+            leadStatusCode = null;
+            requestStartTime = 0;
+            responseEndTime = 0;
+            responseTime = 0;
         }
+    }
+    public static void resetApiData() {
+        leadRequestPayload = null;
+        leadStatusCode = null;
+        requestStartTime = 0;
+        responseEndTime = 0;
+        responseTime = 0;
+    }
+    public static long getResponseTime() {
+        return responseTime;
     }
 }

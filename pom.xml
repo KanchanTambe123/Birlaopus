@@ -25,7 +25,7 @@
 		<maven.compiler.version>3.8.0</maven.compiler.version>
 		<maven.surefire.version>2.22.2</maven.surefire.version>
 		<lombok.version>1.18.30</lombok.version>
-		<selenium.version>4.38.0</selenium.version>
+		<selenium.version>4.41.0</selenium.version>
 
 
 
@@ -52,6 +52,11 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
 		</dependency>
+		<dependency>
+    <groupId>org.jfree</groupId>
+    <artifactId>jfreechart</artifactId>
+    <version>1.5.3</version>
+</dependency>
 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 		<dependency>
@@ -67,15 +72,41 @@
 			<version>${cucumber.version}</version>
 			
 		</dependency>
+		<!-- JFreeChart - Donut Charts -->
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.3</version>
+        </dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-devtools-v143</artifactId>
-			<version>4.39.0</version>
+			<artifactId>selenium-devtools-v145</artifactId>
+			<version>4.41.0</version>
 		</dependency>
-		<dependency>
+		<!-- Core PDF -->
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>kernel</artifactId>
+    <version>7.2.5</version>
+</dependency>
+
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>layout</artifactId>
+    <version>7.2.5</version>
+</dependency>
+
+<!-- Image support -->
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>io</artifactId>
+    <version>7.2.5</version>
+</dependency>
+
+<dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
-    <version>20240303</version>
+    <version>20230227</version>
 </dependency>
 
 
@@ -195,7 +226,17 @@
     <version>4.2.0</version>
 </dependency>
 
-
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>rest-assured</artifactId>
+    <version>5.4.0</version>
+    
+</dependency>
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>json-path</artifactId>
+    <version>5.4.0</version>
+</dependency>
 
 
 	</dependencies>

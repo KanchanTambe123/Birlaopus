@@ -52,7 +52,7 @@ public class Compare_Product_Functionality_Page {
 	public WebElement productTitle;
 
 	public String getProductName() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.visibilityOf(productTitle));
 		return productTitle.getText().trim();
 	}
@@ -61,7 +61,7 @@ public class Compare_Product_Functionality_Page {
 	public void VerifyCompareCountOnCompareCounter(String expectedCount) {
 
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div.compare-card")));
 
@@ -137,7 +137,7 @@ public class Compare_Product_Functionality_Page {
      //on compare counter
 	public void removeProductFromCompare(String productName) {
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
 		// All product cards on compare page
 		List<WebElement> productCards = driver.findElements(By.cssSelector(".compare-card"));

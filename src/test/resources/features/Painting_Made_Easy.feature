@@ -1,4 +1,4 @@
-@SCOPE
+
 Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
 
   Background: 
@@ -15,6 +15,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     When User clicks on Painting made easy
     Then User clicks on Get free quote
     Then User clicks on the Next button on the Book a Free Survey form
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for Painting Made Easy form: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User clicks on the Next button on the Share Few Details section
     And User selects the painting requirement type "<requirementType>"

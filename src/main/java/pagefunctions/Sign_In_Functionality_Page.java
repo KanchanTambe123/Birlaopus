@@ -83,7 +83,7 @@ public class Sign_In_Functionality_Page {
 	
 	 public void clickLogoutPopupButton(String answer) {
 		    WebDriver driver = DriverManager.getDriver();
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		    String className = answer.equalsIgnoreCase("Yes") ? "logout-user" : "logout-user-no";

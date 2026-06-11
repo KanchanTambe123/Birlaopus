@@ -1,3 +1,4 @@
+
 Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.
 
   Background: 
@@ -90,8 +91,8 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     Then User should see an error message for invalid pincode for Wallpapers "<errorMessage>"
 
     Examples: 
-      | navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
-      | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |     400 |               2 | Mumbai  |                2 |
+      | navmenu | navtab     | productname          | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |errorMessage|
+      | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |     400 |               2 | Mumbai  |                2 |Please enter a valid pincode|
 
   #---------------------------------- Scenario 7 ----------------------------------#
   Scenario Outline: To verify error message when pincode field is empty for wallpaper

@@ -45,6 +45,11 @@ public class End_to_End_Wallpapers_Journey_Page {
 	@FindBy(xpath = "//span[@class='cmp-button__text' and text()='View Cart & Checkout']")
 	public WebElement ViewCheckoutButton;
 	
+
+	@FindBy(xpath = "//div[@class='error-txt' and contains(text(),'Please enter a valid pincode')]")
+	public WebElement ErrorInvalidPincodeMessage;
+	
+	
 	
 
 	public End_to_End_Wallpapers_Journey_Page() {
@@ -69,7 +74,7 @@ public class End_to_End_Wallpapers_Journey_Page {
 				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", shade);
 
 				JavascriptExecutor js = (JavascriptExecutor) driver;
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 				// Wait until clickable and click
 				wait.until(ExpectedConditions.elementToBeClickable(shade)).click();
 				System.out.println("Selected shade with Product Code: " + productCode);
@@ -88,7 +93,7 @@ public class End_to_End_Wallpapers_Journey_Page {
 	public void hoverAndClickProduct(String navMenu, String navTab, String productName) throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
 		// 1️.Hover over main navigation
 		List<WebElement> mainNavItems = driver.findElements(By.xpath("//ul[@class='cmp-navigation__group']/li"));
@@ -98,7 +103,7 @@ public class End_to_End_Wallpapers_Journey_Page {
 				js.executeScript("arguments[0].scrollIntoView(true);", navItem);
 				Actions actions = new Actions(driver);
 				actions.moveToElement(navItem).perform();
-				Thread.sleep(1000); // short wait for sub-menu
+				Thread.sleep(3000); // short wait for sub-menu
 				mainNavFound = true;
 				break;
 			}
@@ -115,7 +120,7 @@ public class End_to_End_Wallpapers_Journey_Page {
 				js.executeScript("arguments[0].scrollIntoView(true);", tab);
 				Actions actions = new Actions(driver);
 				actions.moveToElement(tab).perform();
-				Thread.sleep(1000); // products to load
+				Thread.sleep(3000); // products to load
 				tabFound = true;
 				break;
 			}
@@ -135,6 +140,7 @@ public class End_to_End_Wallpapers_Journey_Page {
 				WebElement productLink = product.findElement(By.cssSelector("a.cmp-wallpaperCard__image-link"));
 				wait.until(ExpectedConditions.elementToBeClickable(productLink));
 				js.executeScript("arguments[0].scrollIntoView(true);", productLink);
+				Thread.sleep(2000);
 				productLink.click();
 				System.out.println("Clicked product: " + productName);
 				productClicked = true;

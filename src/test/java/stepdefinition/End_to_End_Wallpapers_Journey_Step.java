@@ -70,9 +70,9 @@ public class End_to_End_Wallpapers_Journey_Step {
 	
 	@Then("User should see an error message for invalid pincode for Wallpapers {string}")
 	public void user_should_see_an_error_message_for_invalid_pincode_for_wallpapers(String  expectedMessage) {
-		wait.waitForElementVisible(cp.ErrMessageInvalidPincode);
-		js.scrollUntilElementVisible(cp.ErrMessageInvalidPincode);
-		String actualMessage = cp.ErrMessageInvalidPincode.getText();
+		wait.waitForElementVisible(ew.ErrorInvalidPincodeMessage);
+		js.scrollUntilElementVisible(ew.ErrorInvalidPincodeMessage);
+		String actualMessage = ew.ErrorInvalidPincodeMessage.getText();
 		Assert.assertEquals(actualMessage, expectedMessage, "error message mismatch");
 	}
 	

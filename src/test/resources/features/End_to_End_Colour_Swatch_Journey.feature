@@ -1,4 +1,4 @@
-@SCOPE
+
 Feature: To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
 
   Background: 
@@ -73,7 +73,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Examples: 
       | navmenu | navtab       | productname   | optionText          |
       | Shop    | Colour Tools | Colour Swatch | Delete colour story |
-@test
+
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user.
     Then User click whishlist icon on top page

@@ -47,7 +47,7 @@ public class Wishlist_Functionality_Page {
 
 	public boolean isProductAddedToWishlist() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 	    try {
 	        wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -61,7 +61,7 @@ public class Wishlist_Functionality_Page {
 
 	public boolean isProductRemovedFromWishlist() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
 	    return wait.until(driver ->
 	        driver.findElements(

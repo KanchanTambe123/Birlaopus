@@ -1,17 +1,18 @@
-@SCOPE
+
 Feature: To Validate the Budget Calculator homepage for a logged-in user(single product)
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
-    When User clicks on the profile icon
+   
+
+  #---------------------------------- Scenario 1 ----------------------------------#
+  Scenario Outline: To validate Budget Calculator functionality using valid mandatory data
+   When User clicks on the profile icon
     And User clicks on the Sign In button
     And User enters valid mobile number on the Sign In page
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-
-  #---------------------------------- Scenario 1 ----------------------------------#
-  Scenario Outline: To validate Budget Calculator functionality using valid mandatory data
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -20,6 +21,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
     # And the calculation result correctly reflects the entered carpet area and pincode
     Then click on Budget Calculator book free survey button
     Then User clicks on the Next button on the Book a Free Survey form
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for Budget Calculator form: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User clicks on the Next button on the Share Few Details section
     And User selects the painting requirement type "<requirementType>"
@@ -50,6 +52,12 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify Book a Free Survey button visibility on other tabs after booking a survey from the Premium tab
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -69,6 +77,12 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify thank you pop-up appears when user selects I’ll do it later option
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -101,9 +115,15 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
   # | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
   #| Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
   
-  @test
+  
   #---------------------------------- Scenario 6----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -121,6 +141,12 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   #---------------------------------- Scenario 7----------------------------------#
   Scenario Outline: To verify whether the carpet area can be edited and if the price updates correctly.
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -136,6 +162,12 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   #---------------------------------- Scenario 8----------------------------------#
   Scenario Outline: To verify that an error message is displayed when an invalid pincode is entered.
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     And the User enters a invalid pincode "<pincode>"
     Then the User should see the error message "Invalid Input."
@@ -147,6 +179,12 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   #---------------------------------- Scenario 9----------------------------------#
   Scenario Outline: To verify error message when alphabet is entered in pincode field
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     And the User enters a invalid pincode "<pincode>"
     Then the user should see the error message "This field is required." when an alphabet is entered in the pincode field.
@@ -157,6 +195,12 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   #---------------------------------- Scenario 10----------------------------------#
   Scenario Outline: To verify that clicking on "View Products" displays products based on carpet area and a particular pincode(Premium category)
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"
@@ -171,6 +215,12 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   #---------------------------------- Scenario 11----------------------------------#
   Scenario Outline: To verify Download Estimate button is clickable
+   When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
     When the User scrolls to the Budget Calculator
     Then the User selects the space name to paint "<spaceName>"
     And the User enters a valid carpet area "<carpetArea>"

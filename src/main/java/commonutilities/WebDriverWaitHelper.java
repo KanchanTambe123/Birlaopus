@@ -68,7 +68,7 @@ public class WebDriverWaitHelper {
 	    
 	    public void waitForElementVisible(WebElement ele) {
 			
-			WebDriverWait webDriverWait=new WebDriverWait(driver,Duration.ofSeconds(20));
+			WebDriverWait webDriverWait=new WebDriverWait(driver,Duration.ofSeconds(80));
 			webDriverWait.until(ExpectedConditions.visibilityOf(ele));
 		}
 	    

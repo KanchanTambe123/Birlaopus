@@ -47,7 +47,7 @@ public class Store_Locator_Step {
 		wait.waitForElementVisible(sl.pincodeInput);
 		js.scrollUntilElementVisible(sl.pincodeInput);
 		sl.pincodeInput.clear();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		common.SendInput(string, sl.pincodeInput);
 	}
 	@Then("User enters a invalid pincode {string}")
@@ -55,7 +55,7 @@ public class Store_Locator_Step {
 		wait.waitForElementVisible(sl.pincodeInput);
 		js.scrollUntilElementVisible(sl.pincodeInput);
 		sl.pincodeInput.clear();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		common.SendInput(string, sl.pincodeInput);
 	}
 
@@ -63,7 +63,7 @@ public class Store_Locator_Step {
 	@Then("User clicks on the submit button")
 	public void user_clicks_on_the_submit_button() throws InterruptedException {
 		wait.waitForElementVisible(sl.submitBtn);
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		js.scrollUntilElementVisible(sl.submitBtn);
 		js.jsClickWithWait(sl.submitBtn);
 		Thread.sleep(4000);
@@ -82,7 +82,7 @@ public class Store_Locator_Step {
 	@Then("User clicks on the continue button")
 	public void user_clicks_on_the_continue_button() throws InterruptedException {
 		wait.waitForElementVisible(sl.continueButton);
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		js.scrollUntilElementVisible(sl.continueButton);
 		js.jsClickWithWait(sl.continueButton);
 		Thread.sleep(4000);
@@ -93,13 +93,13 @@ public class Store_Locator_Step {
 		wait.waitForElementVisible(sl.emailInputField);
 		js.scrollUntilElementVisible(sl.emailInputField);
 		sl.emailInputField.clear();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		common.SendInput(fakeEmailId, sl.emailInputField);
 	}
 
 	@Then("The confirmation message should be displayed successfully")
 	public void the_confirmation_message_should_be_displayed_successfully() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
 
 		wait.until(ExpectedConditions.visibilityOf(sl.successTitleText));
 
@@ -109,7 +109,7 @@ public class Store_Locator_Step {
 	@Then("User clicks on the submit button on lead details form")
 	public void user_clicks_on_the_submit_button_on_lead_details_form() throws InterruptedException {
 		wait.waitForElementVisible(sl.submitButtonLeadDetailsForm);
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		js.scrollUntilElementVisible(sl.submitButtonLeadDetailsForm);
 		js.jsClickWithWait(sl.submitButtonLeadDetailsForm);
 		Thread.sleep(4000);

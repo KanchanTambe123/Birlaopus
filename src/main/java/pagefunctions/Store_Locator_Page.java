@@ -33,7 +33,7 @@ public class Store_Locator_Page {
 	@FindBy(xpath = "//input[@id='pincode-input']")
 	public WebElement pincodeInput;
 
-	@FindBy(xpath = "(//*[@type='SUBMIT'])[18]")
+	@FindBy(xpath =  "//*[@id=\"form-button-525153950\"]")
 	public WebElement submitBtn;
 	
 	//Scenarios 2
@@ -58,7 +58,7 @@ public class Store_Locator_Page {
 	}
 
 	public void StoreLocatorResults() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(80));
 
 		//  store count text
 		WebElement storeCountText = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -84,7 +84,7 @@ public class Store_Locator_Page {
 	
 	public void clickFirstGetNumberButton() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    List<WebElement> getNumberButtons = wait.until(

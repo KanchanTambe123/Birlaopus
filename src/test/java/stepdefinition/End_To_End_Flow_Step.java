@@ -1,5 +1,13 @@
 package stepdefinition;
 
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import commonutilities.ActionClass;
@@ -24,6 +32,7 @@ public class End_To_End_Flow_Step {
 	CommonMethods common = new CommonMethods();
 	ActionClass actionClass = new ActionClass();
 	JSExecutor js = new JSExecutor();
+	
 	int cartQuantity;
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 
@@ -160,10 +169,16 @@ public class End_To_End_Flow_Step {
 	}
 
 	@Then("the total payable amount should be correctly calculated and displayed")
-	public void the_total_payable_amount_should_be_correctly_calculated_and_displayed() throws InterruptedException {
-		Thread.sleep(3000);
-		ep.verifyTotalPayableAmount();
+	public void the_total_payable_amount_should_be_correctly_calculated_and_displayed() {
+
+
+	// Call verification method
+	ep.verifyTotalPayableAmount();
+	
+	
+
 	}
+
 
 	@Then("User clicks on the Edit button to update the shipping details.")
 	public void user_clicks_on_the_edit_button_to_update_the_shipping_details() throws InterruptedException {

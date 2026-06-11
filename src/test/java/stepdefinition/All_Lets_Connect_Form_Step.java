@@ -8,10 +8,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ActionClass;
+import commonutilities.ApiUtil;
 import commonutilities.ClickElement;
 import commonutilities.CommonDataGenerator;
 import commonutilities.CommonMethods;
+import commonutilities.CryptoUtils;
 import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
@@ -28,6 +33,7 @@ import pagefunctions.WebsiteLaunch;
 
 public class All_Lets_Connect_Form_Step {
 
+    private static boolean isLogged = false;
 	ConfigReader config = new ConfigReader();
 	WebDriverWaitHelper wait = new WebDriverWaitHelper();
 	ClickElement click = new ClickElement();
@@ -93,9 +99,9 @@ public class All_Lets_Connect_Form_Step {
 		Thread.sleep(2000);
 		common.SendInput(string, lp.pincodeField);
 	}
-
 	@When("User clicks on the Submit button")
 	public void user_clicks_on_the_submit_button() throws InterruptedException {
+
 		wait.waitForElementVisible(lp.submitButton);
 		Thread.sleep(2000);
 		js.scrollUntilElementVisible(lp.submitButton);
@@ -104,6 +110,12 @@ public class All_Lets_Connect_Form_Step {
 		Thread.sleep(6000);
 	}
 	
+	@And("User captures and validates API request and response for {string}")
+	public void user_captures_and_validates_api(String endpointKey) {
+
+       bs.logLeadApiDetails(endpointKey);
+
+	}
 	@When("User should see the acknowledgment message after successful submission {string}")
 	public void user_should_see_the_acknowledgment_message_after_successful_submission(String expectedText) {
 
@@ -240,7 +252,7 @@ public class All_Lets_Connect_Form_Step {
 		wait.waitForElementVisible(lp.PincodeInputFiledBookfreeConsultation);
 		js.scrollUntilElementVisible(lp.PincodeInputFiledBookfreeConsultation);
 		// lp.PincodeInputFiledBookfreeConsultation.clear();
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		common.SendInput(string, lp.PincodeInputFiledBookfreeConsultation);
 	}
 	

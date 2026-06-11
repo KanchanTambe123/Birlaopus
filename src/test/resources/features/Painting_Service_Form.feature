@@ -1,4 +1,4 @@
-@SCOPE
+
 Feature: To Validate Painting Service Request Form(Homepage Search Form)
 
   Background: 

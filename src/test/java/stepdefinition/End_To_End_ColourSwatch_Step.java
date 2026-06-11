@@ -23,6 +23,7 @@ public class End_To_End_ColourSwatch_Step {
 	ActionClass actionClass = new ActionClass();
 	JSExecutor js = new JSExecutor();
 	int cartQuantity;
+	
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 	End_to_End_Flow_Page ep = new End_to_End_Flow_Page();
 	String fakeFirstName = dataGenerator.generateFakeFirstName();

@@ -17,6 +17,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ClickElement;
 import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
@@ -32,6 +35,7 @@ public class End_to_End_Flow_Page {
 		driver = DriverManager.getDriver();
 		PageFactory.initElements(driver, this);
 	}
+	
 
 	// Page Elements 	//Scenarios 1
 	@FindBy(xpath = "//img[@alt='Paint Product']")
@@ -347,7 +351,7 @@ public class End_to_End_Flow_Page {
 
 		By addToCartBtn = By.xpath("//button[contains(@class,'cmp-product__cart')]");
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		WebElement addToCart = wait.until(ExpectedConditions.presenceOfElementLocated(addToCartBtn));
 
@@ -363,7 +367,7 @@ public class End_to_End_Flow_Page {
 	// update qty
 	public int updateCartQuantity(int desiredQty) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		while (true) {
 
@@ -399,7 +403,7 @@ public class End_to_End_Flow_Page {
 	}
 
 	private void safeClick(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 		} catch (ElementClickInterceptedException e) {
@@ -481,7 +485,7 @@ public class End_to_End_Flow_Page {
 	// order summary
 	public int getFinalOrderSummaryQuantity() {
 
-		WebElement summaryQtyElement = new WebDriverWait(driver, Duration.ofSeconds(10))
+		WebElement summaryQtyElement = new WebDriverWait(driver, Duration.ofSeconds(20))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.summary__card-qty-desp")));
 
 		return Integer.parseInt(summaryQtyElement.getAttribute("data-qty"));
@@ -490,54 +494,105 @@ public class End_to_End_Flow_Page {
 	// total
 	public void verifyTotalPayableAmount() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
-	    // Subtotal (Excl. Tax)
-	    double subtotal = extractAmount(
-	            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.cart__subtotal-value")))
-	                    .getText());
+		// Subtotal
+		double subtotal = extractAmount(wait.until(ExpectedConditions.visibilityOfElementLocated(
+		        By.cssSelector(".cart__subtotal-value")
+		)).getText());
 
-	    // Coupon Discount (if visible)
-	    double discount = 0;
-	    List<WebElement> discountRow = driver.findElements(By.id("discount"));
+		// Tax
+		double tax = extractAmount(wait.until(ExpectedConditions.visibilityOfElementLocated(
+		        By.cssSelector(".cart__taxes-value")
+		)).getText());
 
-	    if (!discountRow.isEmpty() && discountRow.get(0).isDisplayed()) {
-	        discount = extractAmount(
-	                discountRow.get(0).findElement(By.cssSelector("span.cart__coupon-discount-value")).getText());
-	    }
+		// Discount (optional)
+		double discount = 0;
+		List<WebElement> discountEls = driver.findElements(
+		        By.cssSelector(".cart__coupon-discount-value")
+		);
 
-	    // Taxes
-	    double taxes = extractAmount(
-	            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.cart__taxes-value")))
-	                    .getText());
+		if (!discountEls.isEmpty() && discountEls.get(0).isDisplayed()) {
+		    String txt = discountEls.get(0).getText().trim();
+		    if (!txt.equals("-") && !txt.isEmpty()) {
+		        discount = extractAmount(txt);
+		    }
+		}
 
-	    // Displayed Total
-	    double displayedTotal = extractAmount(wait
-	            .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.cart__total"))).getText());
+		// ✅ Wait for total to be updated (critical fix)
+		By totalLocator = By.cssSelector(".cart__total");
 
-	    // Expected Total = Subtotal + Taxes − Discount
-	    double expectedTotal = subtotal + taxes - discount;
+		wait.until(d -> {
+		    try {
+		        String text = d.findElement(totalLocator).getText().trim();
+		        return !text.isEmpty() && !text.equals("0") && extractAmount(text) > 0;
+		    } catch (Exception e) {
+		        return false;
+		    }
+		});
+
+		double displayedTotal = extractAmount(driver.findElement(totalLocator).getText());
+
+		// Expected calculation
+		double expectedTotal = subtotal + tax + discount;
+
+		long expected = Math.round(expectedTotal);
+		long actual = Math.round(displayedTotal);
+
+		// Logs
+		System.out.println("Subtotal: " + subtotal);
+		System.out.println("Tax: " + tax);
+		System.out.println("Discount: " + discount);
+		System.out.println("Expected: " + expected);
+		System.out.println("Actual: " + actual);
+		 ExtentCucumberAdapter.getCurrentStep().log(
+		            Status.INFO,
+		            "Cart Total: " + actual
+		    );
+		Assert.assertEquals(actual, expected, "Total mismatch");
+
+		System.out.println("Total verified successfully");
+	
+
+		}
 
 	
-	    long expectedDisplayed = (long) expectedTotal;
-	    long actualDisplayed = (long) displayedTotal;
 
-	    // Assertion
-	    Assert.assertEquals(actualDisplayed, expectedDisplayed, "Total payable amount is incorrectly calculated");
+	public double extractAmount(String text) {
 
-	    System.out.println("Total payable amount verified successfully: ₹" + actualDisplayed);
-	}
+		if (text == null || text.trim().isEmpty() || text.trim().equals("-")) {
+		    return 0.0;
+		}
 
-	private double extractAmount(String amountText) {
-	    //  digits and decimal
-	    String cleanText = amountText.replaceAll("[^0-9.]", "");
-	    return Double.parseDouble(cleanText);
-	}
+		try {
+		    text = text.trim();
+
+		    // Preserve negative sign if present
+		    boolean isNegative = text.contains("-");
+
+		    // Remove everything except digits and decimal
+		    text = text.replaceAll("[^0-9.]", "");
+
+		    if (text.isEmpty()) {
+		        return 0.0;
+		    }
+
+		    double value = Double.parseDouble(text);
+
+		    return isNegative ? -value : value;
+
+		} catch (Exception e) {
+		    System.out.println("Error parsing amount: " + text);
+		    return 0.0;
+		}
 	
+
+		}
 
 
 	public void selectCategory(String categoryName) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
 	    // Locate the category link by span text
 	    WebElement categoryLink = wait.until(

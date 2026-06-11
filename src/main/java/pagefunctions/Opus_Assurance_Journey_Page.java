@@ -177,7 +177,7 @@ public class Opus_Assurance_Journey_Page {
 	}
 	public void selectAvailableTimeSlot() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
 	    // Get all available (not disabled) time slots
 	    List<WebElement> slots = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
@@ -208,7 +208,7 @@ public class Opus_Assurance_Journey_Page {
 	// date
 	public void selectAvailableDate() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
 
 		// Wait until all date elements are present
 		List<WebElement> dates = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
@@ -236,7 +236,7 @@ public class Opus_Assurance_Journey_Page {
 	public void clickSixthContractorAndValidate() {
 
 	    WebDriver driver = DriverManager.getDriver();
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    By selectBtn = By.xpath("//button[normalize-space()='Select this contractor']");

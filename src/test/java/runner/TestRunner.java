@@ -27,12 +27,20 @@ import io.cucumber.testng.CucumberOptions;
 @RunWith(Cucumber.class)
 
 
-
-@CucumberOptions(features = {"src/test/resources/features"},glue = {
-		"stepdefinition" },plugin = { "pretty",
- 
-				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber.json",
-				"html:report/html/cucumber.html" }, monochrome = true, dryRun = false) // true=create step
+@CucumberOptions(
+	    features = {"src/test/resources/features"},
+	    glue = {"stepdefinition"},
+	  // tags = "@test",
+	    plugin = {
+	        "pretty",
+	        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+	        "json:target/cucumber.json",   //
+	        "html:report/html/cucumber.html",
+	        "rerun:target/failed.txt"//failed only
+	    },
+	    monochrome = true,
+	    dryRun = false
+	) // true=create step
 
 public class TestRunner extends AbstractTestNGCucumberTests {
 	CommonMethods common =new CommonMethods(); 
@@ -97,8 +105,10 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	}*/
 	@AfterSuite
 	public void after_all() throws Exception {
-
+	
+	    
 	    ReportUtil.readCucumberReport();
+	   
 
 	    List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
 
@@ -121,9 +131,11 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 	    List<String> attachmentPaths = Arrays.asList(
 	            "./report/pdf/Birlaopus_extent.pdf",
-	            "./report/html/Birlaopus.html"
+	            "./report/html/Birlaopus.html",
+	            "./report/pdf/FailedScenarioReport.pdf"
 	    );
 
 	    SendMail.sendEmailWithAttachment(recipients, subject, body, attachmentPaths);
 	}
+	
 }

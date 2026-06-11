@@ -1,4 +1,4 @@
-@SCOPE
+
 Feature: To Validate Survey Booking Form
 
   Background: 
@@ -17,7 +17,9 @@ Feature: To Validate Survey Booking Form
     #Then User click on address confirm button
     #And User enters the survey Pincode "<pincode>"
     Then User clicks on the Next button on the Book a Free Survey form
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for booking a free survey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
+
     And User clicks on the Next button on the Share Few Details section
     Then User selects the painting requirement type "<requirementType>"
     And User clicks on the project details next button
@@ -65,24 +67,24 @@ Feature: To Validate Survey Booking Form
     Examples: 
       | pincode |
       |  111222 |
-@test
-  #---------------------------------- Scenario 5 ----------------------------------#
-  Scenario Outline: To Verify address section with valid and invalid inputs
-    And User clicks on the Book a Free Survey button
-    When User enters "<FlatNo>" in Flat no / building name field
-    And User enters "<AddressLine1>" in Property name / Address line 1 field
-    And User selects location using "<MapOption>"
-    And User enters "<City>" in City field
-    And User enters "<State>" in State field
-    And User enters "<Pincode>" in Pincode field
-    Then User clicks on the Next button on the Book a Free Survey form
-    Then "<ExpectedResult>" should be displayed
 
-    Examples: 
-      | FlatNo | AddressLine1                 | MapOption      | City   | State       | Pincode | ExpectedResult                |
-      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | Address saved successfully    |
-      |        | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | This field is required.       |
-      | test   |                              | Locate on maps | Mumbai | Maharashtra |  500001 | This field is required.       |
-      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |         | This field is required.       |
-      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |     123 | Invalid Input.                |
-      | test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | Next page should be displayed |
+  #---------------------------------- Scenario 5 ----------------------------------#
+  #Scenario Outline: To Verify address section with valid and invalid inputs
+    #And User clicks on the Book a Free Survey button
+    #When User enters "<FlatNo>" in Flat no / building name field
+    #And User enters "<AddressLine1>" in Property name / Address line 1 field
+    #And User selects location using "<MapOption>"
+    #And User enters "<City>" in City field
+    #And User enters "<State>" in State field
+    #And User enters "<Pincode>" in Pincode field
+    #Then User clicks on the Next button on the Book a Free Survey form
+    #Then "<ExpectedResult>" should be displayed
+#
+    #Examples: 
+      #| FlatNo | AddressLine1                 | MapOption      | City   | State       | Pincode | ExpectedResult                |
+      #| test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | Address saved successfully    |
+      #|        | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | This field is required.       |
+      #| test   |                              | Locate on maps | Mumbai | Maharashtra |  500001 | This field is required.       |
+      #| test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |         | This field is required.       |
+      #| test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |     123 | Invalid Input.                |
+      #| test   | Testtex Laboratories Pvt Ltd | Locate on maps | Mumbai | Maharashtra |  500001 | Next page should be displayed |

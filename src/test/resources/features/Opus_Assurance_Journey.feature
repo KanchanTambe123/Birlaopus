@@ -1,4 +1,4 @@
-@SCOPE
+
 Feature: To Validate Opus Assurance Journey Functionality
 
   Background: 
@@ -131,6 +131,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User enter Site Details project name
     And User enter update pin code on site details "<Update_pin_code>"
     Then User click submit button on Site Details
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User click next button on Just a Few More Details
     Then User clcik on Sign Up for PaintCraft button

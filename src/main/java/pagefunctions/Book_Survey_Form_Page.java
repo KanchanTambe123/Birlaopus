@@ -153,6 +153,41 @@ public class Book_Survey_Form_Page {
 			js.executeScript("arguments[0].click();", firstSuggestion);
 		}
 	}
+	
+	public void logLeadApiDetails(String apiType) {
+
+	    try {
+	        // 1️Get data
+	        String requestPayload = DriverManager.waitForLeadPayload(15);
+	        int statusCode = DriverManager.waitForLeadStatusCode(15);
+	        long responseTime = DriverManager.getResponseTime();
+
+	        // 2️Log basic info
+	        ExtentCucumberAdapter.addTestStepLog(" API Type: " + apiType);
+	        ExtentCucumberAdapter.addTestStepLog(" Status Code: " + statusCode);
+	        ExtentCucumberAdapter.addTestStepLog(" Response Time: " + responseTime + " ms");
+
+	        // 3️ Log request payload
+	        ExtentCucumberAdapter.addTestStepLog(" Request Payload: " + requestPayload);
+
+	        // 4️OPTIONAL → Decrypt & log
+	        try {
+	            JSONObject wrapperJson = new JSONObject(requestPayload);
+	            String encryptedData = wrapperJson.getString("data");
+
+	            String decryptedJson = crypto.decryptData(encryptedData);
+
+	            ExtentCucumberAdapter.addTestStepLog(" Decrypted Payload: " + decryptedJson);
+
+	        } catch (Exception e) {
+	            ExtentCucumberAdapter.addTestStepLog(" Decryption skipped / failed: " + e.getMessage());
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        ExtentCucumberAdapter.addTestStepLog(" Exception while logging API: " + e.getMessage());
+	    }
+	}
 
 	public void verifyLeadApiParameters(String expectedLeadContext, String expectedLeadType,
 	        String expectedSubType, String expectedLeadSubSource) {
@@ -244,4 +279,5 @@ public class Book_Survey_Form_Page {
 	    }
 
 	}
+	
 }

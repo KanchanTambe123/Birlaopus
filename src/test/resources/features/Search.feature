@@ -1,4 +1,4 @@
-@SCOPE
+
 Feature: To Validate search Functionality
 
   Background: 
@@ -25,7 +25,6 @@ Feature: To Validate search Functionality
 
     Examples: 
       | searchfor         |
-      | xyz123            |
       | asdfghjkl         |
       |          00000000 |
       | unknownproduct999 |

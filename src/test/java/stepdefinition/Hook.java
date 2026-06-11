@@ -27,7 +27,7 @@ public class Hook {
 
 		driverManager.init_driver(configReader.getProb("browser"));
 	
-      
+		   DriverManager.resetApiData();
 
 	}
 

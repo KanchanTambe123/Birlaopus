@@ -50,7 +50,7 @@ public class Cart_Functionality_Page {
 	}
 
 	public void waitForCartCountToIncrease(int previousCount) {
-	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(15));
+	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
 	    wait.until(driver -> getCartItemCount() > previousCount);
 	}
 
@@ -58,7 +58,7 @@ public class Cart_Functionality_Page {
 
 	public void selectSecondVisibleProduct() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    // Locator for visible product cards

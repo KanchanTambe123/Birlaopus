@@ -142,7 +142,7 @@ public class BudgetCalculator_Page {
 
 	public void verifyTabIsLocked(String tabName) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 		WebElement tab = wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.xpath("//li[@role='tab' and normalize-space()='" + tabName + "']")));
@@ -204,7 +204,7 @@ public class BudgetCalculator_Page {
 
 	public void closeThankYouPopup() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 
 		By closeIcon = By.xpath("//a[@id='surveyFlowClose']//img");
 

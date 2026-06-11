@@ -1,5 +1,5 @@
-@SCOPE
-Feature: To Validate the Brand Inquiry Form and Book a Free Consultation form on the homepage.
+
+Feature: To Validate the Brand section Form and Book a Free Consultation form on the homepage.
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
@@ -18,6 +18,7 @@ Feature: To Validate the Brand Inquiry Form and Book a Free Consultation form on
     When User selects "<HelpOption>" from the How can we help you? dropdown
     And User enters a valid Pincode on the Let’s Connect form Brands "<Pincode>"
      And User clicks on the Submit button
+     And User captures and validates API request and response for "lead/shortForm"
     #And verify the lead API parameters for Brands Enquiry form  : iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
    
     And User should see the acknowledgment message after successful submission "Thank You For Reaching out to us !"
