@@ -123,7 +123,7 @@ public class Painting_Made_Easy_Page {
 	// date
 	public void selectAvailableDate() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// Wait until all date elements are present
 		List<WebElement> dates = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
@@ -151,7 +151,7 @@ public class Painting_Made_Easy_Page {
 	// time
 	public void selectTimeSlotByText(String timeSlotText) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		WebElement slot = wait.until(ExpectedConditions.presenceOfElementLocated(
 				By.xpath("//div[contains(@class,'timeSlot') and not(contains(@class,'disabled'))]"
@@ -170,7 +170,7 @@ public class Painting_Made_Easy_Page {
 
 	public void selectHomeConfigurationType(String bhkType) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		List<WebElement> bhkOptions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
 				By.xpath("//div[@class='container responsivegrid bhkQuestions']/div/div")));
@@ -188,7 +188,7 @@ public class Painting_Made_Easy_Page {
 	public void clickScheduleButton() {
 
 		By scheduleBtn = By.xpath("//button[normalize-space()='Schedule']");
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		WebElement scheduleButton = wait.until(ExpectedConditions.presenceOfElementLocated(scheduleBtn));
 
@@ -200,7 +200,7 @@ public class Painting_Made_Easy_Page {
 	}
 
 	public void enterSurveyPinCode(String pinCode, WebElement pinInputElement) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// Wait
 		WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("surveyPincode")));

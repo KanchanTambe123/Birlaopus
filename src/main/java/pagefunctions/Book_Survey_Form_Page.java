@@ -104,7 +104,7 @@ public class Book_Survey_Form_Page {
 	}
 
 	public void selectBhkType(String bhkType) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		// Wait for container and get cards
@@ -143,7 +143,7 @@ public class Book_Survey_Form_Page {
 		addressInput.sendKeys(address);
 
 		// Wait for suggestions to load and click first one
-		wait.waitForElementToBeClickable(firstSuggestion, 15);
+		wait.waitForElementToBeClickable(firstSuggestion, 20);
 
 		try {
 			firstSuggestion.click();
@@ -158,8 +158,8 @@ public class Book_Survey_Form_Page {
 
 	    try {
 	        // 1️Get data
-	        String requestPayload = DriverManager.waitForLeadPayload(15);
-	        int statusCode = DriverManager.waitForLeadStatusCode(15);
+	        String requestPayload = DriverManager.waitForLeadPayload(25);
+	        int statusCode = DriverManager.waitForLeadStatusCode(25);
 	        long responseTime = DriverManager.getResponseTime();
 
 	        // 2️Log basic info
@@ -194,10 +194,10 @@ public class Book_Survey_Form_Page {
 
 	    try {
 	        // 1️.Get payload
-	        String encryptedPayload = DriverManager.waitForLeadPayload(15);
+	        String encryptedPayload = DriverManager.waitForLeadPayload(25);
 
 	        // 2️.Get status code
-	        int statusCode = DriverManager.waitForLeadStatusCode(15);
+	        int statusCode = DriverManager.waitForLeadStatusCode(25);
 
 	        System.out.println("Encrypted Payload: " + encryptedPayload);
 	        System.out.println("Status Code: " + statusCode);

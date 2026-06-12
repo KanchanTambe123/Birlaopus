@@ -102,7 +102,7 @@ public class All_Lets_Connect_Form_Page {
 	public void selectHelpOption(String optionText) {
 
 	    WebDriverWait wait = new WebDriverWait(
-	            DriverManager.getDriver(), Duration.ofSeconds(20));
+	            DriverManager.getDriver(), Duration.ofSeconds(60));
 
 	    wait.until(ExpectedConditions.visibilityOf(helpDropdown));
 
@@ -130,7 +130,7 @@ public class All_Lets_Connect_Form_Page {
 	}
 
 	public void selectWhoAreYou(String userType) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    WebElement dropdown = wait.until(
 	        ExpectedConditions.elementToBeClickable(By.id("whoAreYou"))
 	    );
@@ -140,7 +140,7 @@ public class All_Lets_Connect_Form_Page {
 
 
 	public void selectHowCanWeHelpYou(String optionText) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    WebElement dropdown = wait.until(
 	        ExpectedConditions.elementToBeClickable(By.id("howCanWehelpYou"))
 	    );

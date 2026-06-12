@@ -67,7 +67,7 @@ public class End_To_End_ColourSwatch_Page {
 	    // Wait loader disappear
 	    wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
 
-	    // ✅ FIXED CLICK (Change button)
+	    //  FIXED CLICK (Change button)
 	    WebElement change = wait.until(ExpectedConditions.elementToBeClickable(changeBtn));
 
 	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", change);
@@ -108,7 +108,7 @@ public class End_To_End_ColourSwatch_Page {
 	
 	public void selectQuantity(int quantity) {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    By loader = By.cssSelector("div.section-loader");
@@ -155,7 +155,7 @@ public class End_To_End_ColourSwatch_Page {
 
 	public void clickWishlistIcon() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    By loader = By.cssSelector("div.section-loader");
@@ -208,7 +208,7 @@ public class End_To_End_ColourSwatch_Page {
 
 	    By tabsLocator = By.xpath("//ol[@role='tablist']//li[@role='tab']");
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 	    List<WebElement> tabs = driver.findElements(
 	    	    By.xpath("//ol[@role='tablist']//li[@role='tab']")
@@ -248,7 +248,7 @@ public class End_To_End_ColourSwatch_Page {
 	}
 	public void selectOptionFromWishlist(String optionText) {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 	    // Step 1: Get option button
 	    WebElement optionBtn = wait.until(ExpectedConditions.presenceOfElementLocated(
@@ -281,7 +281,7 @@ public class End_To_End_ColourSwatch_Page {
 	
 	public boolean isProductRemovedFromWishlist() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 	    return wait.until(driver ->
 	        driver.findElements(

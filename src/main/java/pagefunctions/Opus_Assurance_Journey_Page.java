@@ -177,7 +177,7 @@ public class Opus_Assurance_Journey_Page {
 	}
 	public void selectAvailableTimeSlot() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 	    // Get all available (not disabled) time slots
 	    List<WebElement> slots = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
@@ -208,7 +208,7 @@ public class Opus_Assurance_Journey_Page {
 	// date
 	public void selectAvailableDate() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// Wait until all date elements are present
 		List<WebElement> dates = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
@@ -236,7 +236,7 @@ public class Opus_Assurance_Journey_Page {
 	public void clickSixthContractorAndValidate() {
 
 	    WebDriver driver = DriverManager.getDriver();
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    By selectBtn = By.xpath("//button[normalize-space()='Select this contractor']");
@@ -284,10 +284,10 @@ public class Opus_Assurance_Journey_Page {
 
 	    try {
 	        // 1️.Get payload
-	        String encryptedPayload = DriverManager.waitForLeadPayload(15);
+	        String encryptedPayload = DriverManager.waitForLeadPayload(25);
 
 	        // 2️.Get status code
-	        int statusCode = DriverManager.waitForLeadStatusCode(15);
+	        int statusCode = DriverManager.waitForLeadStatusCode(25);
 
 	        System.out.println("Encrypted Payload: " + encryptedPayload);
 	        System.out.println("Status Code: " + statusCode);

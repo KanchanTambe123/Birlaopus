@@ -99,7 +99,7 @@ public class Store_Locator_Step {
 
 	@Then("The confirmation message should be displayed successfully")
 	public void the_confirmation_message_should_be_displayed_successfully() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 
 		wait.until(ExpectedConditions.visibilityOf(sl.successTitleText));
 

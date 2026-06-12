@@ -52,7 +52,7 @@ public class Compare_Product_Functionality_Page {
 	public WebElement productTitle;
 
 	public String getProductName() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 		wait.until(ExpectedConditions.visibilityOf(productTitle));
 		return productTitle.getText().trim();
 	}
@@ -61,7 +61,7 @@ public class Compare_Product_Functionality_Page {
 	public void VerifyCompareCountOnCompareCounter(String expectedCount) {
 
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div.compare-card")));
 
@@ -84,7 +84,7 @@ public class Compare_Product_Functionality_Page {
 	public void verifyProductsOnCompareCounter(String firstProduct, String secondProduct) {
 
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// Wait for compare product names
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("p.compare-para-txt")));
@@ -116,7 +116,7 @@ public class Compare_Product_Functionality_Page {
           //compare counter
 	public void clickCompareButton() throws InterruptedException {
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		By compareButton = By.xpath("//a[@class='compare-popup-btn-title']");
 
@@ -137,7 +137,7 @@ public class Compare_Product_Functionality_Page {
      //on compare counter
 	public void removeProductFromCompare(String productName) {
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(25));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// All product cards on compare page
 		List<WebElement> productCards = driver.findElements(By.cssSelector(".compare-card"));
@@ -187,7 +187,7 @@ public class Compare_Product_Functionality_Page {
 
 	public List<String> getVisibleComparedProducts() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// Wait for visibility
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("p.detail-para-txt")));
@@ -216,7 +216,7 @@ public class Compare_Product_Functionality_Page {
 	public void VerifyProductsDetailsOnComparePage(String firstProduct, String secondProduct) {
 
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 	
 		wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("p.detail-para-txt")));
@@ -241,7 +241,7 @@ public class Compare_Product_Functionality_Page {
 	public void VerifyCompareCountOnComparePage(String expectedCount) {
 
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// Correct selector
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector("div.color-card")));

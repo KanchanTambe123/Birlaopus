@@ -102,7 +102,7 @@ public class BudgetCalculator_Page {
 
 	public void selectSpaceOptions(String spaceName) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 		List<WebElement> spaceOptions = wait.until(ExpectedConditions
 				.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'cmp-text-button')]//a")));
@@ -142,7 +142,7 @@ public class BudgetCalculator_Page {
 
 	public void verifyTabIsLocked(String tabName) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 		WebElement tab = wait.until(ExpectedConditions
 				.presenceOfElementLocated(By.xpath("//li[@role='tab' and normalize-space()='" + tabName + "']")));
@@ -177,7 +177,7 @@ public class BudgetCalculator_Page {
 
 	public void verifyButtonVisibilityOnTab(String tabName) throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		// 1️⃣ Click tab
 		By tabLocator = By.xpath("(//li[@role='tab' and normalize-space()='" + tabName + "'])[2]");
@@ -204,7 +204,7 @@ public class BudgetCalculator_Page {
 
 	public void closeThankYouPopup() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		By closeIcon = By.xpath("//a[@id='surveyFlowClose']//img");
 

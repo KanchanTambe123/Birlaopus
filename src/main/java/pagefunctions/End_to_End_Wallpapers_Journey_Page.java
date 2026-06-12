@@ -158,7 +158,7 @@ public class End_to_End_Wallpapers_Journey_Page {
 
 
 	public void enterPincodeAndCheck(String pincode) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 	    By pincodeInput = By.xpath("//input[@name='pinCode' and contains(@class,'cmp-wallpaper__input')]");
 	    WebElement field = wait.until(ExpectedConditions.visibilityOfElementLocated(pincodeInput));

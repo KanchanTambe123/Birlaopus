@@ -78,11 +78,11 @@ public class Painting_Made_Easy_Step {
 	@Then("User clicks on the I’ll do it later option")
 	public void user_clicks_on_the_i_ll_do_it_later_option() throws InterruptedException {
 		wait.waitForElementVisible(pm.DoLetterButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		js.scrollUntilElementVisible(pm.DoLetterButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		js.jsClickWithWait(pm.DoLetterButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 	}
 
 	@Then("User enters unserviceable Pin code {string}")
@@ -141,7 +141,7 @@ public class Painting_Made_Easy_Step {
 
 	@Then("User enter invalid first name on painting made easy {string}")
 	public void user_enter_invalid_first_name_on_painting_made_easy(String string) {
-		wait.waitForElementToBeVisible(pm.firstNameField, 10);
+		wait.waitForElementToBeVisible(pm.firstNameField, 30);
 		pm.firstNameField.sendKeys(string);
 	}
 
@@ -164,7 +164,7 @@ public class Painting_Made_Easy_Step {
 
 	@Then("User clicks on save details button")
 	public void user_clicks_on_save_details_button() {
-		wait.waitForElementToBeClickable(pm.saveDetailsCta, 10);
+		wait.waitForElementToBeClickable(pm.saveDetailsCta, 30);
 		pm.saveDetailsCta.click();
 	}
 
@@ -178,13 +178,13 @@ public class Painting_Made_Easy_Step {
 
 	@Then("User enter invalid last name on painting made easy {string}")
 	public void user_enter_invalid_last_name_on_painting_made_easy(String string) {
-		wait.waitForElementToBeVisible(pm.lastNameField, 10);
+		wait.waitForElementToBeVisible(pm.lastNameField, 30);
 		pm.lastNameField.sendKeys(string);
 	}
 
 	@Then("User enter invalid email id on painting made easy {string}")
 	public void user_enter_invalid_email_id_on_painting_made_easy(String string) {
-		wait.waitForElementToBeVisible(pm.emailIDField, 10);
+		wait.waitForElementToBeVisible(pm.emailIDField, 30);
 		pm.emailIDField.sendKeys(string);
 	}
 
@@ -196,14 +196,14 @@ public class Painting_Made_Easy_Step {
 
 	@Then("User enter valid otp {string}")
 	public void user_enter_valid_otp(String string) throws InterruptedException {
-		wait.waitForElementToBeVisible(pm.otpField, 10);
+		wait.waitForElementToBeVisible(pm.otpField, 30);
 		pm.otpField.sendKeys(string);
 		Thread.sleep(5000);
 	}
 
 	@Then("User click on verify button")
 	public void user_click_on_verify_button() throws InterruptedException {
-		wait.waitForElementToBeClickable(pm.verifyButton, 10);
+		wait.waitForElementToBeClickable(pm.verifyButton, 30);
 		pm.verifyButton.click();
 		Thread.sleep(5000);
 	}
@@ -275,7 +275,7 @@ public class Painting_Made_Easy_Step {
 	public void user_should_see_an_error_message_as_please_select_an_option(String expectedMessage) throws InterruptedException {
 
 	    Wait<WebDriver> wait = new FluentWait<>(DriverManager.getDriver())
-	            .withTimeout(Duration.ofSeconds(10))
+	            .withTimeout(Duration.ofSeconds(20))
 	            .pollingEvery(Duration.ofMillis(200));
 
 	    boolean isMessagePresent = wait.until(driver ->

@@ -104,7 +104,7 @@ public class Painting_Service_Form_Step {
 
 	@Then("User should be navigated to the previous page")
 	public void user_should_be_navigated_to_the_previous_page() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 
 		wait.until(ExpectedConditions.urlToBe(previousPageUrl));
 

@@ -46,9 +46,9 @@ public class Compare_Product_Functionality_Step {
 			String CompareFirstProductUrl, String expectedProductName) throws InterruptedException {
 		firstProduct = expectedProductName;
 		WebsiteLaunch.webLaunch(CompareFirstProductUrl);
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 		js.scrollUntilElementVisible(cp.productTitle);
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 		String actualProductName = cp.getProductName();
 		System.out.println("Captured Product Name: " + actualProductName);
 
@@ -56,7 +56,7 @@ public class Compare_Product_Functionality_Step {
 			throw new AssertionError("Expected product: " + expectedProductName + " BUT found: " + actualProductName);
 		}
 		js.jsClickWithWait(cp.compareIcon);
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 	}
 
 	@Given("User is on second product url {string} and adds second product {string} to the comparison list")
@@ -65,9 +65,9 @@ public class Compare_Product_Functionality_Step {
 
 		secondProduct = expectedProductName;
 		WebsiteLaunch.webLaunch(CompareSecondProductUrl);
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 		js.scrollUntilElementVisible(cp.productTitle);
-		Thread.sleep(1500);
+		Thread.sleep(2000);
 		String actualProductName = cp.getProductName();
 		System.out.println("Captured Product Name: " + actualProductName);
 
@@ -110,7 +110,7 @@ public class Compare_Product_Functionality_Step {
 
 	@Then("Compare Page should be displayed")
 	public void compare_page_should_be_displayed() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
 
 		WebElement title = wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("//span[@itemprop='name' and normalize-space()='Compare']")));

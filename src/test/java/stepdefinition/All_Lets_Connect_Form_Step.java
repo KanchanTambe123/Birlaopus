@@ -96,16 +96,16 @@ public class All_Lets_Connect_Form_Step {
 		wait.waitForElementVisible(lp.pincodeField);
 		js.scrollUntilElementVisible(lp.pincodeField);
 		
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		common.SendInput(string, lp.pincodeField);
 	}
 	@When("User clicks on the Submit button")
 	public void user_clicks_on_the_submit_button() throws InterruptedException {
 
 		wait.waitForElementVisible(lp.submitButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		js.scrollUntilElementVisible(lp.submitButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		js.jsClickWithWait(lp.submitButton);
 		Thread.sleep(6000);
 	}

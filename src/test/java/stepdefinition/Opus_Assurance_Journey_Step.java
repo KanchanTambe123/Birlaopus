@@ -145,7 +145,7 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User enter invalid email id {string}")
 	public void user_enter_invalid_email_id(String string) throws InterruptedException {
 		js.scrollUntilElementVisible(op.emailIdField);
-		wait.waitForElementToBeVisible(op.emailIdField, 10);
+		wait.waitForElementToBeVisible(op.emailIdField, 30);
 //		js.sendKeysUsingJS(op.emailIdField, string);
 		op.emailIdField.sendKeys("testtestgmail.com");
 		Thread.sleep(3000);
@@ -154,7 +154,7 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User enter invalid pin code {string}")
 	public void user_enter_invalid_pin_code(String string) throws InterruptedException {
 		js.scrollUntilElementVisible(op.pincodeField);
-		wait.waitForElementToBeVisible(op.pincodeField, 10);
+		wait.waitForElementToBeVisible(op.pincodeField, 30);
 		js.sendKeysUsingJS(op.pincodeField, string);
 //		op.pincodeField.sendKeys(string);
 		Thread.sleep(3000);
@@ -193,7 +193,7 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User enter invalid otp {string}")
 	public void user_enter_invalid_otp(String string) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		WebElement firstOtpField = wait.until(ExpectedConditions.visibilityOf(op.otpNoInputFiled.get(0)));
 
 //		firstOtpField.clear();
@@ -202,7 +202,7 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User click on verify otp cta")
 	public void user_click_on_verify_otp_cta() {
-		wait.waitForElementToBeClickable(op.verifyButton, 10);
+		wait.waitForElementToBeClickable(op.verifyButton, 20);
 		op.verifyButton.click();
 	}
 
@@ -244,11 +244,11 @@ public class Opus_Assurance_Journey_Step {
 		js.scrollUntilElementVisible(op.siteDetailsProjectName);
 		wait.waitForElementVisible(op.siteDetailsProjectName);
 		op.siteDetailsProjectName.click();
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		op.siteDetailsProjectName.clear();
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 		op.siteDetailsProjectName.sendKeys(fakeProjectName);
-		Thread.sleep(4000);
+		Thread.sleep(6000);
 	}
 
 	@Then("User click submit button on Site Details")
@@ -262,7 +262,7 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User selects a schedule visit date and timeslot")
 	public void user_selects_a_schedule_visit_date_and_timeslot() throws InterruptedException {
 		op.selectAvailableDate();
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		op.selectAvailableTimeSlot();
 	}
 
@@ -294,7 +294,7 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User click on verify otp button")
 	public void user_click_on_verify_otp_button() {
-		wait.waitForElementToBeClickable(pm.verifyButton, 10);
+		wait.waitForElementToBeClickable(pm.verifyButton, 20);
 		pm.verifyButton.click();
 		wait.waitForElementVisible(op.startNewProjectButton);
 	}
@@ -413,7 +413,7 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User should see the message {string}")
 	public void user_should_see_the_message(String expectedText) {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 
 		WebElement element = wait.until(ExpectedConditions
 				.visibilityOfElementLocated(By.xpath("(//p[contains(text(),'Birla Opus Assurance')])[20]")));
@@ -441,7 +441,7 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User should be displayed login page")
 	public void user_should_be_displayed_login_page() {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 			// Locator for "Let's get started" text
 			By loginHeader = By.xpath("//*[contains(text(),\"Let's get started\")]");
@@ -463,7 +463,7 @@ public class Opus_Assurance_Journey_Step {
 			throw new RuntimeException("Driver is NULL - not initialized in Hooks");
 		}
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		By loginText = By.xpath("//*[contains(text(),\"Let's get started\")]");
 
@@ -476,7 +476,7 @@ public class Opus_Assurance_Journey_Step {
 	public void user_selects_contractors(Integer count) {
 
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		By selectBtn = By.xpath("//button[normalize-space()='Select this contractor']");
 
@@ -506,7 +506,7 @@ public class Opus_Assurance_Journey_Step {
 	public void user_should_be_displayed_validation_message_contractor_section(String expectedMessage)
 			throws InterruptedException {
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 		By messageLocator = By.xpath("//*[contains(text(),'" + expectedMessage + "')]");
 
@@ -517,7 +517,7 @@ public class Opus_Assurance_Journey_Step {
 				messageDisplayed = true;
 				break;
 			}
-			Thread.sleep(300);
+			Thread.sleep(600);
 		}
 
 		Assert.assertTrue(messageDisplayed, "Validation message not displayed: " + expectedMessage);

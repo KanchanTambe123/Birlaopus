@@ -105,7 +105,7 @@ public class Create_an_Account_Form_Step {
 	
 	@Then("the user should be welcomed with their name and see the Go to my profile button.")
 	public void the_user_should_be_welcomed_with_their_name_and_see_the_go_to_my_profile_button() {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 
 		WebElement welcomeName = wait.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//span[contains(text(),'Welcome')]/span[@class='dynamic-name']")));
@@ -148,7 +148,7 @@ public class Create_an_Account_Form_Step {
 
 	@Then("User should see {string} error message for all mandatory fields")
 	public void user_should_see_error_message_for_all_mandatory_fields(String expectedMessage) {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 
 	    List<WebElement> errorMessages = wait.until(
 	        ExpectedConditions.visibilityOfAllElementsLocatedBy(

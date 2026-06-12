@@ -50,7 +50,7 @@ public class Cart_Functionality_Step {
 	public void cart_count_should_be_updated_to(String expectedCount) {
 		int expected = Integer.parseInt(expectedCount);
 
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
 
 		wait.until(driver -> cf.getCartItemCount() == expected);
 

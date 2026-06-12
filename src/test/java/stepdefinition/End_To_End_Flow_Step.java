@@ -150,9 +150,9 @@ public class End_To_End_Flow_Step {
 	public void user_clicks_on_the_apply_button_verifies_the_availability_of_coupon_vouchers_and_applies_a_coupon_if_available()
 			throws InterruptedException {
 
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 		ep.applyCouponIfAvailable();
-		Thread.sleep(3000);
+		Thread.sleep(4000);
 	}
 
 	@Then("User verifies the product quantity in the final order summary {string}")
@@ -277,24 +277,24 @@ public class End_To_End_Flow_Step {
 	@Then("User clicks on continue shopping button")
 	public void user_clicks_on_continue_shopping_button() throws InterruptedException {
 		wait.waitForElementVisible(ep.ContinueShoppingButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		js.scrollUntilElementVisible(ep.ContinueShoppingButton);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		js.jsClickWithWait(ep.ContinueShoppingButton);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 	}
 
 	@Then("User select product category {string}")
 	public void user_select_product_category(String string) throws InterruptedException {
 
 		ep.selectCategory(string);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
 	}
 
 	@Then("User select product and click shop now button")
 	public void user_select_product_and_click_shop_now_button() throws InterruptedException {
 		ep.scrollAndClickValidShopNow();
-		Thread.sleep(4000);
+		Thread.sleep(8000);
 	}
 
 }

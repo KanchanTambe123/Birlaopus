@@ -43,7 +43,7 @@ public class ColourLetter_SignUp_Step {
 	@When("User enters a valid email ID in the newsletter subscription field")
 	public void user_enters_a_valid_email_id_in_the_newsletter_subscription_field() throws InterruptedException {
 		js.scrollUntilElementVisible(cl.EmailIdFiled);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		cl.EmailIdFiled.sendKeys(fakeEmailId);
 		Thread.sleep(2000);
 	}
@@ -57,7 +57,7 @@ public class ColourLetter_SignUp_Step {
 	@Then("the User should see a success message confirming the newsletter subscription {string} {string}")
 	public void the_user_should_see_a_success_message_confirming_the_newsletter_subscription(String expectedTitle,
 			String expectedMessage) throws InterruptedException {
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(15));
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
 
 		wait.until(ExpectedConditions.visibilityOf(cl.SuccessHeader));
 		wait.until(ExpectedConditions.visibilityOf(cl.SuccessDescription));

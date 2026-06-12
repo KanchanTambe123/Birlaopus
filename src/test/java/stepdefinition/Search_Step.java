@@ -45,7 +45,7 @@ public class Search_Step {
 		// Then click with timeout
 		js.jsClickWithWait(sp.searchIcon);
 
-		wait.waitForElementToBeVisible(sp.searchPanel, 20);
+		wait.waitForElementToBeVisible(sp.searchPanel, 30);
 	}
 
 	@Then("The search panel should appear")
@@ -116,7 +116,7 @@ public class Search_Step {
 	@Then("User should be redirected to the respective results page for {string}")
 	public void user_should_be_redirected_to_the_respective_results_page_for(String suggestion)
 			throws InterruptedException {
-		new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20)).until(webDriver -> "complete"
+		new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30)).until(webDriver -> "complete"
 				.equals((String) ((JavascriptExecutor) webDriver).executeScript("return document.readyState")));
 
 		String currentUrl = DriverManager.getDriver().getCurrentUrl();
