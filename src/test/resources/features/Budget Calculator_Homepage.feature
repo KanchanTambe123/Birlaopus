@@ -134,7 +134,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | Pincode_Unserviceable |
       | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    |                111222 |
-
+@test
   #---------------------------------- Scenario 7----------------------------------#
   Scenario Outline: To verify whether the carpet area can be edited and if the price updates correctly.
     When User clicks on the profile icon

@@ -162,7 +162,7 @@ public class End_to_End_Flow_Page {
 	public void hoverAndClickProduct(String mainNavName, String tabName, String productName)
 			throws InterruptedException {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
 		// 1️.Hover over main navigation
 		List<WebElement> mainNavItems = driver.findElements(By.xpath("//ul[@class='cmp-navigation__group']/li"));
@@ -172,7 +172,7 @@ public class End_to_End_Flow_Page {
 				js.executeScript("arguments[0].scrollIntoView(true);", navItem);
 				Actions actions = new Actions(driver);
 				actions.moveToElement(navItem).perform();
-				Thread.sleep(1000); // short wait for sub-menu
+				Thread.sleep(2000); // short wait for sub-menu
 				mainNavFound = true;
 				break;
 			}
@@ -189,7 +189,7 @@ public class End_to_End_Flow_Page {
 				js.executeScript("arguments[0].scrollIntoView(true);", tab);
 				Actions actions = new Actions(driver);
 				actions.moveToElement(tab).perform();
-				Thread.sleep(1000); // products to load
+				Thread.sleep(2000); // products to load
 				tabFound = true;
 				break;
 			}
@@ -247,7 +247,7 @@ public class End_to_End_Flow_Page {
 
 		// Scroll
 		js.scrollUntilElementVisible(colorCircle);
-		wait.waitForElementToBeVisible(colorCircle, 5);
+		wait.waitForElementToBeVisible(colorCircle, 15);
 
 		// Click
 		// js.jsClickWithWait(colorCircle);
@@ -267,7 +267,7 @@ public class End_to_End_Flow_Page {
 
 		// Scroll into view
 		js.scrollUntilElementVisible(packDiv);
-		wait.waitForElementToBeVisible(packDiv, 5);
+		wait.waitForElementToBeVisible(packDiv, 15);
 
 		WebElement incrementBtn = packDiv.findElement(By.cssSelector(".cmp-product__quantity--increment"));
 		WebElement qtySpan = packDiv.findElement(By.cssSelector(".cmp-product__quantity"));
@@ -284,7 +284,7 @@ public class End_to_End_Flow_Page {
 
 			// Wait until quantity updates visually
 			int expectedQty = i + 1;
-			WebDriverWait waitQty = new WebDriverWait(driver, Duration.ofSeconds(40));
+			WebDriverWait waitQty = new WebDriverWait(driver, Duration.ofSeconds(60));
 			waitQty.until(d -> Integer.parseInt(qtySpan.getText()) == expectedQty);
 		}
 
@@ -351,7 +351,7 @@ public class End_to_End_Flow_Page {
 
 		By addToCartBtn = By.xpath("//button[contains(@class,'cmp-product__cart')]");
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
 		WebElement addToCart = wait.until(ExpectedConditions.presenceOfElementLocated(addToCartBtn));
 
@@ -367,7 +367,7 @@ public class End_to_End_Flow_Page {
 	// update qty
 	public int updateCartQuantity(int desiredQty) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
 		while (true) {
 
@@ -395,7 +395,7 @@ public class End_to_End_Flow_Page {
 
 			// (increment/decrement)
 			try {
-				Thread.sleep(1500); // 1-sec each click
+				Thread.sleep(2500); // 1-sec each click
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -403,7 +403,7 @@ public class End_to_End_Flow_Page {
 	}
 
 	private void safeClick(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 		try {
 			wait.until(ExpectedConditions.elementToBeClickable(element)).click();
 		} catch (ElementClickInterceptedException e) {
@@ -416,7 +416,7 @@ public class End_to_End_Flow_Page {
 	public void removeProductFromCartIfAvailable() {
 
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
 		By deleteIcon = By.cssSelector("div.cart__card-delete");
 
@@ -485,7 +485,7 @@ public class End_to_End_Flow_Page {
 	// order summary
 	public int getFinalOrderSummaryQuantity() {
 
-		WebElement summaryQtyElement = new WebDriverWait(driver, Duration.ofSeconds(60))
+		WebElement summaryQtyElement = new WebDriverWait(driver, Duration.ofSeconds(80))
 				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.summary__card-qty-desp")));
 
 		return Integer.parseInt(summaryQtyElement.getAttribute("data-qty"));
@@ -592,7 +592,7 @@ public class End_to_End_Flow_Page {
 
 
 	public void selectCategory(String categoryName) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
 	    // Locate the category link by span text
 	    WebElement categoryLink = wait.until(
@@ -615,7 +615,7 @@ public class End_to_End_Flow_Page {
 	//pending
 	public void scrollAndClickValidShopNow() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    List<WebElement> shopNowButtons = wait.until(

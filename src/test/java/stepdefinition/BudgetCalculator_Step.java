@@ -76,11 +76,11 @@ public class BudgetCalculator_Step {
 		js.scrollUntilElementVisible(sp.calculateNowButton);
 		Thread.sleep(2000);
 		js.jsClickWithWait(sp.calculateNowButton);
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 		wait.until(driver -> {
 			String price = sp.priceText.getText().replaceAll("[^0-9]", "");
 			return !price.equals("0") && !price.isEmpty();
-		}, 10);
+		}, 40);
 
 		// Capture price BEFORE edit
 		wait.waitForElementVisible(sp.priceText);
