@@ -28,7 +28,7 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-	    features = {"src/test/resources/features/Search.feature"},
+	    features = {"src/test/resources/features"},
 	    glue = {"stepdefinition"},
 	   //tags = "@test",
 	    plugin = {
