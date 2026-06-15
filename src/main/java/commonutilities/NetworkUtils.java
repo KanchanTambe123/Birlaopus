@@ -6,9 +6,6 @@ import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v145.network.Network;
 import org.openqa.selenium.devtools.v145.network.model.Response;
 public class NetworkUtils {
-	
-	
-	
 	 private static DevTools devTools;
 	    private static String responseBody = "";
 
@@ -48,5 +45,4 @@ public class NetworkUtils {
 	    public static String getResponse() {
 	        return responseBody;
 	    }
-
 }

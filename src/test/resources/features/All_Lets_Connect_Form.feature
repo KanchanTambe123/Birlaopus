@@ -1,4 +1,3 @@
-
 Feature: To Validate the Brand section Form and Book a Free Consultation form on the homepage.
 
   Background: 
@@ -17,15 +16,14 @@ Feature: To Validate the Brand section Form and Book a Free Consultation form on
     #And User enters a valid Name on the Let’s Connect form Brands
     When User selects "<HelpOption>" from the How can we help you? dropdown
     And User enters a valid Pincode on the Let’s Connect form Brands "<Pincode>"
-     And User clicks on the Submit button
-     And User captures and validates API request and response for "lead/shortForm"
+    And User clicks on the Submit button
+    And User captures and validates API request and response for "lead/shortForm"
     #And verify the lead API parameters for Brands Enquiry form  : iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
-   
     And User should see the acknowledgment message after successful submission "Thank You For Reaching out to us !"
 
     Examples: 
       | HelpOption      | Pincode |
-      | Product Enquiry |  400703 | 
+      | Product Enquiry |  400703 |
 
   #----------------------------------2---------------------------------------------------->
   Scenario Outline: To verify validation messages when mandatory fields are empty in Let’s Connect form (Brands)

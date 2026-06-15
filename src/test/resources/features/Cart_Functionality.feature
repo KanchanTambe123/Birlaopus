@@ -1,4 +1,3 @@
-
 Feature: To Validate Cart Functionality – Add, Update, Remove and Price Validation (Single Product)
 
   Background: 
@@ -44,7 +43,7 @@ Feature: To Validate Cart Functionality – Add, Update, Remove and Price Valida
     Examples: 
       | searchfor       | Colour    | quantity | pack | pincode |
       | Interior paints | Rose dust |        1 |    1 |  411033 |
-@test
+
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify that the total price is updated correctly when the product quantity is changed through navigation for a logged-in user
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
@@ -56,7 +55,7 @@ Feature: To Validate Cart Functionality – Add, Update, Remove and Price Valida
     Then User click on View cart & Checkout button
     And User increase the product quantity "<desiredQuantity>"
     #Then User clicks on the Proceed to Enter Address button
-   # And User verifies the product quantity in the final order summary "<expectedQuantity>"
+    # And User verifies the product quantity in the final order summary "<expectedQuantity>"
     Then the total payable amount should be correctly calculated and displayed
     Then User clicks the cart icon on the header and removes the product from the cart if available
 

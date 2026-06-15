@@ -1,5 +1,6 @@
 package commonutilities;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -73,7 +74,7 @@ public class DriverManager {
         driver = new ChromeDriver(opt);
         setDriver(driver);
         getDriver().manage().deleteAllCookies();
-
+        getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
         initDevTools();
     }
 

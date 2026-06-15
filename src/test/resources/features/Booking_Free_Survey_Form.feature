@@ -1,4 +1,3 @@
-
 Feature: To Validate Survey Booking Form
 
   Background: 
@@ -16,10 +15,9 @@ Feature: To Validate Survey Booking Form
     #And User select property name and address "<address>"
     #Then User click on address confirm button
     #And User enters the survey Pincode "<pincode>"
-    Then User clicks on the Next button on the Book a Free Survey form
+    Then User clicks on the Next button on Address section page
     And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for booking a free survey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
-
     And User clicks on the Next button on the Share Few Details section
     Then User selects the painting requirement type "<requirementType>"
     And User clicks on the project details next button
@@ -37,21 +35,21 @@ Feature: To Validate Survey Booking Form
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify that the user navigates to the previous step using the Back button on the survey booking form
     When User clicks on the Book a Free Survey button
-    Then User clicks on the Next button on the Book a Free Survey form
-    And User clicks on the Back button in the Book a Free Survey form
+    Then User clicks on the Next button on Address section page
+    And User clicks on the Back button on the Address section page
     Then User should be redirected to the previous step of the Book a Free Survey form
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify thank you pop-up appears when user selects I’ll do it later option
     And User clicks on the Book a Free Survey button
-    Then User clicks on the Next button on the Book a Free Survey form
+    Then User clicks on the Next button on Address section page
     Then User clicks on the I’ll do it later option
     Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
   #---------------------------------- Scenario 4 ----------------------------------#
   # Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
   # And User clicks on the Book a Free Survey button
-  # Then User clicks on the Next button on the Book a Free Survey form
+  # Then User clicks on the Next button on Address section page
   #And User clicks on the Next button on the Share Few Details section
   # Then User selects the painting requirement type "<requirementType>"
   #And User clicks on the Skip for now option in the painting requirements question
@@ -61,13 +59,12 @@ Feature: To Validate Survey Booking Form
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
     And User clicks on the Book a Free Survey button
     And User enters unserviceable Pin code "<pincode>"
-    Then User clicks on the Next button on the Book a Free Survey form
+    Then User clicks on the Next button on Address section page
     Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 
       | pincode |
       |  111222 |
-
   #---------------------------------- Scenario 5 ----------------------------------#
   #Scenario Outline: To Verify address section with valid and invalid inputs
     #And User clicks on the Book a Free Survey button

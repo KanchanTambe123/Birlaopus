@@ -158,8 +158,8 @@ public class Book_Survey_Form_Page {
 
 	    try {
 	        // 1️Get data
-	        String requestPayload = DriverManager.waitForLeadPayload(25);
-	        int statusCode = DriverManager.waitForLeadStatusCode(25);
+	        String requestPayload = DriverManager.getLeadRequestPayload();
+	        int statusCode = DriverManager.getLeadStatusCode();
 	        long responseTime = DriverManager.getResponseTime();
 
 	        // 2️Log basic info

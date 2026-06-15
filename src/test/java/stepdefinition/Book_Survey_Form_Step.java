@@ -77,6 +77,19 @@ public class Book_Survey_Form_Step {
 		js.jsClickWithWait(bs.SiteDetailsNextButton);
 		Thread.sleep(2000);
 	}
+	
+	@Then("User clicks on the Next button on Address section page")
+	public void user_clicks_on_the_next_button_on_address_section_page() throws InterruptedException {
+		wait.waitForElementVisible(bs.SiteDetailsNextButton);
+		Thread.sleep(2000);
+		js.scrollUntilElementVisible(bs.SiteDetailsNextButton);
+		Thread.sleep(2000);
+		js.jsClickWithWait(bs.SiteDetailsNextButton);
+		Thread.sleep(2000);
+	}
+	
+	
+	
 
 	@Then("User clicks on the Next button on the Share Few Details section")
 	public void user_clicks_on_the_next_button_on_the_share_few_details_section() throws InterruptedException {
@@ -148,6 +161,16 @@ public class Book_Survey_Form_Step {
 		Thread.sleep(2000);
 	}
 
+	
+	@Then("User clicks on the Back button on the Address section page")
+	public void user_clicks_on_the_back_button_on_the_address_section_page() throws InterruptedException {
+		wait.waitForElementVisible(bs.surveyStepBackButton);
+		Thread.sleep(2000);
+		js.scrollUntilElementVisible(bs.surveyStepBackButton);
+		Thread.sleep(2000);
+		js.jsClickWithWait(bs.surveyStepBackButton);
+		Thread.sleep(2000);
+	}
 	@Then("User should be redirected to the previous step of the Book a Free Survey form")
 	public void user_should_be_redirected_to_the_previous_step_of_the_book_a_free_survey_form() {
 		wait.waitForElementVisible(bs.previousStepLocator);

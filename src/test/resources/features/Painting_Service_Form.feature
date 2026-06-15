@@ -1,5 +1,5 @@
 
-Feature: To Validate Painting Service Request Form(Homepage Search Form)
+Feature: To Validate Short Lead Form (Painting Service)
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
@@ -9,12 +9,13 @@ Feature: To Validate Painting Service Request Form(Homepage Search Form)
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-
+@test
   #---------------------------------- Scenario 1 ----------------------------------#
-  Scenario Outline: To verify Painting Service Request is submitted successfully by a logged-in user with valid data
+  Scenario Outline: To verify Short Lead Form (Painting Service) Request is submitted successfully by a logged-in user with valid data
     And User clicks on the Sign up for free button
     And User enters a valid pin code "<PinCode>" in the Painting Service Form
     And User clicks on the Submit button in the Painting Service Form
+    And User captures and validates API request and response for "lead/shortForm"
    
 
     Examples: 

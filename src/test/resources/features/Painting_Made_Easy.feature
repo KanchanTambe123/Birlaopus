@@ -1,4 +1,3 @@
-
 Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
 
   Background: 
@@ -14,7 +13,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     Then User clicks on the close icon
     When User clicks on Painting made easy
     Then User clicks on Get free quote
-    Then User clicks on the Next button on the Book a Free Survey form
+    Then User clicks on the Next button on Address section page
     And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for Painting Made Easy form: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User clicks on the Next button on the Share Few Details section
@@ -41,7 +40,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     Then User clicks on the close icon
     When User clicks on Painting made easy
     Then User clicks on Get free quote
-    Then User clicks on the Next button on the Book a Free Survey form
+    Then User clicks on the Next button on Address section page
     Then User clicks on the I’ll do it later option
     Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
@@ -55,12 +54,11 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
   #Then User clicks on the close icon
   # When User clicks on Painting made easy
   #Then User clicks on Get free quote
-  # Then User clicks on the Next button on the Book a Free Survey form
+  #Then User clicks on the Next button on Address section page
   # And User clicks on the Next button on the Share Few Details section
   #And User clicks on the Skip for now option in the painting requirements question
   # And User clicks on the Skip for now option in the home configuration question
   #Then A survey booking confirmation message should be displayed successfully
-  
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
     When User clicks on the profile icon
@@ -72,7 +70,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     When User clicks on Painting made easy
     Then User clicks on Get free quote
     And User enters unserviceable Pin code "<pincode>"
-    Then User clicks on the Next button on the Book a Free Survey form
+    Then User clicks on the Next button on Address section page
     Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 
@@ -172,9 +170,6 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     Examples: 
       | valid_mobile_no | valid_otp |
       |      7019144066 |      1111 |
-
-      
-    
        #---------------------------------- Scenario 11----------------------------------#
  #Scenario Outline: To verify error message is displayed when user does not select any option for Tell us about your project	
     #When User clicks on Painting made easy

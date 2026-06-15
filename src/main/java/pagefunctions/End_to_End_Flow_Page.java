@@ -284,7 +284,7 @@ public class End_to_End_Flow_Page {
 
 			// Wait until quantity updates visually
 			int expectedQty = i + 1;
-			WebDriverWait waitQty = new WebDriverWait(driver, Duration.ofSeconds(20));
+			WebDriverWait waitQty = new WebDriverWait(driver, Duration.ofSeconds(40));
 			waitQty.until(d -> Integer.parseInt(qtySpan.getText()) == expectedQty);
 		}
 

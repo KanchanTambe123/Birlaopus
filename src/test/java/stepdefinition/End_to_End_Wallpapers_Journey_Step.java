@@ -8,11 +8,13 @@ import commonutilities.CommonMethods;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
 import config.ConfigReader;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pagefunctions.End_To_End_ColourSwatch_Page;
 import pagefunctions.End_to_End_Flow_Page;
 import pagefunctions.End_to_End_Wallpapers_Journey_Page;
+import pagefunctions.WebsiteLaunch;
 
 public class End_to_End_Wallpapers_Journey_Step {
 	ConfigReader config = new ConfigReader();
@@ -24,6 +26,12 @@ public class End_to_End_Wallpapers_Journey_Step {
 	End_to_End_Wallpapers_Journey_Page ew = new End_to_End_Wallpapers_Journey_Page();
 	End_to_End_Flow_Page ep = new End_to_End_Flow_Page();
 	End_To_End_ColourSwatch_Page cp = new End_To_End_ColourSwatch_Page();
+
+	@Given("User is on wallpaper Product page {string}")
+	public void user_is_on_wallpaper_product_page(String WallpaperProductUrl) {
+		WebsiteLaunch.webLaunch(WallpaperProductUrl);
+	}
+
 
 	@Then("the User selects a wallpaper shade {string}")
 	public void the_user_selects_a_wallpaper_shade(String string) {

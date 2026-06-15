@@ -284,10 +284,10 @@ public class Opus_Assurance_Journey_Page {
 
 	    try {
 	        // 1️.Get payload
-	        String encryptedPayload = DriverManager.waitForLeadPayload(25);
+	        String encryptedPayload = DriverManager.getLeadRequestPayload();
 
 	        // 2️.Get status code
-	        int statusCode = DriverManager.waitForLeadStatusCode(25);
+	        int statusCode = DriverManager.getLeadStatusCode();
 
 	        System.out.println("Encrypted Payload: " + encryptedPayload);
 	        System.out.println("Status Code: " + statusCode);

@@ -57,7 +57,9 @@ public class WebsiteLaunch extends DriverManager {
        		DriverManager.getDriver().navigate().to(AppConfig.AssuranceUrl);
    			break;
      			
-
+         case "WallpaperProductUrl":
+        		DriverManager.getDriver().navigate().to(AppConfig.WallpaperProductUrl);
+    			break;
     		
  			
  			
