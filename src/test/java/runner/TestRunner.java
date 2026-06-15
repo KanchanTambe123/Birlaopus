@@ -28,7 +28,7 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-	    features = {"src/test/resources/features"},
+	    features = {"src/test/resources/features/End_to_End_Wallpapers_Journey.feature"},
 	    glue = {"stepdefinition"},
 	   //tags = "@test",
 	    plugin = {

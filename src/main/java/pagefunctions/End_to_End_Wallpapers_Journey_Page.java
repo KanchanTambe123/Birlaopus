@@ -58,38 +58,57 @@ public class End_to_End_Wallpapers_Journey_Page {
 	}
 
 	public void selectShadeByProductCode(String productCode) {
-		// Locate all shade elements under the container
-		List<WebElement> shades = driver
-				.findElements(By.xpath("//div[@class='cmp-wallpaper__other-combination-images']/div"));
 
-		List<String> availableCodes = new ArrayList<>();
-		boolean found = false;
+	    List<WebElement> shades = driver.findElements(
+	            By.xpath("//div[@class='cmp-wallpaper__other-combination-images']/div")
+	    );
 
-		for (WebElement shade : shades) {
-			String code = shade.getAttribute("data-product-code");
-			availableCodes.add(code);
+	    List<String> availableCodes = new ArrayList<>();
+	    boolean found = false;
 
-			if (code.equals(productCode)) {
-				// Scroll into view
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", shade);
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
-				JavascriptExecutor js = (JavascriptExecutor) driver;
-				WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
-				// Wait until clickable and click
-				wait.until(ExpectedConditions.elementToBeClickable(shade)).click();
-				System.out.println("Selected shade with Product Code: " + productCode);
-				found = true;
-				break;
-			}
-		}
+	    for (WebElement shade : shades) {
 
-		if (!found) {
-			System.err.println("Shade with Product Code " + productCode + " not found!");
-			System.err.println("Available Product Codes: " + availableCodes);
-			throw new RuntimeException("Shade with Product Code " + productCode + " not found!");
-		}
+	        String code = shade.getAttribute("data-product-code");
+	        availableCodes.add(code);
+
+	        if (code.equals(productCode)) {
+
+	            // Scroll to center (prevents header overlay issue)
+	            ((JavascriptExecutor) driver)
+	                    .executeScript("arguments[0].scrollIntoView({block: 'center'});", shade);
+
+	            // Wait for overlay to disappear (if present)
+	            try {
+	                wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	                        By.cssSelector(".opusText")
+	                ));
+	            } catch (Exception e) {
+	                // ignore if not present
+	            }
+
+	            // Wait for element clickable
+	            WebElement element = wait.until(
+	                    ExpectedConditions.elementToBeClickable(shade)
+	            );
+
+	            // Safe JS click (avoids interception issues)
+	            ((JavascriptExecutor) driver)
+	                    .executeScript("arguments[0].click();", element);
+
+	            System.out.println("Selected shade with Product Code: " + productCode);
+	            found = true;
+	            break;
+	        }
+	    }
+
+	    if (!found) {
+	        System.err.println("Shade with Product Code " + productCode + " not found!");
+	        System.err.println("Available Product Codes: " + availableCodes);
+	        throw new RuntimeException("Shade with Product Code " + productCode + " not found!");
+	    }
 	}
-
 	public void hoverAndClickProduct(String navMenu, String navTab, String productName) throws InterruptedException {
 
 		JavascriptExecutor js = (JavascriptExecutor) driver;
