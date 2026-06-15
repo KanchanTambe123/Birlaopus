@@ -50,8 +50,7 @@ public class DriverManager {
         if (!browser.equalsIgnoreCase("chrome")) {
             throw new IllegalArgumentException("Unsupported browser: " + browser);
         }
-
-        WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().clearDriverCache().setup();
         ChromeOptions opt = new ChromeOptions();
         // Headless config
         opt.addArguments(config.getProb("runHeadless").replace("--headless", "--headless=new"));
