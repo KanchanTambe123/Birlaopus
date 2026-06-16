@@ -48,7 +48,7 @@
 </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jun 15, 2026 22:08:17</span></a>
+<a href="#"><span class="badge badge-primary">Jun 16, 2026 13:28:59</span></a>
 </li>
 </ul>
 </div>
@@ -58,6 +58,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
@@ -84,7 +89,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -98,25 +103,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">To Validate the Budget Calculator homepage for a logged-in user(single product)</p>
+            <p class="name">To Validate Opus Assurance Journey Functionality</p>
             <p class="text-sm">
-              <span>10:08:18 PM</span> / <span>00:01:16:848</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>1:29:00 PM</span> / <span>00:05:22:286</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">To Validate the Budget Calculator homepage for a logged-in user(single product)</h5>
-<span class='badge badge-success'>06.15.2026 10:08:18 PM</span>
-<span class='badge badge-danger'>06.15.2026 10:09:35 PM</span>
-<span class='badge badge-default'>00:01:16:848</span>
+<h5 class="test-status text-fail">To Validate Opus Assurance Journey Functionality</h5>
+<span class='badge badge-success'>06.16.2026 1:29:00 PM</span>
+<span class='badge badge-danger'>06.16.2026 1:34:22 PM</span>
+<span class='badge badge-default'>00:05:22:286</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -128,90 +133,617 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify whether the carpet area can be edited and if the price updates correctly.</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button).    Given User enter valid paintable area "<paintable_area>"</div>
       </div>
     </div>
         <div class="scenario_outline collapse">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify whether the carpet area can be edited and if the price updates correctly.</div>
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button).    Given User enter valid paintable area "2500 sqft"</div>
                 </div>
               </div>
               <div class="card-body mt-3 collapse">
                   <div class="step pass-bg">
-                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+                    <span>Given User is on Opus Assurance Journey "AssuranceUrl"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>When User clicks on the profile icon</span>
+                    <span>Given User enter valid paintable area "2500 sqft"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User clicks on the Sign In button</span>
+                    <span>And User click on Next button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User enters valid mobile number on the Sign In page</span>
+                    <span>Then User should click on Yet to Start Cta</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
+                    <span>And User click on Pre-register now Cta</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+                    <span>Then User clicks create an Account option</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User clicks on the close icon</span>
+                    <span>And User enters valid mobile number on the Create an Account</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>When the User scrolls to the Budget Calculator</span>
+                    <span>And User clicks on the Create an Account button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then the User selects the space name to paint "Villa or Bungalow"</span>
+                    <span>And User enters bypass OTP and clicks on the Verify OTP button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And the User enters a valid carpet area "2000"</span>
+                    <span>Then User enter valid first name</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And the User enters a valid serviceable pincode "411033"</span>
+                    <span>And User enter valid last name</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then the User clicks on the Calculate Now button</span>
+                    <span>And User enter valid email id</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And the User verifies the edit button is clickable and clicks on the carpet area edit button</span>
+                    <span>And User enter valid pin code "500002"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And the User enters a valid Recalculate estimate carpet area "2500"</span>
+                    <span>And User clicks on submit button on the Create an Account</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then the User clicks on the Recalculate Estimate button and verifies the price is updated</span>
+                    <span>Then User clicks on tell us more about your site button</span>
       <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter Site Details project name</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter flat number or bulding name "B-10"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter proerty name "mumbai"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on confirm and add address details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter update pin code on site details "500002"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click submit button on Address section page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div> API Type: lead/shortForm
+      </div>
+      <div> Status Code: 200
+      </div>
+      <div> Response Time: 31 ms
+      </div>
+      <div> Request Payload: {"data":"MTI4OjoxMDAwMDo6MzE0NjEwMmExNTJlMzBmNWMxYTIyYTQ5NTQ2ZWYzMmI6OmU1YmJkNjA1ZThmNjY0NWMxYTk1MDU3MGRlNDU2OTZhOjozZEEwRWg4NFRkbUVoU1FxZjY2MkQ3NytLc08yNElyNmp2bFVMQ21CRWswTkJDWFk0YlNSWjJYN1JCL1J0S21VVUFuL2IrNkFmV0toeVFaTUx0eDNhcXh1d3ljamkwbldIQnRKT2xJWWN5N0hEQ1Y1QUR3M0dhcUhkZkRrWGtNTy9kYUlOenJSNmdPbVBGRmp6OTRSR0dBV3lyK3hFVnN0WEluVmZORDNMR2pYL3lzZVorZGJ2Yi9VOGxZRENzSWxnNUVCcGFkM3BzZTVWMFo5Mjdvc0RScDgvcXdOOHJEdXJGUE41OWlEVklGeVB5NjRtbzgvTGtrRjJEalpIQkhiSDBXTjNqR1FHZmxIbHpKeTNpRTFPdG5zUnJFNXBmRkt5azVNQzBvQWlhTEw5OXMwMDJrRVE3Ny9XNEhLMnI2cUhRM0lySkRDK28rVi96Yi9qY1dxK1BiWVZuazNhTkJ1ancrSllsODdXWVlrVUdpY1RqdWZnRlJJWFQ2OEgyUXRQb01CUXh2YkpBRG9VTkxCN1g2YU1ncjROdUFkc3VJYlZ1azJlZTRXbzFwcVFwTU93UmwwWU5NdkxybmpIaDkyemgvbHZrNy8yR1BFY2l4dWlRYnRIQlhBOW5SUHd6WXN2d2dhMzRBMUoxRS85cTUzU2VZeDZ0QmRsZ3hYQTJnYVhxc3JvQ29Md0wxQXFhL0pBZ0xYQ3FvRHBXUjlVNEJDTW1FVEJJdWRCWFBrMk5QYjU5cGZZaUEvUzgyOU1pZXVXeFo5OW5OVG1PRFFEYWdyb216UmdYYmJnRU1hS3BEYWk0R1J3VlRWMDZDYXN4ZkR6WEVhUW41TkFCbFkrK0IyQ0lkUmdnaHFhNENVWjcrN1hIL3I2RDB2bWdHdDA1bGgrM1hSbW16WjVrM3BZN0xmeXZScFZKc1RQc2t0NWEweXFrK01BZjdPQURrbWhpbjB1WExrMGxRdThQK1RqbDVqemJpcUdTMVpySjlOcGhzV3FZSjlaM3pJc2YvNnllazdQeXJlbUN2bkphK2sySHRzYVZIMHFTU0gvc2h4NkxZWUMxZ1FQTjExOTkwZTVMd2l4OENBaUsyT3dkUm5iVklPSU9uNVFYaWFGei9OYUhuSW1jWUIrNFZWVVFoekJ4N0JhbUJnekJGYmM4WFBYd0lyUXcwQ3doblN2Rkt2c0x5dGRnNk4vRkh6eXZUU2JvMStOUEkzNFBmMEd5T3k0NkhYU1UzV1BJNnhQTHRiSXhDb25tVFl2Z0NKT0RHMkdUWGtLUTVXaVZRb0hyb2RJR2JRYlc3NGsvNVBiMXQ1RE8yQ1MzRERaS0FCamQ1WUpDR0w0MkVlZXhTcUdZRXo3UmRPWG1DT0wzRlZ2a2xZMzdqNHcrSEM5cTRiVTF2cWwxREJrV2krQ0ZmeWZuVkFMVy9qeXB1VW5hN2hLS1QxaUJ6RVpUN2JVVlhLRTJ3WGt4TGt0QW1LNmlOUkhvOVdiZW5UcVRZbXU2YXlhZW5vODRnUEw1VUJKU1M4WGRqMENnS1RjRFk3eG5VZ1lmYTdRMFFjZU5FL3RBa0lJN2dZZGY2emJUT013NUt2R2VDZ09mUkxsR01PV21GK3k0aGZzOTZwai92RmgrRjVobUdLa3ZjOGlWb3NjNzNWZlFYR2JjTzg0MHFKTzVWOEJaR3hHNTUzNWFrMXU4RE1YOHg0OW1xT2E0VDFsaWNBZytXSkl4WFNwb0o3M2ZhWjlpYTFxMnh5b2NicjREQ0RzVnhjVkxWNVllOTRXUkNmdjdteEtjUmxqUUJFOFVNU3BINlhPSWthZ0VPdFQvVHJBbW44V2QrTDY3djMzWEd2Z2Rjelk0YmlkRE9kYUIrNExMakFXWkcyczVhcFVPT0R1L0RscFdESmdkQkFLZkxNWUhZZzlmeFBMNnhtbDJZanlteC9aZjBuY1daUnpwY1kyTThGd3RVME5DVGxVeCsvK3RFZDY4RnNHMlFBWjd6NkdweUhpcUFkdHFodHRremVRUTNZeG0zNjdzNGdhUXpFaXh1YkgxRFEzc1VLUG1yTjhNb0krT2FvMWdWanFnPT0="}
+      </div>
+      <div> Decrypted Payload: {"header":{"journeyDroppedAt":"surveyStep1b"},"body":{"firstName":"Bee","lastName":"Daniel","phone":"9021465125","email":"hosea.shanahan@hotmail.com","propertyNameStreet":"","propertyNamePinCode":"","propertyNameCity":"","city":"","state":"","pinCode":"500002","lat":"","long":"","whatsappNumber":"9021465125","iclAreaToBePaintedC":"","iclCarpetAreaC":"","iclProjectInfo":"","street":"","iclOpusIdC":"","iclLeadUniqueIdC":"080942c3-2b41-3b04-8dd5-019a6ae4979b","waterproofingRequirementC":"","iclWoodFinishRequirement":"","iclContractorMobileNoC":"","iclNameOfProjectC":"Bee's Project_YI1KX","formName":"","formId":"","iclLeadContextC":"Birla Opus Assurance","iclAvailableService":"Birla Opus Assurance","iclLeadTypeC":"Painting Service Enquiry","subType":"Paintcraft Service","leadSubSource":"Opus Assurance","isAreaServiceable":"","iclRoomCountC":"","iclLeadJourneyDroppedAtC":"surveyStep1,surveyStep1b","siteVisitDateTimeC":"","iclPreferredTimeOfContactC":"","iclPreferredDateC":"","scheduleInstantVisitC":"","iclQualificationStatusC":"Partially - Qualified","haveMyOwnContractor":false,"pageUrlFull":"https://uat.birlaopus.com/birla-opus-assurance"}}
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click next button on Just a Few More Details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clcik on Sign Up for PaintCraft button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User selects the painting requirement type "Exteriors"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the project details next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User select home configuration type "2 BHK"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User enters the carpet area "1200"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the project details next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User selects a schedule visit date and timeslot "12 PM - 3 PM"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Schedule button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then Birla Opus Assurance confirmation message should be displayed successfully "Thank you for signing up for Birla Opus Assurance!"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="70"><span class="badge log pass-bg mr-2">Pass</span>To verify that selecting more than 5 contractors is restricted</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="71"><span class="badge log pass-bg mr-2">Pass</span>To verify that selecting more than 5 contractors is restricted</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User is on Opus Assurance Journey "AssuranceUrl"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Given User enter valid paintable area "2500 sqft"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on Next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User should click on Yet to Start Cta</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on Pre-register now Cta</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid mobile number on sign in "7019144066"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on sign in button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid otp "1111"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on verify otp button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click on start new project</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid pin code on enter details "500002"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click on submit button on enter details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter Site Details project name</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter update pin code on site details "500002"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click submit button on Address section page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div> Exception while logging API: null
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "Birla Opus Assurance",  iclLeadTypeC against value "Painting Service Enquiry",  iclSubType against value "Paintcraft Service",  leadSubSource against value "Opus Assurance"</span>
+      <div>Status Code matched: 200
+      </div>
+      <div>✔ iclLeadContextC matched: Birla Opus Assurance
+      </div>
+      <div>✔ iclLeadTypeC matched: Painting Service Enquiry
+      </div>
+      <div>✔ subType matched: Paintcraft Service
+      </div>
+      <div>✔ leadSubSource matched: Opus Assurance
+      </div>
+      <div>Serviceable flag value: true
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click next button on Just a Few More Details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clcik on Find Contractor button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User selects 5 contractors</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User should not be able to select more than 5 contractors and validation message should be displayed</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="116"><span class="badge log pass-bg mr-2">Pass</span>To verify that a validation message is displayed when proceeding without selecting a contractor</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="117"><span class="badge log pass-bg mr-2">Pass</span>To verify that a validation message is displayed when proceeding without selecting a contractor</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User is on Opus Assurance Journey "AssuranceUrl"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Given User enter valid paintable area "2500 sqft"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on Next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User should click on Yet to Start Cta</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on Pre-register now Cta</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid mobile number on sign in "7019144066"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on sign in button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid otp "1111"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on verify otp button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click on start new project</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid pin code on enter details "500002"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click on submit button on enter details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter Site Details project name</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter update pin code on site details "500002"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click submit button on Address section page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div> Exception while logging API: null
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "Birla Opus Assurance",  iclLeadTypeC against value "Painting Service Enquiry",  iclSubType against value "Paintcraft Service",  leadSubSource against value "Opus Assurance"</span>
+      <div>Status Code matched: 200
+      </div>
+      <div>✔ iclLeadContextC matched: Birla Opus Assurance
+      </div>
+      <div>✔ iclLeadTypeC matched: Painting Service Enquiry
+      </div>
+      <div>✔ subType matched: Paintcraft Service
+      </div>
+      <div>✔ leadSubSource matched: Opus Assurance
+      </div>
+      <div>Serviceable flag value: true
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click next button on Just a Few More Details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clcik on Find Contractor button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click on Next button in Find Contractor section</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User should be displayed validation message Contractor section "Please select a contractor"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="162"><span class="badge log fail-bg mr-2">Fail</span>To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="scenario_outline ">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="163"><span class="badge log fail-bg mr-2">Fail</span>To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</div>
+                    <div class="status-avatar float-right">
+                      <i class="fa fa-paperclip"></i>
+                    </div>
+                </div>
+              </div>
+              <div class="card-body mt-3 ">
+                  <div class="step pass-bg">
+                    <span>Given User is on Opus Assurance Journey "AssuranceUrl"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Given User enter valid paintable area "2500 sqft"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on Next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User should click on Yet to Start Cta</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on Pre-register now Cta</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid mobile number on sign in "7019144066"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on sign in button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid otp "1111"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on verify otp button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click on start new project</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter valid pin code on enter details "400 060"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click on submit button on enter details</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter Site Details project name</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter update pin code on site details "111222"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click submit button on Address section page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div> Exception while logging API: null
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And verify the lead API parameters for opus assurance journey: isAreaServiceable against value "false"</span>
+      <div>Exception during Serviceable validation: null
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step fail-bg">
+                    <span>Then User should see the heading "We're coming soon!"</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//h4[normalize-space()="We're coming soon!"]"}
+  (Session info: chrome=149.0.7827.115)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.41.0', revision: '9fc754f'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6ae705955c8b43742d02f9b5c9a66250, findElement {value=//h4[normalize-space()="We're coming soon!"], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 149.0.7827.115, chrome: {chromedriverVersion: 149.0.7827.115 (daf70f9ddee..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49675}, goog:processID: 18796, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49675/devtoo..., se:cdpVersion: 149.0.7827.115, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6ae705955c8b43742d02f9b5c9a66250
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:223)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:604)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:166)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:427)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:421)
+	at stepdefinition.Opus_Assurance_Journey_Step.user_should_see_the_heading(Opus_Assurance_Journey_Step.java:415)
+	at ✽.User should see the heading "We're coming soon!"(file:///C:/Backup/Birla/Birlaopus_selenium/com.BirlaOpus/Birlaopus/src/test/resources/features/Opus_Assurance_Journey.feature:306)
+</textarea>
+      
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</span>
+      <div>[B@4f4a05d7
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded1.png' src="test-output/embedded1.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step skip-bg">
+                    <span>And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."</span>
+      <div>Step skipped
       </div>
                   </div>
               </div>
@@ -230,7 +762,59 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view category-view attributes-view">
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.NoSuchElementException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.NoSuchElementException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:34:22 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='199'>Then User should see the heading "We're coming soon!"</a>
+<div class="">
+<span class="badge badge-default">To Validate Opus Assurance Journey Functionality.To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed.Then User should see the heading "We're coming soon!"</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
@@ -241,15 +825,17 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>1</span>
+<span class='badge log pass-bg'>3</span>
+<span class='badge log badge-danger'>1</span>
 </span>
 <p class="name">@test</p>
-<p class="duration text-sm">1 tests</p>
+<p class="duration text-sm">4 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>@test</h4>
-<span status="pass" class='badge log pass-bg'>1 passed</span>
+<span status="pass" class='badge log pass-bg'>3 passed</span>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -262,11 +848,41 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>22:08:18 PM</td>
+<td>13:29:00 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>To verify whether the carpet area can be edited and if the price updates correctly.</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button). Given User enter valid paintable area "2500 sqft"</a>
 <div class="">
-<span class="badge badge-default">To Validate the Budget Calculator homepage for a logged-in user(single product).To verify whether the carpet area can be edited and if the price updates correctly.</span>
+<span class="badge badge-default">To Validate Opus Assurance Journey Functionality.To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button). Given User enter valid paintable area "2500 sqft"</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>13:30:34 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='71'>To verify that selecting more than 5 contractors is restricted</a>
+<div class="">
+<span class="badge badge-default">To Validate Opus Assurance Journey Functionality.To verify that selecting more than 5 contractors is restricted</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>13:31:54 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='117'>To verify that a validation message is displayed when proceeding without selecting a contractor</a>
+<div class="">
+<span class="badge badge-default">To Validate Opus Assurance Journey Functionality.To verify that a validation message is displayed when proceeding without selecting a contractor</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:33:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='163'>To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</a>
+<div class="">
+<span class="badge badge-default">To Validate Opus Assurance Journey Functionality.To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</span>
 </div>
 </td>
 </tr>
@@ -287,25 +903,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jun 15, 2026 22:08:17</h3>
+<h3>Jun 16, 2026 13:28:59</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jun 15, 2026 22:09:35</h3>
+<h3>Jun 16, 2026 13:34:22</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -321,12 +937,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>1</b> features passed
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> features failed,
+<small data-tooltip='100%'><b>1</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -344,9 +960,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='75%'><b>3</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> scenarios failed,
+<small data-tooltip='25%'><b>1</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -364,10 +980,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>15</b> steps passed</small></div>
+<div><small data-tooltip='97%'><b>92</b> steps passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> steps failed,
-<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='1%'><b>1</b> steps failed,
+<b>1</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -383,7 +999,7 @@
 </div></div>
 <script>
 var timeline = {
-"To Validate the Budget Calculator homepage for a logged-in user(single product)":76.848
+"To Validate Opus Assurance Journey Functionality":322.286
 };
 </script>
 <div class="row">
@@ -394,11 +1010,11 @@ var timeline = {
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
 <td>@test</td>
+<td>3</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>100%</td>
+<td>75%</td>
 </tr>
 </tbody>
 </table></div>
@@ -409,21 +1025,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 0,
+passParent: 0,
+failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
-failChild: 0,
+passChild: 3,
+failChild: 1,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 15,
-failGrandChild: 0,
+passGrandChild: 92,
+failGrandChild: 1,
 warningGrandChild: 0,
-skipGrandChild: 0,
+skipGrandChild: 1,
 infoGrandChild: 0,
 eventsCount: 5,
 };

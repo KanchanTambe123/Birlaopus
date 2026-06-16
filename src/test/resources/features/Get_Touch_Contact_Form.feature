@@ -1,4 +1,3 @@
-
 Feature: To Validate Get in Touch Contact Form Subscription
 
   Background: 
@@ -19,8 +18,8 @@ Feature: To Validate Get in Touch Contact Form Subscription
     And User updates the mandatory field Phone Number
     And User updates the mandatory field Pincode "<Pincode>"
     And User clicks submits the Get in Touch form
-    #And User should see the acknowledgment message after successful submission "Thank You For Reaching out to us !"
 
+    #And User should see the acknowledgment message after successful submission "Thank You For Reaching out to us !"
     Examples: 
       | Pincode |
       |  400001 |

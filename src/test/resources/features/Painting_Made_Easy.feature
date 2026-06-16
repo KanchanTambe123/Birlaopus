@@ -41,6 +41,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     When User clicks on Painting made easy
     Then User clicks on Get free quote
     Then User clicks on the Next button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     Then User clicks on the I’ll do it later option
     Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
@@ -71,6 +72,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     Then User clicks on Get free quote
     And User enters unserviceable Pin code "<pincode>"
     Then User clicks on the Next button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 

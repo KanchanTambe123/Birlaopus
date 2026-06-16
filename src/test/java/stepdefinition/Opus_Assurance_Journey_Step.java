@@ -259,6 +259,14 @@ public class Opus_Assurance_Journey_Step {
 		js.jsClickWithWait(op.submitButtonSiteDetails);
 	}
 
+	@Then("User click submit button on Address section page")
+	public void user_click_submit_button_on_address_section_page() {
+
+		js.scrollUntilElementVisible(op.submitButtonSiteDetails);
+		wait.waitForElementVisible(op.submitButtonSiteDetails);
+		js.jsClickWithWait(op.submitButtonSiteDetails);
+	}
+
 	@Then("User selects a schedule visit date and timeslot")
 	public void user_selects_a_schedule_visit_date_and_timeslot() throws InterruptedException {
 		op.selectAvailableDate();

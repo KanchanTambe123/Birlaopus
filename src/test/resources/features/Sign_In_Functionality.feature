@@ -1,4 +1,3 @@
-
 Feature: To Validate Sign-In (User Login)Functionality
 
   Background: 
@@ -48,7 +47,6 @@ Feature: To Validate Sign-In (User Login)Functionality
     And User clicks on the Go to my profile button
     When User clicks on the Log Out button
     Then User should see a popup with the message Are you sure you want to logout? and selects "<answer>"
-  
 
     Examples: 
       | answer |

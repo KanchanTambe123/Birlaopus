@@ -1,4 +1,3 @@
-
 Feature: To Validate Opus Assurance Journey Functionality
 
   Background: 
@@ -130,7 +129,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User click on submit button on enter details
     And User enter Site Details project name
     And User enter update pin code on site details "<Update_pin_code>"
-    Then User click submit button on Site Details
+    Then User click submit button on Address section page
     And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User click next button on Just a Few More Details
@@ -201,7 +200,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User enter proerty name "<property_name>"
     Then User clicks on confirm and add address details
     And User enter update pin code on site details "<Update_pin_code>"
-    Then User click submit button on Site Details
+    Then User click submit button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     And User click next button on Just a Few More Details
     Then User clcik on Sign Up for PaintCraft button
     Then User selects the painting requirement type "<requirementType>"
@@ -244,7 +244,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User click on submit button on enter details
     And User enter Site Details project name
     And User enter update pin code on site details "<Update_pin_code>"
-    Then User click submit button on Site Details
+    Then User click submit button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User click next button on Just a Few More Details
     Then User clcik on Find Contractor button
@@ -270,7 +271,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User click on submit button on enter details
     And User enter Site Details project name
     And User enter update pin code on site details "<Update_pin_code>"
-    Then User click submit button on Site Details
+    Then User click submit button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User click next button on Just a Few More Details
     Then User clcik on Find Contractor button
@@ -296,7 +298,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User click on submit button on enter details
     And User enter Site Details project name
     And User enter update pin code on site details "<Update_pin_code>"
-    Then User click submit button on Site Details
+    Then User click submit button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: isAreaServiceable against value "<status>"
     Then User should see the heading "We're coming soon!"
     And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."

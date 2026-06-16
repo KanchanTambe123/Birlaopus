@@ -43,6 +43,7 @@ Feature: To Validate Survey Booking Form
   Scenario Outline: To verify thank you pop-up appears when user selects I’ll do it later option
     And User clicks on the Book a Free Survey button
     Then User clicks on the Next button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     Then User clicks on the I’ll do it later option
     Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
@@ -60,6 +61,7 @@ Feature: To Validate Survey Booking Form
     And User clicks on the Book a Free Survey button
     And User enters unserviceable Pin code "<pincode>"
     Then User clicks on the Next button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 

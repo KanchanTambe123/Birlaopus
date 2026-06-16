@@ -63,6 +63,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
     Then the User clicks on the Calculate Now button
     Then click on Budget Calculator book free survey button
     Then User clicks on the Next button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     Then User clicks on the I’ll do it later option
     Then the User clicks on the Thank You window close icon
     Then the Book a free survey button should not be visible on the Premium tab
@@ -89,6 +90,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
     # And the calculation result correctly reflects the entered carpet area and pincode
     Then click on Budget Calculator book free survey button
     Then User clicks on the Next button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     Then User clicks on the I’ll do it later option
     Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"
 
@@ -128,13 +130,14 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
     Then click on Budget Calculator book free survey button
     #Then User clicks on the Next button on the Book a Free Survey form
     And User enters unserviceable Pin code on budget calculator form "<Pincode_Unserviceable>"
-    And User clicks on the Next button on the share site details section
+    Then User clicks on the Next button on Address section page
+    And User captures and validates API request and response for "lead/shortForm"
     Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | Pincode_Unserviceable |
       | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    |                111222 |
-@test
+
   #---------------------------------- Scenario 7----------------------------------#
   Scenario Outline: To verify whether the carpet area can be edited and if the price updates correctly.
     When User clicks on the profile icon

@@ -1,4 +1,3 @@
-
 Feature: To Validate Store Locator Functionality
 
   Background: 
