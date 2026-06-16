@@ -81,7 +81,7 @@ public class Get_Touch_Contact_Form_Step {
 	public void user_updates_the_mandatory_field_pincode(String string) throws InterruptedException {
 		wait.waitForElementVisible(gp.pincodeInput);
 		js.scrollUntilElementVisible(gp.pincodeInput);
-		gp.emailInput.clear();
+		gp.pincodeInput.clear();
 		Thread.sleep(2000);
 		common.SendInput(string, gp.pincodeInput);
 	}

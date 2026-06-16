@@ -31,21 +31,21 @@ public class Get_Touch_Contact_Form_Page {
     @FindBy(xpath = "//a[contains(@class,'get-in-touch') and contains(@class,'gettouch-div')]")
     public WebElement getInTouchBtn;
     
-    @FindBy(xpath= "//input[contains(@class,'cmp-form-text__input') and @aria-label='Name']")
+    @FindBy(xpath= "//div[@class='cmp-form-text form-feilds error-icon']//input[@id='shortFormName']")
     public WebElement nameInput;
     
     
-    @FindBy(xpath = "//input[contains(@class,'cmp-form-text__input') and @aria-label='Email ID']")
+    @FindBy(xpath = "//input[@id='form-text-1660780272']")
     public WebElement emailInput;
     
-    @FindBy(xpath = "//input[contains(@class,'cmp-form-text__input') and @aria-label='Phone Number']")
+    @FindBy(xpath = "//div[@class='cmp-form-text form-feilds error-icon']//input[@id='shortFormNumber']")
     public WebElement phoneInput;
     
-    @FindBy(xpath = "//input[contains(@class,'cmp-form-text__input') and @aria-label='Pincode']")
+    @FindBy(xpath = "//input[@id='form-text-1139334631']")
     public WebElement pincodeInput;
 
     
-   @FindBy(xpath = "(//*[@type='SUBMIT'])[15]")
+   @FindBy(xpath = "(//*[@type='SUBMIT'])[18]")
     public WebElement submitBtn;
     
 

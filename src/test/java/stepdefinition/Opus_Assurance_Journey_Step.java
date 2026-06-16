@@ -258,6 +258,14 @@ public class Opus_Assurance_Journey_Step {
 		wait.waitForElementVisible(op.submitButtonSiteDetails);
 		js.jsClickWithWait(op.submitButtonSiteDetails);
 	}
+	
+	@Then("User click submit button on Address section page for opus assurance")
+	public void user_click_submit_button_on_address_section_page_for_opus_assurance() {
+		js.scrollUntilElementVisible(op.submitButtonSiteDetails);
+		wait.waitForElementVisible(op.submitButtonSiteDetails);
+		js.jsClickWithWait(op.submitButtonSiteDetails);
+	}
+
 
 	@Then("User click submit button on Address section page")
 	public void user_click_submit_button_on_address_section_page() {

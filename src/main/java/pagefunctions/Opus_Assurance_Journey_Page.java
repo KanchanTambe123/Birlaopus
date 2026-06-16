@@ -96,7 +96,7 @@ public class Opus_Assurance_Journey_Page {
 	public WebElement submitButtonEnterDetails;
 
 	
-	@FindBy(xpath = "(//div[contains(@class,'login-form-btn')]//button[text()='Submit'])[1]")
+	@FindBy(xpath = "//*[@id=\"form-button-532466755\"]")
 	public WebElement submitButtonSiteDetails;
 	
 	@FindBy(xpath = "//button[@id='nextBtnScreenBreak']")

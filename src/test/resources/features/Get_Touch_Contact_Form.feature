@@ -13,11 +13,12 @@ Feature: To Validate Get in Touch Contact Form Subscription
     Then User clicks on the close icon
     When User hovers over the Get in Touch popup
     And User clicks on the Get in Touch option
-    And User updates the mandatory field Name
+    #And User updates the mandatory field Name
     And User updates the mandatory field Email
-    And User updates the mandatory field Phone Number
+    #And User updates the mandatory field Phone Number
     And User updates the mandatory field Pincode "<Pincode>"
     And User clicks submits the Get in Touch form
+    And User captures and validates API request and response for "lead/shortForm"
 
     #And User should see the acknowledgment message after successful submission "Thank You For Reaching out to us !"
     Examples: 
