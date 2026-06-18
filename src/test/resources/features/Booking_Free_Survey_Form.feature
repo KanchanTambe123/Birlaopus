@@ -9,7 +9,7 @@ Feature: To Validate Survey Booking Form
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
- 
+
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify successful submission of the survey booking form for a logged-in user
     And User clicks on the Book a Free Survey button

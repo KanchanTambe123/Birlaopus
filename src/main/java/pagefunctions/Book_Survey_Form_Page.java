@@ -34,7 +34,7 @@ public class Book_Survey_Form_Page {
 	ClickElement click = new ClickElement();
 	private boolean isServiceable;
 
-	CryptoUtils crypto = new CryptoUtils();
+	private static final CryptoUtils crypto = new CryptoUtils();
 
 	// ------------------- Scenario 1 ------------------------
 
@@ -45,15 +45,12 @@ public class Book_Survey_Form_Page {
 
 	@FindBy(xpath = "//div[@class='button login-form-btn']//button[@id='nextBtnScreenBreak']")
 	public WebElement FewDeailsNextButton;
-	
 
 	@FindBy(xpath = "//a[@id='projectDetailsNext']")
 	public WebElement projectDetailsNextButton;
 
 	@FindBy(xpath = "//input[@id='carpetArea']")
 	public WebElement carpetAreaInputFiled;
-	
-
 
 	@FindBy(xpath = "//div[contains(@class,'cmp-text')]//p[contains(normalize-space(),'Thank you for sharing your details')]")
 	public WebElement confirmationMsg;
@@ -131,9 +128,6 @@ public class Book_Survey_Form_Page {
 			return; // Continue flow if BHK not found
 		}
 
-	
-
-	
 	}
 
 	public void enterAddressAndSelectFirstSuggestion(String address) {
@@ -153,131 +147,256 @@ public class Book_Survey_Form_Page {
 			js.executeScript("arguments[0].click();", firstSuggestion);
 		}
 	}
-	
-	public void logLeadApiDetails(String apiType) {
+
+	public static void logLeadApiDetails(String apiType) {
 
 	    try {
-	        // 1️Get data
 	        String requestPayload = DriverManager.getLeadRequestPayload();
+	        String responsePayload = DriverManager.getLeadResponsePayload();
 	        int statusCode = DriverManager.getLeadStatusCode();
 	        long responseTime = DriverManager.getResponseTime();
 
-	        // 2️Log basic info
+	        // ===== HEADER =====
+	        ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 	        ExtentCucumberAdapter.addTestStepLog(" API Type: " + apiType);
-	        ExtentCucumberAdapter.addTestStepLog(" Status Code: " + statusCode);
+	        ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+	        // ===== BASIC INFO =====
+	        ExtentCucumberAdapter.addTestStepLog("Status Code: " + statusCode);
 	        ExtentCucumberAdapter.addTestStepLog(" Response Time: " + responseTime + " ms");
+	        ExtentCucumberAdapter.addTestStepLog("");
 
-	        // 3️ Log request payload
-	        ExtentCucumberAdapter.addTestStepLog(" Request Payload: " + requestPayload);
+	        // ===== REQUEST =====
+	        if (requestPayload != null && !requestPayload.isEmpty()) {
 
-	        // 4️OPTIONAL → Decrypt & log
-	        try {
-	            JSONObject wrapperJson = new JSONObject(requestPayload);
-	            String encryptedData = wrapperJson.getString("data");
+	            ExtentCucumberAdapter.addTestStepLog(" Request Payload (Encrypted):");
+	            ExtentCucumberAdapter.addTestStepLog(requestPayload);
 
-	            String decryptedJson = crypto.decryptData(encryptedData);
+	            try {
+	                JSONObject reqJson = new JSONObject(requestPayload);
+	                String encryptedReq = extractEncryptedValue(reqJson);
 
-	            ExtentCucumberAdapter.addTestStepLog(" Decrypted Payload: " + decryptedJson);
+	                if (encryptedReq != null) {
+	                    String decryptedReq = crypto.decryptData(encryptedReq);
+	                    ExtentCucumberAdapter.addTestStepLog(" Decrypted Request:");
+	                    ExtentCucumberAdapter.addTestStepLog(decryptedReq);
+	                }
 
-	        } catch (Exception e) {
-	            ExtentCucumberAdapter.addTestStepLog(" Decryption skipped / failed: " + e.getMessage());
+	            } catch (Exception e) {
+	                ExtentCucumberAdapter.addTestStepLog(" Request Decryption Failed");
+	            }
 	        }
 
+	        ExtentCucumberAdapter.addTestStepLog("");
+
+	        // ===== RESPONSE =====
+	        if (responsePayload != null && !responsePayload.isEmpty()) {
+
+	            ExtentCucumberAdapter.addTestStepLog(" Response Payload (Encrypted):");
+	            ExtentCucumberAdapter.addTestStepLog(responsePayload);
+
+	            try {
+	                JSONObject resJson = new JSONObject(responsePayload);
+	                String encryptedRes = extractEncryptedValue(resJson);
+
+	                if (encryptedRes != null) {
+	                    String decryptedRes = crypto.decryptData(encryptedRes);
+	                    ExtentCucumberAdapter.addTestStepLog(" Decrypted Response:");
+	                    ExtentCucumberAdapter.addTestStepLog(decryptedRes);
+	                }
+
+	            } catch (Exception e) {
+	                ExtentCucumberAdapter.addTestStepLog(" Response Decryption Failed");
+	            }
+	        }
+
+	        // ===== FOOTER =====
+	        ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
 	    } catch (Exception e) {
-	        e.printStackTrace();
-	        ExtentCucumberAdapter.addTestStepLog(" Exception while logging API: " + e.getMessage());
+	        ExtentCucumberAdapter.addTestStepLog(" Error logging API: " + e.getMessage());
 	    }
 	}
 
-	public void verifyLeadApiParameters(String expectedLeadContext, String expectedLeadType,
-	        String expectedSubType, String expectedLeadSubSource) {
-
-	    try {
-	        // 1️.Get payload
-	        String encryptedPayload = DriverManager.waitForLeadPayload(25);
-
-	        // 2️.Get status code
-	        int statusCode = DriverManager.waitForLeadStatusCode(25);
-
-	        System.out.println("Encrypted Payload: " + encryptedPayload);
-	        System.out.println("Status Code: " + statusCode);
-
-	        // Validate status code
-	        assertStatusCode(200, statusCode);
-
-	        // 3️.Extract 'data'
-	        JSONObject wrapperJson = new JSONObject(encryptedPayload);
-	        String encryptedData = wrapperJson.getString("data");
-
-	        // 4️. Decrypt
-	        String decryptedJson = crypto.decryptData(encryptedData);
-	        System.out.println("Decrypted JSON: " + decryptedJson);
-
-	        // 5️.Parse JSON
-	        ObjectMapper mapper = new ObjectMapper();
-	        Map<String, Object> dataMap = mapper.readValue(decryptedJson, Map.class);
-	        Map<String, Object> bodyMap = (Map<String, Object>) dataMap.get("body");
-
-	        // 6️.Existing Assertions
-	        assertParameter("iclLeadContextC", expectedLeadContext, bodyMap.get("iclLeadContextC"));
-	        assertParameter("iclLeadTypeC", expectedLeadType, bodyMap.get("iclLeadTypeC"));
-	        assertParameter("subType", expectedSubType, bodyMap.get("subType"));
-	        assertParameter("leadSubSource", expectedLeadSubSource, bodyMap.get("leadSubSource"));
-
-	        //  7️.NEW: Capture serviceable flag
-	        Object serviceableValue = bodyMap.get("isAreaServiceable");
-
-	        isServiceable = Boolean.parseBoolean(String.valueOf(serviceableValue));
-
-	        System.out.println("Serviceable Flag: " + isServiceable);
-
-	        // Optional assertion (if needed)
-	        ExtentCucumberAdapter.getCurrentStep().log(
-	                Status.INFO,
-	                "Serviceable flag value: " + isServiceable
-	        );
-
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	        ExtentCucumberAdapter.addTestStepLog("Exception during Lead API verification: " + e.getMessage());
+	/**
+	 * Extract encrypted value from known keys
+	 */
+	private static String extractEncryptedValue(JSONObject json) {
+	    if (json.has("data")) {
+	        return json.getString("data");
 	    }
+	    if (json.has("responseJson")) {
+	        return json.getString("responseJson");
+	    }
+	    if (json.has("requestJson")) {
+	        return json.getString("requestJson");
+	    }
+	    return null;
 	}
+
+	public void verifyLeadApiParameters(String expectedLeadContext, String expectedLeadType, String expectedSubType,
+			String expectedLeadSubSource) {
+
+		try {
+			// 1️.Get payload
+			String encryptedPayload = DriverManager.waitForLeadPayload(25);
+
+			// 2️.Get status code
+			int statusCode = DriverManager.waitForLeadStatusCode(25);
+
+			System.out.println("Encrypted Payload: " + encryptedPayload);
+			System.out.println("Status Code: " + statusCode);
+
+			// Validate status code
+			assertStatusCode(200, statusCode);
+
+			// 3️.Extract 'data'
+			JSONObject wrapperJson = new JSONObject(encryptedPayload);
+			String encryptedData = wrapperJson.getString("data");
+
+			// 4️. Decrypt
+			String decryptedJson = crypto.decryptData(encryptedData);
+			System.out.println("Decrypted JSON: " + decryptedJson);
+
+			// 5️.Parse JSON
+			ObjectMapper mapper = new ObjectMapper();
+			Map<String, Object> dataMap = mapper.readValue(decryptedJson, Map.class);
+			Map<String, Object> bodyMap = (Map<String, Object>) dataMap.get("body");
+
+			// 6️.Existing Assertions
+			assertParameter("iclLeadContextC", expectedLeadContext, bodyMap.get("iclLeadContextC"));
+			assertParameter("iclLeadTypeC", expectedLeadType, bodyMap.get("iclLeadTypeC"));
+			assertParameter("subType", expectedSubType, bodyMap.get("subType"));
+			assertParameter("leadSubSource", expectedLeadSubSource, bodyMap.get("leadSubSource"));
+
+			// 7️.NEW: Capture serviceable flag
+			Object serviceableValue = bodyMap.get("isAreaServiceable");
+
+			isServiceable = Boolean.parseBoolean(String.valueOf(serviceableValue));
+
+			System.out.println("Serviceable Flag: " + isServiceable);
+
+			// Optional assertion (if needed)
+			ExtentCucumberAdapter.getCurrentStep().log(Status.INFO, "Serviceable flag value: " + isServiceable);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			ExtentCucumberAdapter.addTestStepLog("Exception during Lead API verification: " + e.getMessage());
+		}
+	}
+
 	public boolean isServiceable() {
-	    return isServiceable;
+		return isServiceable;
 	}
-	
+
 	private void assertStatusCode(int expected, int actual) {
-	    try {
-	        if (expected != actual) {
-	            throw new AssertionError("Expected Status Code: " + expected + ", Actual: " + actual);
-	        }
-	        ExtentCucumberAdapter.addTestStepLog("Status Code matched: " + actual);
-	    } catch (AssertionError e) {
-	        ExtentCucumberAdapter.addTestStepLog("Status Code mismatch! " + e.getMessage());
-	    }
+		try {
+			if (expected != actual) {
+				throw new AssertionError("Expected Status Code: " + expected + ", Actual: " + actual);
+			}
+			ExtentCucumberAdapter.addTestStepLog("Status Code matched: " + actual);
+		} catch (AssertionError e) {
+			ExtentCucumberAdapter.addTestStepLog("Status Code mismatch! " + e.getMessage());
+		}
 	}
 
 	private void assertParameter(String paramName, Object expected, Object actual) {
-	    try {
-	        if (!expected.equals(actual)) {
-	            throw new AssertionError("Expected: " + expected + ", Actual: " + actual);
-	        }
+		try {
+			if (!expected.equals(actual)) {
+				throw new AssertionError("Expected: " + expected + ", Actual: " + actual);
+			}
 
-	        // PASS 
-	        ExtentCucumberAdapter.getCurrentStep().log(
-	                Status.PASS,
-	                "✔ " + paramName + " matched: " + actual
-	        );
+			// PASS
+			ExtentCucumberAdapter.getCurrentStep().log(Status.PASS, "✔ " + paramName + " matched: " + actual);
 
-	    } catch (AssertionError e) {
+		} catch (AssertionError e) {
 
-	        // ❌ FAIL (Red + Cross)
-	        ExtentCucumberAdapter.getCurrentStep().log(
-	                Status.FAIL,
-	                "❌ " + paramName + " mismatch! " + e.getMessage()
-	        );
-	    }
+			// ❌ FAIL (Red + Cross)
+			ExtentCucumberAdapter.getCurrentStep().log(Status.FAIL, "❌ " + paramName + " mismatch! " + e.getMessage());
+		}
 
 	}
-	
+
+	public static void logLeadApiDetailsWithWait(String apiType, int waitTimeSeconds) {
+		try {
+			// Wait for API data to be captured
+			System.out.println("⏳ Waiting for API data (max " + waitTimeSeconds + " seconds)...");
+
+			DriverManager.waitForLeadPayload(waitTimeSeconds);
+			DriverManager.waitForLeadStatusCode(waitTimeSeconds);
+
+			// Wait extra time for response payload (it comes last)
+			DriverManager.waitForLeadResponsePayload(waitTimeSeconds + 5);
+
+			// Wait a bit more for response time calculation
+			Thread.sleep(1000);
+
+			// Log the captured data
+			logLeadApiDetails(apiType);
+
+		} catch (Exception e) {
+			System.err.println("❌ Error waiting for API data: " + e.getMessage());
+			e.printStackTrace();
+			ExtentCucumberAdapter.addTestStepLog("❌ Error capturing API data: " + e.getMessage());
+
+			// Log whatever we have even if incomplete
+			try {
+				logLeadApiDetails(apiType + " (Incomplete Data)");
+			} catch (Exception ex) {
+				System.err.println("❌ Error logging incomplete data: " + ex.getMessage());
+			}
+		}
+	}
+
+	/**
+	 * Format JSON string for better readability
+	 * 
+	 * @param json Raw JSON string
+	 * @return Formatted JSON string
+	 */
+	private static String formatJson(String json) {
+		if (json == null || json.isEmpty()) {
+			return json;
+		}
+
+		try {
+			JSONObject jsonObject = new JSONObject(json);
+			return jsonObject.toString(2); // Indent with 2 spaces
+		} catch (Exception e) {
+			// If not a valid JSON object, try simple formatting
+			return json.replace("{", "{\n  ").replace("}", "\n}").replace(",", ",\n  ").replace("[", "[\n  ")
+					.replace("]", "\n]");
+		}
+	}
+
+	/**
+	 * Log encrypted and decrypted data comparison Useful for debugging
+	 * encryption/decryption
+	 * 
+	 * @param encryptedData Encrypted data string
+	 * @param fieldName     Name of the field being logged
+	 */
+	public static void logEncryptedDataComparison(String encryptedData, String fieldName) {
+		try {
+			ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+			ExtentCucumberAdapter.addTestStepLog("🔐 " + fieldName + " - Encryption/Decryption Comparison");
+			ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+			ExtentCucumberAdapter.addTestStepLog("🔒 Encrypted Data:");
+			ExtentCucumberAdapter.addTestStepLog(encryptedData);
+			ExtentCucumberAdapter.addTestStepLog("");
+
+			String decrypted = crypto.decryptData(encryptedData);
+			ExtentCucumberAdapter.addTestStepLog("🔓 Decrypted Data:");
+			ExtentCucumberAdapter.addTestStepLog("```json");
+			ExtentCucumberAdapter.addTestStepLog(formatJson(decrypted));
+			ExtentCucumberAdapter.addTestStepLog("```");
+
+			ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+		} catch (Exception e) {
+			ExtentCucumberAdapter.addTestStepLog("❌ Error comparing encrypted data: " + e.getMessage());
+		}
+	}
+
 }

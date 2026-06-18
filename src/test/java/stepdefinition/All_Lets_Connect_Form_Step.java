@@ -111,9 +111,10 @@ public class All_Lets_Connect_Form_Step {
 	}
 	
 	@And("User captures and validates API request and response for {string}")
-	public void user_captures_and_validates_api(String endpointKey) {
-
-       bs.logLeadApiDetails(endpointKey);
+	public void user_captures_and_validates_api(String endpointKey) throws InterruptedException {
+		 
+       //bs.logLeadApiDetails(endpointKey);
+       bs.logLeadApiDetailsWithWait(endpointKey, 40);
 
 	}
 	@When("User should see the acknowledgment message after successful submission {string}")

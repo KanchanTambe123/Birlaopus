@@ -85,7 +85,7 @@ public class Book_Survey_Form_Step {
 		js.scrollUntilElementVisible(bs.SiteDetailsNextButton);
 		Thread.sleep(2000);
 		js.jsClickWithWait(bs.SiteDetailsNextButton);
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 	}
 	
 	
@@ -169,7 +169,7 @@ public class Book_Survey_Form_Step {
 		js.scrollUntilElementVisible(bs.surveyStepBackButton);
 		Thread.sleep(2000);
 		js.jsClickWithWait(bs.surveyStepBackButton);
-		Thread.sleep(2000);
+		
 	}
 	@Then("User should be redirected to the previous step of the Book a Free Survey form")
 	public void user_should_be_redirected_to_the_previous_step_of_the_book_a_free_survey_form() {

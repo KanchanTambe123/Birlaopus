@@ -108,7 +108,7 @@ public class Sign_In_Functionality_Step {
 	@When("User clicks on the Log Out button")
 	public void user_clicks_on_the_log_out_button() throws InterruptedException {
 		WebDriver driver = DriverManager.getDriver();
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    // Wait for loader to disappear
@@ -137,7 +137,7 @@ public class Sign_In_Functionality_Step {
 	@When("User clicks on the Sign Out button")
 	public void user_clicks_on_the_sign_out_button() throws InterruptedException {
 		WebDriver driver = DriverManager.getDriver();
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    // Wait for loader to disappear

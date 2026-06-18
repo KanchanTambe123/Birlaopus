@@ -252,27 +252,31 @@ public class Opus_Assurance_Journey_Step {
 	}
 
 	@Then("User click submit button on Site Details")
-	public void user_click_submit_button_on_site_details() {
+	public void user_click_submit_button_on_site_details() throws InterruptedException {
 
 		js.scrollUntilElementVisible(op.submitButtonSiteDetails);
 		wait.waitForElementVisible(op.submitButtonSiteDetails);
 		js.jsClickWithWait(op.submitButtonSiteDetails);
+        Thread.sleep(6000);
 	}
 	
 	@Then("User click submit button on Address section page for opus assurance")
-	public void user_click_submit_button_on_address_section_page_for_opus_assurance() {
+	public void user_click_submit_button_on_address_section_page_for_opus_assurance() throws InterruptedException {
 		js.scrollUntilElementVisible(op.submitButtonSiteDetails);
 		wait.waitForElementVisible(op.submitButtonSiteDetails);
 		js.jsClickWithWait(op.submitButtonSiteDetails);
+         Thread.sleep(6000);
+		
 	}
 
 
 	@Then("User click submit button on Address section page")
-	public void user_click_submit_button_on_address_section_page() {
+	public void user_click_submit_button_on_address_section_page() throws InterruptedException {
 
 		js.scrollUntilElementVisible(op.submitButtonSiteDetails);
 		wait.waitForElementVisible(op.submitButtonSiteDetails);
 		js.jsClickWithWait(op.submitButtonSiteDetails);
+        Thread.sleep(6000);
 	}
 
 	@Then("User selects a schedule visit date and timeslot")

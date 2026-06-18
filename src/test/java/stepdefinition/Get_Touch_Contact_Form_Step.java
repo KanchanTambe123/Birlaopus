@@ -92,7 +92,7 @@ public class Get_Touch_Contact_Form_Step {
 		Thread.sleep(2000);
 		js.scrollUntilElementVisible(gp.submitBtn);
 		js.jsClickWithWait(gp.submitBtn);
-		Thread.sleep(2000);
+		Thread.sleep(6000);
 	}
 
 	@Then("validation message for invalid pincode input field should get displayed {string}")
