@@ -18,6 +18,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User enter valid email id
     And User enter valid pin code "<pin_code>"
     Then User click on the Save Details button
+        #Then User click submit button on Address section page for opus assurance
+    #And User captures and validates API request and response for "lead/shortForm"
     Then User should see the heading "We're coming soon!"
     And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."
 
@@ -281,7 +283,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     Examples: 
       | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
       | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |
-
+@test
   #---------------------------------- Scenario 13----------------------------------#
   Scenario Outline: To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed
     Given User enter valid paintable area "<paintable_area>"

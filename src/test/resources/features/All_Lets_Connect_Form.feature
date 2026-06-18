@@ -1,3 +1,4 @@
+@Scope1
 Feature: To Validate the Brand section Form and Book a Free Consultation form on the homepage.
 
   Background: 

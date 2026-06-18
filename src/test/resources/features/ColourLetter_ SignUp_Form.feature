@@ -1,3 +1,4 @@
+@Scope1
 Feature: To Validate Newsletter Subscription Sign-Up Functionality
 
   Background: 

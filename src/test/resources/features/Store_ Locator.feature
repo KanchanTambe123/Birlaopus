@@ -1,3 +1,4 @@
+@Scope1
 Feature: To Validate Store Locator Functionality
 
   Background: 

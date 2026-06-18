@@ -1,4 +1,4 @@
-
+@Scope1
 Feature: To Validate Texture Page Download CTA Validation
 
   Background: 

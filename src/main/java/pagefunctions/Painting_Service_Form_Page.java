@@ -55,6 +55,12 @@ public class Painting_Service_Form_Page {
     @FindBy(xpath = "(//a[normalize-space()='Get free quote'])[1]")
     public WebElement GetfreequoteButton;
     
+    @FindBy(xpath = "//div[@class='cmp-teaser__description'][.//h4='Sorry' and .//p[contains(text(),'expanding rapidly')]]")
+    public WebElement UnservicablePincodePopUpMessage;
+    
+    
+  
+    
 
 
 

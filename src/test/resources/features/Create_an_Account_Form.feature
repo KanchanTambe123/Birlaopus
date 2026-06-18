@@ -1,3 +1,4 @@
+@Scope1
 Feature: To Validate Create an Account(Account Registration) Functionality(Form)
 
   Background: 

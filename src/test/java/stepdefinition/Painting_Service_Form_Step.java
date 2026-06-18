@@ -154,4 +154,20 @@ public class Painting_Service_Form_Step {
 		js.jsClickWithWait(pf.GetfreequoteButton);
 		Thread.sleep(2000);
 	}
+	
+	@Then("User enters a unservicable pin code {string} in the Painting Service Form")
+	public void user_enters_a_unservicable_pin_code_in_the_painting_service_form(String string) throws InterruptedException {
+		wait.waitForElementVisible(pf.PincodeField);
+		js.scrollUntilElementVisible(pf.PincodeField);
+		pf.PincodeField.clear();
+		Thread.sleep(2000);
+		common.SendInput(string, pf.PincodeField);
+	}
+	@Then("the unserviceable pin code message should be displayed in the Painting Service Form  {string}")
+	public void the_unserviceable_pin_code_message_should_be_displayed_in_the_painting_service_form(String string) {
+     wait.waitForElementVisible(pf.UnservicablePincodePopUpMessage);
+		
+		Assert.assertTrue(pf.UnservicablePincodePopUpMessage.isDisplayed(),
+				"unserviceable pincode pop up message is not displayed");
+	}
 }

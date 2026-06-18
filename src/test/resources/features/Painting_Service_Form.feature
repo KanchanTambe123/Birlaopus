@@ -1,3 +1,4 @@
+@Scope1
 Feature: To Validate Short Lead Form (Painting Service)
 
   Background: 
@@ -20,6 +21,19 @@ Feature: To Validate Short Lead Form (Painting Service)
       | PinCode |
       |  400703 |
 
+  #---------------------------------- Scenario 1 ----------------------------------#pending
+ Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
+ 
+    And User clicks on the Sign up for free button
+    And User enters a unservicable pin code "<PinCode>" in the Painting Service Form
+    And User clicks on the Submit button in the Painting Service Form
+    And User captures and validates API request and response for "lead/shortForm"
+    Then the unserviceable pin code message should be displayed in the Painting Service Form  "Sorry But we are expanding rapidly. Our team will get back to you once we are present in your location"
+
+    Examples: 
+      | PinCode |
+      |  111222 |
+ 
   #----------------------------------Scenario 2----------------------------------#
   Scenario Outline: To verify error message is displayed for an invalid pin code for a logged-in user
     And User clicks on the Sign up for free button
@@ -42,3 +56,6 @@ Feature: To Validate Short Lead Form (Painting Service)
     And User clicks on the Sign up for free button
     And User clicks on the Back button
     Then User should be navigated to the previous page
+
+    
+    

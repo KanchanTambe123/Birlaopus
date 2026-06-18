@@ -1,3 +1,4 @@
+@Scope1
 Feature: To Validate Sign-In (User Login)Functionality
 
   Background: 
