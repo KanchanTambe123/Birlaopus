@@ -87,7 +87,7 @@ public class Painting_Service_Form_Step {
 		js.scrollUntilElementVisible(pf.submitButton);
 		Thread.sleep(2000);
 		js.jsClickWithWait(pf.submitButton);
-		Thread.sleep(5000);
+		Thread.sleep(6000);
 	}
 
 	@When("User clicks on the Back button")

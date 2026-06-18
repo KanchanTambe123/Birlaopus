@@ -1,75 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-06-18T19:10:52 IST" name="Default suite" finished-at="2026-06-18T19:13:13 IST" duration-ms="141201">
+  <suite started-at="2026-06-18T20:42:16 IST" name="Default suite" finished-at="2026-06-18T20:43:19 IST" duration-ms="63243">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-06-18T19:10:52 IST" name="Default test" finished-at="2026-06-18T19:13:13 IST" duration-ms="141201">
+    <test started-at="2026-06-18T20:42:16 IST" name="Default test" finished-at="2026-06-18T20:43:19 IST" duration-ms="63243">
       <class name="runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T19:10:52 IST" name="setUpClass" finished-at="2026-06-18T19:10:53 IST" duration-ms="592" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T20:42:16 IST" name="setUpClass" finished-at="2026-06-18T20:42:16 IST" duration-ms="597" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4bb0063a]]>
+                <![CDATA[org.testng.TestRunner@1131fcfd]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T19:10:53 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-06-18T19:11:49 IST" duration-ms="56333" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T20:42:16 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-06-18T20:43:18 IST" duration-ms="61604" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user"]]>
+                <![CDATA["To verify sign-in functionality with valid mobile number and OTP"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate Get in Touch Contact Form Subscription"]]>
+                <![CDATA["To Validate Sign-In (User Login)Functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T19:11:49 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-06-18T19:12:36 IST" duration-ms="47433" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify that a validation message is displayed when the user enters an invalid pincode on the Get in Touch form"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate Get in Touch Contact Form Subscription"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T19:12:36 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-06-18T19:13:04 IST" duration-ms="27440" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["To verify mandatory field validation messages on the Get in Touch form without login"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["To Validate Get in Touch Contact Form Subscription"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T19:13:04 IST" name="tearDownClass" finished-at="2026-06-18T19:13:13 IST" duration-ms="9382" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-06-18T20:43:18 IST" name="tearDownClass" finished-at="2026-06-18T20:43:19 IST" duration-ms="1024" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

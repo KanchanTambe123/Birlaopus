@@ -125,7 +125,7 @@ public class DriverManager {
 
         // Configure browser
         getDriver().manage().deleteAllCookies();
-        getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(120));
+        getDriver().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(90));
 
         // ✅ Initialize DevTools with API monitoring
         initDevTools();

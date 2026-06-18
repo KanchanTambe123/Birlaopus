@@ -28,8 +28,7 @@ Feature: To Validate Short Lead Form (Painting Service)
     And User enters a unservicable pin code "<PinCode>" in the Painting Service Form
     And User clicks on the Submit button in the Painting Service Form
     And User captures and validates API request and response for "lead/shortForm"
-    Then the unserviceable pin code message should be displayed in the Painting Service Form  "Sorry But we are expanding rapidly. Our team will get back to you once we are present in your location"
-
+   Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
     Examples: 
       | PinCode |
       |  111222 |

@@ -59,6 +59,7 @@ Feature: To Validate the Brand section Form and Book a Free Consultation form on
   #| UserType             | Pincode | HelpOption                 |
   #| Painter / Contractor |  400703 | Crew / Grasim relationship |
   #| Painter / Contractor |  411033 | General Enquiries / Others |
+  @test
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify that the Back button works after entering form data in the Book a Free Consultation form on the homepage
     And User navigates to the Book a free consultation form section
