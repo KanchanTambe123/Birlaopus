@@ -1,3 +1,4 @@
+@Scope2
 Feature: To Validate the Budget Calculator homepage for a logged-in user(single product)
 
   Background: 

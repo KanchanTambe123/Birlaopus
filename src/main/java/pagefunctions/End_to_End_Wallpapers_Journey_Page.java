@@ -205,4 +205,41 @@ public class End_to_End_Wallpapers_Journey_Page {
 
 	    System.out.println("Pincode " + pincode + " validated successfully");
 	}
+	
+	
+	public void clickWishlistIcon() {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    By loader = By.cssSelector("div.section-loader");
+	    By wishlistIcon = By.cssSelector("img[alt='Favorite']");
+
+	    // 1️⃣ Wait for initial loader to disappear
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
+
+	    // 2️⃣ Locate wishlist icon
+	    WebElement wishlist = wait.until(
+	            ExpectedConditions.presenceOfElementLocated(wishlistIcon));
+
+	    // 3️⃣ Scroll into view
+	    js.executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});", wishlist);
+
+	    // 4️⃣ Wait until clickable
+	    wait.until(ExpectedConditions.elementToBeClickable(wishlist));
+
+	    // 5️⃣ Click wishlist icon
+	    js.executeScript("arguments[0].click();", wishlist);
+
+	    // 6️ WAIT AFTER CLICK 
+	    // Wait for loader / wishlist state update
+	    wait.until(ExpectedConditions.or(
+	            ExpectedConditions.invisibilityOfElementLocated(loader),
+	            ExpectedConditions.attributeContains(wishlist, "class", "active")
+	    ));
+
+	    System.out.println("Wishlist icon clicked and state updated successfully");
+	}
+
 }

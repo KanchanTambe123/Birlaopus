@@ -1,4 +1,4 @@
-
+@Scope2
 Feature: To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
 
   Background: 
@@ -67,15 +67,19 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify successful colour swatch add-to-wishlist functionality through navigation for a logged-in user
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    Then User selects Colour for colour swatch "<Colour>"
     And User click whishlist icon on colour swatch
     Then Product should be added to the wishlist successfully
 
     Examples: 
-      | navmenu | navtab       | productname   | optionText          |
-      | Shop    | Colour Tools | Colour Swatch | Delete colour story |
+      | navmenu | navtab       | productname   | optionText          | Colour    |
+      | Shop    | Colour Tools | Colour Swatch | Delete colour story | Rose dust |
 
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user.
+    When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    Then User selects Colour for colour swatch "<Colour>"
+    And User click whishlist icon on colour swatch
     Then User click whishlist icon on top page
     And User clicks on "<tabName>" tab
     Then the User clicks the product option button in favourites
@@ -83,8 +87,8 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Then colour swatch should be removed from the wishlist successfully
 
     Examples: 
-      | navmenu | navtab       | productname   | tabName    | optionText          |
-      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete colour story |
+      | navmenu | navtab       | productname   | tabName    | optionText          | Colour    |
+      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete colour story | Rose dust |
 
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify error message when user enters invalid pincode for colour swatch

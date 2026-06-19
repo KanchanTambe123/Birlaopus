@@ -72,7 +72,7 @@ public class End_to_End_Wallpapers_Journey_Step {
 	
 	@When("User click whishlist icon on Wallpapers")
 	public void user_click_whishlist_icon_on_wallpapers() {
-		cp.clickWishlistIcon();
+		ew.clickWishlistIcon();
 	}
 	
 	

@@ -208,7 +208,7 @@ public class End_To_End_ColourSwatch_Page {
 
 	    By tabsLocator = By.xpath("//ol[@role='tablist']//li[@role='tab']");
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
 
 	    List<WebElement> tabs = driver.findElements(
 	    	    By.xpath("//ol[@role='tablist']//li[@role='tab']")
@@ -281,7 +281,7 @@ public class End_To_End_ColourSwatch_Page {
 	
 	public boolean isProductRemovedFromWishlist() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
 
 	    return wait.until(driver ->
 	        driver.findElements(

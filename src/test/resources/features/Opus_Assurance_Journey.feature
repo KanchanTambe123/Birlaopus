@@ -1,3 +1,4 @@
+@Scope2
 Feature: To Validate Opus Assurance Journey Functionality
 
   Background: 
@@ -16,9 +17,9 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User enter valid first name
     And User enter valid last name
     And User enter valid email id
-    And User enter valid pin code "<pin_code>"
+    And User enter unserviceable pincode "<pin_code>"
     Then User click on the Save Details button
-        #Then User click submit button on Address section page for opus assurance
+    #Then User click submit button on Address section page for opus assurance
     #And User captures and validates API request and response for "lead/shortForm"
     Then User should see the heading "We're coming soon!"
     And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."
@@ -274,6 +275,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User enter Site Details project name
     And User enter update pin code on site details "<Update_pin_code>"
     Then User click submit button on Address section page for opus assurance
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User click next button on Just a Few More Details
     Then User clcik on Find Contractor button
@@ -298,8 +300,9 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User enter valid pin code on enter details "<pin_code>"
     Then User click on submit button on enter details
     And User enter Site Details project name
-    And User enter update pin code on site details "<Update_pin_code>"
+    And User enter unserviceable pincode on site details "<Update_pin_code>"
     Then User click submit button on Address section page for opus assurance
+    And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: isAreaServiceable against value "<status>"
     Then User should see the heading "We're coming soon!"
     And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."

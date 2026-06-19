@@ -1,3 +1,4 @@
+@Scope2
 Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.
 
   #---------------------------------- Scenario 1 ----------------------------------#
@@ -71,24 +72,44 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
       | Shop    | Wallpapers | Chromatic Geometric 45124 |       45128 |        1 |    1 |  500001 |               2 | Mumbai  |             0 |
 
   #---------------------------------- Scenario 4 ----------------------------------#
-  #Scenario Outline: To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user
-  #Given User is on wallpaper Product page "WallpaperProductUrl"
-  #Then the User selects a wallpaper shade "<shades_code>"
-  #And User click whishlist icon on Wallpapers
-  #Then Product should be added to the wishlist successfully
-  #Examples:
-  #| navmenu  | navtab      | productname                | optionText          | shades_code |
-  #| Shop    | Wallpapers | Chromatic Geometric 45124 | Delete colour story |       45128 |
+  Scenario Outline: To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user
+    Given User is on wallpaper Product page "WallpaperProductUrl"
+    When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
+    #Then the User selects a wallpaper shade "<shades_code>"
+    And User click whishlist icon on Wallpapers
+    Then Product should be added to the wishlist successfully
+
+    Examples: 
+      | navmenu | navtab     | productname               | optionText          | shades_code |
+      | Shop    | Wallpapers | Chromatic Geometric 45124 | Delete colour story |       45128 |
+
   #---------------------------------- Scenario 5 ----------------------------------#
-  #Scenario Outline: To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.
-  # Then User click whishlist icon on top page
-  # And User clicks on "<tabName>" tab
-  #Then the User clicks the product option button in favourites
-  #And the User selects "<optionText>" from the product options in the wishlist
-  #Then Product should be removed from the wishlist successfully
-  # Examples:
-  # | navmenu | navtab     | productname          | tabName    | optionText          |
-  # | Shop    | Wallpapers | Textilia Tabit 32001 | Favourites | Delete colour story |
+  Scenario Outline: To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.
+    Given User is on wallpaper Product page "WallpaperProductUrl"
+    When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters valid mobile number on the Sign In page
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    Then User clicks on the close icon
+    Then the User selects a wallpaper shade "<shades_code>"
+    And User click whishlist icon on Wallpapers
+    Then Product should be added to the wishlist successfully
+    Then User click whishlist icon on top page
+    And User clicks on "<tabName>" tab
+    Then the User clicks the product option button in favourites
+    And the User selects "<optionText>" from the product options in the wishlist
+    Then Product should be removed from the wishlist successfully
+
+    Examples: 
+      | navmenu | navtab     | productname               | tabName    | optionText       | shades_code |
+      | Shop    | Wallpapers | Chromatic Geometric 45124 | Favourites | Delete Wallpaper |       45128 |
+
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify error message when user enters invalid pincode for wallpaper
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"

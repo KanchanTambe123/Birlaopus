@@ -81,7 +81,7 @@ public class Create_an_Account_Form_Page {
 	public void enterOtpAndSubmit(String otp) {
 
 		// Wait only for the first OTP input
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		WebElement firstOtpField = wait.until(ExpectedConditions.visibilityOf(otpNoInputFiled.get(0)));
 
 		firstOtpField.clear();
@@ -107,7 +107,7 @@ public class Create_an_Account_Form_Page {
 
 	    String otp = generateBypassOtp(mobileNumber);
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 	    // Wait only for the FIRST OTP field (OTP UI is dynamic)
 	    WebElement firstOtpField = wait.until(

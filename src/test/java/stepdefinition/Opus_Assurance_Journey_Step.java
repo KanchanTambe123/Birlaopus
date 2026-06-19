@@ -111,6 +111,11 @@ public class Opus_Assurance_Journey_Step {
 		js.scrollUntilElementVisible(op.pincodeField);
 		op.pincodeField.sendKeys(string);
 	}
+	@Then("User enter unserviceable pincode {string}")
+	public void user_enter_unserviceable_pincode(String string) {
+		js.scrollUntilElementVisible(op.pincodeField);
+		op.pincodeField.sendKeys(string);
+	}
 
 	@Then("User click on the Save Details button")
 	public void user_click_on_the_save_details_button() throws InterruptedException {

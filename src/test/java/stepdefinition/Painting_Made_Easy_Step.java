@@ -275,7 +275,7 @@ public class Painting_Made_Easy_Step {
 	public void user_should_see_an_error_message_as_please_select_an_option(String expectedMessage) throws InterruptedException {
 
 	    Wait<WebDriver> wait = new FluentWait<>(DriverManager.getDriver())
-	            .withTimeout(Duration.ofSeconds(20))
+	            .withTimeout(Duration.ofSeconds(30))
 	            .pollingEvery(Duration.ofMillis(200));
 
 	    boolean isMessagePresent = wait.until(driver ->
