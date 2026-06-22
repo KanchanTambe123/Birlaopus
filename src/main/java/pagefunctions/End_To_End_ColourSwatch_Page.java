@@ -98,6 +98,7 @@ public class End_To_End_ColourSwatch_Page {
 
 	    try {
 	        card.click();
+	        Thread.sleep(2000);
 	    } catch (Exception e) {
 	        js.executeScript("arguments[0].click();", card);
 	    }

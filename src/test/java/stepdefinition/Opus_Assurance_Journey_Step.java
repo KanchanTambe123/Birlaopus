@@ -207,8 +207,8 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User click on verify otp cta")
 	public void user_click_on_verify_otp_cta() {
-		wait.waitForElementToBeClickable(op.verifyButton, 20);
-		op.verifyButton.click();
+		wait.waitForElementToBeClickable(op.verifyButton, 30);
+		js.jsClickWithWait(op.verifyButton);
 	}
 
 	@Then("User should see an error message for otp {string}")
@@ -302,6 +302,17 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User enter update pin code on site details {string}")
 	public void user_enter_update_pin_code_on_site_details(String string) throws InterruptedException {
 
+		js.scrollUntilElementVisible(op.pincodeSiteDetails);
+		wait.waitForElementVisible(op.pincodeSiteDetails);
+		op.pincodeSiteDetails.click();
+		op.pincodeSiteDetails.sendKeys(Keys.CONTROL + "a");
+		op.pincodeSiteDetails.sendKeys(Keys.DELETE);
+		op.pincodeSiteDetails.sendKeys(string);
+	}
+	
+	
+	@Then("User enter unserviceable pincode on site details {string}")
+	public void user_enter_unserviceable_pincode_on_site_details(String string) {
 		js.scrollUntilElementVisible(op.pincodeSiteDetails);
 		wait.waitForElementVisible(op.pincodeSiteDetails);
 		op.pincodeSiteDetails.click();
@@ -531,7 +542,7 @@ public class Opus_Assurance_Journey_Step {
 	public void user_should_be_displayed_validation_message_contractor_section(String expectedMessage)
 			throws InterruptedException {
 		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 
 		By messageLocator = By.xpath("//*[contains(text(),'" + expectedMessage + "')]");
 

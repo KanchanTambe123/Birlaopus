@@ -92,7 +92,7 @@ Feature: To Validate Opus Assurance Journey Functionality
       | 2500 sqft      | @@@@@@@@@@@        | 400 060  |
 
   #---------------------------------- Scenario 5 ----------------------------------#
-  Scenario Outline: To verify whether user is able to see error message for first name when user enter invalid first name
+  Scenario Outline: To verify whether user is able to see error message for first name when user enter invalid Otp
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -300,7 +300,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User enter valid pin code on enter details "<pin_code>"
     Then User click on submit button on enter details
     And User enter Site Details project name
-    And User enter unserviceable pincode on site details "<Update_pin_code>"
+    And User enter unserviceable pincode on site details "<unserviceable_pincode>"
     Then User click submit button on Address section page for opus assurance
     And User captures and validates API request and response for "lead/shortForm"
     And verify the lead API parameters for opus assurance journey: isAreaServiceable against value "<status>"
@@ -308,5 +308,5 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."
 
     Examples: 
-      | paintable_area | pin_code | status | Update_pin_code | valid_mobile_no | valid_otp |
+      | paintable_area | pin_code | status | unserviceable_pincode | valid_mobile_no | valid_otp |
       | 2500 sqft      | 400 060  | false  |          111222 |      7019144066 |      1111 |

@@ -48,7 +48,7 @@
 </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jun 19, 2026 16:22:37</span></a>
+<a href="#"><span class="badge badge-primary">Jun 22, 2026 17:43:41</span></a>
 </li>
 </ul>
 </div>
@@ -103,9 +103,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">To Validate Painting Made Easy Form-Get Free Quote functionality</p>
+            <p class="name">To Validate Opus Assurance Journey Functionality</p>
             <p class="text-sm">
-              <span>4:22:39 PM</span> / <span>00:01:02:630</span>
+              <span>5:43:42 PM</span> / <span>00:01:31:351</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -113,10 +113,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">To Validate Painting Made Easy Form-Get Free Quote functionality</h5>
-<span class='badge badge-success'>06.19.2026 4:22:39 PM</span>
-<span class='badge badge-danger'>06.19.2026 4:23:42 PM</span>
-<span class='badge badge-default'>00:01:02:630</span>
+<h5 class="test-status text-pass">To Validate Opus Assurance Journey Functionality</h5>
+<span class='badge badge-success'>06.22.2026 5:43:42 PM</span>
+<span class='badge badge-danger'>06.22.2026 5:45:13 PM</span>
+<span class='badge badge-default'>00:01:31:351</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -128,29 +128,39 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify error message is displayed when user does not select any option for Tell us about your project</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</div>
       </div>
     </div>
         <div class="scenario_outline collapse">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify error message is displayed when user does not select any option for Tell us about your project</div>
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</div>
                 </div>
               </div>
               <div class="card-body mt-3 collapse">
                   <div class="step pass-bg">
-                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+                    <span>Given User is on Opus Assurance Journey "AssuranceUrl"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>When User clicks on Painting made easy</span>
+                    <span>Given User enter valid paintable area "2500 sqft"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User clicks on Get free quote</span>
+                    <span>And User click on Next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User should click on Yet to Start Cta</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User click on Pre-register now Cta</span>
       <div>
       </div>
                   </div>
@@ -170,27 +180,89 @@
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User click on verify button</span>
+                    <span>And User click on verify otp button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User click on next button on Site Details</span>
+                    <span>Then User click on start new project</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User click next button on just a few more details</span>
+                    <span>And User enter valid pin code on enter details "400 060"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User click next button on tell us about your project</span>
+                    <span>Then User click on submit button on enter details</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User should see an error message as please select an option "Please select an option"</span>
+                    <span>And User enter Site Details project name</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enter unserviceable pincode on site details "111222"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User click submit button on Address section page for opus assurance</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div> API Type: lead/shortForm
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>Status Code: 200
+      </div>
+      <div> Response Time: 918 ms
+      </div>
+      <div>
+      </div>
+      <div> Request Payload (Encrypted):
+      </div>
+      <div>{"data":"MTI4OjoxMDAwMDo6Y2VkNTdhNWI1MmNhYTU3MmMyMGU5ZDYyNmVmMzZmYWI6OjQwMDU4NjIzYWZiMjdkNzJmMzAwNzk5NTVlZjAyNGMwOjpwZU4wRzJLLzIrL2hGZWRyRmo4YUVDMHlsYms3anVtcFRjQmZyUUkrME9ZTEdocC9RNlRZbmpYWWhxNzkzL3RhRnVnaWI0WXg3SXVMZDF6eVRQeUlvUGFmUzJDZXNNSEdudndMYzlNRVg3WlB2ZnJrVGE3VkY1bGQxbGhkWXQzcjZYSTFDbHdJblNjYndRbFZZV2xKZGlXMVltem9iNFNDZFN3K3BqTW9ITXRVaGNjeVBCOGNxa1Rkd3NyZ29IeHpWSDhuWjBBSE9qcDZpUnIvdmo5djBCbFBuNmRxdkVHSFdjaVJadk1tWWlmRElseDdOZTJ2dkVLd2hhc2k4eU5WclJYUGFrUmtBaXNrQk9RVWlFZ0RJYld4M05CT1BqRFpzeVNmUU5aTnltZGN0d2dVUTRYejNtUld5eGdGQkRtK2ZOOExxa0JUcHRyK1hJYXIwcHRhK3UvTkVKTVBKaVB5UVRZYSt4cS8zcVVEZVZ3cmZaSkpEZVU1Vml3TDhHak5SWjBNb052TzlMZGFzQUhZakVlckhPTTFGcU1YVDRiMXltLzJLUGdDVzVnRUR1S0hud3l3SnJtcjRuZ1BhL1JXSk1rejUrbnlPNStCeXYvQ0kwK3MwdzNsYkZ3T0JENFRRcGMySTJRUzRqT20yNlBGZGljdVIrOGZwczRoay9ZZXN6UE1vNEY0THNOa3BVRjlFUG1EWU9ySW4vSnFMMEUyL2cwek5oMDFmeGVqTXZ4aW9EK1Y5cXZ0dnNzZ1l2SjBkSXAwZDBnYlFCdU9iazk3ZjYwMExZaDNhZ2NjcHA5WTQzQUg1T1ZDM05sT0FLeHUrazZKenpPR0lBRHR2dFJ4MFZwT1d2Zkt6QnlCTEpmbFUyM3QvZ3dESi85ZFhmdDd3ZXdCSXJpMWZmMXBLV2gyOGJHd2NzVGIxbkphNE9Xazh6UzFaZXhnVVpVd1BJTmhlSlo0MVRXTHdTMitnL0hCL2I2dzNPaXE5cm1NbE5SUm0xSW5idncyQTFldnc3WnFTc0xZNUh3elVXd0VXMkd2UHoyQ0hCSUlQMkQrYUFMdlk0czZLcXg5SnlheXBVMWF3NFhsakFHeDV4OStJdXZmUnFDSGdGMW1JbHo2eFRNbHdweTlKY3loUVdZdDc2NG9OV1lVL2hCMGxTY0VaWDF3bGg4WUo0aEQyditqejk2bTBzNGRVQkNiNEIzdzA3L1NNNVY4c3ZsU3NHZm5SUGNobGZvWUdya21TZ3RpanlrUW93czYxMFRXWGhQd2N0aUxHQW5xUjNvSXh6Q2hwb0k0VERpdDhBL3puM0wrR0xMbTZpNTg1cnlSd1Z1VnR4eGVLTzRLb0Z0ZkJhajk5QVlCaVp3V3hhaGxWVWlKTml0VVRWTkltZWF2NUI5c2JGWXY4cDQ0ai9nN1pPRDc5L05QTUgyMTJlT045eXMzbHoxVEdJdFo5d1JsZGk2NnJCSDZWdWlpRFBnWE43bzVrVXlwdlprRjFRcmRPK1ltb0FzbXg3aExTaVpRUGgrTHd2SmhOU2IralcwT1UvVlVjTjJpbTZzeGdzODhhS3FFL2xLRDc0WnNuOS94cVhNOGtha0ZLV3UrcnhVTGJxTWxuTS9yRU4ramNTN0lFWlkza2x3TjNET1hId0lrVnplczBJVDB2bitoNi95OTV0NnAwaldkTm1Ya1M4b0V5Y1lKdU5hZ0dHYTFkV0hmb3VuL0J2a2x5R0FFc3IremhhVEZzaUhFVlVkZHVjbE8vS09BVmRVZHlHSHA3ZnJOSTRtNE5pN1p1VHFWZnZzYUNmdm1KSE9EVUlUUXcxWGVIOVNoV0RPYTB3cS8walN2c2VWc0orT0xZMlRJaEJrL0l6VWZwV1NVd3pId0N6SjlqZTM1c0wveFRtRTBrbXFWY0NUYnBaYWx6THZ6ZWJObEJYYUJDVFYxb2hITkdaaWwyOGx3WVRENVNCTW1CSEdkelVMZUN5TmVlUXNoUGtxWGNldTBQRE1BbEFJSmVsVE8vS0xuclM5WHBOWHVBUHd2TldRV1RPWXBWMkJiaXNKUDFtenBCaHB0Q2UwdHZYeUp2MnpqQk8zWTdBSTRTbnpINFNpYmtLWkwrU3RpMTlqN3hlbDBrVEZBSUZhS2VnTDdmT1REaktlRkpjVkMvWStIcWhnRDBRakJ3TUdlcERKRWdOU2V1czdyd3dNWWNnbmNGWFZ6am92c1Y2MVZDM3NwRHd0MCs3YUFnZlhvemkySkhSdW9GK1ovaVl4U3dTTXpVTmRzTkYxRGFNOXlibTdreEg0YXJKV1lxZEVCTW9Yd3NacFB5elJaZkd6aEZOU05FOWhOVHZmdVZBMTVDbU1mNEs1T1IwYTQ0N2Z0dkdPenEvOTcwTXM2VU9HZG50Tkt6QmxCTkxjVEp6L1h5VnQxdi8zQmZsT2I4eHdid3lYMWpPUWhYR3dWNnNRL1ZIc0p1bjQwNGI0REwwdWxwSEVBVkx0VGtRU1prdTdVRXdoVS9UNzNsbEd6ems4OVdBSDA4Nm9tbU9TNEF2VFZNZmIyMVFrdHgyQ1F0QlpKMWJuc2lNb2tIZHNuWnN6OW1ncUNpOTdQbW1nUUZiRWY1YWdWdnA4ZUlZNjRFMTZIdHMzNjVqWXJta0NCQ1V6L3R1c1B5N3FROE13U1VtZDNBZz09"}
+      </div>
+      <div> Decrypted Request:
+      </div>
+      <div>{"header":{"journeyDroppedAt":"surveyStep1b"},"body":{"firstName":"Test","lastName":"AID","phone":"7019144066","email":"farhan.akhtar_99@rediffmail.com","propertyNameStreet":"test Testtex Laboratories Pvt Ltd. (Food & Water Laboratory), 301-304 Premsons Industrial Estate, Caves Rd, Bandrekar Wadi, Jogeshwari East","propertyNamePinCode":"111222","propertyNameCity":"Ñemby","city":"Ñemby","state":"Central Department","pinCode":"111222","lat":-25.4074941,"long":-57.5235557,"whatsappNumber":"7019144066","iclAreaToBePaintedC":"","iclCarpetAreaC":"","iclProjectInfo":"","street":"test, Testtex Laboratories Pvt Ltd. (Food & Water Laboratory), 301-304 Premsons Industrial Estate, Caves Rd, Bandrekar Wadi, Jogeshwari East","iclOpusIdC":"","iclLeadUniqueIdC":"030a93da-a965-39f4-bcc2-0f2b375913a6","waterproofingRequirementC":"","iclWoodFinishRequirement":"","iclContractorMobileNoC":"","iclNameOfProjectC":"Test's Project_HLH5Q","formName":"","formId":"","iclLeadContextC":"Painting Services","iclAvailableService":"Birla Opus Assurance","iclLeadTypeC":"Painting Service Enquiry","subType":"Paintcraft Service","leadSubSource":"Opus Assurance","isAreaServiceable":false,"iclRoomCountC":"","iclLeadJourneyDroppedAtC":"surveyStep1,surveyStep1b","siteVisitDateTimeC":"","iclPreferredTimeOfContactC":"","iclPreferredDateC":"","scheduleInstantVisitC":"","iclQualificationStatusC":"Partially - Qualified","haveMyOwnContractor":false,"pageUrlFull":"https://uat.birlaopus.com/birla-opus-assurance?new=true"}}
+      </div>
+      <div>
+      </div>
+      <div> Response Payload (Encrypted):
+      </div>
+      <div>{"responseJson":"MTI4OjoxMDAwOjoyOWVhOGUyZDliOGQ2YTVmYWExMmFiZDc2N2EwYjA3OTo6MTZlMGM3NGE1OTFlMTM4NGIwYmVlYTI5ZmU0ZDE0ZjU6OitoZUZMZmdYZDBOVXpMMURMVVBYa25ZQ29GVXJPeXFkN0xPOWFHSDZ3TCtvcFhSUU95aHFnQ0g5WDM4NDY3UnpIYkhvbFJoZitnVTd6ODdhUXpkV1BJTWlmKzJQemRBdGFyUFJVbW5wZ2JCdjlYOHAvc24vMkJSY0Z0OTUwTkN3czFOMmxCK0dERjczQVRnVWt0OHZNbGMvNnFUQm95WThFaVYrRDNvb2pvMDVseUtTMGNJREczOEx0MUdzVC9VZ1dlZDRNbG4rWkZlOWF3ZEIzdWFTT254ZkpuWHk5bzZySW1VdmRIRkdjb0Nhd2VSQllZS3U1MDQvbzI1TmhZNTBvblVEZXQvVzBTT0VpQlpCNXdBVjd0dUxCWHAyY3VCa2EwU1VxSkFHWlgyZy9ac1NiZCtFQjBOakNkVGN0bjMwdVJVRjFtSyt1dGxnQjJPcmdtRHB2djhRS0VHY2g0c2RwSFY5MkRJbXhWUWxwbGg5MEhBTE1DRm1MczFoRFF0eg=="}
+      </div>
+      <div> Decrypted Response:
+      </div>
+      <div>{"header":{"status":"SUCCESS"},"body":{"statuscode":"500","Message":"Upsert failed. First exception on row 0; first error: FIELD_INTEGRITY_EXCEPTION, A country/territory must be specified before specifying a state value for field: State/Province: [State]"},"errorBody":{}}
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And verify the lead API parameters for opus assurance journey: isAreaServiceable against value "false"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User should see the heading "We're coming soon!"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."</span>
       <div>
       </div>
                   </div>
@@ -242,11 +314,11 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>16:22:39 PM</td>
+<td>17:43:42 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>To verify error message is displayed when user does not select any option for Tell us about your project</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</a>
 <div class="">
-<span class="badge badge-default">To Validate Painting Made Easy Form-Get Free Quote functionality.To verify error message is displayed when user does not select any option for Tell us about your project</span>
+<span class="badge badge-default">To Validate Opus Assurance Journey Functionality.To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</span>
 </div>
 </td>
 </tr>
@@ -278,11 +350,11 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>16:22:39 PM</td>
+<td>17:43:42 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>To verify error message is displayed when user does not select any option for Tell us about your project</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</a>
 <div class="">
-<span class="badge badge-default">To Validate Painting Made Easy Form-Get Free Quote functionality.To verify error message is displayed when user does not select any option for Tell us about your project</span>
+<span class="badge badge-default">To Validate Opus Assurance Journey Functionality.To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed</span>
 </div>
 </td>
 </tr>
@@ -303,13 +375,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jun 19, 2026 16:22:37</h3>
+<h3>Jun 22, 2026 17:43:41</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jun 19, 2026 16:23:42</h3>
+<h3>Jun 22, 2026 17:45:13</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -380,7 +452,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>11</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>19</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -399,7 +471,7 @@
 </div></div>
 <script>
 var timeline = {
-"To Validate Painting Made Easy Form-Get Free Quote functionality":62.63
+"To Validate Opus Assurance Journey Functionality":91.351
 };
 </script>
 <div class="row">
@@ -444,7 +516,7 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 11,
+passGrandChild: 19,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,
