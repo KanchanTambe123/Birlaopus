@@ -36,7 +36,8 @@ public class ReportUtil {
 
     public static int passed = 0;
     public static int failed = 0;
-
+    public static int featurePassed = 0;
+    public static int featureFailed = 0;
     public static int stepsPassed = 0;
     public static int stepsFailed = 0;
     public static int stepsSkipped = 0;
@@ -56,7 +57,8 @@ public class ReportUtil {
         stepsPassed = 0;
         stepsFailed = 0;
         stepsSkipped = 0;
-
+        featurePassed = 0;
+        featureFailed = 0;
         // Check if cucumber.json exists
         File cucumberJsonFile = new File("target/cucumber.json");
         if (!cucumberJsonFile.exists()) {
@@ -87,7 +89,11 @@ public class ReportUtil {
         //  FIRST PASS - Count all scenarios and steps
         for (int i = 0; i < features.length(); i++) {
 
-            JSONArray elements = features.getJSONObject(i).getJSONArray("elements");
+            JSONObject feature = features.getJSONObject(i);
+            JSONArray elements = feature.getJSONArray("elements");
+
+            boolean isFeatureFailed = false;
+            boolean hasScenario = false;
 
             for (int j = 0; j < elements.length(); j++) {
 
@@ -96,9 +102,9 @@ public class ReportUtil {
                 if (scenario.getString("type").equalsIgnoreCase("background"))
                     continue;
 
-                totalScenarios++;
+                hasScenario = true;
 
-                boolean isFailed = false;
+                boolean isScenarioFailed = false;
                 JSONArray stepsArray = scenario.getJSONArray("steps");
 
                 for (int k = 0; k < stepsArray.length(); k++) {
@@ -110,12 +116,22 @@ public class ReportUtil {
                     countStatus(status);
 
                     if (status.equalsIgnoreCase("failed") || status.equalsIgnoreCase("undefined")) {
-                        isFailed = true;
+                        isScenarioFailed = true;
                     }
                 }
 
-                if (isFailed) failed++;
-                else passed++;
+                if (isScenarioFailed) {
+                    failed++;
+                    isFeatureFailed = true;
+                } else {
+                    passed++;
+                }
+            }
+
+            // ✅ FEATURE COUNT LOGIC
+            if (hasScenario) {
+                if (isFeatureFailed) featureFailed++;
+                else featurePassed++;
             }
         }
 
@@ -441,7 +457,7 @@ public class ReportUtil {
         Table summary = new Table(UnitValue.createPercentArray(new float[]{32, 4, 32, 4, 28})).useAllAvailableWidth();
         summary.setMarginBottom(15);
 
-        summary.addCell(createSummaryBox(passed, failed, 0));
+        summary.addCell(createSummaryBox(featurePassed, featureFailed, 0));
         summary.addCell(createSpacerCell());
         summary.addCell(createSummaryBox(passed, failed, 0));
         summary.addCell(createSpacerCell());
@@ -467,7 +483,7 @@ public class ReportUtil {
         Table charts = new Table(UnitValue.createPercentArray(new float[]{32, 4, 32, 4, 28})).useAllAvailableWidth();
         charts.setMarginBottom(15);
 
-        charts.addCell(createChartInBox(generateDonutChart("Features", passed, failed, 0)));
+        charts.addCell(createChartInBox(generateDonutChart("Features", featurePassed, featureFailed, 0)));
         charts.addCell(createSpacerCell());
         charts.addCell(createChartInBox(generateDonutChart("Scenarios", passed, failed, 0)));
         charts.addCell(createSpacerCell());
