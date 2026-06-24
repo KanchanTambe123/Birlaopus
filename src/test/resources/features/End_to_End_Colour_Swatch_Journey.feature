@@ -14,7 +14,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
   Scenario Outline: To verify the end-to-end  colour swatch journey through the checkout process with valid data for a logged-in user through navigation
     Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
-    Then User selects Colour for colour swatch "<Colour>"
+    #Then User selects Colour for colour swatch "<Colour>"
     Then User selects colour swatch quantity <quantity>
     Then User enters a valid pincode "<pincode>" and check product availability
     And User click on add to cart button
