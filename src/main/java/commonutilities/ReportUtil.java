@@ -74,6 +74,10 @@ public class ReportUtil {
         System.out.println("📖 Reading cucumber.json...");
         String content = new String(Files.readAllBytes(Paths.get("target/cucumber.json")));
         JSONArray features = new JSONArray(content);
+        
+        System.out.println("📁 File: " + cucumberJsonFile.getAbsolutePath());
+        System.out.println("📏 File size: " + cucumberJsonFile.length() + " bytes");
+        System.out.println("🗂️  Features in JSON: " + features.length());
 
         // Create report/pdf directory if it doesn't exist
         File reportDir = new File("report/pdf");
