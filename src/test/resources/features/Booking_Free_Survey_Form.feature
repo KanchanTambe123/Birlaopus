@@ -1,4 +1,4 @@
-@Scope1
+@testing
 Feature: To Validate Survey Booking Form
 
   Background: 
