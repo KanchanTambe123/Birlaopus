@@ -31,6 +31,14 @@ import java.time.format.DateTimeFormatter;
 /**
  * ReportUtil - Generates Extent-style PDF reports showing ONLY failed test cases
  * Reads cucumber.json and creates a comprehensive PDF with dashboard, charts, and failed scenario details
+ * 
+ * COUNTING LOGIC (matches main ReportUtil.java):
+ * - Background elements: SKIPPED (not counted as scenarios, steps not counted)
+ * - @AfterStep hooks: NOT counted as steps
+ * - Only actual test steps within scenarios are counted
+ * - Features: All features counted, classified as passed/failed based on scenarios
+ * - Scenarios: All scenarios (except background) counted as passed/failed
+ * - Duration: Only scenario step durations (excludes background and @AfterStep hooks)
  */
 public class ReportUtil {
 
@@ -86,107 +94,72 @@ public class ReportUtil {
 
         int totalScenarios = 0;
 
-        //  FIRST PASS - Count all scenarios and steps
+        //  FIRST PASS - Count all scenarios and steps (matching main report logic)
         for (int i = 0; i < features.length(); i++) {
 
             JSONObject feature = features.getJSONObject(i);
             JSONArray elements = feature.getJSONArray("elements");
 
-            boolean isFeatureFailed = false;
+            boolean featureHasFailure = false;
 
             for (int j = 0; j < elements.length(); j++) {
 
                 JSONObject scenario = elements.getJSONObject(j);
 
-                // ✅ Skip background elements - don't count as scenarios or steps (matches main report)
+                // Skip background elements - don't count as scenarios or steps
                 if (scenario.getString("type").equalsIgnoreCase("background"))
                     continue;
 
                 boolean isScenarioFailed = false;
                 JSONArray stepsArray = scenario.getJSONArray("steps");
 
-                // ✅ Count actual test steps ONLY (not @AfterStep hooks or background)
+                // Count actual test steps ONLY (not @AfterStep hooks or background)
                 for (int k = 0; k < stepsArray.length(); k++) {
 
-                    JSONObject step = stepsArray.getJSONObject(k);
-
-                    // Count actual test step ONLY
-                    String status = step.getJSONObject("result").getString("status");
+                    String status = stepsArray.getJSONObject(k)
+                            .getJSONObject("result")
+                            .getString("status");
 
                     countStatus(status);
 
-                    if (status.equalsIgnoreCase("failed")
-                            || status.equalsIgnoreCase("undefined")) {
+                    if (status.equalsIgnoreCase("failed") || status.equalsIgnoreCase("undefined")) {
                         isScenarioFailed = true;
                     }
                 }
 
                 if (isScenarioFailed) {
                     failed++;
-                    isFeatureFailed = true;
+                    featureHasFailure = true;
                 } else {
                     passed++;
                 }
             }
 
-            // ✅ FEATURE COUNT LOGIC - only count features that have actual scenarios
-            if (isFeatureFailed) {
+            // Count feature as failed/passed based on its scenarios (matches main report)
+            if (featureHasFailure) {
                 featureFailed++;
-            } else if (elements.length() > 0) {
-                // Only count as passed if feature has scenarios (not just background)
-                boolean hasScenarios = false;
-                for (int j = 0; j < elements.length(); j++) {
-                    if (!elements.getJSONObject(j).getString("type").equalsIgnoreCase("background")) {
-                        hasScenarios = true;
-                        break;
-                    }
-                }
-                if (hasScenarios) {
-                    featurePassed++;
-                }
+            } else {
+                featurePassed++;
             }
         }
 
-        // Calculate actual test execution time from report data
+        // Calculate actual test execution time from report data (matching main report)
         long totalDurationNanos = 0;
         for (int i = 0; i < features.length(); i++) {
             JSONArray elements = features.getJSONObject(i).getJSONArray("elements");
             for (int j = 0; j < elements.length(); j++) {
                 JSONObject scenario = elements.getJSONObject(j);
                 
-                // ✅ Skip background in duration (matches main report)
+                // Skip background in duration (matches main report)
                 if (scenario.getString("type").equalsIgnoreCase("background"))
                     continue;
                     
                 JSONArray stepsArray = scenario.getJSONArray("steps");
                 for (int k = 0; k < stepsArray.length(); k++) {
-                	JSONObject step = stepsArray.getJSONObject(k);
-
-                	JSONObject stepResult = step.getJSONObject("result");
-
-                	if (stepResult.has("duration")) {
-                	    totalDurationNanos += stepResult.getLong("duration");
-                	}
-
-                	// ✅ Include @AfterStep duration for timing (but NOT for step count!)
-                	if (step.has("after")) {
-
-                	    JSONArray afterArr = step.getJSONArray("after");
-
-                	    for (int a = 0; a < afterArr.length(); a++) {
-
-                	        JSONObject afterObj = afterArr.getJSONObject(a);
-
-                	        if (afterObj.has("result")) {
-
-                	            JSONObject hookResult = afterObj.getJSONObject("result");
-
-                	            if (hookResult.has("duration")) {
-                	                totalDurationNanos += hookResult.getLong("duration");
-                	            }
-                	        }
-                	    }
-                	}
+                    JSONObject stepResult = stepsArray.getJSONObject(k).getJSONObject("result");
+                    if (stepResult.has("duration")) {
+                        totalDurationNanos += stepResult.getLong("duration");
+                    }
                 }
             }
         }
