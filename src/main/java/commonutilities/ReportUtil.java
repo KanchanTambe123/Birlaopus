@@ -29,23 +29,17 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 /**
- * ReportUtil - Generates Extent-style PDF reports showing ONLY failed test cases
+ * ReportUtil - Generates PDF report showing ONLY failed test cases
  * Reads cucumber.json and creates a comprehensive PDF with dashboard, charts, and failed scenario details
  * 
- * COUNTING LOGIC (matches main ReportUtil.java):
- * - Background elements: SKIPPED (not counted as scenarios, steps not counted)
- * - @AfterStep hooks: NOT counted as steps
- * - Only actual test steps within scenarios are counted
- * - Features: All features counted, classified as passed/failed based on scenarios
- * - Scenarios: All scenarios (except background) counted as passed/failed
- * - Duration: Only scenario step durations (excludes background and @AfterStep hooks)
+ * COUNTING LOGIC - IDENTICAL to main ReportUtil.java for consistent metrics
  */
 public class ReportUtil {
 
     public static int passed = 0;
     public static int failed = 0;
-    public static int featurePassed = 0;
-    public static int featureFailed = 0;
+    public static int featuresPassed = 0;
+    public static int featuresFailed = 0;
     public static int stepsPassed = 0;
     public static int stepsFailed = 0;
     public static int stepsSkipped = 0;
@@ -62,21 +56,22 @@ public class ReportUtil {
 
         passed = 0;
         failed = 0;
+        featuresPassed = 0;
+        featuresFailed = 0;
         stepsPassed = 0;
         stepsFailed = 0;
         stepsSkipped = 0;
-        featurePassed = 0;
-        featureFailed = 0;
+
         // Check if cucumber.json exists
         File cucumberJsonFile = new File("target/cucumber.json");
         if (!cucumberJsonFile.exists()) {
-            System.err.println(" Error: target/cucumber-reports/cucumber.json not found!");
+            System.err.println("❌ Error: target/cucumber.json not found!");
             System.err.println("Please ensure Cucumber tests have been executed and JSON report is generated.");
-            System.err.println("Add this to @CucumberOptions: plugin = {\"json:target/cucumber-reports/cucumber.json\"}");
+            System.err.println("Add this to @CucumberOptions: plugin = {\"json:target/cucumber.json\"}");
             return;
         }
 
-        System.out.println("Reading cucumber.json...");
+        System.out.println("📖 Reading cucumber.json...");
         String content = new String(Files.readAllBytes(Paths.get("target/cucumber.json")));
         JSONArray features = new JSONArray(content);
 
@@ -84,17 +79,18 @@ public class ReportUtil {
         File reportDir = new File("report/pdf");
         if (!reportDir.exists()) {
             reportDir.mkdirs();
-            System.out.println("Created report/pdf directory");
+            System.out.println("📁 Created report/pdf directory");
         }
 
-        System.out.println("Generating PDF report...");
+        System.out.println("📝 Generating PDF report...");
         PdfWriter writer = new PdfWriter("report/pdf/FailedScenarioReport.pdf");
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf);
 
         int totalScenarios = 0;
+        int totalFeatures = features.length();
 
-        //  FIRST PASS - Count all scenarios and steps (matching main report logic)
+        // ✅ FIRST PASS - Count all features, scenarios and steps
         for (int i = 0; i < features.length(); i++) {
 
             JSONObject feature = features.getJSONObject(i);
@@ -106,14 +102,14 @@ public class ReportUtil {
 
                 JSONObject scenario = elements.getJSONObject(j);
 
-                // Skip background elements - don't count as scenarios or steps
                 if (scenario.getString("type").equalsIgnoreCase("background"))
                     continue;
 
-                boolean isScenarioFailed = false;
+                totalScenarios++;
+
+                boolean isFailed = false;
                 JSONArray stepsArray = scenario.getJSONArray("steps");
 
-                // Count actual test steps ONLY (not @AfterStep hooks or background)
                 for (int k = 0; k < stepsArray.length(); k++) {
 
                     String status = stepsArray.getJSONObject(k)
@@ -123,11 +119,11 @@ public class ReportUtil {
                     countStatus(status);
 
                     if (status.equalsIgnoreCase("failed") || status.equalsIgnoreCase("undefined")) {
-                        isScenarioFailed = true;
+                        isFailed = true;
                     }
                 }
 
-                if (isScenarioFailed) {
+                if (isFailed) {
                     failed++;
                     featureHasFailure = true;
                 } else {
@@ -135,25 +131,22 @@ public class ReportUtil {
                 }
             }
 
-            // Count feature as failed/passed based on its scenarios (matches main report)
+            // Count feature as failed/passed based on its scenarios
             if (featureHasFailure) {
-                featureFailed++;
+                featuresFailed++;
             } else {
-                featurePassed++;
+                featuresPassed++;
             }
         }
 
-        // Calculate actual test execution time from report data (matching main report)
+        // Calculate actual test execution time from report data
         long totalDurationNanos = 0;
         for (int i = 0; i < features.length(); i++) {
             JSONArray elements = features.getJSONObject(i).getJSONArray("elements");
             for (int j = 0; j < elements.length(); j++) {
                 JSONObject scenario = elements.getJSONObject(j);
-                
-                // Skip background in duration (matches main report)
                 if (scenario.getString("type").equalsIgnoreCase("background"))
                     continue;
-                    
                 JSONArray stepsArray = scenario.getJSONArray("steps");
                 for (int k = 0; k < stepsArray.length(); k++) {
                     JSONObject stepResult = stepsArray.getJSONObject(k).getJSONObject("result");
@@ -167,12 +160,11 @@ public class ReportUtil {
         long totalSeconds = totalDurationNanos / 1_000_000_000L;
         endTime = startTime.plusSeconds(totalSeconds);
 
-        System.out.println("📊 Test Execution Summary:");
-        System.out.println("   Features: " + (featurePassed + featureFailed) + " total | " + featurePassed + " passed | " + featureFailed + " failed");
-        System.out.println("   Scenarios: " + (passed + failed) + " total | " + passed + " passed | " + failed + " failed");
+        System.out.println("📊 Test Summary:");
+        System.out.println("   Features: " + totalFeatures + " total | " + featuresPassed + " passed | " + featuresFailed + " failed");
+        System.out.println("   Scenarios: " + totalScenarios + " total | " + passed + " passed | " + failed + " failed");
         System.out.println("   Steps: " + (stepsPassed + stepsFailed + stepsSkipped) + " total | " + stepsPassed + " passed | " + stepsFailed + " failed | " + stepsSkipped + " skipped");
         System.out.println("⏱️  Duration: " + totalSeconds + " seconds");
-        System.out.println("📄 Generating failed scenarios report...");
 
         // ✅ DASHBOARD
         addDashboard(document);
@@ -472,7 +464,7 @@ public class ReportUtil {
         Table summary = new Table(UnitValue.createPercentArray(new float[]{32, 4, 32, 4, 28})).useAllAvailableWidth();
         summary.setMarginBottom(15);
 
-        summary.addCell(createSummaryBox(featurePassed, featureFailed, 0));
+        summary.addCell(createSummaryBox(featuresPassed, featuresFailed, 0));
         summary.addCell(createSpacerCell());
         summary.addCell(createSummaryBox(passed, failed, 0));
         summary.addCell(createSpacerCell());
@@ -498,7 +490,7 @@ public class ReportUtil {
         Table charts = new Table(UnitValue.createPercentArray(new float[]{32, 4, 32, 4, 28})).useAllAvailableWidth();
         charts.setMarginBottom(15);
 
-        charts.addCell(createChartInBox(generateDonutChart("Features", featurePassed, featureFailed, 0)));
+        charts.addCell(createChartInBox(generateDonutChart("Features", featuresPassed, featuresFailed, 0)));
         charts.addCell(createSpacerCell());
         charts.addCell(createChartInBox(generateDonutChart("Scenarios", passed, failed, 0)));
         charts.addCell(createSpacerCell());
