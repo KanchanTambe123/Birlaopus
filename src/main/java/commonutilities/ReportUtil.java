@@ -98,26 +98,41 @@ public class ReportUtil {
             for (int j = 0; j < elements.length(); j++) {
 
                 JSONObject scenario = elements.getJSONObject(j);
+                String elementType = scenario.getString("type");
 
-                if (scenario.getString("type").equalsIgnoreCase("background"))
-                    continue;
+                // ✅ Count steps from Background elements (they run before each scenario)
+                if (elementType.equalsIgnoreCase("background")) {
+                    JSONArray backgroundSteps = scenario.getJSONArray("steps");
+                    for (int k = 0; k < backgroundSteps.length(); k++) {
+                        String status = backgroundSteps.getJSONObject(k)
+                                .getJSONObject("result")
+                                .getString("status");
+                        countStatus(status);
+                    }
+                    continue; // Don't count background as a scenario
+                }
 
                 hasScenario = true;
 
                 boolean isScenarioFailed = false;
                 JSONArray stepsArray = scenario.getJSONArray("steps");
 
+                // ✅ Count actual test steps (not @AfterStep hooks)
                 for (int k = 0; k < stepsArray.length(); k++) {
 
-                    String status = stepsArray.getJSONObject(k)
-                            .getJSONObject("result")
-                            .getString("status");
+                    JSONObject step = stepsArray.getJSONObject(k);
+
+                    // Count actual test step ONLY
+                    String status = step.getJSONObject("result").getString("status");
 
                     countStatus(status);
 
-                    if (status.equalsIgnoreCase("failed") || status.equalsIgnoreCase("undefined")) {
+                    if (status.equalsIgnoreCase("failed")
+                            || status.equalsIgnoreCase("undefined")) {
                         isScenarioFailed = true;
                     }
+
+                    // Hooks are not counted as steps
                 }
 
                 if (isScenarioFailed) {
@@ -141,14 +156,36 @@ public class ReportUtil {
             JSONArray elements = features.getJSONObject(i).getJSONArray("elements");
             for (int j = 0; j < elements.length(); j++) {
                 JSONObject scenario = elements.getJSONObject(j);
-                if (scenario.getString("type").equalsIgnoreCase("background"))
-                    continue;
+                // ✅ Include background steps in duration (they execute before each scenario)
                 JSONArray stepsArray = scenario.getJSONArray("steps");
                 for (int k = 0; k < stepsArray.length(); k++) {
-                    JSONObject stepResult = stepsArray.getJSONObject(k).getJSONObject("result");
-                    if (stepResult.has("duration")) {
-                        totalDurationNanos += stepResult.getLong("duration");
-                    }
+                	JSONObject step = stepsArray.getJSONObject(k);
+
+                	JSONObject stepResult = step.getJSONObject("result");
+
+                	if (stepResult.has("duration")) {
+                	    totalDurationNanos += stepResult.getLong("duration");
+                	}
+
+                	// ✅ Include @AfterStep duration for timing (but NOT for step count!)
+                	if (step.has("after")) {
+
+                	    JSONArray afterArr = step.getJSONArray("after");
+
+                	    for (int a = 0; a < afterArr.length(); a++) {
+
+                	        JSONObject afterObj = afterArr.getJSONObject(a);
+
+                	        if (afterObj.has("result")) {
+
+                	            JSONObject hookResult = afterObj.getJSONObject("result");
+
+                	            if (hookResult.has("duration")) {
+                	                totalDurationNanos += hookResult.getLong("duration");
+                	            }
+                	        }
+                	    }
+                	}
                 }
             }
         }

@@ -1,4 +1,4 @@
-@Scope1
+@testing
 Feature: To Validate Get in Touch Contact Form Subscription
 
   Background: 
