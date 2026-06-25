@@ -93,31 +93,19 @@ public class ReportUtil {
             JSONArray elements = feature.getJSONArray("elements");
 
             boolean isFeatureFailed = false;
-            boolean hasScenario = false;
 
             for (int j = 0; j < elements.length(); j++) {
 
                 JSONObject scenario = elements.getJSONObject(j);
-                String elementType = scenario.getString("type");
 
-                // ✅ Count steps from Background elements (they run before each scenario)
-                if (elementType.equalsIgnoreCase("background")) {
-                    JSONArray backgroundSteps = scenario.getJSONArray("steps");
-                    for (int k = 0; k < backgroundSteps.length(); k++) {
-                        String status = backgroundSteps.getJSONObject(k)
-                                .getJSONObject("result")
-                                .getString("status");
-                        countStatus(status);
-                    }
-                    continue; // Don't count background as a scenario
-                }
-
-                hasScenario = true;
+                // ✅ Skip background elements - don't count as scenarios or steps (matches main report)
+                if (scenario.getString("type").equalsIgnoreCase("background"))
+                    continue;
 
                 boolean isScenarioFailed = false;
                 JSONArray stepsArray = scenario.getJSONArray("steps");
 
-                // ✅ Count actual test steps (not @AfterStep hooks)
+                // ✅ Count actual test steps ONLY (not @AfterStep hooks or background)
                 for (int k = 0; k < stepsArray.length(); k++) {
 
                     JSONObject step = stepsArray.getJSONObject(k);
@@ -131,8 +119,6 @@ public class ReportUtil {
                             || status.equalsIgnoreCase("undefined")) {
                         isScenarioFailed = true;
                     }
-
-                    // Hooks are not counted as steps
                 }
 
                 if (isScenarioFailed) {
@@ -143,10 +129,21 @@ public class ReportUtil {
                 }
             }
 
-            // ✅ FEATURE COUNT LOGIC
-            if (hasScenario) {
-                if (isFeatureFailed) featureFailed++;
-                else featurePassed++;
+            // ✅ FEATURE COUNT LOGIC - only count features that have actual scenarios
+            if (isFeatureFailed) {
+                featureFailed++;
+            } else if (elements.length() > 0) {
+                // Only count as passed if feature has scenarios (not just background)
+                boolean hasScenarios = false;
+                for (int j = 0; j < elements.length(); j++) {
+                    if (!elements.getJSONObject(j).getString("type").equalsIgnoreCase("background")) {
+                        hasScenarios = true;
+                        break;
+                    }
+                }
+                if (hasScenarios) {
+                    featurePassed++;
+                }
             }
         }
 
@@ -156,7 +153,11 @@ public class ReportUtil {
             JSONArray elements = features.getJSONObject(i).getJSONArray("elements");
             for (int j = 0; j < elements.length(); j++) {
                 JSONObject scenario = elements.getJSONObject(j);
-                // ✅ Include background steps in duration (they execute before each scenario)
+                
+                // ✅ Skip background in duration (matches main report)
+                if (scenario.getString("type").equalsIgnoreCase("background"))
+                    continue;
+                    
                 JSONArray stepsArray = scenario.getJSONArray("steps");
                 for (int k = 0; k < stepsArray.length(); k++) {
                 	JSONObject step = stepsArray.getJSONObject(k);
@@ -193,8 +194,12 @@ public class ReportUtil {
         long totalSeconds = totalDurationNanos / 1_000_000_000L;
         endTime = startTime.plusSeconds(totalSeconds);
 
-        System.out.println("Test Summary: " + totalScenarios + " total scenarios | " + passed + " passed | " + failed + " failed");
-        System.out.println(" Duration: " + totalSeconds + " seconds");
+        System.out.println("📊 Test Execution Summary:");
+        System.out.println("   Features: " + (featurePassed + featureFailed) + " total | " + featurePassed + " passed | " + featureFailed + " failed");
+        System.out.println("   Scenarios: " + (passed + failed) + " total | " + passed + " passed | " + failed + " failed");
+        System.out.println("   Steps: " + (stepsPassed + stepsFailed + stepsSkipped) + " total | " + stepsPassed + " passed | " + stepsFailed + " failed | " + stepsSkipped + " skipped");
+        System.out.println("⏱️  Duration: " + totalSeconds + " seconds");
+        System.out.println("📄 Generating failed scenarios report...");
 
         // ✅ DASHBOARD
         addDashboard(document);
@@ -404,9 +409,9 @@ public class ReportUtil {
         }
 
         document.close();
-        System.out.println("Extent-style PDF with ONLY Failed Test Cases Generated Successfully!");
-        System.out.println("Report Location: report/pdf/ExtentLike_FailedReport.pdf");
-        System.out.println("Failed: " + failed + " | Passed: " + passed);
+        System.out.println("✅ PDF Report Generated Successfully!");
+        System.out.println("📍 Location: report/pdf/FailedScenarioReport.pdf");
+        System.out.println("📊 Report shows " + failed + " failed scenario(s) out of " + (passed + failed) + " total");
     }
 
     /**

@@ -30,7 +30,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 	    features = {"src/test/resources/features"},
 	    glue = {"stepdefinition"},
-	    tags = "@Scope1",
+	    tags = "@testing",
 	    plugin = {
 	        "pretty",
 	        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
