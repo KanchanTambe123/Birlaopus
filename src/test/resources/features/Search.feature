@@ -1,4 +1,4 @@
-@testing
+@Scope1
 Feature: To Validate search Functionality
 
   Background: 
