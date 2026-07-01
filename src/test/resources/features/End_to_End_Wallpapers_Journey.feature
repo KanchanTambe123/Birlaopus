@@ -3,7 +3,6 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
 
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation
-    #Then User clicks the cart icon on the header and removes the product from the cart if available
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
@@ -11,6 +10,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
+    Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 wallpaper name "<productname>" through navigation bar
     Then the User selects a wallpaper shade "<shades_code>"
     Then User enters valid pincode "<pincode>" and check product availability

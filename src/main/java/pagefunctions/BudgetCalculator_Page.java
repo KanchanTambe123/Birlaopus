@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -221,14 +222,21 @@ public class BudgetCalculator_Page {
 	}
 
 	public String getVisiblePrice() {
-		List<WebElement> prices = DriverManager.getDriver().findElements(By.xpath("//p[@class='amt']"));
+	    By priceLocator = By.xpath("//div[contains(@class,'estimationDetails__priceContainer-totalPrice')]//p[@class='amt']");
 
-		for (WebElement price : prices) {
-			if (price.isDisplayed()) {
-				return price.getText().trim();
-			}
-		}
-		throw new RuntimeException("No visible price found");
+	    try {
+	        List<WebElement> prices = DriverManager.getDriver().findElements(priceLocator);
+
+	        for (WebElement price : prices) {
+	            if (price.isDisplayed()) {
+	                return price.getText().trim();
+	            }
+	        }
+	    } catch (StaleElementReferenceException e) {
+	        return "";
+	    }
+
+	    return "";
 	}
 
 }

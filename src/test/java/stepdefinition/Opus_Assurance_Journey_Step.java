@@ -302,6 +302,7 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User enter valid pin code on enter details {string}")
 	public void user_enter_valid_pin_code_on_enter_details(String string) throws InterruptedException {
 		js.scrollUntilElementVisible(op.pincodeField);
+		wait.waitForElementVisible(op.pincodeField);
 		op.pincodeField.sendKeys(string);
 		Thread.sleep(3000);
 

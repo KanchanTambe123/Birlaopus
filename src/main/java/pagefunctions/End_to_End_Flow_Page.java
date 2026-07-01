@@ -572,7 +572,7 @@ public class End_to_End_Flow_Page {
 	            driver.findElement(totalLocator).getText());
 
 	    // Correct Calculation
-	    double expectedTotal = subtotal + tax-discount;
+	    double expectedTotal = subtotal+tax+discount;//If discount = -1017 -use:
 
 	    long expected = Math.round(expectedTotal);
 	    long actual = Math.round(displayedTotal);

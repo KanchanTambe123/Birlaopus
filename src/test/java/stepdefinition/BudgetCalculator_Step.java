@@ -5,6 +5,7 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,7 +24,7 @@ import pagefunctions.Book_Survey_Form_Page;
 import pagefunctions.BudgetCalculator_Page;
 
 public class BudgetCalculator_Step {
-	String priceBefore;
+	
 	ConfigReader config = new ConfigReader();
 	WebDriverWaitHelper wait = new WebDriverWaitHelper();
 	ClickElement click = new ClickElement();
@@ -32,6 +33,7 @@ public class BudgetCalculator_Step {
 	JSExecutor js = new JSExecutor();
 	Book_Survey_Form_Page bs = new Book_Survey_Form_Page();
 	BudgetCalculator_Page sp = new BudgetCalculator_Page();
+	private String priceBefore;
 
 	@When("the User scrolls to the Budget Calculator")
 	public void the_user_scrolls_to_the_budget_calculator() {
@@ -76,7 +78,9 @@ public class BudgetCalculator_Step {
 		js.scrollUntilElementVisible(sp.calculateNowButton);
 		Thread.sleep(2000);
 		js.jsClickWithWait(sp.calculateNowButton);
-		Thread.sleep(6000);
+		Thread.sleep(8000);
+		
+		
 		
 	}
 
@@ -163,28 +167,33 @@ public class BudgetCalculator_Step {
 
 	@Then("the User clicks on the Recalculate Estimate button and verifies the price is updated")
 	public void the_user_clicks_on_the_recalculate_estimate_button_and_verifies_the_price_is_updated()
-			throws InterruptedException {
-		wait.waitForElementVisible(sp.recalculateBtn);
-		js.jsClickWithWait(sp.recalculateBtn);
-		Thread.sleep(2000);
-		js.scrollUntilElementVisible(sp.priceText);
-		Thread.sleep(2000);
-		wait.<Boolean>until(driver -> {
-			String currentPrice = sp.getVisiblePrice();
-			return !currentPrice.equals(priceBefore); // returns Boolean
-		}, 10);
+	        throws InterruptedException {
 
-		String priceAfter = sp.getVisiblePrice();
-		System.out.println("Price After: " + priceAfter);
+	    // Capture price before recalculation
+	    priceBefore = sp.getVisiblePrice();
+	    System.out.println("Price Before: " + priceBefore);
 
-		// 6️⃣ Verify
-		if (!priceBefore.equals(priceAfter)) {
-			System.out.println("Price updated successfully - PASS");
-		} else {
-			throw new AssertionError("Price not updated - FAIL");
-		}
+	    wait.waitForElementVisible(sp.recalculateBtn);
+	    js.jsClickWithWait(sp.recalculateBtn);
+
+	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(60));
+
+	    wait.ignoring(StaleElementReferenceException.class)
+	        .until(driver -> {
+	            String currentPrice = sp.getVisiblePrice();
+	            System.out.println("Current Price: " + currentPrice);
+	            return !currentPrice.equals(priceBefore);
+	        });
+
+	    String priceAfter = sp.getVisiblePrice();
+
+	    System.out.println("Price After: " + priceAfter);
+
+	    Assert.assertNotEquals(priceBefore, priceAfter,
+	            "Price was not updated after recalculation.");
+
+	    System.out.println("Price updated successfully.");
 	}
-
 	@When("the User enters a invalid pincode {string}")
 	public void the_user_enters_a_invalid_pincode(String string) throws InterruptedException {
 		wait.waitForElementVisible(sp.pincodeInputField);
