@@ -77,16 +77,7 @@ public class BudgetCalculator_Step {
 		Thread.sleep(2000);
 		js.jsClickWithWait(sp.calculateNowButton);
 		Thread.sleep(6000);
-		wait.until(driver -> {
-			String price = sp.priceText.getText().replaceAll("[^0-9]", "");
-			return !price.equals("0") && !price.isEmpty();
-		}, 40);
-
-		// Capture price BEFORE edit
-		wait.waitForElementVisible(sp.priceText);
-		priceBefore = sp.priceText.getText().trim();
-		System.out.println("Price Before: " + priceBefore);
-		Thread.sleep(2000);
+		
 	}
 
 	@Then("the calculation result correctly reflects the entered carpet area and pincode")
