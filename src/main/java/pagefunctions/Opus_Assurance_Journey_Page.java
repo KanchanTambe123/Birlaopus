@@ -347,4 +347,19 @@ public class Opus_Assurance_Journey_Page {
 
 	    System.out.println("Status Code matched: " + actual);
 	}
+	
+	public static void verifyToastMessageContractors(String expectedMessage) {
+
+	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(15));
+
+	    WebElement toast = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	            By.xpath("//span[@class='simple-toast']")));
+
+	    String actualMessage = toast.getText().trim();
+
+	    Assert.assertEquals(actualMessage, expectedMessage,
+	            "Validation message mismatch.");
+
+	    System.out.println("Validation Message: " + actualMessage);
+	}
 }

@@ -12,8 +12,9 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
 
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify the end-to-end  colour swatch journey through the checkout process with valid data for a logged-in user through navigation
-    Then User clicks the cart icon on the header and removes the product from the cart if available
+    #Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
+    #When User clicks on the "<Shop_Product>" product in the Shop section
     #Then User selects Colour for colour swatch "<Colour>"
     Then User selects colour swatch quantity <quantity>
     Then User enters a valid pincode "<pincode>" and check product availability
@@ -28,13 +29,13 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     And User clicks on the Proceed to Shipment button
     Then User clicks on the Proceed to payment button
 
-    #Then User click on Shop now button
+  
     Examples: 
-      | navmenu | navtab       | productname   | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
-      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
+      | navmenu | navtab       | productname   | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity | 
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 | 
 
   #---------------------------------- Scenario 2 ----------------------------------#
-  Scenario Outline: To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation
+  Scenario Outline: To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)
     Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     Then User selects Colour for colour swatch "<Colour>"
@@ -50,7 +51,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
       | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
 
   #---------------------------------- Scenario 3 ----------------------------------#
-  Scenario Outline: To verify that a logged-in user can remove a Colour Swatch product from the header cart
+  Scenario Outline: To verify that a logged-in user can remove a Colour Swatch product from the header cart(cart page)
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     Then User selects Colour for colour swatch "<Colour>"
     Then User selects colour swatch quantity <quantity>
@@ -65,21 +66,21 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
       | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |             0 |
 
   #---------------------------------- Scenario 4 ----------------------------------#
-  Scenario Outline: To verify successful colour swatch add-to-wishlist functionality through navigation for a logged-in user
+  Scenario Outline: To verify successful colour swatch add-to-wishlist functionality through navigation for a logged-in user(product details page)
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     Then User selects Colour for colour swatch "<Colour>"
-    And User click whishlist icon on colour swatch
+    And User clicks the Wishlist icon of the selected colour swatch on the Product Details page
     Then Product should be added to the wishlist successfully
 
     Examples: 
-      | navmenu | navtab       | productname   | optionText          | Colour    |
-      | Shop    | Colour Tools | Colour Swatch | Delete colour story | Rose dust |
+      | navmenu | navtab       | productname   | optionText       | Colour    |
+      | Shop    | Colour Tools | Colour Swatch | Delete a Product | Rose dust |
 
   #---------------------------------- Scenario 5 ----------------------------------#
-  Scenario Outline: To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user.
+  Scenario Outline: To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user.(profile page)
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     Then User selects Colour for colour swatch "<Colour>"
-    And User click whishlist icon on colour swatch
+    And User clicks the Wishlist icon of the selected colour swatch on the Product Details page
     Then User click whishlist icon on top page
     And User clicks on "<tabName>" tab
     Then the User clicks the product option button in favourites
@@ -87,8 +88,8 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Then colour swatch should be removed from the wishlist successfully
 
     Examples: 
-      | navmenu | navtab       | productname   | tabName    | optionText          | Colour    |
-      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete colour story | Rose dust |
+      | navmenu | navtab       | productname   | tabName    | optionText       | Colour    |
+      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete a Product | Rose dust |
 
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify error message when user enters invalid pincode for colour swatch

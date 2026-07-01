@@ -48,6 +48,11 @@ public class End_To_End_ColourSwatch_Step {
 	public void user_click_whishlist_icon_on_colour_swatch() {
 		cp.clickWishlistIcon();
 	}
+	@Then("User clicks the Wishlist icon of the selected colour swatch on the Product Details page")
+	public void user_clicks_the_wishlist_icon_of_the_selected_colour_swatch_on_the_product_details_page() {
+		cp.clickWishlistIcon();
+	}
+	
 
 	@Then("User removes the colour swatch from the wishlist if it is already added {string}")
 	public void user_removes_the_colour_swatch_from_the_wishlist_if_it_is_already_added(String string) {

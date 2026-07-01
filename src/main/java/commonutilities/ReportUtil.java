@@ -67,28 +67,28 @@ public class ReportUtil {
 		// Check if cucumber.json exists
 		File cucumberJsonFile = new File("target/cucumber.json");
 		if (!cucumberJsonFile.exists()) {
-			System.err.println("❌ Error: target/cucumber.json not found!");
+			System.err.println("Error: target/cucumber.json not found!");
 			System.err.println("Please ensure Cucumber tests have been executed and JSON report is generated.");
 			System.err.println("Add this to @CucumberOptions: plugin = {\"json:target/cucumber.json\"}");
 			return;
 		}
 
-		System.out.println("📖 Reading cucumber.json...");
+		System.out.println(" Reading cucumber.json...");
 		String content = new String(Files.readAllBytes(Paths.get("target/cucumber.json")));
 		JSONArray features = new JSONArray(content);
 
-		System.out.println("📁 File: " + cucumberJsonFile.getAbsolutePath());
-		System.out.println("📏 File size: " + cucumberJsonFile.length() + " bytes");
-		System.out.println("🗂️  Features in JSON: " + features.length());
+		//System.out.println(" File: " + cucumberJsonFile.getAbsolutePath());
+		//System.out.println(" File size: " + cucumberJsonFile.length() + " bytes");
+		//System.out.println("  Features in JSON: " + features.length());
 
 		// Create report/pdf directory if it doesn't exist
 		File reportDir = new File("report/pdf");
 		if (!reportDir.exists()) {
 			reportDir.mkdirs();
-			System.out.println("📁 Created report/pdf directory");
+			//System.out.println("Created report/pdf directory");
 		}
 
-		System.out.println("📝 Generating PDF report...");
+		//System.out.println(" Generating PDF report");
 		PdfWriter writer = new PdfWriter("report/pdf/FailedScenarioReport.pdf");
 		PdfDocument pdf = new PdfDocument(writer);
 		Document document = new Document(pdf);
@@ -96,7 +96,7 @@ public class ReportUtil {
 		int totalScenarios = 0;
 		int totalFeatures = features.length();
 
-		// ✅ FIRST PASS - Count all features, scenarios and steps
+		// FIRST PASS - Count all features, scenarios and steps
 		for (int i = 0; i < features.length(); i++) {
 
 			JSONObject feature = features.getJSONObject(i);
@@ -175,14 +175,14 @@ public class ReportUtil {
 		long totalSeconds = totalDurationNanos / 1_000_000_000L;
 		endTime = startTime.plusSeconds(totalSeconds);
 
-		System.out.println("📊 Test Summary:");
+		System.out.println(" Test Summary:");
 		System.out.println("   Features: " + totalFeatures + " total | " + featuresPassed + " passed | "
 				+ featuresFailed + " failed");
 		System.out
 				.println("   Scenarios: " + totalScenarios + " total | " + passed + " passed | " + failed + " failed");
 		System.out.println("   Steps: " + (stepsPassed + stepsFailed + stepsSkipped) + " total | " + stepsPassed
 				+ " passed | " + stepsFailed + " failed | " + stepsSkipped + " skipped");
-		System.out.println("⏱️  Duration: " + totalSeconds + " seconds");
+		System.out.println(" Duration: " + totalSeconds + " seconds");
 
 		// ✅ DASHBOARD
 		addDashboard(document);
@@ -343,9 +343,9 @@ public class ReportUtil {
 		}
 
 		document.close();
-		System.out.println("✅ PDF Report Generated Successfully!");
-		System.out.println("📍 Location: report/pdf/FailedScenarioReport.pdf");
-		System.out.println("📊 Report shows " + failed + " failed scenario(s) out of " + (passed + failed) + " total");
+		//System.out.println(" PDF Report Generated Successfully!");
+		//System.out.println("Location: report/pdf/FailedScenarioReport.pdf");
+		//System.out.println("Report shows " + failed + " failed scenario(s) out of " + (passed + failed) + " total");
 	}
 
 	/**

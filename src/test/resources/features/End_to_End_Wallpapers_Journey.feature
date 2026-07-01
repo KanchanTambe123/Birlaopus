@@ -2,7 +2,7 @@
 Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.
 
   #---------------------------------- Scenario 1 ----------------------------------#
-  Scenario Outline: To verify the end-to-end  Wallpapers journey through the checkout process with valid data for a logged-in user through navigation
+  Scenario Outline: To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation
     #Then User clicks the cart icon on the header and removes the product from the cart if available
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
     When User clicks on the profile icon
@@ -52,7 +52,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
       | Shop    | Wallpapers | Textilia Tabit 32001 |       32102 |        1 |    1 |  500001 |               2 | Mumbai  |                2 |
 
   #---------------------------------- Scenario 3 ----------------------------------#
-  Scenario Outline: To verify that a logged-in user can remove a Wallpapers product from the header cart
+  Scenario Outline: To verify that a logged-in user can remove a Wallpapers product from the header cart(cart page)
     Given User is on wallpaper Product page "WallpaperProductUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
@@ -81,7 +81,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
     #Then the User selects a wallpaper shade "<shades_code>"
-    And User click whishlist icon on Wallpapers
+    And User clicks the Wishlist icon for Wallpapers on the Product Details page
     Then Product should be added to the wishlist successfully
 
     Examples: 
@@ -89,7 +89,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
       | Shop    | Wallpapers | Chromatic Geometric 45124 | Delete colour story |       45128 |
 
   #---------------------------------- Scenario 5 ----------------------------------#
-  Scenario Outline: To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.
+  Scenario Outline: To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.(profile page)
     Given User is on wallpaper Product page "WallpaperProductUrl"
     When User clicks on the profile icon
     And User clicks on the Sign In button
@@ -98,7 +98,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
     Then the User selects a wallpaper shade "<shades_code>"
-    And User click whishlist icon on Wallpapers
+    And User clicks the Wishlist icon for Wallpapers on the Product Details page
     Then Product should be added to the wishlist successfully
     Then User click whishlist icon on top page
     And User clicks on "<tabName>" tab

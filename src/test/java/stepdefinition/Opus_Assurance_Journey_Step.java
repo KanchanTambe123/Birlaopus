@@ -204,6 +204,14 @@ public class Opus_Assurance_Journey_Step {
 //		firstOtpField.clear();
 		firstOtpField.sendKeys(string);
 	}
+	@Then("User enter wrong otp {string}")
+	public void user_enter_wrong_otp(String string) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement firstOtpField = wait.until(ExpectedConditions.visibilityOf(op.otpNoInputFiled.get(0)));
+
+//		firstOtpField.clear();
+		firstOtpField.sendKeys(string);
+	}
 
 	@Then("User click on verify otp cta")
 	public void user_click_on_verify_otp_cta() {
@@ -564,5 +572,10 @@ public class Opus_Assurance_Journey_Step {
 			String string) {
 		op.verifyServiceableStatus(string);
 	}
+	@Then("User should not be able to select more than {int} contractors and validation message should be displayed {string}")
+	public void user_should_not_be_able_to_select_more_than_contractors_and_validation_message_should_be_displayed(Integer int1, String expectedMessage) {
+		  op.verifyToastMessageContractors(expectedMessage);
+	}
+
 
 }

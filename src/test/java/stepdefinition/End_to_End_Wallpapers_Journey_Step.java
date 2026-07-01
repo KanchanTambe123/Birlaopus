@@ -74,6 +74,11 @@ public class End_to_End_Wallpapers_Journey_Step {
 	public void user_click_whishlist_icon_on_wallpapers() {
 		ew.clickWishlistIcon();
 	}
+
+@Then("User clicks the Wishlist icon for Wallpapers on the Product Details page")
+public void user_clicks_the_wishlist_icon_for_wallpapers_on_the_product_details_page() {
+	ew.clickWishlistIcon();
+}
 	
 	
 	@Then("User should see an error message for invalid pincode for Wallpapers {string}")

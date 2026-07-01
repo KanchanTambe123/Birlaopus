@@ -208,17 +208,22 @@ public class End_to_End_Flow_Page {
 				WebElement productLink = product.findElement(By.cssSelector("a.cmp-product__image-link"));
 				wait.until(ExpectedConditions.elementToBeClickable(productLink));
 				js.executeScript("arguments[0].scrollIntoView(true);", productLink);
+				System.out.println("Product Name : " + title.getText());
+				System.out.println("Product Href : " + productLink.getAttribute("href"));
 				productLink.click();
+				System.out.println("Current URL : " + driver.getCurrentUrl());
+
 				System.out.println("Clicked product: " + productName);
 				productClicked = true;
 				break;
+				
 			}
 		}
 		if (!productClicked) {
 			throw new RuntimeException("Product not found: " + productName);
 		}
 
-
+          Thread.sleep(3000);
 	
 		
 		
@@ -447,116 +452,168 @@ public class End_to_End_Flow_Page {
 
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-	    // Wait for the coupon button to be visible and clickable
+	    // Wait for the coupon button
 	    WebElement couponBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
 	            By.cssSelector("button.apply__coupons-btn")));
 	    wait.until(ExpectedConditions.elementToBeClickable(couponBtn));
 
-	    // Scroll into view
 	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", couponBtn);
 	    couponBtn.click();
 
-	    Thread.sleep(2000); 
+	    Thread.sleep(2000);
 
 	    // Fetch all available coupons
 	    List<WebElement> coupons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 	            By.cssSelector("input.apply__coupons-card-checkbox")));
 
 	    if (!coupons.isEmpty()) {
+
 	        WebElement coupon = coupons.get(0);
 
-	        // Scroll and click
+	        // Scroll and select the first available coupon
 	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", coupon);
 	        coupon.click();
+
 	        Thread.sleep(2000);
 
-	        // Final Apply button
-	        WebElement applyBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("applyCouponBtn")));
+	        // Click Apply button
+	        WebElement applyBtn = wait.until(ExpectedConditions.elementToBeClickable(
+	                By.id("applyCouponBtn")));
 	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", applyBtn);
 	        applyBtn.click();
 
-	        Thread.sleep(2000);
-	        System.out.println("Coupon applied successfully");
+	        // Wait for applied coupon name to be displayed
+	        WebElement appliedCoupon = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	                By.cssSelector("span.applied__coupon-percent-name")));
+
+	        String couponName = appliedCoupon.getText().trim();
+
+	        // Extent Report logs
+	        ExtentCucumberAdapter.getCurrentStep().log(
+	                Status.INFO,
+	                "Applied Coupon: " + couponName
+	        );
+
+	        ExtentCucumberAdapter.getCurrentStep().log(
+	                Status.PASS,
+	                "Coupon applied successfully: " + couponName
+	        );
+
+	        System.out.println("Coupon applied successfully: " + couponName);
+
 	    } else {
+
+	        ExtentCucumberAdapter.getCurrentStep().log(
+	                Status.INFO,
+	                "No coupons available. Continuing the flow."
+	        );
+
 	        System.out.println("No coupons available, continuing flow");
 	    }
 	}
-
 	// order summary
 	public int getFinalOrderSummaryQuantity() {
 
-		WebElement summaryQtyElement = new WebDriverWait(driver, Duration.ofSeconds(80))
-				.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("span.summary__card-qty-desp")));
+	    WebElement summaryQtyElement = new WebDriverWait(driver, Duration.ofSeconds(80))
+	            .until(ExpectedConditions.visibilityOfElementLocated(
+	                    By.cssSelector("span.summary__card-qty-desp")));
 
-		return Integer.parseInt(summaryQtyElement.getAttribute("data-qty"));
+	    int finalQty = Integer.parseInt(summaryQtyElement.getAttribute("data-qty"));
+
+	    // Extent Report Log
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Final Order Summary Quantity: " + finalQty
+	    );
+
+	    System.out.println("Final Order Summary Quantity: " + finalQty);
+
+	    return finalQty;
 	}
 
 	// total
 	public void verifyTotalPayableAmount() {
 
-		WebDriver driver = DriverManager.getDriver();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+	    WebDriver driver = DriverManager.getDriver();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
 
-		// Subtotal
-		double subtotal = extractAmount(wait.until(ExpectedConditions.visibilityOfElementLocated(
-		        By.cssSelector(".cart__subtotal-value")
-		)).getText());
+	    // Subtotal (Excl. Tax)
+	    double subtotal = extractAmount(wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(
+	                    By.cssSelector(".cart__subtotal-value")))
+	            .getText());
 
-		// Tax
-		double tax = extractAmount(wait.until(ExpectedConditions.visibilityOfElementLocated(
-		        By.cssSelector(".cart__taxes-value")
-		)).getText());
+	    // Taxes
+	    double tax = extractAmount(wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(
+	                    By.cssSelector(".cart__taxes-value")))
+	            .getText());
 
-		// Discount (optional)
-		double discount = 0;
-		List<WebElement> discountEls = driver.findElements(
-		        By.cssSelector(".cart__coupon-discount-value")
-		);
+	    // Coupon Discount (extractAmount returns negative value, e.g. -1017)
+	    double discount = 0.0;
 
-		if (!discountEls.isEmpty() && discountEls.get(0).isDisplayed()) {
-		    String txt = discountEls.get(0).getText().trim();
-		    if (!txt.equals("-") && !txt.isEmpty()) {
-		        discount = extractAmount(txt);
-		    }
-		}
+	    List<WebElement> discountEls = driver.findElements(
+	            By.cssSelector(".cart__coupon-discount-value"));
 
-		// ✅ Wait for total to be updated (critical fix)
-		By totalLocator = By.cssSelector(".cart__total");
+	    if (!discountEls.isEmpty() && discountEls.get(0).isDisplayed()) {
+	        String discountText = discountEls.get(0).getText().trim();
 
-		wait.until(d -> {
-		    try {
-		        String text = d.findElement(totalLocator).getText().trim();
-		        return !text.isEmpty() && !text.equals("0") && extractAmount(text) > 0;
-		    } catch (Exception e) {
-		        return false;
-		    }
-		});
+	        if (!discountText.equals("-") && !discountText.isEmpty()) {
+	            discount = extractAmount(discountText);
+	        }
+	    }
 
-		double displayedTotal = extractAmount(driver.findElement(totalLocator).getText());
+	    // Total
+	    By totalLocator = By.cssSelector(".cart__total");
 
-		// Expected calculation
-		double expectedTotal = subtotal + tax + discount;
+	    wait.until(ExpectedConditions.visibilityOfElementLocated(totalLocator));
 
-		long expected = Math.round(expectedTotal);
-		long actual = Math.round(displayedTotal);
+	    double displayedTotal = extractAmount(
+	            driver.findElement(totalLocator).getText());
 
-		// Logs
-		System.out.println("Subtotal: " + subtotal);
-		System.out.println("Tax: " + tax);
-		System.out.println("Discount: " + discount);
-		System.out.println("Expected: " + expected);
-		System.out.println("Actual: " + actual);
-		 ExtentCucumberAdapter.getCurrentStep().log(
-		            Status.INFO,
-		            "Cart Total: " + actual
-		    );
-		Assert.assertEquals(actual, expected, "Total mismatch");
+	    // Correct Calculation
+	    double expectedTotal = subtotal + tax-discount;
 
-		System.out.println("Total verified successfully");
-	
+	    long expected = Math.round(expectedTotal);
+	    long actual = Math.round(displayedTotal);
 
-		}
+	    // Console Logs
+	    System.out.println("Subtotal: " + subtotal);
+	    System.out.println("Discount: " + discount);
+	    System.out.println("Tax: " + tax);
+	    System.out.println("Expected: " + expectedTotal);
+	    System.out.println("Displayed: " + displayedTotal);
 
+	    // Extent Logs
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Subtotal (Excl. Tax): ₹" + subtotal);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Coupon Discount: ₹" + discount);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Taxes: ₹" + tax);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Expected Total: ₹" + expected);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Displayed Total: ₹" + actual);
+
+	    Assert.assertEquals(actual, expected,
+	            "Total payable amount calculation mismatch.");
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.PASS,
+	            "Total payable amount verified successfully.");
+
+	    System.out.println("Total payable amount verified successfully.");
+	}
 	
 
 	public double extractAmount(String text) {
@@ -666,5 +723,5 @@ public class End_to_End_Flow_Page {
 	    }
 	}
 
-
+	
 }

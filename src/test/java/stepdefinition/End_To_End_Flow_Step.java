@@ -154,6 +154,11 @@ public class End_To_End_Flow_Step {
 		ep.applyCouponIfAvailable();
 		Thread.sleep(4000);
 	}
+	/*@When("User clicks on the {string} product in the Shop section")
+	public void user_clicks_on_the_product_in_the_shop_section(String string) {
+	   ep.clickShopProduct(string);
+	}*/
+	
 
 	@Then("User verifies the product quantity in the final order summary {string}")
 	public void user_verifies_the_product_quantity_in_the_final_order_summary(String expectedQuantityStr) {

@@ -92,7 +92,7 @@ Feature: To Validate Opus Assurance Journey Functionality
       | 2500 sqft      | @@@@@@@@@@@        | 400 060  |
 
   #---------------------------------- Scenario 5 ----------------------------------#
-  Scenario Outline: To verify whether user is able to see error message for first name when user enter invalid Otp
+  Scenario Outline: To Verify that an error message is displayed when the user enters an wrong OTP.
     And User enter valid paintable area "<paintable_area>"
     And User click on Next button
     Then User should click on Yet to Start Cta
@@ -100,13 +100,13 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enter invalid otp "<invalid_otp>"
+    And User enter wrong otp "<wrong_otp>"
     And User click on verify otp cta
     Then User should see an error message for otp "OTP does not match."
 
     Examples: 
-      | paintable_area | invalid_otp |
-      | 2500 sqft      |        1111 |
+      | paintable_area | wrong_otp |
+      | 2500 sqft      |      2222 |
 
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify that the user is shown an error message when the paintable area is less than 2000 sq ft
@@ -252,8 +252,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     And verify the lead API parameters for opus assurance journey: iclLeadContextC against value "<iclLeadContextC>",  iclLeadTypeC against value "<iclLeadTypeC>",  iclSubType against value "<iclSubType>",  leadSubSource against value "<leadSubSource>"
     And User click next button on Just a Few More Details
     Then User clcik on Find Contractor button
-    And User selects 5 contractors
-    Then User should not be able to select more than 5 contractors and validation message should be displayed
+    And User selects 6 contractors
+    Then User should not be able to select more than 5 contractors and validation message should be displayed "Contractor select limit reached!"
 
     Examples: 
       | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
@@ -309,4 +309,4 @@ Feature: To Validate Opus Assurance Journey Functionality
 
     Examples: 
       | paintable_area | pin_code | status | unserviceable_pincode | valid_mobile_no | valid_otp |
-      | 2500 sqft      | 400 060  | false  |          111222 |      7019144066 |      1111 |
+      | 2500 sqft      | 400 060  | false  |                111222 |      7019144066 |      1111 |
