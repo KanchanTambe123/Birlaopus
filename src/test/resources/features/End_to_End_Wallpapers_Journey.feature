@@ -1,4 +1,4 @@
-@Scope2
+@module
 Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.
 
   #---------------------------------- Scenario 1 ----------------------------------#

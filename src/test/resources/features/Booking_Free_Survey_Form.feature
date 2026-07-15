@@ -1,4 +1,4 @@
-@Scope1
+@module
 Feature: To Validate Survey Booking Form
 
   Background: 

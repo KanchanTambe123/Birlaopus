@@ -1,4 +1,4 @@
-@Scope1
+@module
 Feature: To Validate Short Lead Form (Painting Service)
 
   Background: 

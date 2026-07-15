@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>BirlaOpus</title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css">
+.badge-primary{background-color: #fff}
+.badge-primary {color: #212529}
+.header {background-color: #fff}
+</style></head><body class="spa bdd-report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 7px 0;">
+<!-- Left logo: IDFC FIRST Bank -->
+<img src="https://assets.birlaopus.com/is/content/grasimindustries/birla-opus-logo-v1?ts=1731582213592&dpr=off" width="120" height="30" style="margin-right: 20px;" />
+<!-- Separator -->
+<div style="width: 2px; height: 30px; background-color: #ccc; margin: 0 20px;"></div>
+<!-- Right logo: Local DEPT logo -->
+<img src="https://www.deptagency.com/wp-content/uploads/2024/09/dept-logo.svg" width="100" height="30" style="margin-left: 20px;" />
+</div>
+</span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Jul 03, 2026 14:26:20</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('category-view')">
+<a id="nav-category" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-tag"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
+<ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" href="#">@Scope1</a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">To Validate the Brand section Form and Book a Free Consultation form on the homepage.</p>
+            <p class="text-sm">
+              <span>2:26:21 PM</span> / <span>00:05:03:289</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">To Validate the Brand section Form and Book a Free Consultation form on the homepage.</h5>
+<span class='badge badge-success'>07.03.2026 2:26:21 PM</span>
+<span class='badge badge-danger'>07.03.2026 2:31:24 PM</span>
+<span class='badge badge-default'>00:05:03:289</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-10 m-l-5"></div>
+</div>
+</div>
+<div class="accordion mt-4">
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify mandatory fields with valid data on the Let’s Connect form in the Brands section for a logged-in user</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify mandatory fields with valid data on the Let’s Connect form in the Brands section for a logged-in user</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Given User is on the Birla Opus Brands page  "BrandUrl"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User navigates to the Let’s Connect form section</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When User selects "Product Enquiry" from the How can we help you? dropdown</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters a valid Pincode on the Let’s Connect form Brands "400703"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Submit button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div> API Type: lead/shortForm
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>Status Code: 200
+      </div>
+      <div> Response Time: 3545 ms
+      </div>
+      <div>
+      </div>
+      <div> Request Payload (Encrypted):
+      </div>
+      <div>{"data":"MTI4OjoxMDAwMDo6ZTc3M2Y3ZjI2NWNhZWYxYjY5ODRjYmMyMjU2YWU2NWM6OjU0YjBkNTljYjI1Yjc3MzdmM2Q5NTFhMWZhZjc5M2I5OjpEYTlNTDd4R3lvYTlVL0ZNRUcxVTgzY3daUnpzSm5BbGtYUG9Yb1M5QXZWMGVTUUhEZExmZGN6TkozMXIxOVJ0SG1jVG1NSWo5SVFOc3pzdEZ2WGJ0N21yY3NjVVZjQjZEMytWWEFhWW5peHNsUXpQMS9Pa0I1RXdhYytmTG5zMlVHMjdIbGt4UkR6RTF4QU8zVkovR0pqb3pJVm0vUnNJWDJiZVA0OEdMN1FZSCtSWkNBeTFPRmtnekVCZEVOenF5ZjdPaEFLN29veG1FbDB6YkxkVVA3TDhXaDlPTlk2c1loajArUDF5Q3FVdDY5UmFKQUxKd1c3VmpTb3l3dXJHT0RFQ3JtTFZ5ei9Qb0RSL25LemhvUUJtSDVUUnFFVXpoRXZNMmpvS0h1SThqZ3FPLzhJaS9jZzFlWDZsUmU1alRUOXdPalo1bEpMY1QyR2ZyTHgycmVwc2pGeDMzTHh0U0ZEVy9tcXJ1WlkrMHVKeVo5QVdkSWdvZXNzS0ttajBqR01Bak9LYzZobis4ZnkxUUdOUmFBSlZqaFhWMXo2eGJINmhtYldmN3hQMW1UM294aGlveUx4SHVPV1BtNVIv"}
+      </div>
+      <div> Decrypted Request:
+      </div>
+      <div>{"header":{"leadSource":"Customer Website / App","whoAreYou":"Customer"},"body":{"firstName":"om","lastName":"patil","email":"","phone":"8208025065","shortForm":true,"pageTitle":"Brands","pinCode":"400703","typeC":"Product Enquiry","formName":"Short Lead Form","formId":"leadForm002","pageUrlFull":"https://uat.birlaopus.com/brands"}}
+      </div>
+      <div>
+      </div>
+      <div> Response Payload (Encrypted):
+      </div>
+      <div>{"responseJson":"MTI4OjoxMDAwOjphYjgzZTRjOTYzMjE5YjI5YTZhZDJiODEzZTI5ZjIzNTo6ZDRlZTZlODhmNTcwZWU2ZmVlZmY4MzNkODRhZjBmNzI6OlR5L0g2NTcrbDNnVWlZbGJEQW1vTTNWOEZxSEFmd2RWTHQ2S3ZMeldQQThtV1hUNHZVbzRZaGV6aTM3UUZFMHBockpFQW9JcWg1TlhQdnYzZ0cxOEZPMndFR0tBMGpzajA5a2pTVndwMHlXZ2p3SENlSkVvM08xbWtEL2FObHJoVmMrTTM0bUxQbFQ1ZlAxK2MyRDlTTVFmbWFaNitlOXd2TjhBS3ExSHdBRVVZUXJ4bDRJeTRqVXdzeEFaNUs2a3Y2TjNwN0tMRjkvL0h0THplNVhqbzR6T21SYTFFVTl0aWdJSEU0cW5EVE9xdEd3a013ei8wRHdkNzdQM214SXBHYWMxYzJwZlNZbTVQcGFTa0NQbUt3SWtlTEswSVFvOEhGYTJKQmUrRXlVPQ=="}
+      </div>
+      <div> Decrypted Response:
+      </div>
+      <div>{"header":{"status":"SUCCESS"},"body":{"ContactId":null,"Account Status":null,"AccountId":null,"AID Id":null,"SFA LeadId":null,"LeadId":"00QBi00000GxtwvMAB","LeadNumber":"SR-00035494","status":"success"},"errorBody":{}}
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User should see the acknowledgment message after successful submission "Thank You For Reaching out to us !"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="34"><span class="badge log pass-bg mr-2">Pass</span>To verify validation messages when mandatory fields are empty in Let’s Connect form (Brands)</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_is_on_birla_opus_home_page(java.lang.String)">
+                <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_clicks_on_the_profile_icon()">
+                <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_clicks_on_the_sign_in_button()">
+                <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_enters_valid_mobile_number_on_the_sign_in_page()">
+                <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.the_user_clicks_on_the_sign_in_button_after_entering_the_mobile_number()">
+                <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_and_clicks_on_the_verify_otp_button()">
+                <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_clicks_on_the_close_icon()">
+                <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.user_is_on_the_birla_opus_brands_page(java.lang.String)">
+                <span>Given User is on the Birla Opus Brands page  "BrandUrl"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.user_clicks_on_the_submit_button()">
+                <span>And User clicks on the Submit button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.validation_message_for_help_option_input_fields_should_get_displayed(java.lang.String)">
+                <span>And validation message for HelpOption input fields should get displayed "This field is required"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.validation_message_for_pincode_input_fields_should_get_displayed(java.lang.String)">
+                <span>And validation message for Pincode input fields should get displayed "This field is required"</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="59"><span class="badge log pass-bg mr-2">Pass</span>To verify that the Back button works after entering form data in the Book a Free Consultation form on the homepage</div>
+      </div>
+    </div>
+        <div class="collapse">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_is_on_birla_opus_home_page(java.lang.String)">
+                <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_clicks_on_the_profile_icon()">
+                <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_clicks_on_the_sign_in_button()">
+                <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_enters_valid_mobile_number_on_the_sign_in_page()">
+                <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.the_user_clicks_on_the_sign_in_button_after_entering_the_mobile_number()">
+                <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_and_clicks_on_the_verify_otp_button()">
+                <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_clicks_on_the_close_icon()">
+                <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.user_navigates_to_the_book_a_free_consultation_form_section()">
+                <span>And User navigates to the Book a free consultation form section</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.user_clicks_on_book_a_free_consultation_button()">
+                <span>Then User clicks on Book a Free Consultation button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.the_user_clicks_on_the_back_button_on_the_book_a_free_consultation_form()">
+                <span>And the user clicks on the Back button on the Book a Free Consultation form</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.the_user_should_be_navigated_to_the_previous_page_of_the_book_a_free_consultation_form()">
+                <span>Then the user should be navigated to the previous page of the Book a Free Consultation form</span>
+      <div>
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="84"><span class="badge log fail-bg mr-2">Fail</span>To verify validation messages when mandatory fields are empty in the Book a Free Consultation form on the homepage</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_is_on_birla_opus_home_page(java.lang.String)">
+                <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_clicks_on_the_profile_icon()">
+                <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_clicks_on_the_sign_in_button()">
+                <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_enters_valid_mobile_number_on_the_sign_in_page()">
+                <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.the_user_clicks_on_the_sign_in_button_after_entering_the_mobile_number()">
+                <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_and_clicks_on_the_verify_otp_button()">
+                <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_clicks_on_the_close_icon()">
+                <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.user_navigates_to_the_book_a_free_consultation_form_section()">
+                <span>And User navigates to the Book a free consultation form section</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.user_clicks_on_book_a_free_consultation_button()">
+                <span>Then User clicks on Book a Free Consultation button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepdefinition.All_Lets_Connect_Form_Step.the_user_clicks_on_the_continue_button_on_the_book_a_free_consultation_form()">
+                <span>Then the user clicks on the Continue button on the Book a Free Consultation form</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (a28e49bf2f2549c1e767782521b36f89)] -> xpath: (//button[normalize-space()='Continue'])[1]]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.47, chrome: {chromedriverVersion: 150.0.7871.46 (5b586c06e0d2..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50351}, goog:processID: 24456, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50351/devtoo..., se:cdpVersion: 150.0.7871.47, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a28e49bf2f2549c1e767782521b36f89
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.All_Lets_Connect_Form_Step.the_user_clicks_on_the_continue_button_on_the_book_a_free_consultation_form(All_Lets_Connect_Form_Step.java:221)
+	at ✽.the user clicks on the Continue button on the Book a Free Consultation form(file:///C:/Backup/Birla/Birlaopus_selenium/com.BirlaOpus/Birlaopus/src/test/resources/features/All_Lets_Connect_Form.feature:74)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</span>
+      <div>[B@77dd4ff6
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded1.png' src="test-output/embedded1.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinition.All_Lets_Connect_Form_Step.validation_message_for_pincode_input_fields_should_get_displayed(java.lang.String)">
+                <span>And validation message for Pincode input fields should get displayed "This field is required"</span>
+      <div>Step skipped
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="109"><span class="badge log pass-bg mr-2">Pass</span>To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="110"><span class="badge log pass-bg mr-2">Pass</span>To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User navigates to the Book a free consultation form section</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on Book a Free Consultation button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters a invalid pincode on the Book a Free Consultation form  "123"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the user clicks on the Continue button on the Book a Free Consultation form</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then error message should be displayed for invalid pin code "Please enter a valid Pincode"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">org.openqa.selenium.TimeoutException</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.TimeoutException</h4>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:29:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='104'>Then the user clicks on the Continue button on the Book a Free Consultation form</a>
+<div class="">
+<span class="badge badge-default">To Validate the Brand section Form and Book a Free Consultation form on the homepage..To verify validation messages when mandatory fields are empty in the Book a Free Consultation form on the homepage.Then the user clicks on the Continue button on the Book a Free Consultation form</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>4</span>
+<span class='badge log badge-danger'>1</span>
+</span>
+<p class="name">@Scope1</p>
+<p class="duration text-sm">5 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@Scope1</h4>
+<span status="pass" class='badge log pass-bg'>4 passed</span>
+<span status="fail" class='badge log badge-danger'>1 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>14:26:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>To verify mandatory fields with valid data on the Let’s Connect form in the Brands section for a logged-in user</a>
+<div class="">
+<span class="badge badge-default">To Validate the Brand section Form and Book a Free Consultation form on the homepage..To verify mandatory fields with valid data on the Let’s Connect form in the Brands section for a logged-in user</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>14:27:21 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='34'>To verify validation messages when mandatory fields are empty in Let’s Connect form (Brands)</a>
+<div class="">
+<span class="badge badge-default">To Validate the Brand section Form and Book a Free Consultation form on the homepage..To verify validation messages when mandatory fields are empty in Let’s Connect form (Brands)</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>14:28:05 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='59'>To verify that the Back button works after entering form data in the Book a Free Consultation form on the homepage</a>
+<div class="">
+<span class="badge badge-default">To Validate the Brand section Form and Book a Free Consultation form on the homepage..To verify that the Back button works after entering form data in the Book a Free Consultation form on the homepage</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:28:44 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='84'>To verify validation messages when mandatory fields are empty in the Book a Free Consultation form on the homepage</a>
+<div class="">
+<span class="badge badge-default">To Validate the Brand section Form and Book a Free Consultation form on the homepage..To verify validation messages when mandatory fields are empty in the Book a Free Consultation form on the homepage</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>14:30:37 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='110'>To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</a>
+<div class="">
+<span class="badge badge-default">To Validate the Brand section Form and Book a Free Consultation form on the homepage..To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Jul 03, 2026 14:26:20</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Jul 03, 2026 14:31:25</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Features Passed</p>
+<h3>0</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Features Failed</p>
+<h3>1</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Features</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
+</small>
+</div>
+<div>
+<small data-tooltip='100%'><b>1</b> features failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Scenarios</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='child-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='80%'><b>4</b> scenarios passed</small></div>
+<div>
+<small data-tooltip='20%'><b>1</b> scenarios failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-4">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Steps</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='grandchild-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='96%'><b>58</b> steps passed</small></div>
+<div>
+<small data-tooltip='1%'><b>1</b> steps failed,
+<b>1</b> skipped, <b data-tooltip='%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"To Validate the Brand section Form and Book a Free Consultation form on the homepage.":303.289
+};
+</script>
+<div class="row">
+<div class="col-lg-6 col-md-12 category-container">
+<div class="card">
+<div class="card-header"><p>Tags</p></div>
+<div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
+<thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
+<tr>
+<td>@Scope1</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>80%</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 0,
+failParent: 1,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 4,
+failChild: 1,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 58,
+failGrandChild: 1,
+warningGrandChild: 0,
+skipGrandChild: 1,
+infoGrandChild: 0,
+eventsCount: 5,
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@d6562a79075e061305ccfdb82f01e5e195e2d307/spark/js/spark-script.js"></script>
+<script type="text/javascript">
+             
+      $(document).ready(function() {
+        document.getElementsByClassName('logo')[0].style.display='none';
+        });
+        
+        </script></body>
+</html>

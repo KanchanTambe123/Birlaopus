@@ -1,4 +1,4 @@
-@Scope1
+@module
 Feature: To Validate Get in Touch Contact Form Subscription
 
   Background: 

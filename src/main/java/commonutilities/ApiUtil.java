@@ -1,114 +1,143 @@
 package commonutilities;
 
 import java.util.Map;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v145.network.Network;
+import org.openqa.selenium.devtools.v145.network.model.RequestId;
+
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ApiUtil {
+	private static volatile String leadRequestPayload;
+	private static volatile String leadResponsePayload;
+	private static volatile Integer leadStatusCode;
 
-    // ================= LAST API DATA =================
-    public static volatile String lastRequest;
-    public static volatile String lastResponse;
-    public static volatile Integer lastStatusCode;
-    public static volatile String lastUrl;
+	private static volatile long requestStartTime;
+	private static volatile long responseEndTime;
+	private static volatile long responseTime;
 
-    public static volatile String lastDecryptedRequest;
-    public static volatile String lastDecryptedResponse;
+	private static volatile RequestId leadRequestId;
+	private static volatile String capturedApiUrl;
 
-    public static volatile String lastRequestTime;
-    public static volatile String lastResponseTime;
+	private static final String SHORT_FORM_API = "/lead/shortForm";
+	private static final String LEAD_FORM_API = "/lead/leadForm";
+	
+	
+	
+	
+	public static void initNetworkListener(DevTools devTools) {
+		devTools.addListener(Network.requestWillBeSent(), request -> {
+            String url = request.getRequest().getUrl();
 
-    // ================= STORAGE MAP =================
-    public static Map<String, String> apiRequests = new ConcurrentHashMap<>();
-    public static Map<String, String> apiResponses = new ConcurrentHashMap<>();
-    public static Map<String, Integer> apiStatusCodes = new ConcurrentHashMap<>();
-    public static Map<String, String> requestMap = new ConcurrentHashMap<>();
-    public static Map<String, String> responseMap = new ConcurrentHashMap<>();
-    public static Map<String, Integer> statusMap = new ConcurrentHashMap<>();
+            if (url.contains(SHORT_FORM_API) || url.contains(LEAD_FORM_API)) {
 
-    // ================= STORE REQUEST =================
-    public static void storeRequest(String url, String request) {
-        apiRequests.put(url, request);
-        lastRequest = request;
-        lastUrl = url;
+                //System.out.println(" Lead API matched (Request): " + url);
+                capturedApiUrl = url;  // Store for debugging
+
+                // Capture request ID for response tracking
+                leadRequestId = request.getRequestId();
+                //System.out.println(" Request ID stored: " + leadRequestId);
+
+                // Start Time
+                requestStartTime = System.currentTimeMillis();
+
+                // Capture request payload
+                request.getRequest().getPostData().ifPresent(payload -> {
+                    leadRequestPayload = payload;
+                    //System.out.println(" Request Payload Captured (" + payload.length() + " characters)");
+                });
+                
+                if (!request.getRequest().getPostData().isPresent()) {
+                   // System.out.println(" No POST data in request (might be GET request)");
+                }
+            }
+        });
+
+        // ===================== RESPONSE CAPTURE =====================
+        devTools.addListener(Network.responseReceived(), response -> {
+            String url = response.getResponse().getUrl();
+
+            if (url.contains(SHORT_FORM_API) || url.contains(LEAD_FORM_API)) {
+
+               // System.out.println(" Lead API matched (Response): " + url);
+                
+                RequestId currentRequestId = response.getRequestId();
+                
+                // Update request ID in case it wasn't set
+                if (leadRequestId == null) {
+                    leadRequestId = currentRequestId;
+                   // System.out.println(" Request ID set from response: " + leadRequestId);
+                }
+
+                // Capture Status Code
+                leadStatusCode = response.getResponse().getStatus().intValue();
+
+                // End Time
+                responseEndTime = System.currentTimeMillis();
+
+                // Calculate Response Time
+                responseTime = responseEndTime - requestStartTime;
+
+               // System.out.println(" Status Code: " + leadStatusCode);
+               // System.out.println(" Response Time: " + responseTime + " ms");
+                
+                // ⭐ TRY TO CAPTURE RESPONSE BODY IMMEDIATELY (Strategy 1)
+                //System.out.println(" Attempting immediate response capture...");
+                try {
+                    String responseBody = devTools.send(Network.getResponseBody(currentRequestId)).getBody();
+                    if (responseBody != null && !responseBody.isEmpty()) {
+                        leadResponsePayload = responseBody;
+                       // System.out.println(" Response Payload Captured IMMEDIATELY (" + responseBody.length() + " characters)");
+                    } else {
+                       // System.out.println(" Response body is empty (immediate capture)");
+                    }
+                } catch (Exception e) {
+                    //System.out.println(" Immediate capture failed: " + e.getMessage());
+                    //System.out.println(" Will wait for loadingFinished event...");
+                }
+            }
+        });
+
+        // ===================== RESPONSE BODY CAPTURE (Fallback) =====================
+        devTools.addListener(Network.loadingFinished(), loading -> {
+            RequestId requestId = loading.getRequestId();
+            
+            //System.out.println(" loadingFinished fired for RequestId: " + requestId);
+
+            // Only try if we haven't captured response yet
+            if (leadResponsePayload == null || leadResponsePayload.startsWith("Unable to capture")) {
+                // Check if this is the lead API request we're tracking
+                if (requestId != null && leadRequestId != null && requestId.equals(leadRequestId)) {
+                    //System.out.println(" RequestId matched! Capturing response body...");
+                    
+                    try {
+                        // Capture response body
+                        String responseBody = devTools.send(Network.getResponseBody(requestId)).getBody();
+                        if (responseBody != null && !responseBody.isEmpty()) {
+                            leadResponsePayload = responseBody;
+                            //System.out.println(" Response Payload Captured via loadingFinished (" + responseBody.length() + " characters)");
+                        } else {
+                            leadResponsePayload = "Empty response body (204 No Content or similar)";
+                            //System.out.println(" Response body is empty - this may be expected for this API");
+                        }
+                    } catch (Exception e) {
+                        leadResponsePayload = "Unable to capture response body: " + e.getMessage();
+                        //System.err.println(" Error capturing response body: " + e.getMessage());
+                        e.printStackTrace();
+                    }
+                } else if (requestId != null && leadRequestId != null) {
+                    //System.out.println(" RequestId mismatch - Expected: " + leadRequestId + ", Got: " + requestId);
+                } else {
+                    //System.out.println(" Skipping - leadResponsePayload: " + (leadResponsePayload != null ? "already captured" : "null"));
+                }
+            } else {
+                //System.out.println(" Response already captured, skipping loadingFinished");
+            }
+        });
+
+        
+       // System.out.println(" DevTools initialized successfully with API monitoring");
     }
 
-    // ================= STORE RESPONSE =================
-    public static void storeResponse(String url, String response) {
-        apiResponses.put(url, response);
-        lastResponse = response;
-        lastUrl = url;
-    }
-
-    // ================= STORE STATUS =================
-    public static void storeStatus(String url, int statusCode) {
-        apiStatusCodes.put(url, statusCode);
-        lastStatusCode = statusCode;
-        lastUrl = url;
-    }
-
-    // ================= DECRYPT STORE =================
-    public static void storeDecryptedRequest(String value) {
-        lastDecryptedRequest = value;
-    }
-
-    public static void storeDecryptedResponse(String value) {
-        lastDecryptedResponse = value;
-    }
-
-    // ================= GETTERS =================
-    public static String getRequestByUrl(String url) {
-        return apiRequests.get(url);
-    }
-
-    public static String getResponseByUrl(String url) {
-        return apiResponses.get(url);
-    }
-
-    public static Integer getStatusByUrl(String url) {
-        return apiStatusCodes.get(url);
-    }
-
-    public static void reset() {
-        lastRequest = null;
-        lastResponse = null;
-        lastStatusCode = null;
-        lastUrl = null;
-
-        lastDecryptedRequest = null;
-        lastDecryptedResponse = null;
-
-        apiRequests.clear();
-        apiResponses.clear();
-        apiStatusCodes.clear();
-    }
-    
-    public static String getLatestRequest() {
-
-        return requestMap.values()
-                .stream()
-                .reduce((first, second) -> second)
-                .orElse(null);
-    }
-
-    public static String getLatestResponse() {
-
-        return responseMap.values()
-                .stream()
-                .reduce((first, second) -> second)
-                .orElse(null);
-    }
-
-    public static Integer getLatestStatus() {
-
-        return statusMap.values()
-                .stream()
-                .reduce((first, second) -> second)
-                .orElse(-1);
-    }
-    public static boolean isValidResponse(String response) {
-
-        return response != null
-                && !response.isEmpty()
-                && !response.equals("204_NO_BODY");
-    }
-}
+	}

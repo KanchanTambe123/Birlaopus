@@ -1,4 +1,4 @@
-@Scope2
+@module
 Feature: To Validate Opus Assurance Journey Functionality
 
   Background: 

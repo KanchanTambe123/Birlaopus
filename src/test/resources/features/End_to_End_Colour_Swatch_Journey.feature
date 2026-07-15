@@ -1,4 +1,4 @@
-@Scope2
+@module
 Feature: To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.
 
   Background: 

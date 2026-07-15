@@ -1,4 +1,4 @@
-@Scope1
+@module
 Feature: To Validate the Shop Happy End-to-End Product Journey Flow for an Existing User
 
   Background: 

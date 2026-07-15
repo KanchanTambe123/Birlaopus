@@ -1,4 +1,4 @@
-@Scope1
+@module
 Feature: To Validate Create an Account(Account Registration) Functionality(Form)
 
   Background: 

@@ -1,4 +1,4 @@
-@Scope2
+@module
 Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
 
   Background: 
