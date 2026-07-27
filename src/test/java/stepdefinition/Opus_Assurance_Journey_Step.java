@@ -53,6 +53,7 @@ public class Opus_Assurance_Journey_Step {
 
 	@When("User enter valid paintable area {string}")
 	public void user_enter_valid_paintable_area(String string) throws InterruptedException {
+		wait.waitForElementVisible(op.paintableAreaField);
 		js.scrollUntilElementVisible(op.paintableAreaField);
 //	    js.sendKeysUsingJS(op.paintableAreaField, string);
 		op.paintableAreaField.sendKeys(string);
@@ -70,11 +71,13 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User should click on Yet to Start Cta")
 	public void user_should_click_on_yet_to_start_cta() {
+	wait.waitForElementVisible(op.yetToStart);
 		js.jsClickWithWait(op.yetToStart);
 	}
 
 	@Then("User click on Pre-register now Cta")
 	public void user_click_on_pre_register_now_cta() {
+		wait.waitForElementVisible(op.preRegisterCta);
 		js.jsClickWithWait(op.preRegisterCta);
 	}
 
@@ -213,11 +216,6 @@ public class Opus_Assurance_Journey_Step {
 		firstOtpField.sendKeys(string);
 	}
 
-	@Then("User click on verify otp cta")
-	public void user_click_on_verify_otp_cta() {
-		wait.waitForElementToBeClickable(op.verifyButton, 30);
-		js.jsClickWithWait(op.verifyButton);
-	}
 
 	@Then("User should see an error message for otp {string}")
 	public void user_should_see_an_error_message_for_otp(String expectedMessage) {
@@ -301,11 +299,25 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User enter valid pin code on enter details {string}")
 	public void user_enter_valid_pin_code_on_enter_details(String string) throws InterruptedException {
-		js.scrollUntilElementVisible(op.pincodeField);
-		wait.waitForElementVisible(op.pincodeField);
-		op.pincodeField.sendKeys(string);
-		Thread.sleep(3000);
+	
+		  WebDriver driver = DriverManager.getDriver();
 
+		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+		    WebElement pinCode = wait.until(
+		            ExpectedConditions.visibilityOfElementLocated(
+		                    By.id("warrantyPincode")));
+
+		    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+		    js.executeScript(
+		            "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
+		            pinCode);
+
+		    wait.until(ExpectedConditions.elementToBeClickable(pinCode));
+
+		    pinCode.clear();
+		    pinCode.sendKeys(string);
 	}
 
 	@Then("User enter update pin code on site details {string}")
@@ -338,10 +350,11 @@ public class Opus_Assurance_Journey_Step {
 	}
 
 	@Then("User click on verify otp button")
-	public void user_click_on_verify_otp_button() {
-		wait.waitForElementToBeClickable(pm.verifyButton, 20);
-		pm.verifyButton.click();
-		wait.waitForElementVisible(op.startNewProjectButton);
+	public void user_click_on_verify_otp_button() throws InterruptedException {
+		wait.waitForElementToBeClickable(op.verifyButton, 30);
+		op.verifyButton.click();
+		Thread.sleep(2000);
+		
 	}
 
 	@Then("User click on submit button on enter details")

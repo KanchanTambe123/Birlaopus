@@ -12,10 +12,10 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
 
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify the end-to-end  colour swatch journey through the checkout process with valid data for a logged-in user through navigation
-    #Then User clicks the cart icon on the header and removes the product from the cart if available
+    Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     #When User clicks on the "<Shop_Product>" product in the Shop section
-    #Then User selects Colour for colour swatch "<Colour>"
+    Then User selects Colour for colour swatch "<Colour>"
     Then User selects colour swatch quantity <quantity>
     Then User enters a valid pincode "<pincode>" and check product availability
     And User click on add to cart button
@@ -89,7 +89,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
 
     Examples: 
       | navmenu | navtab       | productname   | tabName    | optionText       | Colour    |
-      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete a Product | Rose dust |
+      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete colour story | Rose dust |
 
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify error message when user enters invalid pincode for colour swatch

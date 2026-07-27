@@ -30,7 +30,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 	    features = {"src/test/resources/features"},
 	    glue = {"stepdefinition"},
-	    //tags = "@module",
+	    //tags = "@test",
 	    plugin = {
 	        "pretty",
 	        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -109,9 +109,9 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	    
 	    ReportUtil.readCucumberReport();
 	    ReportWithTime.createTimestampReports();
-		//List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
+		List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
 
-	    List<String> recipients = Arrays.asList(
+	    /*List<String> recipients = Arrays.asList(
 	    	    "kanchan.tambe@deptagency.com",
 	    	    "hemendra.rana@deptagency.com",
 	    	    "shital.mandhare@deptagency.com",
@@ -119,7 +119,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	    	    "gaurang.kapadia@deptagency.com",
 	    	    "monica.ledwani@deptagency.com",
 	    	    "jalpa.jmody@deptagency.com"
-	    	);
+	    	);*/
 	    String subject = "BirlaOpus Regression Suite Report";
      
 	    String body = "Hi Team,\n\n"
@@ -131,8 +131,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	            + "Total Failed: " + ReportUtil.failed + "\n\n"
 
 	            + "Modules Covered:\n"
-	            + "• Scope 1 – Core Functional Regression\n"
-	            + "• Scope 2 – End-to-End Journey Validation\n\n"
+	            + "Scope 1 – Core Functional Regression\n"
+	            + "Scope 2 – End-to-End Journey Validation\n\n"
 
 	            + "Please review the attached report and let me know if you have any questions.\n\n"
 

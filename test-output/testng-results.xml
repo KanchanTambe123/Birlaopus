@@ -1,114 +1,268 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
+<testng-results ignored="0" total="10" passed="7" failed="3" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-07-15T16:47:19 IST" name="Default suite" finished-at="2026-07-15T16:51:21 IST" duration-ms="242169">
+  <suite started-at="2026-07-27T18:56:17 IST" name="Default suite" finished-at="2026-07-27T19:19:57 IST" duration-ms="1419364">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@782859e]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-07-15T16:47:19 IST" name="Default test" finished-at="2026-07-15T16:51:21 IST" duration-ms="242169">
+    <test started-at="2026-07-27T18:56:17 IST" name="Default test" finished-at="2026-07-27T19:19:57 IST" duration-ms="1419364">
       <class name="runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:47:19 IST" name="setUpClass" finished-at="2026-07-15T16:47:19 IST" duration-ms="946" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T18:56:17 IST" name="setUpClass" finished-at="2026-07-27T18:56:18 IST" duration-ms="652" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@8c52700]]>
+                <![CDATA[org.testng.TestRunner@7a8bca92]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:47:19 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-15T16:48:25 IST" duration-ms="65669" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T18:56:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T18:57:42 IST" duration-ms="84365" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify mandatory fields with valid data on the Let’s Connect form in the Brands section for a logged-in user"]]>
+                <![CDATA["To verify Painting made easy Get Free Quote flow including questionnaire, date & time selection, and confirmation for logged-in user"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate the Brand section Form and Book a Free Consultation form on the homepage."]]>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:48:25 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-15T16:49:11 IST" duration-ms="46299" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T18:57:42 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T18:58:49 IST" duration-ms="66554" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify validation messages when mandatory fields are empty in Let’s Connect form (Brands)"]]>
+                <![CDATA["To verify thank you pop-up appears when user selects I’ll do it later option"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate the Brand section Form and Book a Free Consultation form on the homepage."]]>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:49:11 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-15T16:49:50 IST" duration-ms="38669" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T18:58:49 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:12:21 IST" duration-ms="812206" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify that the Back button works after entering form data in the Book a Free Consultation form on the homepage"]]>
+                <![CDATA["To verify pop-up is displayed when an unserviceable PIN code is entered"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate the Brand section Form and Book a Free Consultation form on the homepage."]]>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:49:50 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-15T16:50:33 IST" duration-ms="42606" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:12:21 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:12:52 IST" duration-ms="31193" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify validation messages when mandatory fields are empty in the Book a Free Consultation form on the homepage"]]>
+                <![CDATA["To verify error message is displayed to the user when entered incorrect mobile number on create an account option"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate the Brand section Form and Book a Free Consultation form on the homepage."]]>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:50:33 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-15T16:51:18 IST" duration-ms="44827" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:12:52 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:13:53 IST" duration-ms="60570" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify that an error message is displayed for an invalid pincode on the Book a Free Consultation form for a logged-in user"]]>
+                <![CDATA["To verify error message is displayed to the user when entered incorrect first name"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate the Brand section Form and Book a Free Consultation form on the homepage."]]>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (4e06eae0623a87391453d37b26c423fa)] -> xpath: //input[@id='fName']]
+(tried for 30 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.182, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56919}, goog:processID: 20712, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56919/devtoo..., se:cdpVersion: 150.0.7871.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4e06eae0623a87391453d37b26c423fa]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (4e06eae0623a87391453d37b26c423fa)] -> xpath: //input[@id='fName']]
+(tried for 30 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.182, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56919}, goog:processID: 20712, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56919/devtoo..., se:cdpVersion: 150.0.7871.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 4e06eae0623a87391453d37b26c423fa
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at commonutilities.WebDriverWaitHelper.waitForElementToBeVisible(WebDriverWaitHelper.java:40)
+at stepdefinition.Painting_Made_Easy_Step.user_enter_invalid_first_name_on_painting_made_easy(Painting_Made_Easy_Step.java:144)
+at ✽.User enter invalid first name on painting made easy "@@@@@@@@@@@"(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Painting_Made_Easy.feature:103)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:13:53 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:15:43 IST" duration-ms="109991" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify error message is displayed to the user when entered incorrect last name"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (f85e030be7a50239445e8b4ed6ac66c7)] -> xpath: //input[@id='fName']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.182, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54738}, goog:processID: 13812, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54738/devtoo..., se:cdpVersion: 150.0.7871.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: f85e030be7a50239445e8b4ed6ac66c7]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (f85e030be7a50239445e8b4ed6ac66c7)] -> xpath: //input[@id='fName']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.182, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54738}, goog:processID: 13812, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54738/devtoo..., se:cdpVersion: 150.0.7871.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: f85e030be7a50239445e8b4ed6ac66c7
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+at stepdefinition.Painting_Made_Easy_Step.user_enter_valid_first_name_on_painting_made_easy(Painting_Made_Easy_Step.java:173)
+at ✽.User enter valid first name on painting made easy(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Painting_Made_Easy.feature:121)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:15:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:17:34 IST" duration-ms="110768" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify error message is displayed to the user when entered incorrect email id"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (0ad65fd04f90f56d69d97c9fb0f6aa4b)] -> xpath: //input[@id='fName']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.182, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53331}, goog:processID: 17344, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53331/devtoo..., se:cdpVersion: 150.0.7871.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0ad65fd04f90f56d69d97c9fb0f6aa4b]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (0ad65fd04f90f56d69d97c9fb0f6aa4b)] -> xpath: //input[@id='fName']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.182, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:53331}, goog:processID: 17344, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:53331/devtoo..., se:cdpVersion: 150.0.7871.182, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 0ad65fd04f90f56d69d97c9fb0f6aa4b
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+at stepdefinition.Painting_Made_Easy_Step.user_enter_valid_first_name_on_painting_made_easy(Painting_Made_Easy_Step.java:173)
+at ✽.User enter valid first name on painting made easy(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Painting_Made_Easy.feature:139)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:17:34 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:18:03 IST" duration-ms="29133" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify error message is displayed to the user when entered incorrect mobile number on sign-in"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:51:18 IST" name="tearDownClass" finished-at="2026-07-15T16:51:21 IST" duration-ms="3131" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:18:03 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:18:51 IST" duration-ms="48286" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify that an error message is displayed when a required field is left empty."]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:18:51 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-27T19:19:34 IST" duration-ms="42715" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify error message is displayed when user does not select any option for Tell us about your project"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Painting Made Easy Form-Get Free Quote functionality"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-27T19:19:34 IST" name="tearDownClass" finished-at="2026-07-27T19:19:57 IST" duration-ms="22867" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-        <test-method is-config="true" signature="after_all()[pri:0, instance:runner.TestRunner@782859e]" started-at="2026-07-15T16:51:21 IST" name="after_all" finished-at="2026-07-15T16:51:29 IST" duration-ms="8442" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- after_all -->
       </class> <!-- runner.TestRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

@@ -116,7 +116,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     Examples: 
       | paintable_area | pin_code |
       | 1000 sqft      | 400 060  |
-
+@test
   #---------------------------------- Scenario 7 ----------------------------------#
   Scenario Outline: To verify that an existing user can complete the end-to-end flow by submitting all mandatory details (new project-Sign Up for PaintCraft button)
     Given User enter valid paintable area "<paintable_area>"
@@ -127,7 +127,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User click on sign in button
     And User enter valid otp "<valid_otp>"
     And User click on verify otp button
-    Then User click on start new project
+    #Then User click on start new project
     And User enter valid pin code on enter details "<pin_code>"
     Then User click on submit button on enter details
     And User enter Site Details project name
@@ -182,6 +182,7 @@ Feature: To Validate Opus Assurance Journey Functionality
   #Examples:
   #  | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  |
   #  | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance |
+  
   #---------------------------------- Scenario 9 ----------------------------------#
   Scenario Outline: To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button).    Given User enter valid paintable area "<paintable_area>"
     Given User enter valid paintable area "<paintable_area>"
@@ -242,7 +243,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User click on sign in button
     And User enter valid otp "<valid_otp>"
     And User click on verify otp button
-    Then User click on start new project
+    #Then User click on start new project
     And User enter valid pin code on enter details "<pin_code>"
     Then User click on submit button on enter details
     And User enter Site Details project name

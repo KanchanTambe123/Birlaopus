@@ -27,9 +27,9 @@ public class Store_Locator_Page {
 
 	
 	//Scenarios 1
-	@FindBy(xpath = "//a[contains(@class,'get-in-touch') and contains(@class,'findstore-div')]")
+	@FindBy(xpath = "//a[@class='findstore-div']")
 	public WebElement storeLocatorBtn;
-
+	
 	@FindBy(xpath = "//input[@id='pincode-input']")
 	public WebElement pincodeInput;
 
