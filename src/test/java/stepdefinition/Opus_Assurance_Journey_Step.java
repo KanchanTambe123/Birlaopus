@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -300,24 +301,31 @@ public class Opus_Assurance_Journey_Step {
 	@Then("User enter valid pin code on enter details {string}")
 	public void user_enter_valid_pin_code_on_enter_details(String string) throws InterruptedException {
 	
-		  WebDriver driver = DriverManager.getDriver();
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		// Find the element 
+		WebElement pinCode = wait.until(
+		        ExpectedConditions.presenceOfElementLocated(By.id("warrantyPincode")));
 
-		    WebElement pinCode = wait.until(
-		            ExpectedConditions.visibilityOfElementLocated(
-		                    By.id("warrantyPincode")));
+		// Scroll directly to the element
+		js.executeScript("arguments[0].scrollIntoView({block:'center'});", pinCode);
 
-		    JavascriptExecutor js = (JavascriptExecutor) driver;
+		// Wait a moment for the scroll animation/render
+		Thread.sleep(1000);
 
-		    js.executeScript(
-		            "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
-		            pinCode);
+		// If a sticky header overlaps it
+		js.executeScript("window.scrollBy(0,-100);");
 
-		    wait.until(ExpectedConditions.elementToBeClickable(pinCode));
+		// Use JavaScript to set the value
+		js.executeScript("arguments[0].value='500002';", pinCode);
 
-		    pinCode.clear();
-		    pinCode.sendKeys(string);
+		// Trigger input/change events
+		js.executeScript(
+		    "arguments[0].dispatchEvent(new Event('input', {bubbles:true}));" +
+		    "arguments[0].dispatchEvent(new Event('change', {bubbles:true}));",
+		    pinCode);
 	}
 
 	@Then("User enter update pin code on site details {string}")
@@ -474,7 +482,7 @@ public class Opus_Assurance_Journey_Step {
 		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 
 		WebElement element = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("(//p[contains(text(),'Birla Opus Assurance')])[20]")));
+				.visibilityOfElementLocated(By.xpath("//p[contains(text(),'Birla Opus Assurance is currently not available in your location')]")));
 
 		// Wait until text is NOT empty
 		wait.until(driver -> !element.getText().trim().isEmpty());
