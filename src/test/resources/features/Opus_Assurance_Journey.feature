@@ -65,7 +65,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User enter valid pin code "<pin_code>"
     Then User click on the Save Details button
     And User should see an error message for last name "This field is required."
-
+    
     Examples: 
       | paintable_area | invalid_last_name | invalid_email_id | pin_code |
       | 2500 sqft      | @@@@@@@@@@@       | testestgmail.com | 400 060  |

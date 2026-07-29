@@ -4,6 +4,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -72,23 +74,38 @@ public class Create_an_Account_Form_Page {
 	@FindBy(xpath = "//button[@id='form-button-640282442']")
 	public WebElement submitButton;
 	
+	@FindBy(xpath = "//a[contains(@class,'remove-user')]")
+	public WebElement deleteAccount;
+	
 
 	public Create_an_Account_Form_Page() {
 		driver = DriverManager.getDriver();
 		PageFactory.initElements(driver, this);
 	}
 
-	public void enterOtpAndSubmit(String otp) {
+	public void enterOtpAndSubmitProfile(String otp) {
+		
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-		// Wait only for the first OTP input
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-		WebElement firstOtpField = wait.until(ExpectedConditions.visibilityOf(otpNoInputFiled.get(0)));
+	    wait.until(ExpectedConditions.visibilityOfAllElements(otpNoInputFiled));
 
-		firstOtpField.clear();
-		firstOtpField.sendKeys(otp);
+	    int otpIndex = 0;
 
-		wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton));
-		otpVerifyButton.click();
+	    for (WebElement field : otpNoInputFiled) {
+	        if (field.isDisplayed() && field.isEnabled()) {
+	            field.click();
+	            field.clear();
+	            field.sendKeys(String.valueOf(otp.charAt(otpIndex)));
+	            otpIndex++;
+
+	            if (otpIndex == otp.length()) {
+	                break;
+	            }
+	        }
+	    }
+
+	    wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton)).click();
+
 	}
 	public String generateBypassOtp(String mobileNumber) {
 
@@ -120,7 +137,44 @@ public class Create_an_Account_Form_Page {
 	    wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton));
 	    otpVerifyButton.click();
 	}
+	public void clickLogoutPopupButton(String answer) {
+	    WebDriver driver = DriverManager.getDriver();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
+	    String buttonXpath;
 
+	    if (answer.equalsIgnoreCase("Yes")) {
+	        buttonXpath = "//a[contains(@class,'delete-user')]//span[normalize-space()='Yes']";
+	    } else {
+	        buttonXpath = "//a[contains(@class,'delete-user-no')]//span[normalize-space()='No']";
+	    }
+
+	    WebElement button = wait.until(
+	            ExpectedConditions.elementToBeClickable(By.xpath(buttonXpath)));
+
+	    js.executeScript("arguments[0].scrollIntoView({block:'center'});", button);
+	    js.executeScript("arguments[0].click();", button);
+
+	    System.out.println("Clicked '" + answer + "' on logout popup");
+	}
+	public void enterOtpAndSubmit(String otp) {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+	    WebElement otpField = wait.until(
+	            ExpectedConditions.elementToBeClickable(
+	                    By.xpath("//input[@name='otpInput']")));
+
+	    otpField.clear();
+	    otpField.sendKeys(otp);
+
+	    WebElement verifyButton = wait.until(
+	            ExpectedConditions.elementToBeClickable(otpVerifyButton));
+
+	    verifyButton.click();
+
+	    System.out.println("OTP entered and Verify button clicked.");
+	}
 
 }

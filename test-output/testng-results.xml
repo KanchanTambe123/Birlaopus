@@ -1,43 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-07-28T12:56:56 IST" name="Default suite" finished-at="2026-07-28T12:58:07 IST" duration-ms="71786">
+  <suite started-at="2026-07-29T13:36:02 IST" name="Default suite" finished-at="2026-07-29T13:38:01 IST" duration-ms="119452">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-07-28T12:56:56 IST" name="Default test" finished-at="2026-07-28T12:58:07 IST" duration-ms="71786">
+    <test started-at="2026-07-29T13:36:02 IST" name="Default test" finished-at="2026-07-29T13:38:01 IST" duration-ms="119452">
       <class name="runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-28T12:56:56 IST" name="setUpClass" finished-at="2026-07-28T12:56:56 IST" duration-ms="592" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-29T13:36:02 IST" name="setUpClass" finished-at="2026-07-29T13:36:03 IST" duration-ms="996" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@1bff5ad0]]>
+                <![CDATA[org.testng.TestRunner@6a51a39d]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-28T12:56:56 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-28T12:58:03 IST" duration-ms="67350" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-29T13:36:03 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-07-29T13:37:58 IST" duration-ms="114996" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed"]]>
+                <![CDATA["To verify Create an Account functionality with mandatory fields and valid data"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate Opus Assurance Journey Functionality"]]>
+                <![CDATA["To Validate Create an Account(Account Registration) Functionality(Form)"]]>
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of all 6 elements, but element #0 was invisible: [[ChromeDriver: chrome on windows (146ea9e982bf7ba0c43d8a9a99d6e19c)] -> css selector: input.cmp-form-text__input[name='otpInput']]
+(tried for 60 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.187, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51001}, goog:processID: 13916, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51001/devtoo..., se:cdpVersion: 150.0.7871.187, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 146ea9e982bf7ba0c43d8a9a99d6e19c]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of all 6 elements, but element #0 was invisible: [[ChromeDriver: chrome on windows (146ea9e982bf7ba0c43d8a9a99d6e19c)] -> css selector: input.cmp-form-text__input[name='otpInput']]
+(tried for 60 seconds with 500 milliseconds interval)
+Build info: version: '4.42.0', revision: '74c7f0249a*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.187, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51001}, goog:processID: 13916, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51001/devtoo..., se:cdpVersion: 150.0.7871.187, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 146ea9e982bf7ba0c43d8a9a99d6e19c
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at pagefunctions.Create_an_Account_Form_Page.enterOtpAndSubmitProfile(Create_an_Account_Form_Page.java:90)
+at stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_on_profile_page_and_clicks_on_the_verify_otp_button(Create_an_Account_Form_Step.java:84)
+at ✽.User enters valid OTP on profile page and clicks on the Verify OTP button(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Create_an_Account_Form.feature:23)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-28T12:58:03 IST" name="tearDownClass" finished-at="2026-07-28T12:58:07 IST" duration-ms="3820" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-07-29T13:37:58 IST" name="tearDownClass" finished-at="2026-07-29T13:38:01 IST" duration-ms="3412" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
