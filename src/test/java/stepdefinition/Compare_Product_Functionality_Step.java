@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonDataGenerator;
@@ -57,6 +59,8 @@ public class Compare_Product_Functionality_Step {
 		}
 		js.jsClickWithWait(cp.compareIcon);
 		Thread.sleep(2000);
+	    ExtentCucumberAdapter.addTestStepLog("First Product Url : " + CompareFirstProductUrl);
+
 	}
 
 	@Given("User is on second product url {string} and adds second product {string} to the comparison list")
@@ -76,6 +80,8 @@ public class Compare_Product_Functionality_Step {
 		}
 		js.jsClickWithWait(cp.compareIcon);
 		Thread.sleep(1500);
+	    ExtentCucumberAdapter.addTestStepLog("Secound Product Url : " + CompareSecondProductUrl);
+
 	}
 
 	@Then("the compare counter should display {string}")

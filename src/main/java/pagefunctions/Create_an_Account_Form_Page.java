@@ -40,7 +40,7 @@ public class Create_an_Account_Form_Page {
 	public WebElement CreateAccountButton;
 
 	// otp filed
-	@FindBy(css = "input.cmp-form-text__input[name='otpInput']")
+	@FindBy(xpath = "//div[contains(@class,'otp-input')]//input")
 	private List<WebElement> otpNoInputFiled;
 
 	@FindBy(xpath = "//form[@id='headerSearchContainer']//button[@id='verify-otp-btn']")
@@ -109,16 +109,23 @@ public class Create_an_Account_Form_Page {
 	}
 	public String generateBypassOtp(String mobileNumber) {
 
-	    if (mobileNumber == null || mobileNumber.length() < 4) {
-	        throw new IllegalArgumentException("Invalid mobile number for OTP bypass");
+	    mobileNumber = mobileNumber.replaceAll("\\D", ""); // Keep only digits
+
+	    // If +91 is included, keep only last 10 digits
+	    if (mobileNumber.length() > 10) {
+	        mobileNumber = mobileNumber.substring(mobileNumber.length() - 10);
 	    }
 
-	    String lastTwo = mobileNumber.substring(mobileNumber.length() - 2);
 	    String firstTwo = mobileNumber.substring(0, 2);
+	    String lastTwo = mobileNumber.substring(mobileNumber.length() - 2);
 
-	    return lastTwo + firstTwo;   // e.g. 25 + 98 = 2598
+	    String otp = lastTwo + firstTwo;
+
+	    System.out.println("Mobile : " + mobileNumber);
+	    System.out.println("OTP : " + otp);
+
+	    return otp;
 	}
-
 	
 	public void enterBypassOtpAndVerify(String mobileNumber) {
 
@@ -137,6 +144,9 @@ public class Create_an_Account_Form_Page {
 	    wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton));
 	    otpVerifyButton.click();
 	}
+
+	
+	
 	public void clickLogoutPopupButton(String answer) {
 	    WebDriver driver = DriverManager.getDriver();
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));

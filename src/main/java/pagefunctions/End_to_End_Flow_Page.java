@@ -237,30 +237,35 @@ public class End_to_End_Flow_Page {
 	
 
 	// Select color by name
-	public void selectColorByName(String colorName) {
-		// Locate the color element
-		By colorLocator = By.xpath("//div[contains(@class,'popular-colours')]//span[@data-colorname='" + colorName
-				+ "' and contains(@class,'colour-circle')]");
+	public void selectColorByName(String colorName) throws InterruptedException {
 
-		List<WebElement> colors = driver.findElements(colorLocator);
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-		if (colors.isEmpty()) {
-			throw new AssertionError("Color not found: " + colorName);
-		}
+	    By colorLocator = By.xpath("//span[@data-colorname='" + colorName + "']");
 
-		WebElement colorCircle = colors.get(0);
+	    WebElement color = wait.until(ExpectedConditions.visibilityOfElementLocated(colorLocator));
 
-		// Scroll
-		js.scrollUntilElementVisible(colorCircle);
-		wait.waitForElementToBeVisible(colorCircle, 15);
+	    ((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});", color);
 
-		// Click
-		// js.jsClickWithWait(colorCircle);
+	    wait.until(ExpectedConditions.elementToBeClickable(color));
 
-		js.jsClickWithWait(colorCircle);
-		js.executeScript("arguments[0].dispatchEvent(new Event('change', {bubbles:true}));", colorCircle);
+	    try {
+	        color.click();
+	    } catch (Exception e) {
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", color);
+	    }
 
-		System.out.println("Selected color: " + colorName);
+	    System.out.println("Selected color : " + colorName);
+
+	    // Debug
+	    System.out.println("Total quantity sections : "
+	            + driver.findElements(By.cssSelector(".cmp-product__selection-products")).size());
+
+	    System.out.println("Total packs : "
+	            + driver.findElements(By.cssSelector(".cmp-product--mini")).size());
+
+	    Thread.sleep(3000);
 	}
 
 	// Select quantity

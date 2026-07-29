@@ -84,7 +84,7 @@ public class Store_Locator_Page {
 	
 	public void clickFirstGetNumberButton() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	    List<WebElement> getNumberButtons = wait.until(

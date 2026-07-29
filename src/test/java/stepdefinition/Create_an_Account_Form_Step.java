@@ -61,7 +61,7 @@ public class Create_an_Account_Form_Step {
 	@Then("User enters valid mobile number on the Create an Account")
 	public void user_enters_valid_mobile_number_on_the_create_an_account() throws InterruptedException {
 		wait.waitForElementVisible(cp.CreateAccountMobileNumberFiled);
-		cp.CreateAccountMobileNumberFiled.sendKeys("8375978223");
+		cp.CreateAccountMobileNumberFiled.sendKeys(fakeMobileNumber);
 		Thread.sleep(2000);
 	}
 

@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.CommonDataGenerator;
 import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
@@ -50,6 +52,8 @@ public class Opus_Assurance_Journey_Step {
 	@Given("User is on Opus Assurance Journey {string}")
 	public void user_is_on_opus_assurance_journey(String AssuranceUrl) {
 		WebsiteLaunch.webLaunch(AssuranceUrl);
+	    ExtentCucumberAdapter.addTestStepLog("Opus Assurance Url : " + AssuranceUrl);
+
 	}
 
 	@When("User enter valid paintable area {string}")
@@ -244,10 +248,7 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User click on start new project")
 	public void user_click_on_start_new_project() throws InterruptedException {
-		js.scrollUntilElementVisible(op.startNewProjectButton);
-		wait.waitForElementVisible(op.startNewProjectButton);
-		js.jsClickWithWait(op.startNewProjectButton);
-		Thread.sleep(4000);
+op.clickStartNewProject();
 	}
 
 	@Then("User enter Site Details project name")

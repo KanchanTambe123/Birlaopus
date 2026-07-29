@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonMethods;
@@ -41,6 +43,8 @@ public class Texture_Download_CTA_Step {
 	@Given("User is on BirlaOpus TexturePage {string}")
 	public void user_is_on_birla_opus_texture_page(String textureUrl) {
 		WebsiteLaunch.webLaunch(textureUrl);
+	    ExtentCucumberAdapter.addTestStepLog("Texture Url : " + textureUrl);
+
 	}
 
 	@And("User clicks on the Download now CTA for the Latest Patterns")

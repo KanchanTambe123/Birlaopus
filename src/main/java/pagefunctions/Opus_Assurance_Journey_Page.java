@@ -86,7 +86,7 @@ public class Opus_Assurance_Journey_Page {
 	public WebElement ErrMessagePaintingCarpetArea;
 	
 	//Scenarios 7
-	@FindBy(xpath = "//span[normalize-space()='Start a New Project']/parent::a")
+	@FindBy(xpath = "//a[.//span[normalize-space()='Start a New Project']]")
 	public WebElement startNewProjectButton;
 	
 	@FindBy(xpath = "//input[@id='userValue']")
@@ -361,5 +361,27 @@ public class Opus_Assurance_Journey_Page {
 	            "Validation message mismatch.");
 
 	    System.out.println("Validation Message: " + actualMessage);
+	}
+	
+	
+	public void clickStartNewProject() {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+	    By startProject = By.xpath("//a[.//span[normalize-space()='Start a New Project']]");
+
+	    WebElement element = wait.until(
+	            ExpectedConditions.presenceOfElementLocated(startProject));
+
+	    ((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});", element);
+
+	    wait.until(ExpectedConditions.elementToBeClickable(element));
+
+	    try {
+	        element.click();
+	    } catch (Exception e) {
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+	    }
 	}
 }

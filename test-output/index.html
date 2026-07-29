@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\Kanchan.Tambe\AppData\Local\Temp\testng-eclipse--262067026\testng-customsuite.xml</span>
+                    <span>C:\Users\Kanchan.Tambe\AppData\Local\Temp\testng-eclipse--569577752\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -104,7 +104,7 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="runner.TestRunner" class="method navigator-link" hash-for-method="runScenario(&quot;To verify Create an Account functionality with mandatory fields and valid data&quot;, &quot;To Validate Creat...)">runScenario("To verify Create an Account functionality with mandatory fields and valid data", "To Validate Creat...)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="runner.TestRunner" class="method navigator-link" hash-for-method="runScenario(&quot;To verify that selecting more than 5 contractors is restricted&quot;, &quot;To Validate Opus Assurance Journe...)">runScenario("To verify that selecting more than 5 contractors is restricted", "To Validate Opus Assurance Journe...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -127,22 +127,22 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="runScenario(&quot;To verify Create an Account functionality with mandatory fields and valid data&quot;, &quot;To Validate Creat...)">
-                  </a> <!-- runScenario("To verify Create an Account functionality with mandatory fields and valid data", "To Validate Creat...) -->
+                  <a name="runScenario(&quot;To verify that selecting more than 5 contractors is restricted&quot;, &quot;To Validate Opus Assurance Journe...)">
+                  </a> <!-- runScenario("To verify that selecting more than 5 contractors is restricted", "To Validate Opus Assurance Journe...) -->
                   <span class="method-name">runScenario</span>
-                  <span class="parameters">("To verify Create an Account functionality with mandatory fields and valid data", "To Validate Create an Account(Account Registration) Functionality(Form)")</span>
-                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of all 6 elements, but element #0 was invisible: [[ChromeDriver: chrome on windows (146ea9e982bf7ba0c43d8a9a99d6e19c)] -&gt; css selector: input.cmp-form-text__input[name=&apos;otpInput&apos;]]
-(tried for 60 seconds with 500 milliseconds interval)
+                  <span class="parameters">("To verify that selecting more than 5 contractors is restricted", "To Validate Opus Assurance Journey Functionality")</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (d4369074c036b6e9c15b24f710403df5)] -&gt; xpath: //a[.//span[normalize-space()=&apos;Find a Contractor Near You&apos;]]]
+(tried for 80 seconds with 500 milliseconds interval)
 Build info: version: &apos;4.42.0&apos;, revision: &apos;74c7f0249a*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.187, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:51001}, goog:processID: 13916, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:51001/devtoo..., se:cdpVersion: 150.0.7871.187, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 146ea9e982bf7ba0c43d8a9a99d6e19c
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.187, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54482}, goog:processID: 20252, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54482/devtoo..., se:cdpVersion: 150.0.7871.187, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: d4369074c036b6e9c15b24f710403df5
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
-	at pagefunctions.Create_an_Account_Form_Page.enterOtpAndSubmitProfile(Create_an_Account_Form_Page.java:90)
-	at stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_on_profile_page_and_clicks_on_the_verify_otp_button(Create_an_Account_Form_Step.java:84)
-	at ✽.User enters valid OTP on profile page and clicks on the Verify OTP button(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Create_an_Account_Form.feature:23)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Opus_Assurance_Journey_Step.user_clcik_on_find_contractor_button(Opus_Assurance_Journey_Step.java:404)
+	at ✽.User clcik on Find Contractor button(file:///C:/Backup/Birla_Webqa/Birlaopus/Birlaopus/src/test/resources/features/Opus_Assurance_Journey.feature:255)
 
 </div> <!-- stack-trace -->
                   <em>
@@ -154,7 +154,7 @@ Session ID: 146ea9e982bf7ba0c43d8a9a99d6e19c
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Kanchan.Tambe\AppData\Local\Temp\testng-eclipse--262067026\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Kanchan.Tambe\AppData\Local\Temp\testng-eclipse--569577752\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -215,12 +215,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'runner.TestRunner')
-data.setCell(0, 3, 114996);
+data.setCell(0, 3, 172534);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -248,18 +248,18 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">runner.TestRunner</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@6a51a39d)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@75f27234)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">runScenario("To verify Create an Account functionality with mandatory fields and valid data", "To Validate Creat...)</span>
-                <span class="method-start">1009 ms</span>
+                <span class="method-name">runScenario("To verify that selecting more than 5 contractors is restricted", "To Validate Opus Assurance Journe...)</span>
+                <span class="method-start">1117 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">116016 ms</span>
+                <span class="method-start">173667 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
