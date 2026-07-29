@@ -28,9 +28,9 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-	    features = {"src/test/resources/features/Create_an_Account_Form.feature"},
+	    features = {"src/test/resources/features"},
 	    glue = {"stepdefinition"},
-	    tags = "@test",
+	   // tags = "@test",
 	    plugin = {
 	        "pretty",
 	        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
@@ -103,7 +103,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	        e.printStackTrace();
 	    }
 	}*/
-	//@AfterSuite
+	@AfterSuite
 	public void after_all() throws Exception {
 	
 	    

@@ -28,7 +28,7 @@ public class Get_Touch_Contact_Form_Page {
 	public WebElement getTouchPopup;
     
     
-    @FindBy(xpath = "//a[contains(@class,'gettouch-div')][.//p[normalize-space()='Get in Touch']]")
+    @FindBy(xpath = "//a[contains(@class,'get-in-touch') and contains(@class,'gettouch-div')]")
     public WebElement getInTouchBtn;
     
     @FindBy(xpath= "//div[@class='cmp-form-text form-feilds error-icon']//input[@id='shortFormName']")
