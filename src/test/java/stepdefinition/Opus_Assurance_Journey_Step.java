@@ -52,8 +52,9 @@ public class Opus_Assurance_Journey_Step {
 	@Given("User is on Opus Assurance Journey {string}")
 	public void user_is_on_opus_assurance_journey(String AssuranceUrl) {
 		WebsiteLaunch.webLaunch(AssuranceUrl);
-	    ExtentCucumberAdapter.addTestStepLog("Opus Assurance Url : " + AssuranceUrl);
+		 String currentUrl = DriverManager.getDriver().getCurrentUrl();
 
+		    ExtentCucumberAdapter.addTestStepLog(" Opus Assurance URL : " + currentUrl);
 	}
 
 	@When("User enter valid paintable area {string}")

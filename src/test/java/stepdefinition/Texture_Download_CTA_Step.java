@@ -43,8 +43,10 @@ public class Texture_Download_CTA_Step {
 	@Given("User is on BirlaOpus TexturePage {string}")
 	public void user_is_on_birla_opus_texture_page(String textureUrl) {
 		WebsiteLaunch.webLaunch(textureUrl);
-	    ExtentCucumberAdapter.addTestStepLog("Texture Url : " + textureUrl);
 
+	    String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+	    ExtentCucumberAdapter.addTestStepLog("Texture URL : " + currentUrl);
 	}
 
 	@And("User clicks on the Download now CTA for the Latest Patterns")

@@ -7,6 +7,7 @@ import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonMethods;
+import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
 import config.ConfigReader;
@@ -32,8 +33,10 @@ public class End_to_End_Wallpapers_Journey_Step {
 	@Given("User is on wallpaper Product page {string}")
 	public void user_is_on_wallpaper_product_page(String WallpaperProductUrl) {
 		WebsiteLaunch.webLaunch(WallpaperProductUrl);
-	    ExtentCucumberAdapter.addTestStepLog("Wallpaper Product Url : " + WallpaperProductUrl);
 
+		 String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+		    ExtentCucumberAdapter.addTestStepLog(" Wallpaper URL : " + currentUrl);
 	}
 
 

@@ -40,7 +40,9 @@ public class ColourLetter_SignUp_Step {
 	@Given("User is on the Colour Letter Page {string}")
 	public void user_is_on_the_colour_letter_page(String colourletterUrl) {
 		WebsiteLaunch.webLaunch(colourletterUrl);
-	    ExtentCucumberAdapter.addTestStepLog("colour letter URL : " + colourletterUrl);
+		 String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+		    ExtentCucumberAdapter.addTestStepLog("Colour Letter : " + currentUrl);
 	}
 
 	@When("User enters a valid email ID in the newsletter subscription field")

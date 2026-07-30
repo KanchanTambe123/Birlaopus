@@ -23,7 +23,7 @@ public class End_To_End_ColourSwatch_Step {
 	ActionClass actionClass = new ActionClass();
 	JSExecutor js = new JSExecutor();
 	int cartQuantity;
-	
+
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 	End_to_End_Flow_Page ep = new End_to_End_Flow_Page();
 	String fakeFirstName = dataGenerator.generateFakeFirstName();
@@ -48,11 +48,11 @@ public class End_To_End_ColourSwatch_Step {
 	public void user_click_whishlist_icon_on_colour_swatch() {
 		cp.clickWishlistIcon();
 	}
+
 	@Then("User clicks the Wishlist icon of the selected colour swatch on the Product Details page")
 	public void user_clicks_the_wishlist_icon_of_the_selected_colour_swatch_on_the_product_details_page() {
 		cp.clickWishlistIcon();
 	}
-	
 
 	@Then("User removes the colour swatch from the wishlist if it is already added {string}")
 	public void user_removes_the_colour_swatch_from_the_wishlist_if_it_is_already_added(String string) {
@@ -91,34 +91,32 @@ public class End_To_End_ColourSwatch_Step {
 		String actualMessage = cp.ErrMessageEmptyPincode.getText();
 		Assert.assertEquals(actualMessage, expectedMessage, "error message mismatch");
 	}
-	
-	
+
 	@Then("Add to cart button should be disabled")
 	public void add_to_cart_button_should_be_disabled() {
 		js.scrollUntilElementVisible(cp.AddTocartButtonDisable);
-		 Assert.assertTrue(cp.AddTocartButtonDisable.getAttribute("class").contains("disabled"));
-	}
-	
-	@Then("User clicks on {string} tab")
-	public void user_clicks_on_tab(String string) {
-	  cp.clickTabFromList(string);
-	}
-	@Then("the User clicks the product option button in favourites")
-	public void the_user_clicks_the_product_option_button_in_favourites() {
-	    js.scrollUntilElementVisible(cp.productOptionButton);
-	    wait.waitForElementVisible(cp.productOptionButton);
-	    js.jsClickWithWait(cp.productOptionButton);
+		Assert.assertTrue(cp.AddTocartButtonDisable.getAttribute("class").contains("disabled"));
 	}
 
-@Then("the User selects {string} from the product options in the wishlist")
-public void the_user_selects_from_the_product_options_in_the_wishlist(String string) {
-    cp.selectOptionFromWishlist(string);
-}
-@Then("colour swatch should be removed from the wishlist successfully")
-public void colour_swatch_should_be_removed_from_the_wishlist_successfully() {
-	Assert.assertTrue(
-            cp.isProductRemovedFromWishlist(),
-            "Product was not removed from the wishlist"
-        );
-}
+	@Then("User clicks on {string} tab")
+	public void user_clicks_on_tab(String string) {
+		cp.clickTabFromList(string);
+	}
+
+	@Then("the User clicks the product option button in favourites")
+	public void the_user_clicks_the_product_option_button_in_favourites() {
+		js.scrollUntilElementVisible(cp.productOptionButton);
+		wait.waitForElementVisible(cp.productOptionButton);
+		js.jsClickWithWait(cp.productOptionButton);
+	}
+
+	@Then("the User selects {string} from the product options in the wishlist")
+	public void the_user_selects_from_the_product_options_in_the_wishlist(String string) {
+		cp.selectOptionFromWishlist(string);
+	}
+
+	@Then("colour swatch should be removed from the wishlist successfully")
+	public void colour_swatch_should_be_removed_from_the_wishlist_successfully() {
+		Assert.assertTrue(cp.isProductRemovedFromWishlist(), "Product was not removed from the wishlist");
+	}
 }

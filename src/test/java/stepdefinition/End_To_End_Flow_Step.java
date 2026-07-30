@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonDataGenerator;
@@ -46,6 +48,10 @@ public class End_To_End_Flow_Step {
 	@Given("User is on BirlaOpus HomePage {string}")
 	public void user_is_on_birla_opus_home_page(String birlaopusHomeUrl) {
 		WebsiteLaunch.webLaunch(birlaopusHomeUrl);
+
+	    String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+	    ExtentCucumberAdapter.addTestStepLog("BirlaOpus home URL : " + currentUrl);
 	}
 
 	@When("User select product main navigation L1 {string}, sub navigation L2 {string} and L3 product name {string} through navigation bar")
