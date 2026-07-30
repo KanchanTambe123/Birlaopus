@@ -232,7 +232,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     Examples: 
       | paintable_area |
       | 2500 sqft      |
-@test
+
   #---------------------------------- Scenario 11----------------------------------#
   Scenario Outline: To verify that selecting more than 5 contractors is restricted
     Given User enter valid paintable area "<paintable_area>"
@@ -297,7 +297,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     And User click on sign in button
     And User enter valid otp "<valid_otp>"
     And User click on verify otp button
-    #Then User click on start new project
+    Then User click on start new project
     And User enter valid pin code on enter details "<pin_code>"
     Then User click on submit button on enter details
     And User enter Site Details project name

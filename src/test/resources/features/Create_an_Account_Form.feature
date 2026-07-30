@@ -31,7 +31,7 @@ Feature: To Validate Create an Account(Account Registration) Functionality(Form)
     And User enters an already registered mobile number on the Create an Account page
     And User clicks on the Create an Account button
     Then User should see an error message indicating the User already exists "User already exists!!!"
-
+@test
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify Create an Account functionality with all mandatory fields empty
     And User enters valid mobile number on the Create an Account

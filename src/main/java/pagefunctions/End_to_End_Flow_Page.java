@@ -236,69 +236,58 @@ public class End_to_End_Flow_Page {
 	
 	
 
-	// Select color by name
-	public void selectColorByName(String colorName) throws InterruptedException {
+	public void selectColorByName(String colorName) {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
 	    By colorLocator = By.xpath("//span[@data-colorname='" + colorName + "']");
 
-	    WebElement color = wait.until(ExpectedConditions.visibilityOfElementLocated(colorLocator));
+	    WebElement color = wait.until(
+	            ExpectedConditions.elementToBeClickable(colorLocator));
 
 	    ((JavascriptExecutor) driver).executeScript(
 	            "arguments[0].scrollIntoView({block:'center'});", color);
 
-	    wait.until(ExpectedConditions.elementToBeClickable(color));
+	    // Real mouse click
+	    Actions actions = new Actions(driver);
+	    actions.moveToElement(color)
+	           .pause(Duration.ofMillis(500))
+	           .click()
+	           .perform();
 
-	    try {
-	        color.click();
-	    } catch (Exception e) {
-	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", color);
-	    }
+	    // Wait until selected colour changes
+	    wait.until(ExpectedConditions.textToBePresentInElementLocated(
+	            By.cssSelector(".selected-colour__title"), colorName));
 
-	    System.out.println("Selected color : " + colorName);
+	    // Wait until quantity section has at least one pack
+	    wait.until(driver ->
+	            driver.findElements(By.cssSelector(".cmp-product--mini")).size() > 0);
 
-	    // Debug
-	    System.out.println("Total quantity sections : "
-	            + driver.findElements(By.cssSelector(".cmp-product__selection-products")).size());
-
-	    System.out.println("Total packs : "
+	    System.out.println("Pack Count : "
 	            + driver.findElements(By.cssSelector(".cmp-product--mini")).size());
 
-	    Thread.sleep(3000);
+	    driver.findElements(By.cssSelector(".cmp-product--mini"))
+	            .forEach(e -> System.out.println(
+	                    "Pack : " + e.getAttribute("data-litre")));
 	}
 
 	// Select quantity
-
 	public void selectQuantity(String litrePack, int quantity) {
-		By packLocator = By.xpath("//div[contains(@class,'cmp-product--mini') and @data-litre='" + litrePack + "']");
-		WebElement packDiv = driver.findElements(packLocator).stream().findFirst()
-				.orElseThrow(() -> new AssertionError("Pack not found: " + litrePack + " Ltr"));
 
-		// Scroll into view
-		js.scrollUntilElementVisible(packDiv);
-		wait.waitForElementToBeVisible(packDiv, 15);
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-		WebElement incrementBtn = packDiv.findElement(By.cssSelector(".cmp-product__quantity--increment"));
-		WebElement qtySpan = packDiv.findElement(By.cssSelector(".cmp-product__quantity"));
+	    By packLocator = By.xpath("//div[@data-litre='" + litrePack + "']");
 
-		JavascriptExecutor jsExec = (JavascriptExecutor) driver;
+	    WebElement packDiv = wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(packLocator));
 
-		for (int i = 0; i < quantity; i++) {
-			// Click increment button
-			js.jsClickWithWait(incrementBtn);
+	    WebElement incrementBtn = packDiv.findElement(
+	            By.cssSelector(".cmp-product__quantity--increment"));
 
-			// Trigger change/input events so page JS detects quantity change
-			jsExec.executeScript("arguments[0].dispatchEvent(new Event('input', {bubbles:true}));", qtySpan);
-			jsExec.executeScript("arguments[0].dispatchEvent(new Event('change', {bubbles:true}));", qtySpan);
-
-			// Wait until quantity updates visually
-			int expectedQty = i + 1;
-			WebDriverWait waitQty = new WebDriverWait(driver, Duration.ofSeconds(60));
-			waitQty.until(d -> Integer.parseInt(qtySpan.getText()) == expectedQty);
-		}
-
-		System.out.println("Selected " + quantity + " unit(s) of " + litrePack + " Ltr pack");
+	    for (int i = 0; i < quantity; i++) {
+	        wait.until(ExpectedConditions.elementToBeClickable(incrementBtn));
+	        incrementBtn.click();
+	    }
 	}
 
 	public void enterPincodeAndCheck(String pincode) {

@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Jul 30 00:29:29 IST 2026</td>
+<td>Started on:</td><td>Thu Jul 30 12:01:04 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>191 seconds (191433 ms)</td>
+<tr><td>Total time:</td><td>229 seconds (229765 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,34 +75,34 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify that selecting more than 5 contractors is restricted", "To Validate Opus Assurance Journey Functionality"</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (d4369074c036b6e9c15b24f710403df5)] -&gt; xpath: //a[.//span[normalize-space()=&apos;Find a Contractor Near You&apos;]]]
-(tried for 80 seconds with 500 milliseconds interval)
-Build info: version: &apos;4.42.0&apos;, revision: &apos;74c7f0249a*&apos;
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify the validation message when the cart value is less than INR 999 for a logged-in user", "To Validate the Shop Happy End-to-End Product Journey Flow for an Existing User"</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //div[@data-litre=&apos;1&apos;], but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@data-litre=&apos;1&apos;]&quot;}.
+(tried for 60 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.187, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54482}, goog:processID: 20252, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54482/devtoo..., se:cdpVersion: 150.0.7871.187, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d4369074c036b6e9c15b24f710403df5
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 151.0.7922.71, chrome: {chromedriverVersion: 151.0.7922.71 (ef35003457e9..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50548}, goog:processID: 30368, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50548/devtoo..., se:cdpVersion: 151.0.7922.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a42553ed31fb9727286923aec6b361ae
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
-	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
-	at stepdefinition.Opus_Assurance_Journey_Step.user_clcik_on_find_contractor_button(Opus_Assurance_Journey_Step.java:404)
-	at ✽.User clcik on Find Contractor button(file:///C:/Backup/Birla_Webqa/Birlaopus/Birlaopus/src/test/resources/features/Opus_Assurance_Journey.feature:255)
-</pre></div><a href='#' onClick='toggleBox("stack-trace854632898", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace854632898'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (d4369074c036b6e9c15b24f710403df5)] -&gt; xpath: //a[.//span[normalize-space()=&apos;Find a Contractor Near You&apos;]]]
-(tried for 80 seconds with 500 milliseconds interval)
-Build info: version: &apos;4.42.0&apos;, revision: &apos;74c7f0249a*&apos;
+	at pagefunctions.End_to_End_Flow_Page.selectQuantity(End_to_End_Flow_Page.java:265)
+	at stepdefinition.End_To_End_Flow_Step.user_selects_quantity_of_ltr_pack(End_To_End_Flow_Step.java:85)
+	at ✽.User selects quantity 1 of &quot;1&quot; Ltr pack(file:///C:/Backup/Birla_Webqa/Birlaopus/Birlaopus/src/test/resources/features/End_to_End_%20Profuct_Journey.feature:95)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1760082859", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1760082859'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element found by By.xpath: //div[@data-litre=&apos;1&apos;], but... org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@data-litre=&apos;1&apos;]&quot;}.
+(tried for 60 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 150.0.7871.187, chrome: {chromedriverVersion: 150.0.7871.124 (9261fd0a595..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:54482}, goog:processID: 20252, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54482/devtoo..., se:cdpVersion: 150.0.7871.187, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: d4369074c036b6e9c15b24f710403df5
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 151.0.7922.71, chrome: {chromedriverVersion: 151.0.7922.71 (ef35003457e9..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50548}, goog:processID: 30368, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50548/devtoo..., se:cdpVersion: 151.0.7922.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a42553ed31fb9727286923aec6b361ae
 	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
-	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
-	at stepdefinition.Opus_Assurance_Journey_Step.user_clcik_on_find_contractor_button(Opus_Assurance_Journey_Step.java:404)
-	at ✽.User clcik on Find Contractor button(file:///C:/Backup/Birla_Webqa/Birlaopus/Birlaopus/src/test/resources/features/Opus_Assurance_Journey.feature:255)
+	at pagefunctions.End_to_End_Flow_Page.selectQuantity(End_to_End_Flow_Page.java:265)
+	at stepdefinition.End_To_End_Flow_Step.user_selects_quantity_of_ltr_pack(End_To_End_Flow_Step.java:85)
+	at ✽.User selects quantity 1 of &quot;1&quot; Ltr pack(file:///C:/Backup/Birla_Webqa/Birlaopus/Birlaopus/src/test/resources/features/End_to_End_%20Profuct_Journey.feature:95)
 </pre></div></td>
-<td>172</td>
+<td>227</td>
 <td>runner.TestRunner@4d14b6c2</td></tr>
 </table><p>
 </body>

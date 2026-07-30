@@ -39,7 +39,7 @@ public class Painting_Service_Form_Page {
 	
 	
 	 // Pincode input field
-    @FindBy(xpath = "(//input[@id='shortFormNumber'])[1]")
+    @FindBy(xpath = "//input[@id='form-text-1116263664']")
     public WebElement PincodeField;
 	
     
