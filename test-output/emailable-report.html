@@ -9,10 +9,48 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="8">Default suite</th></tr>
-<tr><td><a href="#t0">Default test</a></td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">95,783</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Default test</a></td><td class="num">5</td><td class="num">0</td><td class="num">0</td><td class="num attn">2</td><td class="num">1,135,522</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">runner.TestRunner</td><td><a href="#m0">runScenario</a></td><td rowspan="1">1785418345874</td><td rowspan="1">90762</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Default suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Default test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">runner.TestRunner</td><td><a href="#m0">runScenario</a></td><td rowspan="2">1785421423555</td><td rowspan="2">255386</td></tr><tr class="failedeven"><td><a href="#m1">runScenario</a></td></tr><tr><th colspan="4">Default test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="5">runner.TestRunner</td><td><a href="#m2">runScenario</a></td><td rowspan="5">1785422055753</td><td rowspan="5">141293</td></tr><tr class="passedeven"><td><a href="#m3">runScenario</a></td></tr><tr class="passedeven"><td><a href="#m4">runScenario</a></td></tr><tr class="passedeven"><td><a href="#m5">runScenario</a></td></tr><tr class="passedeven"><td><a href="#m6">runScenario</a></td></tr></tbody>
 </table>
-<h2>Default test</h2><h3 id="m0">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify that an existing user can complete the end-to-end flow by submitting all mandatory details (new project-Sign Up for PaintCraft button)&quot;</td><td>&quot;To Validate Opus Assurance Journey Functionality&quot;</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Default test</h2><h3 id="m0">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation&quot;</td><td>&quot;To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">java.lang.AssertionError: Total payable amount calculation mismatch. expected [12001] but found [12000]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:140)
+	at org.testng.Assert.assertEquals(Assert.java:122)
+	at org.testng.Assert.assertEquals(Assert.java:797)
+	at pagefunctions.End_to_End_Flow_Page.verifyTotalPayableAmount(End_to_End_Flow_Page.java:618)
+	at stepdefinition.End_To_End_Flow_Step.the_total_payable_amount_should_be_correctly_calculated_and_displayed(End_To_End_Flow_Step.java:186)
+	at ✽.the total payable amount should be correctly calculated and displayed(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/End_to_End_Wallpapers_Journey.feature:23)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify error message when pincode field is empty for wallpaper&quot;</td><td>&quot;To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.&quot;</td></tr><tr><th colspan="2">Exception</th></tr><tr><td colspan="2"><div class="stacktrace">org.openqa.selenium.NoSuchSessionException: invalid session id
+Build info: version: &apos;4.43.0&apos;, revision: &apos;dd0f534&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9e7ab76c64d400f76627f7c55cafe980, isElementDisplayed {id=f.1235BEE1CC55DC52A73A7F1EB9F1E0B8.d.FEDF4F51AFA52FC68BEADB5490095255.e.363}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 151.0.7922.71, chrome: {chromedriverVersion: 151.0.7922.71 (ef35003457e9..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57840}, goog:processID: 19988, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57840/devtoo..., se:cdpVersion: 151.0.7922.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (9e7ab76c64d400f76627f7c55cafe980)] -&gt; xpath: //div[@class=&apos;cmp-wallpaper__other-combination-images&apos;]/div]
+Session ID: 9e7ab76c64d400f76627f7c55cafe980
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:223)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:606)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:282)
+	at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:793)
+	at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:786)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:210)
+	at pagefunctions.End_to_End_Wallpapers_Journey_Page.selectShadeByProductCode(End_to_End_Wallpapers_Journey_Page.java:92)
+	at stepdefinition.End_to_End_Wallpapers_Journey_Step.the_user_selects_a_wallpaper_shade(End_to_End_Wallpapers_Journey_Step.java:47)
+	at ✽.the User selects a wallpaper shade &quot;32102&quot;(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/End_to_End_Wallpapers_Journey.feature:142)
+</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify error message when user enters invalid pincode for wallpaper&quot;</td><td>&quot;To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.&quot;</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user&quot;</td><td>&quot;To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.&quot;</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify that a logged-in user can successfully add a Wallpapers to the cart through navigation&quot;</td><td>&quot;To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.&quot;</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify that a logged-in user can remove a Wallpapers product from the header cart(cart page)&quot;</td><td>&quot;To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.&quot;</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">runner.TestRunner#runScenario</h3><table class="result"><tr class="param"><th>Parameter #1</th><th>Parameter #2</th></tr><tr class="param stripe"><td>&quot;To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.(profile page)&quot;</td><td>&quot;To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.&quot;</td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

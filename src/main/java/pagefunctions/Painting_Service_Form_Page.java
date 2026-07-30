@@ -34,12 +34,12 @@ public class Painting_Service_Form_Page {
 	public WebElement DetailSection;
 	
 	
-	@FindBy(xpath =  "(//button[@type='SUBMIT'])[11]")
+	@FindBy(xpath =  "//button[@id='form-button-1334415790']")
 	public WebElement submitButton;
 	
 	
 	 // Pincode input field
-    @FindBy(xpath = "(//form[@id='paintBudgetDetailsForm']//input[@name='pinCode'])[2]")
+    @FindBy(xpath = "//input[@id='form-text-1116263664']")
     public WebElement PincodeField;
 	
     

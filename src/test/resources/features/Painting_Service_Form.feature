@@ -9,7 +9,7 @@ Feature: To Validate Short Lead Form (Painting Service)
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-
+@test
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify Short Lead Form (Painting Service) Request is submitted successfully by a logged-in user with valid data
     And User clicks on the Sign up for free button
