@@ -9,7 +9,7 @@ Feature: To Validate the Shop Happy End-to-End Product Journey Flow for an Exist
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-
+@test
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify the end-to-end product journey through the checkout process with valid data for a logged-in user through navigation
     Then User clicks the cart icon on the header and removes the product from the cart if available

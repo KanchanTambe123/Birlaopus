@@ -13,6 +13,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.CommonDataGenerator;
 import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
@@ -24,6 +26,7 @@ import io.cucumber.java.en.When;
 import pagefunctions.Book_Survey_Form_Page;
 import pagefunctions.Opus_Assurance_Journey_Page;
 import pagefunctions.Painting_Made_Easy_Page;
+import pagefunctions.Sign_In_Functionality_Page;
 import pagefunctions.WebsiteLaunch;
 
 public class Opus_Assurance_Journey_Step {
@@ -33,6 +36,7 @@ public class Opus_Assurance_Journey_Step {
 	Painting_Made_Easy_Page pm = new Painting_Made_Easy_Page();
 	Opus_Assurance_Journey_Page op = new Opus_Assurance_Journey_Page();
 	JSExecutor js = new JSExecutor();
+	
 	WebDriverWaitHelper wait = new WebDriverWaitHelper();
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 	String fakeFirstName = dataGenerator.generateFakeFirstName();
@@ -40,6 +44,7 @@ public class Opus_Assurance_Journey_Step {
 	String fakeEmail = dataGenerator.generateFakeEmail();
 	Book_Survey_Form_Page bs = new Book_Survey_Form_Page();
 	String fakeProjectName = dataGenerator.generateProjectName();
+	Sign_In_Functionality_Page sp = new Sign_In_Functionality_Page();
 
 	@When("User clicks on Register Now Cta on home page")
 	public void user_clicks_on_register_now_cta_on_home_page() throws InterruptedException {
@@ -50,6 +55,9 @@ public class Opus_Assurance_Journey_Step {
 	@Given("User is on Opus Assurance Journey {string}")
 	public void user_is_on_opus_assurance_journey(String AssuranceUrl) {
 		WebsiteLaunch.webLaunch(AssuranceUrl);
+		 String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+		    ExtentCucumberAdapter.addTestStepLog("  Opus Assurance URL : " + currentUrl);
 	}
 
 	@When("User enter valid paintable area {string}")
@@ -143,6 +151,12 @@ public class Opus_Assurance_Journey_Step {
 		js.sendKeysUsingJS(op.firstNameField, string);
 		// op.firstNameField.sendKeys(string);
 	}
+	@Then("User click on verify otp cta")
+	public void user_click_on_verify_otp_cta() {
+		wait.waitForElementToBeClickable(op.verifyButton, 30);
+		js.jsClickWithWait(op.verifyButton);
+	}
+
 
 	@Then("User enter invalid last name {string}")
 	public void user_enter_invalid_last_name(String string) {
@@ -599,5 +613,13 @@ public class Opus_Assurance_Journey_Step {
 		  op.verifyToastMessageContractors(expectedMessage);
 	}
 
+@When("User enters a valid mobile number on the Sign In page after creating an account")
+public void user_enters_a_valid_mobile_number_on_the_sign_in_page_after_creating_an_account() throws InterruptedException {
+	wait.waitForElementVisible(sp.signInMobileNumberFiled);
+	Thread.sleep(1000); // small stabilization
+	sp.signInMobileNumberFiled.click();
+	sp.signInMobileNumberFiled.sendKeys("8375978223");
+	Thread.sleep(1000);
+}
 
 }

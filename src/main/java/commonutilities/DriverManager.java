@@ -99,7 +99,7 @@ public class DriverManager {
         ChromeOptions opt = new ChromeOptions();
 
         // Headless configuration
-        opt.addArguments(config.getProb("runHeadless"));			
+       opt.addArguments(config.getProb("runHeadless"));			
 	    opt.addArguments(config.getProb("headlessBrowserSize"));
  
         // Performance and stability options

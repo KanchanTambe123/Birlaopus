@@ -13,7 +13,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
+    And User enters valid OTP and clicks on the Verify OTP button
+    #And User enters bypass OTP and clicks on the Verify OTP button
     Then User enter valid first name
     And User enter valid last name
     And User enter valid email id
@@ -23,10 +24,20 @@ Feature: To Validate Opus Assurance Journey Functionality
     #And User captures and validates API request and response for "lead/shortForm"
     Then User should see the heading "We're coming soon!"
     And User should see the message "Birla Opus Assurance is currently not available in your location. We've noted your interest and will notify you as soon as we launch in your area."
+    When User clicks on the profile icon
+    When User clicks on the profile icon
+    And User clicks on the Sign In button
+    And User enters a valid mobile number on the Sign In page after creating an account
+    And the User clicks on the Sign In button after entering the mobile number
+    And User enters valid OTP and clicks on the Verify OTP button
+    When User clicks on the profile icon
+    And User clicks on the delete account option
+    Then User should see a popup with the message Are you sure you want to delete your account? "<answer>"
+    And User enters valid OTP on profile page and clicks on the Verify OTP button
 
     Examples: 
-      | paintable_area | pin_code |
-      | 2500 sqft      |   111222 |
+      | paintable_area | pin_code | answer |
+      | 2500 sqft      |   111222 | Yes    |
 
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify whether user is able to see error message for email id field when user enter invalid email id
@@ -37,7 +48,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
+    And User enters valid OTP and clicks on the Verify OTP button
+    #And User enters bypass OTP and clicks on the Verify OTP button
     Then User enter valid first name
     And User enter valid last name
     And User enter invalid email id "<invalid_email_id>"
@@ -46,8 +58,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User click on the Save Details button
 
     Examples: 
-      | paintable_area | invalid_email_id | pin_code |
-      | 2500 sqft      | testestgmail.com | 400 060  |
+      | paintable_area | invalid_email_id | pin_code | answer |
+      | 2500 sqft      | testestgmail.com | 400 060  | Yes    |
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify whether user is able to see error message for last name when user enter invalid last name
@@ -58,7 +70,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
+    And User enters valid OTP and clicks on the Verify OTP button
+    #And User enters bypass OTP and clicks on the Verify OTP button
     Then User enter valid first name
     And User enter invalid last name "<invalid_last_name>"
     And User enter valid email id
@@ -79,7 +92,8 @@ Feature: To Validate Opus Assurance Journey Functionality
     Then User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
+    And User enters valid OTP and clicks on the Verify OTP button
+    #And User enters bypass OTP and clicks on the Verify OTP button
     Then User enter invalid first name "<invalid_first_name>"
     And User enter valid last name
     And User enter valid email id
@@ -182,44 +196,44 @@ Feature: To Validate Opus Assurance Journey Functionality
   #Examples:
   #  | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  |
   #  | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance |
-  
   #---------------------------------- Scenario 9 ----------------------------------#
-  Scenario Outline: To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button).    Given User enter valid paintable area "<paintable_area>"
-    Given User enter valid paintable area "<paintable_area>"
-    And User click on Next button
-    Then User should click on Yet to Start Cta
-    And User click on Pre-register now Cta
-    Then User clicks create an Account option
-    And User enters valid mobile number on the Create an Account
-    And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
-    Then User enter valid first name
-    And User enter valid last name
-    And User enter valid email id
-    And User enter valid pin code "<pin_code>"
-    And User clicks on submit button on the Create an Account
-    Then User clicks on tell us more about your site button
-    And User enter Site Details project name
-    And User enter flat number or bulding name "<flat number>"
-    And User enter proerty name "<property_name>"
-    Then User clicks on confirm and add address details
-    And User enter update pin code on site details "<Update_pin_code>"
-    Then User click submit button on Address section page for opus assurance
-    And User captures and validates API request and response for "lead/shortForm"
-    And User click next button on Just a Few More Details
-    Then User clcik on Sign Up for PaintCraft button
-    Then User selects the painting requirement type "<requirementType>"
-    And User clicks on the project details next button
-    Then User select home configuration type "<bhkType>"
-    Then User enters the carpet area "<carpetArea>"
-    And User clicks on the project details next button
-    And User selects a schedule visit date and timeslot "<time>"
-    And User clicks on the Schedule button
-    Then Birla Opus Assurance confirmation message should be displayed successfully "Thank you for signing up for Birla Opus Assurance!"
-
-    Examples: 
-      | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
-      | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |
+  #Scenario Outline: To verify that a new user can complete the end-to-end flow by submitting all mandatory details (create an account – Sign Up for PaintCraft button).    Given User enter valid paintable area "<paintable_area>"
+    #Given User enter valid paintable area "<paintable_area>"
+    #And User click on Next button
+    #Then User should click on Yet to Start Cta
+    #And User click on Pre-register now Cta
+    #Then User clicks create an Account option
+    #And User enters valid mobile number on the Create an Account
+    #And User clicks on the Create an Account button
+    #And User enters valid OTP and clicks on the Verify OTP button
+    #And User enters bypass OTP and clicks on the Verify OTP button
+    #Then User enter valid first name
+    #And User enter valid last name
+    #And User enter valid email id
+    #And User enter valid pin code "<pin_code>"
+    #And User clicks on submit button on the Create an Account
+    #Then User clicks on tell us more about your site button
+    #And User enter Site Details project name
+    #And User enter flat number or bulding name "<flat number>"
+    #And User enter proerty name "<property_name>"
+    #Then User clicks on confirm and add address details
+    #And User enter update pin code on site details "<Update_pin_code>"
+    #Then User click submit button on Address section page for opus assurance
+    #And User captures and validates API request and response for "lead/shortForm"
+    #And User click next button on Just a Few More Details
+    #Then User clcik on Sign Up for PaintCraft button
+    #Then User selects the painting requirement type "<requirementType>"
+    #And User clicks on the project details next button
+    #Then User select home configuration type "<bhkType>"
+    #Then User enters the carpet area "<carpetArea>"
+    #And User clicks on the project details next button
+    #And User selects a schedule visit date and timeslot "<time>"
+    #And User clicks on the Schedule button
+    #Then Birla Opus Assurance confirmation message should be displayed successfully "Thank you for signing up for Birla Opus Assurance!"
+#
+    #Examples: 
+      #| paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
+      #| 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |
 
   #---------------------------------- Scenario 10----------------------------------#
   Scenario Outline: To verify Clicking Pre-Register Now without login should open to login or register page
@@ -286,7 +300,7 @@ Feature: To Validate Opus Assurance Journey Functionality
     Examples: 
       | paintable_area | pin_code | valid_mobile_no | valid_otp | Update_pin_code | requirementType | carpetArea | bhkType | time         | iclLeadContextC      | iclLeadTypeC             | iclSubType         | leadSubSource  | flat number | property_name |
       | 2500 sqft      |   500002 |      7019144066 |      1111 |          500002 | Exteriors       |       1200 | 2 BHK   | 12 PM - 3 PM | Birla Opus Assurance | Painting Service Enquiry | Paintcraft Service | Opus Assurance | B-10        | mumbai        |
-@test
+
   #---------------------------------- Scenario 13----------------------------------#
   Scenario Outline: To verify that for unserviceable pincode, the API returns serviceable = false and the Coming Soon message is displayed
     Given User enter valid paintable area "<paintable_area>"

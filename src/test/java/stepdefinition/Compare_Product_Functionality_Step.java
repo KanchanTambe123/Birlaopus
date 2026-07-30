@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonDataGenerator;
@@ -46,11 +48,15 @@ public class Compare_Product_Functionality_Step {
 			String CompareFirstProductUrl, String expectedProductName) throws InterruptedException {
 		firstProduct = expectedProductName;
 		WebsiteLaunch.webLaunch(CompareFirstProductUrl);
+		   // Log current URL in Extent Report
+	    String currentUrl = DriverManager.getDriver().getCurrentUrl();
+	    ExtentCucumberAdapter.addTestStepLog("First Product URL : " + currentUrl);
 		Thread.sleep(2000);
 		js.scrollUntilElementVisible(cp.productTitle);
 		Thread.sleep(2000);
 		String actualProductName = cp.getProductName();
 		System.out.println("Captured Product Name: " + actualProductName);
+	    ExtentCucumberAdapter.addTestStepLog("Product Name : " + actualProductName);
 
 		if (!actualProductName.contains(expectedProductName)) {
 			throw new AssertionError("Expected product: " + expectedProductName + " BUT found: " + actualProductName);
@@ -65,11 +71,15 @@ public class Compare_Product_Functionality_Step {
 
 		secondProduct = expectedProductName;
 		WebsiteLaunch.webLaunch(CompareSecondProductUrl);
+		   // Log current URL in Extent Report
+	    String currentUrl = DriverManager.getDriver().getCurrentUrl();
+	    ExtentCucumberAdapter.addTestStepLog("Secound Product URL : " + currentUrl);
 		Thread.sleep(2000);
 		js.scrollUntilElementVisible(cp.productTitle);
 		Thread.sleep(2000);
 		String actualProductName = cp.getProductName();
 		System.out.println("Captured Product Name: " + actualProductName);
+	    ExtentCucumberAdapter.addTestStepLog("Product Name : " + actualProductName);
 
 		if (!actualProductName.contains(expectedProductName)) {
 			throw new AssertionError("Expected product: " + expectedProductName + " BUT found: " + actualProductName);

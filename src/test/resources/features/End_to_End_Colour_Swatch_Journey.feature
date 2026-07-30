@@ -75,7 +75,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Examples: 
       | navmenu | navtab       | productname   | optionText       | Colour    |
       | Shop    | Colour Tools | Colour Swatch | Delete a Product | Rose dust |
-
+@test
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user.(profile page)
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar

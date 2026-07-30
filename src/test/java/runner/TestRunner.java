@@ -109,17 +109,16 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	    
 	    ReportUtil.readCucumberReport();
 	    ReportWithTime.createTimestampReports();
-		List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
+		//List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
 
-	    /*List<String> recipients = Arrays.asList(
+	    List<String> recipients = Arrays.asList(
 	    	    "kanchan.tambe@deptagency.com",
 	    	    "hemendra.rana@deptagency.com",
 	    	    "shital.mandhare@deptagency.com",
 	    	    "khushali.shukla@deptagency.com",
-	    	    "gaurang.kapadia@deptagency.com",
 	    	    "monica.ledwani@deptagency.com",
 	    	    "jalpa.jmody@deptagency.com"
-	    	);*/
+	    	);
 	    String subject = "BirlaOpus Regression Suite Report";
      
 	    String body = "Hi Team,\n\n"

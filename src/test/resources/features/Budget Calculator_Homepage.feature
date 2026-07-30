@@ -3,7 +3,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
-@test
+
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To validate Budget Calculator functionality using valid mandatory data
     When User clicks on the profile icon
