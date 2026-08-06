@@ -48,7 +48,7 @@
 </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Jul 30, 2026 19:53:43</span></a>
+<a href="#"><span class="badge badge-primary">Aug 06, 2026 15:18:26</span></a>
 </li>
 </ul>
 </div>
@@ -58,11 +58,6 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
-</a>
-</li>
-<li class="nav-item dropdown" onclick="toggleView('exception-view')">
-<a id="nav-exception" class="dropdown-toggle" href="#">
-<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
@@ -89,7 +84,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -97,31 +92,31 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@module</a>
+<a class="dropdown-item" href="#">@module</a><a class="dropdown-item" href="#">@test</a>
 </ul>
 </li>
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="fail" test-id="1"
+        <li class="test-item"  status="pass" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.</p>
+            <p class="name">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.</p>
             <p class="text-sm">
-              <span>7:53:43 PM</span> / <span>00:18:52:644</span>
-              <span class="badge fail-bg log float-right">Fail</span>
+              <span>3:18:26 PM</span> / <span>00:02:51:476</span>
+              <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.</h5>
-<span class='badge badge-success'>07.30.2026 7:53:43 PM</span>
-<span class='badge badge-danger'>07.30.2026 8:12:36 PM</span>
-<span class='badge badge-default'>00:18:52:644</span>
+<h5 class="test-status text-pass">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.</h5>
+<span class='badge badge-success'>08.06.2026 3:18:26 PM</span>
+<span class='badge badge-danger'>08.06.2026 3:21:18 PM</span>
+<span class='badge badge-default'>00:02:51:476</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -133,176 +128,14 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log fail-bg mr-2">Fail</span>To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation</div>
-          <div class="status-avatar float-right mr-4">
-            <i class="fa fa-paperclip"></i>
-          </div>
-      </div>
-    </div>
-        <div class="scenario_outline ">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log fail-bg mr-2">Fail</span>To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation</div>
-                    <div class="status-avatar float-right">
-                      <i class="fa fa-paperclip"></i>
-                    </div>
-                </div>
-              </div>
-              <div class="card-body mt-3 ">
-                  <div class="step pass-bg">
-                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
-      <div>BirlaOpus home URL : https://www.birlaopus.com/
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User clicks on the profile icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on the Sign In button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid mobile number on the Sign In page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks on the close icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks the cart icon on the header and removes the product from the cart if available</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User select product main navigation L1 "Shop", sub navigation L2 "Wallpapers" and L3 wallpaper name "Textilia Tabit 32001" through navigation bar</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then the User selects a wallpaper shade "32102"</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User enters valid pincode "400703" and check product availability</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User click on add to cart button on wallpaper section</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User click on View cart & Checkout button on wallpaper section</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User increase the product quantity "2"</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks on the Proceed to Enter Address button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on the Apply button, verifies the availability of coupon vouchers, and applies a coupon if available</span>
-      <div>No coupon available. Closed popup and continuing flow.
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User verifies the product quantity in the final order summary "2"</span>
-      <div>Final Order Summary Quantity: 2
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step fail-bg">
-                    <span>Then the total payable amount should be correctly calculated and displayed</span>
-      <div>Subtotal (Excl. Tax): ₹10170.0
-      </div>
-      <div>Coupon Discount: ₹0.0
-      </div>
-      <div>Taxes: ₹1831.0
-      </div>
-      <div>Expected Total: ₹12001
-      </div>
-      <div>Displayed Total: ₹12000
-      </div>
-      <div>
-        <textarea disabled class="code-block">java.lang.AssertionError: Total payable amount calculation mismatch. expected [12001] but found [12000]
-	at org.testng.Assert.fail(Assert.java:99)
-	at org.testng.Assert.failNotEquals(Assert.java:1037)
-	at org.testng.Assert.assertEqualsImpl(Assert.java:140)
-	at org.testng.Assert.assertEquals(Assert.java:122)
-	at org.testng.Assert.assertEquals(Assert.java:797)
-	at pagefunctions.End_to_End_Flow_Page.verifyTotalPayableAmount(End_to_End_Flow_Page.java:618)
-	at stepdefinition.End_To_End_Flow_Step.the_total_payable_amount_should_be_correctly_calculated_and_displayed(End_To_End_Flow_Step.java:186)
-	at ✽.the total payable amount should be correctly calculated and displayed(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/End_to_End_Wallpapers_Journey.feature:23)
-</textarea>
-      
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</span>
-      <div>[B@9d10078
-          <div class="row mb-3"><div class="col-md-3">
-<img data-featherlight='test-output/embedded1.png' src="test-output/embedded1.png">
-    
-    </div></div>
-</div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step skip-bg">
-                    <span>And User clicks on the Proceed to Shipment button</span>
-      <div>Step skipped
-      </div>
-                  </div>
-                  <div class="step skip-bg">
-                    <span>Then User clicks on the Proceed to payment button</span>
-      <div>Step skipped
-      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="46"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can successfully add a Wallpapers to the cart through navigation</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</div>
       </div>
     </div>
         <div class="scenario_outline collapse">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="47"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can successfully add a Wallpapers to the cart through navigation</div>
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</div>
                 </div>
               </div>
               <div class="card-body mt-3 collapse">
@@ -349,32 +182,32 @@
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>When User select product main navigation L1 "Shop", sub navigation L2 "Wallpapers" and L3 wallpaper name "Textilia Tabit 32001" through navigation bar</span>
+                    <span>When User select product main navigation L1 "Shop", sub navigation L2 "Colour Tools" and L3 product name "Colour Swatch" through navigation bar</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then the User selects a wallpaper shade "32102"</span>
+                    <span>Then User selects Colour for colour swatch "Rose dust"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User enters a valid pincode "500001" on wallpaper</span>
+                    <span>Then User selects colour swatch quantity 1</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User click on pincode serviceability check button on wallpaper</span>
+                    <span>Then User enters a valid pincode "400703" and check product availability</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User click on add to cart button on wallpaper section</span>
+                    <span>And User click on add to cart button</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User click on View cart & Checkout button on wallpaper section</span>
+                    <span>Then User click on View cart & Checkout button</span>
       <div>
       </div>
                   </div>
@@ -386,451 +219,6 @@
                   <div class="step pass-bg">
                     <span>Then User clicks the cart icon on the header and removes the product from the cart if available</span>
       <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="82"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can remove a Wallpapers product from the header cart(cart page)</div>
-      </div>
-    </div>
-        <div class="scenario_outline collapse">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="83"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can remove a Wallpapers product from the header cart(cart page)</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given User is on wallpaper Product page "WallpaperProductUrl"</span>
-      <div> Wallpaper URL : https://www.birlaopus.com/paint-products/wallpapers/walls/chromatic-hive
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User clicks on the profile icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on the Sign In button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid mobile number on the Sign In page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks on the close icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User enters a valid pincode "500001" on wallpaper</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User click on pincode serviceability check button on wallpaper</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User click on add to cart button on wallpaper section</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks the cart icon on the header and removes the product from the cart if available</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And Cart count should be updated to "0"</span>
-      <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="110"><span class="badge log pass-bg mr-2">Pass</span>To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user</div>
-      </div>
-    </div>
-        <div class="scenario_outline collapse">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="111"><span class="badge log pass-bg mr-2">Pass</span>To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given User is on wallpaper Product page "WallpaperProductUrl"</span>
-      <div> Wallpaper URL : https://www.birlaopus.com/paint-products/wallpapers/walls/chromatic-hive
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User clicks on the profile icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on the Sign In button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid mobile number on the Sign In page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks on the close icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks the Wishlist icon for Wallpapers on the Product Details page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then Product should be added to the wishlist successfully</span>
-      <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="132"><span class="badge log pass-bg mr-2">Pass</span>To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.(profile page)</div>
-      </div>
-    </div>
-        <div class="scenario_outline collapse">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="133"><span class="badge log pass-bg mr-2">Pass</span>To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.(profile page)</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given User is on wallpaper Product page "WallpaperProductUrl"</span>
-      <div> Wallpaper URL : https://www.birlaopus.com/paint-products/wallpapers/walls/chromatic-hive
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User clicks on the profile icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on the Sign In button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid mobile number on the Sign In page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks on the close icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then the User selects a wallpaper shade "45128"</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks the Wishlist icon for Wallpapers on the Product Details page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then Product should be added to the wishlist successfully</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User click whishlist icon on top page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on "Favourites" tab</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then the User clicks the product option button in favourites</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And the User selects "Delete Wallpaper" from the product options in the wishlist</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then Product should be removed from the wishlist successfully</span>
-      <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="166"><span class="badge log pass-bg mr-2">Pass</span>To verify error message when user enters invalid pincode for wallpaper</div>
-      </div>
-    </div>
-        <div class="scenario_outline collapse">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="167"><span class="badge log pass-bg mr-2">Pass</span>To verify error message when user enters invalid pincode for wallpaper</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 collapse">
-                  <div class="step pass-bg">
-                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
-      <div>BirlaOpus home URL : https://www.birlaopus.com/
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User clicks on the profile icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on the Sign In button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid mobile number on the Sign In page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks on the close icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User select product main navigation L1 "Shop", sub navigation L2 "Wallpapers" and L3 wallpaper name "Textilia Tabit 32001" through navigation bar</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then the User selects a wallpaper shade "32102"</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User enters a valid pincode "400" on wallpaper</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User click on pincode serviceability check button on wallpaper</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User should see an error message for invalid pincode for Wallpapers "Please enter a valid pincode"</span>
-      <div>
-      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-  </div>
-  <div class="card">
-    <div class="card-header" role="tab">
-      <div class="card-title">
-        <div class="node" id="194"><span class="badge log fail-bg mr-2">Fail</span>To verify error message when pincode field is empty for wallpaper</div>
-      </div>
-    </div>
-        <div class="scenario_outline ">
-            <div class="card-body l1">
-              <div class="card-header">
-                <div class="card-title outline-child">
-                  <div class="node" id="195"><span class="badge log fail-bg mr-2">Fail</span>To verify error message when pincode field is empty for wallpaper</div>
-                </div>
-              </div>
-              <div class="card-body mt-3 ">
-                  <div class="step pass-bg">
-                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
-      <div>BirlaOpus home URL : https://www.birlaopus.com/
-      </div>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User clicks on the profile icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks on the Sign In button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid mobile number on the Sign In page</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks on the close icon</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>When User select product main navigation L1 "Shop", sub navigation L2 "Wallpapers" and L3 wallpaper name "Textilia Tabit 32001" through navigation bar</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step fail-bg">
-                    <span>Then the User selects a wallpaper shade "32102"</span>
-      <div>
-        <textarea disabled class="code-block">org.openqa.selenium.NoSuchSessionException: invalid session id
-Build info: version: '4.43.0', revision: 'dd0f534'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9e7ab76c64d400f76627f7c55cafe980, isElementDisplayed {id=f.1235BEE1CC55DC52A73A7F1EB9F1E0B8.d.FEDF4F51AFA52FC68BEADB5490095255.e.363}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 151.0.7922.71, chrome: {chromedriverVersion: 151.0.7922.71 (ef35003457e9..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57840}, goog:processID: 19988, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57840/devtoo..., se:cdpVersion: 151.0.7922.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Element: [[ChromeDriver: chrome on windows (9e7ab76c64d400f76627f7c55cafe980)] -> xpath: //div[@class='cmp-wallpaper__other-combination-images']/div]
-Session ID: 9e7ab76c64d400f76627f7c55cafe980
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:223)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:606)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
-	at org.openqa.selenium.remote.RemoteWebElement.isDisplayed(RemoteWebElement.java:282)
-	at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:793)
-	at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:786)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:210)
-	at pagefunctions.End_to_End_Wallpapers_Journey_Page.selectShadeByProductCode(End_to_End_Wallpapers_Journey_Page.java:92)
-	at stepdefinition.End_to_End_Wallpapers_Journey_Step.the_user_selects_a_wallpaper_shade(End_to_End_Wallpapers_Journey_Step.java:47)
-	at ✽.the User selects a wallpaper shade "32102"(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/End_to_End_Wallpapers_Journey.feature:142)
-</textarea>
-      
-      </div>
-                  </div>
-                  <div class="step fail-bg">
-                    <span>stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</span>
-      <div>
-        <textarea disabled class="code-block">org.openqa.selenium.NoSuchSessionException: invalid session id
-Build info: version: '4.43.0', revision: 'dd0f534'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [9e7ab76c64d400f76627f7c55cafe980, screenshot {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 151.0.7922.71, chrome: {chromedriverVersion: 151.0.7922.71 (ef35003457e9..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:57840}, goog:processID: 19988, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:57840/devtoo..., se:cdpVersion: 151.0.7922.71, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 9e7ab76c64d400f76627f7c55cafe980
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:169)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:142)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:223)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:606)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:688)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:692)
-	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:395)
-	at stepdefinition.Hook.postEachStep(Hook.java:39)
-</textarea>
-      
-      </div>
-                  </div>
-                  <div class="step skip-bg">
-                    <span>And User click on pincode serviceability check button on wallpaper</span>
-      <div>Step skipped
-      </div>
-                  </div>
-                  <div class="step skip-bg">
-                    <span>Then User should see the error message when pincode field is empty "This field is required"</span>
-      <div>Step skipped
       </div>
                   </div>
               </div>
@@ -849,10 +237,10 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-wrapper row view category-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
 <ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">2</span></a></li></ul>
 </div>
 <div class="test-list-wrapper scrollable">
@@ -860,115 +248,15 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">java.lang.AssertionError</p>
+<p class="name">@module</p>
 <p class="duration text-sm">1 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
-<h4>java.lang.AssertionError</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>19:57:58 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='39'>Then the total payable amount should be correctly calculated and displayed</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation.Then the total payable amount should be correctly calculated and displayed</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log badge-danger'>2</span>
-</span>
-<p class="name">org.openqa.selenium.NoSuchSessionException</p>
-<p class="duration text-sm">2 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>org.openqa.selenium.NoSuchSessionException</h4>
-<span status="fail" class='badge log badge-danger'>2 failed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:07:26 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='213'>Then the User selects a wallpaper shade "32102"</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify error message when pincode field is empty for wallpaper.Then the User selects a wallpaper shade "32102"</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:12:36 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='214'>stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify error message when pincode field is empty for wallpaper.stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="test-content scrollable">
-<div class="test-content-detail">
-<div class="detail-body"></div>
-</div>
-</div>
-</div><div class="test-wrapper row view category-view attributes-view">
-<div class="test-list">
-<div class="test-list-tools">
-<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
-<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
-</div>
-<div class="test-list-wrapper scrollable">
-<ul class="test-list-item">
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log pass-bg'>5</span>
-<span class='badge log badge-danger'>2</span>
-</span>
-<p class="name">@module</p>
-<p class="duration text-sm">7 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
 <h4>@module</h4>
-<span status="pass" class='badge log pass-bg'>5 passed</span>
-<span status="fail" class='badge log badge-danger'>2 failed</span>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -979,73 +267,49 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>19:53:43 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='3'>To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify the end-to-end Wallpapers journey through the checkout process with valid data for a logged-in user through navigation</span>
-</div>
-</td>
-</tr>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>19:57:58 PM</td>
+<td>15:18:26 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='47'>To verify that a logged-in user can successfully add a Wallpapers to the cart through navigation</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</a>
 <div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify that a logged-in user can successfully add a Wallpapers to the cart through navigation</span>
+<span class="badge badge-default">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist..To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</span>
 </div>
 </td>
 </tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@test</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@test</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>20:00:52 PM</td>
+<td>15:18:26 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='83'>To verify that a logged-in user can remove a Wallpapers product from the header cart(cart page)</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</a>
 <div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify that a logged-in user can remove a Wallpapers product from the header cart(cart page)</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>20:01:38 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='111'>To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>20:02:07 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='133'>To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.(profile page)</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify successful Wallpapers remove-to-wishlist functionality through navigation for a logged-in user.(profile page)</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>20:04:15 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='167'>To verify error message when user enters invalid pincode for wallpaper</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify error message when user enters invalid pincode for wallpaper</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:06:37 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='195'>To verify error message when pincode field is empty for wallpaper</a>
-<div class="">
-<span class="badge badge-default">To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist..To verify error message when pincode field is empty for wallpaper</span>
+<span class="badge badge-default">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist..To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</span>
 </div>
 </td>
 </tr>
@@ -1066,25 +330,25 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Jul 30, 2026 19:53:43</h3>
+<h3>Aug 06, 2026 15:18:26</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Jul 30, 2026 20:12:36</h3>
+<h3>Aug 06, 2026 15:21:18</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 </div>
@@ -1100,12 +364,12 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='0%'>
-<b>0</b> features passed
+<div><small data-tooltip='100%'>
+<b>1</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='100%'><b>1</b> features failed,
+<small data-tooltip='0%'><b>0</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -1123,9 +387,9 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='71%'><b>5</b> scenarios passed</small></div>
+<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='28%'><b>2</b> scenarios failed,
+<small data-tooltip='0%'><b>0</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -1143,10 +407,10 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='92%'><b>90</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>16</b> steps passed</small></div>
 <div>
-<small data-tooltip='3%'><b>3</b> steps failed,
-<b>4</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='0%'><b>0</b> steps failed,
+<b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -1162,7 +426,7 @@ Session ID: 9e7ab76c64d400f76627f7c55cafe980
 </div></div>
 <script>
 var timeline = {
-"To Validate the happy end-to-end Wallpapers journey flow for a logged-in user, including adding and removing Wallpapers and managing the wishlist.":1132.644
+"To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.":171.476
 };
 </script>
 <div class="row">
@@ -1173,11 +437,19 @@ var timeline = {
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
 <td>@module</td>
-<td>5</td>
-<td>2</td>
+<td>1</td>
 <td>0</td>
 <td>0</td>
-<td>71.429%</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@test</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
 </tr>
 </tbody>
 </table></div>
@@ -1188,21 +460,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 0,
-failParent: 1,
+passParent: 1,
+failParent: 0,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 5,
-failChild: 2,
+passChild: 1,
+failChild: 0,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 90,
-failGrandChild: 3,
+passGrandChild: 16,
+failGrandChild: 0,
 warningGrandChild: 0,
-skipGrandChild: 4,
+skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
 };

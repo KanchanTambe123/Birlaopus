@@ -12,7 +12,7 @@ Feature: To Validate Cart Functionality – Add, Update, Remove and Price Valida
 
   #----------------------------------1---------------------------------------------------->
   Scenario Outline: To verify that a logged-in user can successfully add a product to the cart through navigation
-    #Then User clicks the cart icon on the header and removes the product from the cart if available
+    Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     Then User click on Shop now button
     Then User selects Colour "<Colour>"

@@ -103,44 +103,46 @@ public class BudgetCalculator_Page {
 
 	public void selectSpaceOptions(String spaceName) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-		List<WebElement> spaceOptions = wait.until(ExpectedConditions
-				.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'cmp-text-button')]//a")));
+	    List<WebElement> allOptions = wait.until(ExpectedConditions
+	            .presenceOfAllElementsLocatedBy(
+	                    By.xpath("//div[contains(@class,'cmp-text-button')]//a")));
 
-		boolean isClicked = false;
+	    boolean isClicked = false;
 
-		for (WebElement option : spaceOptions) {
+	    for (WebElement option : allOptions) {
 
-			if (option.getText().trim().equalsIgnoreCase(spaceName)) {
+	        // Skip hidden elements
+	        if (!option.isDisplayed()) {
+	            continue;
+	        }
 
-				// Scroll with offset (avoids header overlap)
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+	        String optionText = option.getText().trim();
 
-				// Small wait for animation to finish
-				wait.until(ExpectedConditions.visibilityOf(option));
+	        if (optionText.equalsIgnoreCase(spaceName)) {
 
-				try {
-					// Try normal Selenium click
-					wait.until(ExpectedConditions.elementToBeClickable(option)).click();
-				} catch (ElementClickInterceptedException e) {
-					// Fallback to JS click
-					((JavascriptExecutor) driver).executeScript("arguments[0].click();", option);
-				}
+	            ((JavascriptExecutor) driver).executeScript(
+	                    "arguments[0].scrollIntoView({block:'center'});", option);
 
-				// Wait for active state
-				wait.until(ExpectedConditions.attributeContains(option, "class", "active"));
+	            wait.until(ExpectedConditions.visibilityOf(option));
+	            wait.until(ExpectedConditions.elementToBeClickable(option));
 
-				isClicked = true;
-				break;
-			}
-		}
+	            try {
+	                option.click();
+	            } catch (ElementClickInterceptedException e) {
+	                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", option);
+	            }
 
-		if (!isClicked) {
-			throw new AssertionError("Space option not clickable: " + spaceName);
-		}
+	            isClicked = true;
+	            break;
+	        }
+	    }
+
+	    if (!isClicked) {
+	        throw new AssertionError("Visible space option not found: " + spaceName);
+	    }
 	}
-
 	public void verifyTabIsLocked(String tabName) {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));

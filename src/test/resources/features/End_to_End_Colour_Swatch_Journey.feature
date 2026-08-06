@@ -33,7 +33,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Examples: 
       | navmenu | navtab       | productname   | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity | 
       | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 | 
-
+@test
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)
     Then User clicks the cart icon on the header and removes the product from the cart if available
@@ -75,7 +75,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Examples: 
       | navmenu | navtab       | productname   | optionText       | Colour    |
       | Shop    | Colour Tools | Colour Swatch | Delete a Product | Rose dust |
-@test
+
   #---------------------------------- Scenario 5 ----------------------------------#
   Scenario Outline: To verify successful colour swatch remove-to-wishlist functionality through navigation for a logged-in user.(profile page)
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar

@@ -52,58 +52,68 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	
 	
 
-	
+	@AfterSuite//html zip all
+	public void after_all() throws Exception {
 
-	//@AfterSuite  //pdf and zip
-	/*public void after_all() throws IOException, InterruptedException, GeneralSecurityException {
+	    ReportUtil.readCucumberReport();
+	    ReportWithTime.createTimestampReports();
 
-		List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com", "suyeta.patra@deptagency.com","hemendra.rana@deptagency.com","gaurang.kapadia@deptagency.com","monica.ledwani@deptagency.com","susmita.gawade@deptagency.com");
+	    List<String> recipients = Arrays.asList(
+	            "kanchan.tambe@deptagency.com"
+	            ,"hemendra.rana@deptagency.com",
+	            "shital.mandhare@deptagency.com",
+	            "khushali.shukla@deptagency.com",
+	            "monica.ledwani@deptagency.com",
+	            "jalpa.jmody@deptagency.com"
+	    );
 
-	    String subject = "Vijaysales Stage Regression Suite Report";
+	    String subject = "BirlaOpus Regression Suite Report";
 
 	    String body = "Hi Team,\n\n"
-	    	    + "The regression suite for today has been executed successfully, covering end-to-end validations across critical modules.\n\n"
-	    	    + "Modules Covered:\n"
-	    	    + "• Static Pages – About Us, Privacy Policy, GST, E-waste\n"
-	    	    + "• Navigation – Header, Footer, Menu Fly-out, Search\n"
-	    	    + "• User Journeys – Home, PDP, PLP, CLP, Configurable Products\n"
-	    	    + "• User Accounts – Login, Signup, Profile, Career Application\n"
-	    	    + "• Checkout Flow – Cart, Guest/Logged-in Checkout, Coupons, GST\n"
-	    	    + "• Components – Auto Suggestion, Brand Details, PDP Exchange, VS+ Warranty\n"
-	    	    + "• Support Tools – FAQ, B2B Enquiry, Store Locator\n\n"
-	    	    + "Please find the detailed report attached.\n"
-	    	    + "Feel free to share any feedback or queries.\n\n"
-	    	    + "Best regards,\n"
-	    	    + "Kanchan Tambe & Suyeta Patra\n"
-	    	    + "Automation Test Engineers";
+	            + "The regression suite for today has been executed successfully.\n"
+	            + "Please find the attached execution report.\n\n"
 
-	    // Paths
-	    String baseDir = System.getProperty("user.dir");
-	   // String pdfPath = baseDir + "/report/pdf/Vijaysales_extent.pdf";
-	    String htmlPath = baseDir + "/report/html/Vijaysales.html";
-	    String zipPath = baseDir + "/report/html/Vijaysales.zip";
+	            + "Execution Summary:\n"
+	            + "Total Passed: " + ReportUtil.passed + "\n"
+	            + "Total Failed: " + ReportUtil.failed + "\n\n"
 
+	            + "Modules Covered:\n"
+	            + "• Scope 1 – Core Functional Regression\n"
+	            + "• Scope 2 – End-to-End Journey Validation\n\n"
 
-	    // Compress HTML to ZIP
-	    File htmlFile = new File(htmlPath);
-	    if (htmlFile.exists()) {
-	    	 common.zipFile(htmlPath, zipPath);
-	    } else {
-	        System.out.println("HTML report not found, skipping zip.");
-	    }
+	            + "Please review the attached report and let me know if you have any questions.\n\n"
+
+	            + "Best regards,\n"
+	            + "Kanchan Tambe\n"
+	            + "Automation Test Engineer";
+
+	    // Original reports
+	    List<String> reportPaths = ReportWithTime.getAttachmentPaths();
+
+	    // Create one ZIP
+	    String zipFilePath = "./report/BirlaOpus_Report.zip";
+
+	    common.zipMultipleFiles(reportPaths, zipFilePath);
 
 	    List<String> attachmentPaths = new ArrayList<>();
-	    //attachmentPaths.add(pdfPath);
-	    attachmentPaths.add(zipPath); // attach zipped HTMl
+	    attachmentPaths.add(zipFilePath);
 
 	    try {
+
+	        // Send Email
 	        SendMail.sendEmailWithAttachment(recipients, subject, body, attachmentPaths);
-	    	GoogleDriveUploader.uploadFileToDrive(attachmentPaths);
-	    } catch (MessagingException e) {
+
+	        // Upload ZIP to Google Drive
+	        GoogleDriveUploader.uploadFileToDrive(attachmentPaths);
+
+	        System.out.println("Email sent successfully.");
+	        System.out.println("Google Drive upload completed.");
+
+	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
-	}*/
-	@AfterSuite
+	}
+	/*@AfterSuite//PDF HTML
 	public void after_all() throws Exception {
 	
 	    
@@ -142,6 +152,6 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 	           
    SendMail.sendEmailWithAttachment(recipients, subject, body,  ReportWithTime.getAttachmentPaths());
-	}
+	}*/
 	
 }

@@ -23,6 +23,7 @@ import config.ConfigReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pagefunctions.Cart_Functionality_Page;
 import pagefunctions.End_to_End_Flow_Page;
 import pagefunctions.WebsiteLaunch;
 
@@ -34,7 +35,8 @@ public class End_To_End_Flow_Step {
 	CommonMethods common = new CommonMethods();
 	ActionClass actionClass = new ActionClass();
 	JSExecutor js = new JSExecutor();
-	
+	private int initialCartCount;
+
 	int cartQuantity;
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 
@@ -42,7 +44,7 @@ public class End_To_End_Flow_Step {
 	String fakeLastName = dataGenerator.generateFakeLastName();
 	String fakeMobileNumber = dataGenerator.generateFakeMobileNumber();
 	String fakeEmailId = dataGenerator.generateFakeEmail();
-
+	Cart_Functionality_Page cf = new Cart_Functionality_Page();
 	End_to_End_Flow_Page ep = new End_to_End_Flow_Page();
 
 	@Given("User is on BirlaOpus HomePage {string}")
@@ -100,6 +102,9 @@ public class End_To_End_Flow_Step {
 
 	@Then("User click on add to cart button")
 	public void user_click_on_add_to_cart_button() throws InterruptedException {
+		// Get cart count before adding the product
+	    initialCartCount = cf.getCartItemCount();
+	    System.out.println("Before Add To Cart : " + initialCartCount);
 		wait.waitForElementVisible(ep.AddToCartButton);
 		Thread.sleep(2000);
 		ep.clickAddToCart();

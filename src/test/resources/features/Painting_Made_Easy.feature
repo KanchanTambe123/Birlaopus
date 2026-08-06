@@ -99,7 +99,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     And User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
+    And User enters valid OTP and clicks on the Verify OTP button
     Then User enter invalid first name on painting made easy "<invalid_first_name>"
     And User enter valid last name on painting made easy
     And User enter valid email id on painting made easy
@@ -117,7 +117,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     And User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
+    And User enters valid OTP and clicks on the Verify OTP button
     Then User enter valid first name on painting made easy
     And User enter invalid last name on painting made easy "<invalid_last_name>"
     And User enter valid email id on painting made easy
@@ -135,7 +135,7 @@ Feature: To Validate Painting Made Easy Form-Get Free Quote functionality
     And User clicks on the Create an account option
     And User enters valid mobile number on the Create an Account
     And User clicks on the Create an Account button
-    And User enters bypass OTP and clicks on the Verify OTP button
+    And User enters valid OTP and clicks on the Verify OTP button
     Then User enter valid first name on painting made easy
     And User enter valid last name on painting made easy
     And User enter invalid email id on painting made easy "<invalid_email_id>"

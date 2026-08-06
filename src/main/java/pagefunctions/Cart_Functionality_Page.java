@@ -32,26 +32,42 @@ public class Cart_Functionality_Page {
 	
 	@FindBy(id = "cart-icon")
 	private WebElement cartIcon;
-	
+	@FindBy(xpath = "//span[@class='cart__card-qty']")
+	public WebElement cartQuantity;
 	
 	
 	public  Cart_Functionality_Page() {
 		driver = DriverManager.getDriver();
 		PageFactory.initElements(driver, this);
 	}
+	public int getCartQuantity() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+	    wait.until(ExpectedConditions.visibilityOf(cartQuantity));
+
+	    ((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});", cartQuantity);
+
+	    return Integer.parseInt(cartQuantity.getText().trim());
+	}
 
 	public int getCartItemCount() {
 	    try {
 	        String countValue = cartIcon.getAttribute("data-count");
 	        return Integer.parseInt(countValue);
-	    } catch (NumberFormatException | NullPointerException e) {
-	        return 0; // cart empty
+	    } catch (Exception e) {
+	        return 0;
 	    }
 	}
-
 	public void waitForCartCountToIncrease(int previousCount) {
-	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
-	    wait.until(driver -> getCartItemCount() > previousCount);
+	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
+
+	    wait.until(driver -> {
+	        int currentCount = getCartItemCount();
+	        System.out.println("Previous Count: " + previousCount +
+	                           " | Current Count: " + currentCount);
+	        return currentCount > previousCount;
+	    });
 	}
 
 	

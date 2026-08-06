@@ -14,76 +14,125 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.DriveScopes;
 import com.google.api.services.drive.model.File;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 public class GoogleDriveUploader {
 
-	public static final String APPLICATION_NAME = "QA Automation GDrive";
-	public static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-	public static final String TOKENS_DIRECTORY_PATH = "tokens";
-	public static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_FILE);
-	public static final String CREDENTIALS_FILE_PATH = "./src/main/resources/dtin-internal-projects.json";
-	public static final String SHARED_DRIVE_ID = "1ehw0bxGAbK_ZB1GmrG8Nadb304SQAGKq";
- 
-	public static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
+    public static final String APPLICATION_NAME = "QA Automation GDrive";
+    public static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    public static final String TOKENS_DIRECTORY_PATH = "tokens";
+    public static final List<String> SCOPES = Collections.singletonList(DriveScopes.DRIVE_FILE);
 
-		// Load client secrets.
-		FileInputStream in = new FileInputStream(CREDENTIALS_FILE_PATH);
-		GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+    public static final String CREDENTIALS_FILE_PATH =
+            "./src/main/resources/dtin-internal-projects.json";
 
-		// Build flow and trigger user authorization request.
-		GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(HTTP_TRANSPORT, JSON_FACTORY,
-				clientSecrets, SCOPES)
-				.setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
-				.setAccessType("offline").build();
+    // Folder ID inside your Shared Drive
+    public static final String PARENT_FOLDER_ID =
+            "1uSggWZ8tzM20e8RGyx7rUmREJXkbp2qE";
 
-		LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8085).build();
-		return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
-	}
+    public static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
 
-	public static void uploadFileToDrive(List<String> attachmentPaths) throws IOException, GeneralSecurityException {
-		// Build a new authorized API client service.
-		final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-		Drive service = new Drive.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-				.setApplicationName(APPLICATION_NAME).build();
-		// File's metadata.
-		// create folder
-		String folderName = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss").format(new Date());
-		File fileMetadata = new File();
-		fileMetadata.setName(folderName);
-		fileMetadata.setMimeType("application/vnd.google-apps.folder");
-		fileMetadata.setParents(Collections.singletonList(SHARED_DRIVE_ID));//add driver path where to create folder on particuler location
-		// create folder
-		File folder = service.files().create(fileMetadata).setSupportsAllDrives(true).setFields("id").execute();
-		System.out.println("Folder ID: " + folder.getId());
-		// return folder.getId();
+        FileInputStream in = new FileInputStream(CREDENTIALS_FILE_PATH);
 
-		// Upload the file.
-		
+        GoogleClientSecrets clientSecrets =
+                GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
-		for (String reportPath : attachmentPaths) {
-			File fileMetadata1 = new File();
-			fileMetadata1.setName(new java.io.File(reportPath).getName());//file name
+        GoogleAuthorizationCodeFlow flow =
+                new GoogleAuthorizationCodeFlow.Builder(
+                        HTTP_TRANSPORT,
+                        JSON_FACTORY,
+                        clientSecrets,
+                        SCOPES)
+                        .setDataStoreFactory(
+                                new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+                        .setAccessType("offline")
+                        .build();
 
-			String mimeType = reportPath.endsWith(".html") ? "text/html" : "application/pdf";
-			FileContent mediaContent = new FileContent(mimeType, new java.io.File(reportPath));
+        LocalServerReceiver receiver =
+                new LocalServerReceiver.Builder().setPort(8085).build();
 
-			fileMetadata1.setParents(Collections.singletonList(folder.getId()));//add folder path where to upload file on particuler location
+        return new AuthorizationCodeInstalledApp(flow, receiver)
+                .authorize("user");
+    }
 
-			File file = service.files().create(fileMetadata1, mediaContent).setFields("id").setSupportsAllDrives(true)
-					.execute();
-			System.out.println("File ID: " + file.getId());
+    public static void uploadFileToDrive(List<String> attachmentPaths)
+            throws IOException, GeneralSecurityException {
 
-			System.out.println("File upload complete");
-		}
+        final NetHttpTransport HTTP_TRANSPORT =
+                GoogleNetHttpTransport.newTrustedTransport();
 
-	}
+        Drive service = new Drive.Builder(
+                HTTP_TRANSPORT,
+                JSON_FACTORY,
+                getCredentials(HTTP_TRANSPORT))
+                .setApplicationName(APPLICATION_NAME)
+                .build();
+
+        // Create timestamp folder
+        String folderName =
+                new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss").format(new Date());
+
+        File folderMetadata = new File();
+        folderMetadata.setName(folderName);
+        folderMetadata.setMimeType("application/vnd.google-apps.folder");
+        folderMetadata.setParents(Collections.singletonList(PARENT_FOLDER_ID));
+
+        File folder = service.files()
+                .create(folderMetadata)
+                .setSupportsAllDrives(true)
+                .setFields("id,name")
+                .execute();
+
+        System.out.println("Folder Created : " + folder.getName());
+        System.out.println("Folder ID      : " + folder.getId());
+
+        // Upload all reports
+        for (String reportPath : attachmentPaths) {
+
+            java.io.File localFile = new java.io.File(reportPath);
+
+            if (!localFile.exists()) {
+                System.out.println("File not found : " + reportPath);
+                continue;
+            }
+
+            String mimeType;
+
+            if (reportPath.toLowerCase().endsWith(".html")) {
+                mimeType = "text/html";
+            } else if (reportPath.toLowerCase().endsWith(".pdf")) {
+                mimeType = "application/pdf";
+            } else if (reportPath.toLowerCase().endsWith(".zip")) {
+                mimeType = "application/zip";
+            } else {
+                mimeType = "application/octet-stream";
+            }
+
+            File fileMetadata = new File();
+            fileMetadata.setName(localFile.getName());
+            fileMetadata.setParents(Collections.singletonList(folder.getId()));
+
+            FileContent mediaContent =
+                    new FileContent(mimeType, localFile);
+
+            File uploadedFile = service.files()
+                    .create(fileMetadata, mediaContent)
+                    .setSupportsAllDrives(true)
+                    .setFields("id,name")
+                    .execute();
+
+            System.out.println("Uploaded : " + uploadedFile.getName());
+            System.out.println("File ID  : " + uploadedFile.getId());
+        }
+
+        System.out.println("All reports uploaded successfully.");
+    }
 }

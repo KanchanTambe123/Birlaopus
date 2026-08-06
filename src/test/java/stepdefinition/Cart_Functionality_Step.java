@@ -27,6 +27,7 @@ public class Cart_Functionality_Step {
 	ActionClass actionClass = new ActionClass();
 	JSExecutor js = new JSExecutor();
 
+    private int initialCartCount;
 	ColourLetter_SignUp_Page cl = new ColourLetter_SignUp_Page();
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 	String fakeEmailId = dataGenerator.generateFakeEmail();
@@ -36,14 +37,8 @@ public class Cart_Functionality_Step {
 
 	@Then("Product should be added to the cart successfully")
 	public void product_should_be_added_to_the_cart_successfully() {
-		int initialCartCount = cf.getCartItemCount();
-
-		cf.waitForCartCountToIncrease(initialCartCount);
-
-		int updatedCartCount = cf.getCartItemCount();
-
-		Assert.assertTrue(updatedCartCount > initialCartCount,
-				"Cart count did not increase after adding product to cart");
+	    Assert.assertEquals(cf.getCartQuantity(), 1,
+	            "Product was not added to the cart.");
 	}
 
 	@Then("Cart count should be updated to {string}")
