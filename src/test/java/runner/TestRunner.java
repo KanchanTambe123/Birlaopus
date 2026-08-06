@@ -59,8 +59,8 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	    ReportWithTime.createTimestampReports();
 
 	    List<String> recipients = Arrays.asList(
-	            "kanchan.tambe@deptagency.com"
-	            ,"hemendra.rana@deptagency.com",
+	            "kanchan.tambe@deptagency.com",
+	            "hemendra.rana@deptagency.com",
 	            "shital.mandhare@deptagency.com",
 	            "khushali.shukla@deptagency.com",
 	            "monica.ledwani@deptagency.com",
