@@ -29,11 +29,10 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     And User clicks on the Proceed to Shipment button
     Then User clicks on the Proceed to payment button
 
-  
     Examples: 
-      | navmenu | navtab       | productname   | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity | 
-      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 | 
-@test
+      | navmenu | navtab       | productname   | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
+
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)
     Then User clicks the cart icon on the header and removes the product from the cart if available
@@ -88,7 +87,7 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Then colour swatch should be removed from the wishlist successfully
 
     Examples: 
-      | navmenu | navtab       | productname   | tabName    | optionText       | Colour    |
+      | navmenu | navtab       | productname   | tabName    | optionText          | Colour    |
       | Shop    | Colour Tools | Colour Swatch | Favourites | Delete colour story | Rose dust |
 
   #---------------------------------- Scenario 6 ----------------------------------#

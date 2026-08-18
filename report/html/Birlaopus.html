@@ -48,7 +48,7 @@
 </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Aug 06, 2026 15:18:26</span></a>
+<a href="#"><span class="badge badge-primary">Aug 18, 2026 20:51:24</span></a>
 </li>
 </ul>
 </div>
@@ -92,7 +92,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@module</a><a class="dropdown-item" href="#">@test</a>
+<a class="dropdown-item" href="#">@test</a><a class="dropdown-item" href="#">@module</a>
 </ul>
 </li>
 </ul>
@@ -103,9 +103,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.</p>
+            <p class="name">To Validate Get in Touch Contact Form Subscription</p>
             <p class="text-sm">
-              <span>3:18:26 PM</span> / <span>00:02:51:476</span>
+              <span>8:51:25 PM</span> / <span>00:00:50:937</span>
               <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
@@ -113,10 +113,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.</h5>
-<span class='badge badge-success'>08.06.2026 3:18:26 PM</span>
-<span class='badge badge-danger'>08.06.2026 3:21:18 PM</span>
-<span class='badge badge-default'>00:02:51:476</span>
+<h5 class="test-status text-pass">To Validate Get in Touch Contact Form Subscription</h5>
+<span class='badge badge-success'>08.18.2026 8:51:25 PM</span>
+<span class='badge badge-danger'>08.18.2026 8:52:16 PM</span>
+<span class='badge badge-default'>00:00:50:937</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -128,14 +128,14 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</div>
       </div>
     </div>
         <div class="scenario_outline collapse">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</div>
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</div>
                 </div>
               </div>
               <div class="card-body mt-3 collapse">
@@ -177,47 +177,64 @@
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User clicks the cart icon on the header and removes the product from the cart if available</span>
+                    <span>When User hovers over the Get in Touch popup</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>When User select product main navigation L1 "Shop", sub navigation L2 "Colour Tools" and L3 product name "Colour Swatch" through navigation bar</span>
+                    <span>And User clicks on the Get in Touch option</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User selects Colour for colour swatch "Rose dust"</span>
+                    <span>And User updates the mandatory field Email</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User selects colour swatch quantity 1</span>
+                    <span>And User updates the mandatory field Pincode "400001"</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>Then User enters a valid pincode "400703" and check product availability</span>
+                    <span>And User clicks submits the Get in Touch form</span>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User click on add to cart button</span>
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div> API Type: lead/shortForm
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>Status Code: 200
+      </div>
+      <div> Response Time: 2219 ms
+      </div>
       <div>
       </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User click on View cart & Checkout button</span>
+      <div> Request Payload (Encrypted):
+      </div>
+      <div>{"data":"MTI4OjoxMDAwMDo6YTM1ZTdhN2MyY2EzYTNkY2JhNDJjMjA1M2Q0MDEyZWM6OjFiYTU5YTdlMjZmMjdhYmQ3YTI0MTdmMDczMWI5ZTA1OjpZMnZNZ2VxVFJQMTU5WlJKZkQzc2lFNzNCQlc1Umd6MXNYdkpKUzVpYjJ1cFF6OFE0ejNzemJBWU9YQWR2dlNvdUJhbFpWbklqdDEvQlRXU09nTUxNdUtBRGVHQnZrejdTUmZVTGxJTVhjbytWMDZCT01qZU1BUG90QmlsRHBRQmFJbnAwTmhTelg3VytwK1kwUlJvVWlaQndXNm50V2lkT2lSbGZ3dEdCQXFqYTV2NjFaa2p2b0dXSkhzTllMejZxNnNEQnhxRDBTTDM0bmtHQnZIMEpxWU1iajZDT1dUY0Y0Z2NlTVJvbUpraE9tMC9UU2tDb1ZnZktZekJXYjdnZERTZ3hpV0kwVWQyRVhyR1hERGROZXlEOEJZUXUrSE5QcVhIV3RxZEpLMUcrZUNjOGh6aW9lSm9RdHlMVEU1LzV1NS9rZmpMWFFPd0pXQ0M3Z2pCK24zTk9Bd29zdU9UNFVIdHZaenJ4TXJ5NVA4MlV0Tk51aWRsQ0NiN2lDV3JjQnlzNmxtZkxSTFQwWlI1NmxpZUhuWW14MnpITEJ3eFlYY2tVczRmK3l2MDBEcDJxN2NSVlY5ZEJtWFhVRk5KVTFoVkFqUkNJWEcrdllYMWNGVnJjRHVEQS9VcjJ6VXdIVHpQU2dRaWY0VDBqenJMQUtWNGo2WC92ckdTUmhBRU5tQWNCdVRvYkZLMjZIZjZndGRwL0dwczB3S0lodndqbWtwMHlWZTkrdUxUdWgwUUFLZTJwb3pCNjBTbHRQdHAyNGt4dkFYenlRSkdITlNIcGx4dGg4ampOSlkvSWJrNEExSUV5dmF0RytjeGNjcGF2by9sczRpTldVUTA2VHpyMFkrbWQzcU55WGlJL1JsVFRXSC9MT0RONlA0M1gzN251WG0xRTY4Z1NvaXRKNDBwZTUzM2p2UFpjSTBzM1RMbE1PSTc5STE2RW53b01ZQnFqWnpDZDdxR1VobkRSU0tyaDkwWVczS3RHOVRiMkxaMzJranZhaVRvNGtlWVRtNjM5aEtsaTdiVkhVSHhqb3loYi9RS3I0dE9CSTYzMjVmMHIyQjJGUWNJM2dYcktTTjg2T29rV0VyZERrVndidmRJbStsbE4rWTloSkNMQ1RhcDZNU3F1ZFdhM1RVVUN2SXE2bXVYL0pYZkRUbi90N2k3ZTBvaWpsc2NpK3k5dWVIMHhKSjhjMnJJdDFCa3d0UTh5bUFVWXFlRkhWSU40YzFUVTlia3F4NDYwdmo1K0tsZ0FWOWlZNXlTclV2YlJtR0tqTGF3MHljWmpVV2IzSnFZNlhkWmxuTXF3L1FhT0hHWVNocSt0UTdxS0VrRlFScUwycUw4YmxhODRmWGFlS2NxTEN6d0FGdkc0aEhtQ2hoRDY5WW5KS3RPdlJoZWZnMDhGUk1PT0RZaFhVQXVUbGJRcnhxWklJZkp2WVFLNEIwRFFSWjY1ZXhCbmswM2pmbDd0d1RZbDl1M0NVMzQ0WURickx1bUE2SlZPZVF5L3dzc0ZJY3VYTUxWMmlJVXNvVjVpWDgyOGVMWGo5a2RQYVYrQ1hnUTVjVEJWWEdETWUvU2k3c00yZytQcm9aQS9QNDhzK3U2cGJSdUxoZFF1REErbHZadlFHN08zZmtoYlAxRFJIeVdIQ2hVbjhpNEhNb1NPTFhSSFZqbkJZSGp0cFpWSEI5ZEtqcVlBZitIMzZSNW5FSU1RdnpuY2NwNDVpS1ZWem10QktyWlRzejFTcFV5ci9pRW1HeDBvQTV6T08zSlFEbnE2VGpnVHZ1dkFDWWN4YVIyMm9KSnlmMnN0MklFRFl0TzhMSFozZTVnVnRVZkU2OFc0ajFlb0J1UVExL3BXa2ZhZlBXdGR5VTBuL2NvaWZGdmJ1U2VubEFIMkgvWVRIMkpjNCtJNWlmcDQ5NnE4NmRnNWlFdm5aSTA2VlRmbUlUOC9qVjB0SFNxSUszTlVHZlpwSjhzWVVRSm1iT2lXZC9BMmhSbGZWMjRZcGVXa0hUd1lEZG8xZWtLVG9yOEFudytOakMxZE84YXUyejhtak45RzZnbXpiMmNHZHlsZk0xeEo2eWV4ZTB0M2NLOHB0T0pqUHFqVDVzK1YvTGlKcW9PQWlzYjl6OGVCSHpBK2VVcVFjTGNENW9YNVdMaXZIVUd1T1h0b1EraUplaFpiWU45RmhaZVlnWjgzNThDMEpOeTc2ak5kNE9XazVrOXNKejdrMzJHVkRwL1padFNZVGpuMm00Z05FTTNROWxPblVPRmJQOTBHOVlKM29QY1Q4ZjRuMUN1QUpsMVdBcmtkWDF6RUpvanNvNE1RdndKRnFPMTNpRHBhSjdwVm9TWU1EbnVUc1dCTVozK2ZSaFdZb2plU0hzVlVXN2NWbENJbURoRFdWcVY5NSs2aUJvMTlqTE1DeDlNcURKeWlkMlVPakkya0FyaWx6K0tvcHJQU2l3NGgxN0NLTm1NeE01aFplOURIQWFybU5ocVdIbHlQMlZXR1VITnJpZXlHNC9CSW9LUXA4NTJHT3RDQnNEaXBOWjhCa0JHYUxrOHhzZHVwd0JLdTlCU2N2WTFNaEhxMVNjRkJUMTRMakZhMmdlbEIzMllzQit5ejZvVkd5WmVQcDYyYW4xd0thUlVkamVyYWZDTkJSaEg4b0ErZ1dEa1BCU0FxR2tuVHRYNllaSTFwNW9XSTV4dHVjRFNrOXhNY1FkWkFFTHdtUDVHZzZNZ09hYW5Rc2EycmFnTzlid1JwZkxoVGFRczJ2OUFFYVVZaHNhOFozWDBQREV1eXp6R2VQNi84YTBKM1B6bHdxVG4xUW5OWFJDU3FCd3lCVkRBK2lWeXQvcmpyVlBRR09ESXR4SmlZcWdBZk84PQ=="}
+      </div>
+      <div> Decrypted Request:
+      </div>
+      <div>{"header":{},"body":{"firstName":"sham","lastName":"patil","phone":"7019144066","alternatePhone":"","email":"bud.hansen@gmail.com","propertyNameStreet":"","propertyNamePinCode":"","propertyNameCity":"","city":"","state":"","pinCode":"400001","lat":"","long":"","whatsappNumber":"","iclAreaToBePaintedC":"","iclRoomCountC":"","iclCarpetAreaC":"","iclProjectInfo":"","subType":"Paintcraft Service","street":"","iclPreferredModeOfContactC":"","iclDealerCodeC":"","iclOpusIdC":"","iclLeadUniqueIdC":"","iclAvailableService":"","iclLeadJourneyStatusC":"New","iclLeadJourneyDroppedAtC":"","waterproofingRequirementC":"","iclWoodFinishRequirement":"","iclQualificationStatusC":"Un - Qualified","iclLeadContextC":"Paintcraft Service","iclNameOfProjectC":"","iclContractorMobileNoC":"","iclLeadTypeC":"Painting Service Enquiry","firmNameC":"","firmTypeC":"","iclFirmAddressCityS":"","iclFirmAddressPostalCodeS":"","iclFirmAddressStreetS":"","leadSubSource":"Get in Touch","iclHouseTypeC":"","iclBudgetCategoryC":"","totalEstimation":"","interiorEstimation":"","exteriorEstimation":"","selectedProductName":null,"selectedProductQuantity":null,"amountOfProduct":null,"siteVisitDateTimeC":"","iclPreferredTimeOfContactC":"","iclPreferredDateC":"","scheduleInstantVisitC":"","isAreaServiceable":true,"haveMyOwnContractor":false,"pageTitle":"","pageUrlFull":"https://www.birlaopus.com/","utmAdGroup":"","utmCampaign":"","utmMedium":"","utmSource":"","utmContent":"","utmDevice":"","utmMatchType":"","utmNetwork":"","utmPlacement":"","utmTerm":"","fbclId":"","gclId":"","formName":"","formId":"","descriptionWebsite":""}}
+      </div>
       <div>
       </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then Product should be added to the cart successfully</span>
-      <div>
+      <div> Response Payload (Encrypted):
       </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>Then User clicks the cart icon on the header and removes the product from the cart if available</span>
+      <div>{"responseJson":"MTI4OjoxMDAwOjo1MjY3YzBlZDRmZjc1MTE2NzVhMWQ1MDgyMjNlMTg4Nzo6YmE3YWNiOGE4NWEwZjgzZTMwMTllY2U2YWY4NTQ4YTE6OlZYSUxNQkF6ZTdJNU5BalBYbTEzUnROYXpFZHZKWW4wZEpHMW8rN0hZZFNRdzlGc2s3OE50cHhoOWlwZzM1MFJ1SnVaNWQraXJ3SXNpYUhwL09FYmFHVHJXMUVPUmJCRFFrVGRqZWJWK2ZBUHh5czNjNkZDdnBjTnFJayt4ZU9SN2NGNHdqR053RnBoUXoxdTBWNFZMMTlyREtHR1pOdVlnRVpTTXBWTWJIT25iNEptOGVEOWhkcVpxUWkzQ3hwZDIyT25KRnB6UnhKNW1WZXhoOGlhUVpBL3M1cGVKWFhxcy9HWlFpZW1OWkpjUFFNS1lmZXBiMGZjNG9zTnpBa04zTVFLRlRLcjZmL3NCVzF1ZnpNZ0dsTkFaalVTWHEzU1JGempuWnpuWnRBUnBqZldVRklXNUlBK21RUzljc2lC"}
+      </div>
+      <div> Decrypted Response:
+      </div>
+      <div>{"header":{"status":"SUCCESS"},"body":{"statuscode":"200","LeadId":"00QS300000esJgAMAU","LeadNumber":"SR-02918482","Message":"Lead Created/Updated Successfully !!","iclLeadUniqueIdC":"93bde887-47bc-32bf-a4db-72da905d9d5b"},"errorBody":{}}
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
       <div>
       </div>
                   </div>
@@ -250,42 +267,6 @@
 <span class="meta">
 <span class='badge log pass-bg'>1</span>
 </span>
-<p class="name">@module</p>
-<p class="duration text-sm">1 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>@module</h4>
-<span status="pass" class='badge log pass-bg'>1 passed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>15:18:26 PM</td>
-<td>
-<a href="#" class="linked" test-id='1' id='3'>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</a>
-<div class="">
-<span class="badge badge-default">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist..To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
-<span class='badge log pass-bg'>1</span>
-</span>
 <p class="name">@test</p>
 <p class="duration text-sm">1 tests</p>
 </div>
@@ -305,11 +286,47 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>15:18:26 PM</td>
+<td>20:51:25 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</a>
 <div class="">
-<span class="badge badge-default">To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist..To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)</span>
+<span class="badge badge-default">To Validate Get in Touch Contact Form Subscription.To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>1</span>
+</span>
+<p class="name">@module</p>
+<p class="duration text-sm">1 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@module</h4>
+<span status="pass" class='badge log pass-bg'>1 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>20:51:25 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='3'>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</a>
+<div class="">
+<span class="badge badge-default">To Validate Get in Touch Contact Form Subscription.To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</span>
 </div>
 </td>
 </tr>
@@ -330,13 +347,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Aug 06, 2026 15:18:26</h3>
+<h3>Aug 18, 2026 20:51:24</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Aug 06, 2026 15:21:18</h3>
+<h3>Aug 18, 2026 20:52:16</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -407,7 +424,7 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>16</b> steps passed</small></div>
+<div><small data-tooltip='100%'><b>13</b> steps passed</small></div>
 <div>
 <small data-tooltip='0%'><b>0</b> steps failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
@@ -426,7 +443,7 @@
 </div></div>
 <script>
 var timeline = {
-"To Validate the End-to-End colour swatch journey flow for a logged-in user, including adding and removing colour swatches and managing the wishlist.":171.476
+"To Validate Get in Touch Contact Form Subscription":50.937
 };
 </script>
 <div class="row">
@@ -436,7 +453,7 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>@module</td>
+<td>@test</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -444,7 +461,7 @@ var timeline = {
 <td>100%</td>
 </tr>
 <tr>
-<td>@test</td>
+<td>@module</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -471,7 +488,7 @@ warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 16,
+passGrandChild: 13,
 failGrandChild: 0,
 warningGrandChild: 0,
 skipGrandChild: 0,

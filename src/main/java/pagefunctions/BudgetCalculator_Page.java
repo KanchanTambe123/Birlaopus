@@ -105,42 +105,32 @@ public class BudgetCalculator_Page {
 
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-	    List<WebElement> allOptions = wait.until(ExpectedConditions
-	            .presenceOfAllElementsLocatedBy(
-	                    By.xpath("//div[contains(@class,'cmp-text-button')]//a")));
+	    String xpath = "//div[contains(@class,'cmp-text-button')]//a" +
+	                   "[.//span[contains(@class,'cmp-text-btn-text') and " +
+	                   "normalize-space()='" + spaceName + "']]";
 
-	    boolean isClicked = false;
+	    WebElement option = wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))
+	    );
 
-	    for (WebElement option : allOptions) {
+	    // Scroll to the option
+	    ((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
+	            option
+	    );
 
-	        // Skip hidden elements
-	        if (!option.isDisplayed()) {
-	            continue;
-	        }
+	    // Wait until clickable
+	    wait.until(ExpectedConditions.elementToBeClickable(option));
 
-	        String optionText = option.getText().trim();
+	    try {
+	        option.click();
+	    } catch (ElementClickInterceptedException e) {
 
-	        if (optionText.equalsIgnoreCase(spaceName)) {
-
-	            ((JavascriptExecutor) driver).executeScript(
-	                    "arguments[0].scrollIntoView({block:'center'});", option);
-
-	            wait.until(ExpectedConditions.visibilityOf(option));
-	            wait.until(ExpectedConditions.elementToBeClickable(option));
-
-	            try {
-	                option.click();
-	            } catch (ElementClickInterceptedException e) {
-	                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", option);
-	            }
-
-	            isClicked = true;
-	            break;
-	        }
-	    }
-
-	    if (!isClicked) {
-	        throw new AssertionError("Visible space option not found: " + spaceName);
+	        // JavaScript click as fallback
+	        ((JavascriptExecutor) driver).executeScript(
+	                "arguments[0].click();",
+	                option
+	        );
 	    }
 	}
 	public void verifyTabIsLocked(String tabName) {

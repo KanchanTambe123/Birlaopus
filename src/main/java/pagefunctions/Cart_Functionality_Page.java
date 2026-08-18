@@ -34,7 +34,10 @@ public class Cart_Functionality_Page {
 	private WebElement cartIcon;
 	@FindBy(xpath = "//span[@class='cart__card-qty']")
 	public WebElement cartQuantity;
-	
+	@FindBy(xpath = "//a[@id='open-select-colour']")
+	public WebElement ViewAllColour;
+	@FindBy(xpath = "//input[@id='search-colours']")
+	public WebElement SearchColour;
 	
 	public  Cart_Functionality_Page() {
 		driver = DriverManager.getDriver();
@@ -104,6 +107,29 @@ public class Cart_Functionality_Page {
 	    js.executeScript("arguments[0].click();", productLink);
 
 	    System.out.println("Second visible product clicked successfully");
+	}
+	
+	public void selectColour(String colourName) {
+
+	    WebDriverWait webWait = new WebDriverWait(
+	            DriverManager.getDriver(),
+	            Duration.ofSeconds(30)
+	    );
+
+	    WebElement colourCard = webWait.until(
+	            ExpectedConditions.visibilityOfElementLocated(
+	                    By.xpath("//div[@class='colour-swatch-card' and @data-colorname='" + colourName + "']")
+	            )
+	    );
+
+	    ((JavascriptExecutor) DriverManager.getDriver()).executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});",
+	            colourCard
+	    );
+
+	    webWait.until(ExpectedConditions.elementToBeClickable(colourCard));
+
+	    colourCard.click();
 	}
 
 }

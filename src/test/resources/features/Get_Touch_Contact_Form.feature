@@ -3,7 +3,7 @@ Feature: To Validate Get in Touch Contact Form Subscription
 
   Background: 
     Given User is on BirlaOpus HomePage "birlaopusHomeUrl"
-
+@test
   #----------------------------------1---------------------------------------------------->
   Scenario Outline: To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user
     When User clicks on the profile icon

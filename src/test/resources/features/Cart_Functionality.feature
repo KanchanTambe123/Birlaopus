@@ -33,7 +33,9 @@ Feature: To Validate Cart Functionality – Add, Update, Remove and Price Valida
     Then User enters the product name "<searchfor>" in the search box
     And User selects and clicks on the product
     Then User click on Shop now button
-    Then User selects Colour "<Colour>"
+    Then User clcik on view all button
+    And User search Colour "<search_colour>"
+    #Then User selects Colour "<Colour>"
     Then User selects quantity <quantity> of "<pack>" Ltr pack
     Then User enters a valid pincode "<pincode>" and check product availability
     And User click on add to cart button
@@ -42,8 +44,8 @@ Feature: To Validate Cart Functionality – Add, Update, Remove and Price Valida
     Then User clicks the cart icon on the header and removes the product from the cart if available
 
     Examples: 
-      | searchfor       | Colour    | quantity | pack | pincode |
-      | Interior paints | Rose dust |        1 |    1 |  411033 |
+      | searchfor          | Colour    | quantity | pack | pincode | search_colour |
+      | Calista Ever Clear | Rose dust |        1 |    1 |  411033 | Rose dust     |
 
   #----------------------------------3---------------------------------------------------->
   Scenario Outline: To verify that the total price is updated correctly when the product quantity is changed through navigation for a logged-in user

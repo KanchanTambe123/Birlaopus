@@ -34,7 +34,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
-      | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
+      | Villa or Bungalow |       1000 |  500001 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
 
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify other categories remain locked when Premium category is selected without login
@@ -46,8 +46,8 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
     Then the Economy and Luxury categories should be displayed as locked
 
     Examples: 
-      | spaceName | carpetArea | pincode |
-      | Studio    |       1000 |  400066 |
+      | spaceName         | carpetArea | pincode |
+      | Villa or Bungalow |       1000 |  500001 |
 
   #---------------------------------- Scenario 3 ----------------------------------#
   Scenario Outline: To verify Book a Free Survey button visibility on other tabs after booking a survey from the Premium tab
@@ -73,7 +73,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
-      | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
+      | Villa or Bungalow |       1000 |  500001 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify thank you pop-up appears when user selects I’ll do it later option
@@ -97,7 +97,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
-      | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
+      | Villa or Bungalow |       1000 |  500001 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
 
   #---------------------------------- Scenario 5----------------------------------#
   #Scenario Outline: To verify thank you pop-up is displayed when user skips all questions
@@ -114,7 +114,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
   # Then A survey booking confirmation message should be displayed successfully
   #Examples:
   # | spaceName         | carpetArea | pincode | requirementType | bhkType | address | iclLeadContextC    | iclLeadTypeC             | iclSubType         | leadSubSource     | time         |
-  #| Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
+  #| Villa or Bungalow |       1000 |  500001| Exteriors       | 2 BHK   | pune    | Paintcraft Service | Painting Service Enquiry | Paintcraft Service | Budget Calculator | 12 PM - 3 PM |
   #---------------------------------- Scenario 6----------------------------------#
   Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
     When User clicks on the profile icon
@@ -137,7 +137,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | Pincode_Unserviceable |
-      | Villa or Bungalow |       1000 |  400066 | Exteriors       | 2 BHK   | pune    |                111222 |
+      | Villa or Bungalow |       1000 |  500001 | Exteriors       | 2 BHK   | pune    |                111222 |
 
   #---------------------------------- Scenario 7----------------------------------#
   Scenario Outline: To verify whether the carpet area can be edited and if the price updates correctly.
@@ -158,7 +158,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
     Examples: 
       | spaceName         | carpetArea | pincode | requirementType | bhkType | address | UpdatecarpetArea |
-      | Villa or Bungalow |       2000 |  411033 | Exteriors       | 2 BHK   | pune    |             2500 |
+      | Villa or Bungalow |       2000 |  500001 | Exteriors       | 2 BHK   | pune    |             2500 |
 
   #---------------------------------- Scenario 8----------------------------------#
   Scenario Outline: To verify that an error message is displayed when an invalid pincode is entered.
@@ -211,7 +211,7 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
     #Then the User should see the list of products matching the carpet area "<carpetArea>" and pincode "<pincode>"
     Examples: 
       | spaceName         | carpetArea | pincode |
-      | Villa or Bungalow |       2000 |  411033 |
+      | Villa or Bungalow |       2000 |  500001 |
 
   #---------------------------------- Scenario 11----------------------------------#
   Scenario Outline: To verify Download Estimate button is clickable
@@ -232,4 +232,4 @@ Feature: To Validate the Budget Calculator homepage for a logged-in user(single 
 
     Examples: 
       | spaceName         | carpetArea | pincode |
-      | Villa or Bungalow |       2000 |  411033 |
+      | Villa or Bungalow |       2000 |  500001 |

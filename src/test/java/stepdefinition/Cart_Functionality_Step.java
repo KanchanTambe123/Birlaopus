@@ -58,5 +58,25 @@ public class Cart_Functionality_Step {
 	public void user_selects_and_clicks_on_the_product() {
 		cf.selectSecondVisibleProduct();
 	}
+	@Then("User search Colour {string}")
+	public void user_search_colour(String string) throws InterruptedException {
+		wait.waitForElementVisible(cf.SearchColour);
+		Thread.sleep(2000);
+		//js.scrollUntilElementVisible(bs.carpetAreaInputFiled);
+		//Thread.sleep(2000);
+		cf.SearchColour.clear();
+		Thread.sleep(2000);
+		common.SendInput(string, cf.SearchColour);
+		Thread.sleep(2000);
+		cf.selectColour(string);
+		
+		
+	}
+	@Then("User clcik on view all button")
+	public void user_clcik_on_view_all_button() {
+	   wait.waitForElementVisible(cf.ViewAllColour);
+	   js.scrollUntilElementVisible(cf.ViewAllColour);
+	   js.jsClickWithWait(cf.ViewAllColour);
+	}
 
 }

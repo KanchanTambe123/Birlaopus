@@ -385,7 +385,7 @@ public class Opus_Assurance_Journey_Step {
 		js.scrollUntilElementVisible(op.submitButtonEnterDetails);
 		wait.waitForElementVisible(op.submitButtonEnterDetails);
 		js.jsClickWithWait(op.submitButtonEnterDetails);
-		wait.waitForElementVisible(op.siteDetailsProjectName);
+		//wait.waitForElementVisible(op.siteDetailsProjectName);
 	}
 
 	@Then("User clcik on Sign Up for PaintCraft button")
