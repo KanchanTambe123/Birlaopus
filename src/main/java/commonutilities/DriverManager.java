@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v145.network.Network;
-import org.openqa.selenium.devtools.v145.network.model.RequestId;
+import org.openqa.selenium.devtools.v146.network.Network;
+import org.openqa.selenium.devtools.v146.network.model.RequestId;
 
 import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;

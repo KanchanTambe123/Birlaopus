@@ -20,7 +20,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     Then User clicks on the Proceed to Enter Address button
     And User clicks on the Apply button, verifies the availability of coupon vouchers, and applies a coupon if available
     And User verifies the product quantity in the final order summary "<expectedQuantity>"
-    Then the total payable amount should be correctly calculated and displayed
+    Then the total payable amount should be correctly calculated and displayed on wallpaper
     And User clicks on the Proceed to Shipment button
     Then User clicks on the Proceed to payment button
 

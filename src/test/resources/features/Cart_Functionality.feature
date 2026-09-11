@@ -29,6 +29,8 @@ Feature: To Validate Cart Functionality – Add, Update, Remove and Price Valida
 
   #----------------------------------2---------------------------------------------------->
   Scenario Outline: To verify that a logged-in user can successfully add a product to the cart through searchbar
+   Then User clicks the cart icon on the header and removes the product from the cart if available
+    
     When User clicks on the search icon
     Then User enters the product name "<searchfor>" in the search box
     And User selects and clicks on the product

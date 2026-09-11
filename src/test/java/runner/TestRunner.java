@@ -57,6 +57,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 
 	    ReportUtil.readCucumberReport();
 	    ReportWithTime.createTimestampReports();
+		 //List<String> recipients = Arrays.asList("kanchan.tambe@deptagency.com");
 
 	    List<String> recipients = Arrays.asList(
 	            "kanchan.tambe@deptagency.com",
@@ -67,7 +68,7 @@ public class TestRunner extends AbstractTestNGCucumberTests {
 	            "jalpa.jmody@deptagency.com"
 	    );
 
-	    String subject = "BirlaOpus Regression Suite Report";
+	    String subject = "BirlaOpus Prod Regression Suite Report";
 
 	    String body = "Hi Team,\n\n"
 	            + "The regression suite for today has been executed successfully.\n"

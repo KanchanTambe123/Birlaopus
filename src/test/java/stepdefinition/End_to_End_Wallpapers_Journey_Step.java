@@ -109,5 +109,10 @@ public void user_clicks_the_wishlist_icon_for_wallpapers_on_the_product_details_
 	    wait.waitForElementVisible(ew.PincodeInputFiled);
 	    ew.PincodeInputFiled.sendKeys(string);
 	}
+	
+	@Then("the total payable amount should be correctly calculated and displayed on wallpaper")
+	public void the_total_payable_amount_should_be_correctly_calculated_and_displayed_on_wallpaper() {
+	   ew.verifyTotalPayableAmount();
+	}
 
 }
