@@ -23,6 +23,7 @@ import pagefunctions.ColourLetter_SignUp_Page;
 import pagefunctions.Create_an_Account_Form_Page;
 import pagefunctions.End_to_End_Flow_Page;
 import pagefunctions.Painting_Service_Form_Page;
+import pagefunctions.Sign_In_Functionality_Page;
 
 public class Create_an_Account_Form_Step {
 
@@ -41,7 +42,7 @@ public class Create_an_Account_Form_Step {
 	String fakeFirstName = dataGenerator.generateFakeFirstName();
 	String fakeLastName = dataGenerator.generateFakeLastName();
 	String fakeMobileNumber = dataGenerator.generateFakeMobileNumber();
-
+	Sign_In_Functionality_Page sp = new Sign_In_Functionality_Page();
 	@When("User clicks on the profile icon")
 	public void user_clicks_on_the_profile_icon() throws InterruptedException {
 		Thread.sleep(2000);
@@ -60,7 +61,7 @@ public class Create_an_Account_Form_Step {
 	@Then("User enters valid mobile number on the Create an Account")
 	public void user_enters_valid_mobile_number_on_the_create_an_account() throws InterruptedException {
 		wait.waitForElementVisible(cp.CreateAccountMobileNumberFiled);
-		cp.CreateAccountMobileNumberFiled.sendKeys(fakeMobileNumber);
+		cp.CreateAccountMobileNumberFiled.sendKeys("8375978223");
 		Thread.sleep(2000);
 	}
 
@@ -75,6 +76,15 @@ public class Create_an_Account_Form_Step {
 		Thread.sleep(2000);
 		cp.enterOtpAndSubmit("1111");
 		Thread.sleep(2000);
+	}
+	
+	@Then("User enters valid OTP on profile page and clicks on the Verify OTP button")
+	public void user_enters_valid_otp_on_profile_page_and_clicks_on_the_verify_otp_button() throws InterruptedException {
+		Thread.sleep(2000);
+		cp.enterOtpWithoutBypass("1111");
+        cp.clickVerifyOtpButton();
+        Thread.sleep(2000);
+		
 	}
 
 	@Then("User enters valid first name")
@@ -140,9 +150,9 @@ public class Create_an_Account_Form_Step {
 	}
 
 	@Then("User enters bypass OTP and clicks on the Verify OTP button")
-	public void user_enters_bypass_otp_and_clicks_on_the_verify_otp_button() {
+	public void user_enters_bypass_otp_and_clicks_on_the_verify_otp_button() throws InterruptedException {
 
-		cp.enterBypassOtpAndVerify(fakeMobileNumber);
+	cp.enterBypassOtpAndVerify(fakeMobileNumber);
 
 	}
 
@@ -164,7 +174,16 @@ public class Create_an_Account_Form_Step {
 	        Assert.assertEquals(actualText, expectedMessage);
 	    }
 	}
-
+	@Then("User should see a popup with the message Are you sure you want to delete your account? {string}")
+	public void user_should_see_a_popup_with_the_message_are_you_sure_you_want_to_delete_your_account(String answer) throws InterruptedException {
+		cp.clickLogoutPopupButton(answer);
+		Thread.sleep(2000);
+	}
 		
-
+	@When("User clicks on the delete account option")
+	public void user_clicks_on_the_delete_account_option() {
+	wait.waitForElementVisible(cp.deleteAccount);
+	js.scrollUntilElementVisible(cp.deleteAccount);
+	js.jsClickWithWait(cp.deleteAccount);
+	}
 }

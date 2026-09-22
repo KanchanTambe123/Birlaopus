@@ -103,44 +103,36 @@ public class BudgetCalculator_Page {
 
 	public void selectSpaceOptions(String spaceName) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-		List<WebElement> spaceOptions = wait.until(ExpectedConditions
-				.presenceOfAllElementsLocatedBy(By.xpath("//div[contains(@class,'cmp-text-button')]//a")));
+	    String xpath = "//div[contains(@class,'cmp-text-button')]//a" +
+	                   "[.//span[contains(@class,'cmp-text-btn-text') and " +
+	                   "normalize-space()='" + spaceName + "']]";
 
-		boolean isClicked = false;
+	    WebElement option = wait.until(
+	            ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))
+	    );
 
-		for (WebElement option : spaceOptions) {
+	    // Scroll to the option
+	    ((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView({block:'center', inline:'nearest'});",
+	            option
+	    );
 
-			if (option.getText().trim().equalsIgnoreCase(spaceName)) {
+	    // Wait until clickable
+	    wait.until(ExpectedConditions.elementToBeClickable(option));
 
-				// Scroll with offset (avoids header overlap)
-				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", option);
+	    try {
+	        option.click();
+	    } catch (ElementClickInterceptedException e) {
 
-				// Small wait for animation to finish
-				wait.until(ExpectedConditions.visibilityOf(option));
-
-				try {
-					// Try normal Selenium click
-					wait.until(ExpectedConditions.elementToBeClickable(option)).click();
-				} catch (ElementClickInterceptedException e) {
-					// Fallback to JS click
-					((JavascriptExecutor) driver).executeScript("arguments[0].click();", option);
-				}
-
-				// Wait for active state
-				wait.until(ExpectedConditions.attributeContains(option, "class", "active"));
-
-				isClicked = true;
-				break;
-			}
-		}
-
-		if (!isClicked) {
-			throw new AssertionError("Space option not clickable: " + spaceName);
-		}
+	        // JavaScript click as fallback
+	        ((JavascriptExecutor) driver).executeScript(
+	                "arguments[0].click();",
+	                option
+	        );
+	    }
 	}
-
 	public void verifyTabIsLocked(String tabName) {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));

@@ -9,8 +9,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v145.network.Network;
-import org.openqa.selenium.devtools.v145.network.model.RequestId;
+import org.openqa.selenium.devtools.v147.network.Network;
+import org.openqa.selenium.devtools.v147.network.model.RequestId;
 
 import config.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -122,6 +122,7 @@ public class DriverManager {
         // Initialize Chrome driver with options
         driver = new ChromeDriver(opt);
         setDriver(driver);
+        
 
         // Configure browser
         getDriver().manage().deleteAllCookies();
@@ -148,6 +149,7 @@ public class DriverManager {
                 Optional.empty(),
                 Optional.empty(),
                 Optional.empty()
+                
         ));
 
        // System.out.println("✅ DevTools Network monitoring enabled");

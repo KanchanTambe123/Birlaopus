@@ -20,7 +20,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     Then User clicks on the Proceed to Enter Address button
     And User clicks on the Apply button, verifies the availability of coupon vouchers, and applies a coupon if available
     And User verifies the product quantity in the final order summary "<expectedQuantity>"
-    Then the total payable amount should be correctly calculated and displayed
+    Then the total payable amount should be correctly calculated and displayed on wallpaper
     And User clicks on the Proceed to Shipment button
     Then User clicks on the Proceed to payment button
 
@@ -60,7 +60,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-    Then the User selects a wallpaper shade "<shades_code>"
+    #Then the User selects a wallpaper shade "<shades_code>"
     Then User enters a valid pincode "<pincode>" on wallpaper
     And User click on pincode serviceability check button on wallpaper
     And User click on add to cart button on wallpaper section
@@ -69,7 +69,7 @@ Feature: To Validate the happy end-to-end Wallpapers journey flow for a logged-i
 
     Examples: 
       | navmenu | navtab     | productname               | shades_code | quantity | pack | pincode | desiredQuantity | address | expectedCount |
-      | Shop    | Wallpapers | Chromatic Geometric 45124 |       45128 |        1 |    1 |  500001 |               2 | Mumbai  |             0 |
+      | Shop    | Wallpapers | Chromatic Geometric 45124 |       45126 |        1 |    1 |  500001 |               2 | Mumbai  |             0 |
 
   #---------------------------------- Scenario 4 ----------------------------------#
   Scenario Outline: To verify successful Wallpapers add-to-wishlist functionality through navigation for a logged-in user

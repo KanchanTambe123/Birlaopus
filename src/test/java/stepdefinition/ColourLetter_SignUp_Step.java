@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonDataGenerator;
@@ -38,6 +40,9 @@ public class ColourLetter_SignUp_Step {
 	@Given("User is on the Colour Letter Page {string}")
 	public void user_is_on_the_colour_letter_page(String colourletterUrl) {
 		WebsiteLaunch.webLaunch(colourletterUrl);
+		 String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+		    ExtentCucumberAdapter.addTestStepLog("Colour Letter : " + currentUrl);
 	}
 
 	@When("User enters a valid email ID in the newsletter subscription field")

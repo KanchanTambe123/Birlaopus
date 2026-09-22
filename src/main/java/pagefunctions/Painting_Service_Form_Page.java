@@ -34,12 +34,12 @@ public class Painting_Service_Form_Page {
 	public WebElement DetailSection;
 	
 	
-	@FindBy(xpath =  "(//button[@type='SUBMIT'])[11]")
+	@FindBy(xpath =  "//button[@id='form-button-1334415790']")
 	public WebElement submitButton;
 	
 	
 	 // Pincode input field
-    @FindBy(xpath = "(//form[@id='paintBudgetDetailsForm']//input[@name='pinCode'])[2]")
+    @FindBy(xpath = "//input[@id='form-text-1116263664']")
     public WebElement PincodeField;
 	
     
@@ -52,7 +52,7 @@ public class Painting_Service_Form_Page {
     @FindBy(xpath = "//a[normalize-space()='Painting made easy']")
     public WebElement PaintingmadeEasySection;
     
-    @FindBy(xpath = "(//a[normalize-space()='Get free quote'])[1]")
+    @FindBy(xpath = "//a[normalize-space()='Get a free quote']")
     public WebElement GetfreequoteButton;
     
     @FindBy(xpath = "//div[@class='cmp-teaser__description'][.//h4='Sorry' and .//p[contains(text(),'expanding rapidly')]]")

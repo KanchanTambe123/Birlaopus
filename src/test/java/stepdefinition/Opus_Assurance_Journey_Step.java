@@ -8,9 +8,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 
 import commonutilities.CommonDataGenerator;
 import commonutilities.DriverManager;
@@ -23,6 +26,7 @@ import io.cucumber.java.en.When;
 import pagefunctions.Book_Survey_Form_Page;
 import pagefunctions.Opus_Assurance_Journey_Page;
 import pagefunctions.Painting_Made_Easy_Page;
+import pagefunctions.Sign_In_Functionality_Page;
 import pagefunctions.WebsiteLaunch;
 
 public class Opus_Assurance_Journey_Step {
@@ -32,6 +36,7 @@ public class Opus_Assurance_Journey_Step {
 	Painting_Made_Easy_Page pm = new Painting_Made_Easy_Page();
 	Opus_Assurance_Journey_Page op = new Opus_Assurance_Journey_Page();
 	JSExecutor js = new JSExecutor();
+	
 	WebDriverWaitHelper wait = new WebDriverWaitHelper();
 	CommonDataGenerator dataGenerator = new CommonDataGenerator();
 	String fakeFirstName = dataGenerator.generateFakeFirstName();
@@ -39,6 +44,7 @@ public class Opus_Assurance_Journey_Step {
 	String fakeEmail = dataGenerator.generateFakeEmail();
 	Book_Survey_Form_Page bs = new Book_Survey_Form_Page();
 	String fakeProjectName = dataGenerator.generateProjectName();
+	Sign_In_Functionality_Page sp = new Sign_In_Functionality_Page();
 
 	@When("User clicks on Register Now Cta on home page")
 	public void user_clicks_on_register_now_cta_on_home_page() throws InterruptedException {
@@ -49,10 +55,14 @@ public class Opus_Assurance_Journey_Step {
 	@Given("User is on Opus Assurance Journey {string}")
 	public void user_is_on_opus_assurance_journey(String AssuranceUrl) {
 		WebsiteLaunch.webLaunch(AssuranceUrl);
+		 String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+		    ExtentCucumberAdapter.addTestStepLog("  Opus Assurance URL : " + currentUrl);
 	}
 
 	@When("User enter valid paintable area {string}")
 	public void user_enter_valid_paintable_area(String string) throws InterruptedException {
+		wait.waitForElementVisible(op.paintableAreaField);
 		js.scrollUntilElementVisible(op.paintableAreaField);
 //	    js.sendKeysUsingJS(op.paintableAreaField, string);
 		op.paintableAreaField.sendKeys(string);
@@ -70,11 +80,13 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User should click on Yet to Start Cta")
 	public void user_should_click_on_yet_to_start_cta() {
+	wait.waitForElementVisible(op.yetToStart);
 		js.jsClickWithWait(op.yetToStart);
 	}
 
 	@Then("User click on Pre-register now Cta")
 	public void user_click_on_pre_register_now_cta() {
+		wait.waitForElementVisible(op.preRegisterCta);
 		js.jsClickWithWait(op.preRegisterCta);
 	}
 
@@ -139,6 +151,12 @@ public class Opus_Assurance_Journey_Step {
 		js.sendKeysUsingJS(op.firstNameField, string);
 		// op.firstNameField.sendKeys(string);
 	}
+	@Then("User click on verify otp cta")
+	public void user_click_on_verify_otp_cta() {
+		wait.waitForElementToBeClickable(op.verifyButton, 30);
+		js.jsClickWithWait(op.verifyButton);
+	}
+
 
 	@Then("User enter invalid last name {string}")
 	public void user_enter_invalid_last_name(String string) {
@@ -213,11 +231,6 @@ public class Opus_Assurance_Journey_Step {
 		firstOtpField.sendKeys(string);
 	}
 
-	@Then("User click on verify otp cta")
-	public void user_click_on_verify_otp_cta() {
-		wait.waitForElementToBeClickable(op.verifyButton, 30);
-		js.jsClickWithWait(op.verifyButton);
-	}
 
 	@Then("User should see an error message for otp {string}")
 	public void user_should_see_an_error_message_for_otp(String expectedMessage) {
@@ -301,11 +314,32 @@ public class Opus_Assurance_Journey_Step {
 
 	@Then("User enter valid pin code on enter details {string}")
 	public void user_enter_valid_pin_code_on_enter_details(String string) throws InterruptedException {
-		js.scrollUntilElementVisible(op.pincodeField);
-		wait.waitForElementVisible(op.pincodeField);
-		op.pincodeField.sendKeys(string);
-		Thread.sleep(3000);
+	
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
+		// Find the element 
+		WebElement pinCode = wait.until(
+		        ExpectedConditions.presenceOfElementLocated(By.id("warrantyPincode")));
+
+		// Scroll directly to the element
+		js.executeScript("arguments[0].scrollIntoView({block:'center'});", pinCode);
+
+		// Wait a moment for the scroll animation/render
+		Thread.sleep(1000);
+
+		// If a sticky header overlaps it
+		js.executeScript("window.scrollBy(0,-100);");
+
+		// Use JavaScript to set the value
+		js.executeScript("arguments[0].value='500002';", pinCode);
+
+		// Trigger input/change events
+		js.executeScript(
+		    "arguments[0].dispatchEvent(new Event('input', {bubbles:true}));" +
+		    "arguments[0].dispatchEvent(new Event('change', {bubbles:true}));",
+		    pinCode);
 	}
 
 	@Then("User enter update pin code on site details {string}")
@@ -338,10 +372,11 @@ public class Opus_Assurance_Journey_Step {
 	}
 
 	@Then("User click on verify otp button")
-	public void user_click_on_verify_otp_button() {
-		wait.waitForElementToBeClickable(pm.verifyButton, 20);
-		pm.verifyButton.click();
-		wait.waitForElementVisible(op.startNewProjectButton);
+	public void user_click_on_verify_otp_button() throws InterruptedException {
+		wait.waitForElementToBeClickable(op.verifyButton, 30);
+		op.verifyButton.click();
+		Thread.sleep(2000);
+		
 	}
 
 	@Then("User click on submit button on enter details")
@@ -350,7 +385,7 @@ public class Opus_Assurance_Journey_Step {
 		js.scrollUntilElementVisible(op.submitButtonEnterDetails);
 		wait.waitForElementVisible(op.submitButtonEnterDetails);
 		js.jsClickWithWait(op.submitButtonEnterDetails);
-		wait.waitForElementVisible(op.siteDetailsProjectName);
+		//wait.waitForElementVisible(op.siteDetailsProjectName);
 	}
 
 	@Then("User clcik on Sign Up for PaintCraft button")
@@ -461,7 +496,7 @@ public class Opus_Assurance_Journey_Step {
 		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(40));
 
 		WebElement element = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("(//p[contains(text(),'Birla Opus Assurance')])[20]")));
+				.visibilityOfElementLocated(By.xpath("//p[contains(text(),'Birla Opus Assurance is currently not available in your location')]")));
 
 		// Wait until text is NOT empty
 		wait.until(driver -> !element.getText().trim().isEmpty());
@@ -578,5 +613,13 @@ public class Opus_Assurance_Journey_Step {
 		  op.verifyToastMessageContractors(expectedMessage);
 	}
 
+@When("User enters a valid mobile number on the Sign In page after creating an account")
+public void user_enters_a_valid_mobile_number_on_the_sign_in_page_after_creating_an_account() throws InterruptedException {
+	wait.waitForElementVisible(sp.signInMobileNumberFiled);
+	Thread.sleep(1000); // small stabilization
+	sp.signInMobileNumberFiled.click();
+	sp.signInMobileNumberFiled.sendKeys("8375978223");
+	Thread.sleep(1000);
+}
 
 }

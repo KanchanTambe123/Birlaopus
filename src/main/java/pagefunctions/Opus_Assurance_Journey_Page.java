@@ -35,10 +35,10 @@ public class Opus_Assurance_Journey_Page {
 	@FindBy(xpath = "(//div[@class='button login-form-btn'])[8]")
 	public WebElement nextCta;
 	
-	@FindBy(xpath = "(//label[@class='cmp-form-options__field-label'])[2]")
+	@FindBy(xpath = "//span[normalize-space()='Yet to start']")
 	public WebElement yetToStart;
 	
-	@FindBy(xpath = "(//button[@type='SUBMIT'])[9]")
+	@FindBy(xpath = "//button[normalize-space()='Pre-register now']")
 	public WebElement preRegisterCta;
 	
 	@FindBy(xpath = "//span[normalize-space()='Create an account']")
@@ -92,11 +92,11 @@ public class Opus_Assurance_Journey_Page {
 	@FindBy(xpath = "//input[@id='userValue']")
 	public WebElement siteDetailsProjectName;
 	
-	@FindBy(xpath = "(//div[contains(@class,'login-form-btn')]//button[text()='Submit'])[3]")
+	@FindBy(xpath = "//button[@id='form-button-640282442']")
 	public WebElement submitButtonEnterDetails;
 
 	
-	@FindBy(xpath = "//*[@id=\"form-button-532466755\"]")
+	@FindBy(xpath = "//button[@id='form-button-338319729']")
 	public WebElement submitButtonSiteDetails;
 	
 	@FindBy(xpath = "//button[@id='nextBtnScreenBreak']")

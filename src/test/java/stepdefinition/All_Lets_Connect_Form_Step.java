@@ -56,6 +56,10 @@ public class All_Lets_Connect_Form_Step {
 	public void user_is_on_the_birla_opus_brands_page(String BrandUrl) {
 		WebsiteLaunch.webLaunch(BrandUrl);
 		lp.killDiscountOverlay();
+
+	    String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+	    ExtentCucumberAdapter.addTestStepLog("Brand URL : " + currentUrl);
 	}
 
 	@And("User navigates to the Let’s Connect form section")

@@ -2,10 +2,14 @@ package pagefunctions;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -38,10 +42,10 @@ public class Create_an_Account_Form_Page {
 	public WebElement CreateAccountButton;
 
 	// otp filed
-	@FindBy(css = "input.cmp-form-text__input[name='otpInput']")
+	@FindBy(xpath = "//div[contains(@class,'otp-input-wrap')]//div[@id='container-2591ab578c']//input[contains(@aria-label,'OTP Input')]")
 	private List<WebElement> otpNoInputFiled;
 
-	@FindBy(xpath = "//form[@id='headerSearchContainer']//button[@id='verify-otp-btn']")
+	@FindBy(id = "verify-otp-btn")
 	public WebElement otpVerifyButton;
 
 	@FindBy(id = "fName")
@@ -65,23 +69,72 @@ public class Create_an_Account_Form_Page {
 	// ------------------- Scenario 2 ------------------------
 	@FindBy(css = "div.api-error")
 	public WebElement duplicateUserErrorMsg;
-	
-	
+
 	// ------------------- Scenario 3 ------------------------
-	
+
 	@FindBy(xpath = "//button[@id='form-button-640282442']")
 	public WebElement submitButton;
-	
+
+	@FindBy(xpath = "//a[contains(@class,'remove-user')]")
+	public WebElement deleteAccount;
 
 	public Create_an_Account_Form_Page() {
 		driver = DriverManager.getDriver();
 		PageFactory.initElements(driver, this);
 	}
 
-	public void enterOtpAndSubmit(String otp) {
+	public void enterOtpAndSubmitProfile(String otp) {
 
-		// Wait only for the first OTP input
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+		wait.until(ExpectedConditions.visibilityOfAllElements(otpNoInputFiled));
+
+		int otpIndex = 0;
+
+		for (WebElement field : otpNoInputFiled) {
+			if (field.isDisplayed() && field.isEnabled()) {
+				field.click();
+				field.clear();
+				field.sendKeys(String.valueOf(otp.charAt(otpIndex)));
+				otpIndex++;
+
+				if (otpIndex == otp.length()) {
+					break;
+				}
+			}
+		}
+
+		wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton)).click();
+
+	}
+
+	public String generateBypassOtp(String mobileNumber) {
+
+		mobileNumber = mobileNumber.replaceAll("\\D", ""); // Keep only digits
+
+		// If +91 is included, keep only last 10 digits
+		if (mobileNumber.length() > 10) {
+			mobileNumber = mobileNumber.substring(mobileNumber.length() - 10);
+		}
+
+		String firstTwo = mobileNumber.substring(0, 2);
+		String lastTwo = mobileNumber.substring(mobileNumber.length() - 2);
+
+		String otp = lastTwo + firstTwo;
+
+		System.out.println("Mobile : " + mobileNumber);
+		System.out.println("OTP : " + otp);
+
+		return otp;
+	}
+
+	public void enterBypassOtpAndVerify(String mobileNumber) {
+
+		String otp = generateBypassOtp(mobileNumber);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+		// Wait only for the FIRST OTP field (OTP UI is dynamic)
 		WebElement firstOtpField = wait.until(ExpectedConditions.visibilityOf(otpNoInputFiled.get(0)));
 
 		firstOtpField.clear();
@@ -90,37 +143,101 @@ public class Create_an_Account_Form_Page {
 		wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton));
 		otpVerifyButton.click();
 	}
-	public String generateBypassOtp(String mobileNumber) {
 
-	    if (mobileNumber == null || mobileNumber.length() < 4) {
-	        throw new IllegalArgumentException("Invalid mobile number for OTP bypass");
-	    }
+	public void enterOtpWithoutBypass(String otp) throws InterruptedException {
 
-	    String lastTwo = mobileNumber.substring(mobileNumber.length() - 2);
-	    String firstTwo = mobileNumber.substring(0, 2);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 
-	    return lastTwo + firstTwo;   // e.g. 25 + 98 = 2598
+		wait.until(ExpectedConditions.visibilityOfAllElements(otpNoInputFiled));
+
+		int otpIndex = 0;
+
+		for (WebElement field : otpNoInputFiled) {
+
+			if (field.isDisplayed() && field.isEnabled()) {
+
+				wait.until(ExpectedConditions.elementToBeClickable(field));
+
+				field.click();
+				field.clear();
+				field.sendKeys(String.valueOf(otp.charAt(otpIndex)));
+
+				otpIndex++;
+
+				if (otpIndex == otp.length()) {
+					break;
+				}
+			}
+		}
+
+		System.out.println("OTP Entered : " + otp);
 	}
 
-	
-	public void enterBypassOtpAndVerify(String mobileNumber) {
+	public void clickVerifyOtpButton() {
 
-	    String otp = generateBypassOtp(mobileNumber);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		List<WebElement> buttons = driver.findElements(By.id("verify-otp-btn"));
+		for (int i = 0; i < buttons.size(); i++) {
+			System.out.println("Button " + i + " Displayed: " + buttons.get(i).isDisplayed() + " Enabled: "
+					+ buttons.get(i).isEnabled());
+		}
+		System.out.println("Verify Buttons Found : " + buttons.size());
 
-	    // Wait only for the FIRST OTP field (OTP UI is dynamic)
-	    WebElement firstOtpField = wait.until(
-	            ExpectedConditions.visibilityOf(otpNoInputFiled.get(0))
-	    );
+		for (WebElement button : buttons) {
 
-	    firstOtpField.clear();
-	    firstOtpField.sendKeys(otp);
+			if (button.isDisplayed() && button.isEnabled()) {
 
-	    wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton));
-	    otpVerifyButton.click();
+				wait.until(ExpectedConditions.elementToBeClickable(button));
+
+				js.executeScript("arguments[0].scrollIntoView({block:'center'});", button);
+				js.executeScript("arguments[0].click();", button);
+
+				System.out.println("Clicked Visible Verify OTP Button");
+				return;
+			}
+		}
+
+		throw new NoSuchElementException("No visible Verify OTP button found.");
 	}
 
+	public void clickLogoutPopupButton(String answer) {
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 
+		String buttonXpath;
+
+		if (answer.equalsIgnoreCase("Yes")) {
+			buttonXpath = "//a[contains(@class,'delete-user')]//span[normalize-space()='Yes']";
+		} else {
+			buttonXpath = "//a[contains(@class,'delete-user-no')]//span[normalize-space()='No']";
+		}
+
+		WebElement button = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(buttonXpath)));
+
+		js.executeScript("arguments[0].scrollIntoView({block:'center'});", button);
+		js.executeScript("arguments[0].click();", button);
+
+		System.out.println("Clicked '" + answer + "' on logout popup");
+	}
+
+	public void enterOtpAndSubmit(String otp) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+		WebElement otpField = wait
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@name='otpInput']")));
+
+		otpField.clear();
+		otpField.sendKeys(otp);
+
+		WebElement verifyButton = wait.until(ExpectedConditions.elementToBeClickable(otpVerifyButton));
+
+		verifyButton.click();
+
+		System.out.println("OTP entered and Verify button clicked.");
+	}
 
 }

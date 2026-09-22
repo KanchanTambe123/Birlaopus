@@ -9,13 +9,13 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-
+@test
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify the end-to-end  colour swatch journey through the checkout process with valid data for a logged-in user through navigation
-    #Then User clicks the cart icon on the header and removes the product from the cart if available
+    Then User clicks the cart icon on the header and removes the product from the cart if available
     When User select product main navigation L1 "<navmenu>", sub navigation L2 "<navtab>" and L3 product name "<productname>" through navigation bar
     #When User clicks on the "<Shop_Product>" product in the Shop section
-    #Then User selects Colour for colour swatch "<Colour>"
+    Then User selects Colour for colour swatch "<Colour>"
     Then User selects colour swatch quantity <quantity>
     Then User enters a valid pincode "<pincode>" and check product availability
     And User click on add to cart button
@@ -29,10 +29,9 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     And User clicks on the Proceed to Shipment button
     Then User clicks on the Proceed to payment button
 
-  
     Examples: 
-      | navmenu | navtab       | productname   | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity | 
-      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 | 
+      | navmenu | navtab       | productname   | Colour    | quantity | pack | pincode | desiredQuantity | address | expectedQuantity |
+      | Shop    | Colour Tools | Colour Swatch | Rose dust |        1 |    1 |  400703 |               2 | Mumbai  |                2 |
 
   #---------------------------------- Scenario 2 ----------------------------------#
   Scenario Outline: To verify that a logged-in user can successfully add a Colour Swatch to the cart through navigation(cart page)
@@ -88,8 +87,8 @@ Feature: To Validate the End-to-End colour swatch journey flow for a logged-in u
     Then colour swatch should be removed from the wishlist successfully
 
     Examples: 
-      | navmenu | navtab       | productname   | tabName    | optionText       | Colour    |
-      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete a Product | Rose dust |
+      | navmenu | navtab       | productname   | tabName    | optionText          | Colour    |
+      | Shop    | Colour Tools | Colour Swatch | Favourites | Delete colour story | Rose dust |
 
   #---------------------------------- Scenario 6 ----------------------------------#
   Scenario Outline: To verify error message when user enters invalid pincode for colour swatch

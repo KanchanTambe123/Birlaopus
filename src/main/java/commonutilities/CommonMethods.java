@@ -511,7 +511,41 @@ public class CommonMethods {
         }
     }
  
-  
+    public static void zipMultipleFiles(List<String> filePaths, String zipFilePath) throws IOException {
+
+        byte[] buffer = new byte[4096];
+
+        try (FileOutputStream fos = new FileOutputStream(zipFilePath);
+             ZipOutputStream zos = new ZipOutputStream(fos)) {
+
+            for (String path : filePaths) {
+
+                File file = new File(path);
+
+                if (!file.exists()) {
+                    System.out.println("File not found: " + path);
+                    continue;
+                }
+
+                try (FileInputStream fis = new FileInputStream(file)) {
+
+                    zos.putNextEntry(new ZipEntry(file.getName()));
+
+                    int length;
+
+                    while ((length = fis.read(buffer)) > 0) {
+                        zos.write(buffer, 0, length);
+                    }
+
+                    zos.closeEntry();
+
+                    System.out.println("Added to ZIP: " + file.getName());
+                }
+            }
+        }
+
+        System.out.println("ZIP created successfully : " + zipFilePath);
+    }
 
     
 

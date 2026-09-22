@@ -13,6 +13,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 
 import commonutilities.ClickElement;
 import commonutilities.DriverManager;
@@ -241,5 +245,139 @@ public class End_to_End_Wallpapers_Journey_Page {
 
 	    System.out.println("Wishlist icon clicked and state updated successfully");
 	}
+	
+	public void verifyTotalPayableAmount() {
 
+	    WebDriver driver = DriverManager.getDriver();
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+
+	    // Subtotal (Excl. Tax)
+	    double subtotal = extractAmount(
+	            wait.until(ExpectedConditions.visibilityOfElementLocated(
+	                    By.cssSelector(".cart__subtotal-value")))
+	                    .getText());
+
+	    // Taxes
+	    double tax = extractAmount(
+	            wait.until(ExpectedConditions.visibilityOfElementLocated(
+	                    By.cssSelector(".cart__taxes-value")))
+	                    .getText());
+
+	    // Coupon Discount
+	    double discount = 0.0;
+
+	    List<WebElement> discountEls = driver.findElements(
+	            By.cssSelector(".cart__coupon-discount-value"));
+
+	    if (!discountEls.isEmpty() && discountEls.get(0).isDisplayed()) {
+
+	        String discountText = discountEls.get(0).getText().trim();
+
+	        if (!discountText.equals("-") && !discountText.isEmpty()) {
+	            discount = extractAmount(discountText);
+	        }
+	    }
+
+	    // Total
+	    By totalLocator = By.cssSelector(".cart__total");
+
+	    double displayedTotal = extractAmount(
+	            wait.until(ExpectedConditions.visibilityOfElementLocated(totalLocator))
+	                    .getText());
+
+	    // Expected Total
+	    double expectedTotal = subtotal + tax + discount;
+
+	    // Difference
+	    double difference = Math.abs(expectedTotal - displayedTotal);
+
+	    // Console Logs
+	    System.out.println("======================================");
+	    System.out.println("Subtotal        : ₹" + subtotal);
+	    System.out.println("Discount        : ₹" + discount);
+	    System.out.println("Tax             : ₹" + tax);
+	    System.out.println("Expected Total  : ₹" + expectedTotal);
+	    System.out.println("Displayed Total : ₹" + displayedTotal);
+	    System.out.println("Difference      : ₹" + difference);
+	    System.out.println("======================================");
+
+	    // Extent Logs
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Subtotal (Excl. Tax): ₹" + subtotal);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Coupon Discount: ₹" + discount);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Taxes: ₹" + tax);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Expected Total: ₹" + expectedTotal);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Displayed Total: ₹" + displayedTotal);
+
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.INFO,
+	            "Difference: ₹" + difference);
+
+	    // Allow maximum ₹1 difference due to UI/tax rounding
+	    Assert.assertTrue(
+	            difference <= 1.00,
+	            "Total payable amount calculation mismatch. "
+	                    + "Expected: ₹" + expectedTotal
+	                    + ", Actual: ₹" + displayedTotal
+	                    + ", Difference: ₹" + difference);
+
+	    // Pass Log
+	    ExtentCucumberAdapter.getCurrentStep().log(
+	            Status.PASS,
+	            "Total payable amount verified successfully. "
+	                    + "Expected: ₹" + expectedTotal
+	                    + ", Displayed: ₹" + displayedTotal
+	                    + ", Difference: ₹" + difference);
+
+	    System.out.println("Total payable amount verified successfully.");
+	}
+
+
+	/**
+	 * Extract numeric amount from UI text.
+	 * Handles ₹, commas, spaces and negative amounts.
+	 */
+	public double extractAmount(String text) {
+
+	    if (text == null || text.trim().isEmpty() || text.trim().equals("-")) {
+	        return 0.0;
+	    }
+
+	    try {
+
+	        text = text.trim();
+
+	        // Preserve negative sign
+	        boolean isNegative = text.contains("-");
+
+	        // Remove ₹, commas, spaces and other characters
+	        text = text.replaceAll("[^0-9.]", "");
+
+	        if (text.isEmpty()) {
+	            return 0.0;
+	        }
+
+	        double value = Double.parseDouble(text);
+
+	        return isNegative ? -value : value;
+
+	    } catch (Exception e) {
+
+	        System.out.println("Error parsing amount: " + text);
+	        return 0.0;
+	    }
+	}
 }
