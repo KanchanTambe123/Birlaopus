@@ -1,4 +1,4 @@
-@Scope1
+@moduleS
 Feature: To Validate Newsletter Subscription Sign-Up Functionality
 
   Background: 

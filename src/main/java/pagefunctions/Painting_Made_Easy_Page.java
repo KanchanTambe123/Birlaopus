@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -114,6 +115,9 @@ public class Painting_Made_Easy_Page {
 	
 	@FindBy(xpath = "//span[@class='simple-toast']")
 	public WebElement errorMsgText;
+	
+	@FindBy(xpath = "//p[contains(text(),'No slots are available')]")
+	private WebElement noSlotMessage;
 
 	public Painting_Made_Easy_Page() {
 		driver = DriverManager.getDriver();
@@ -216,6 +220,20 @@ public class Painting_Made_Easy_Page {
 
 		// Enter the Pin code
 		element.sendKeys(pinCode);
+	}
+	
+	public boolean isNoSlotMessageDisplayed() {
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+	        wait.until(ExpectedConditions.visibilityOf(noSlotMessage));
+	        return noSlotMessage.isDisplayed();
+	    } catch (TimeoutException e) {
+	        return false;
+	    }
+	}
+
+	public String getNoSlotMessage() {
+	    return noSlotMessage.getText();
 	}
 
 }

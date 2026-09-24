@@ -26,6 +26,7 @@ public static final String BecontractorUrl ="https://uat.birlaopus.com/contact-u
 public static final String AssuranceUrl = "https://admin:Admin$123@uat.birlaopus.com/birla-opus-assurance";
 
 public static final String WallpaperProductUrl = "https://admin:Admin$123@uat.birlaopus.com/paint-products/wallpapers/walls/chromatic-hive";
+public static final String ContactUsUrl = "https://admin:Admin$123@uat.birlaopus.com/contact-us";
 
 	
 

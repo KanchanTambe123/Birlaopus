@@ -1,4 +1,4 @@
-@Scope1
+@module
 Feature: To Validate Cart Functionality – Add, Update, Remove and Price Validation (Single Product)
 
   Background: 
