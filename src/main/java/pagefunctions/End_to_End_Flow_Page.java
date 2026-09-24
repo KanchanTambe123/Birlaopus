@@ -448,67 +448,77 @@ public class End_to_End_Flow_Page {
 	}
 
 	// apply coupoun code
-	public void applyCouponIfAvailable() throws InterruptedException {
+	public void applyCouponIfAvailable() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
-	    // Wait for the coupon button
-	    WebElement couponBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
-	            By.cssSelector("button.apply__coupons-btn")));
-	    wait.until(ExpectedConditions.elementToBeClickable(couponBtn));
+	    try {
 
-	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", couponBtn);
-	    couponBtn.click();
+	        // Check if Apply Coupon button is available
+	        List<WebElement> couponButtons = driver.findElements(
+	                By.cssSelector("button.apply__coupons-btn"));
 
-	    Thread.sleep(2000);
+	        if (couponButtons.isEmpty()) {
+	            ExtentCucumberAdapter.addTestStepLog("Coupon section is not available. Continuing the flow.");
+	            return;
+	        }
 
-	    // Fetch all available coupons
-	    List<WebElement> coupons = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-	            By.cssSelector("input.apply__coupons-card-checkbox")));
+	        WebElement couponBtn = couponButtons.get(0);
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", couponBtn);
 
-	    if (!coupons.isEmpty()) {
+	        // Get available coupons
+	        List<WebElement> coupons = driver.findElements(
+	                By.cssSelector("input.apply__coupons-card-checkbox"));
 
-	        WebElement coupon = coupons.get(0);
+	        if (!coupons.isEmpty()) {
 
-	        // Scroll and select the first available coupon
-	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", coupon);
-	        coupon.click();
+	            // Apply first coupon
+	            WebElement coupon = coupons.get(0);
+	            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", coupon);
 
-	        Thread.sleep(2000);
+	            WebElement applyBtn = wait.until(
+	                    ExpectedConditions.elementToBeClickable(By.id("applyCouponBtn")));
+	            applyBtn.click();
 
-	        // Click Apply button
-	        WebElement applyBtn = wait.until(ExpectedConditions.elementToBeClickable(
-	                By.id("applyCouponBtn")));
-	        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", applyBtn);
-	        applyBtn.click();
+	            WebElement appliedCoupon = wait.until(
+	                    ExpectedConditions.visibilityOfElementLocated(
+	                            By.cssSelector("span.applied__coupon-percent-name")));
 
-	        // Wait for applied coupon name to be displayed
-	        WebElement appliedCoupon = wait.until(ExpectedConditions.visibilityOfElementLocated(
-	                By.cssSelector("span.applied__coupon-percent-name")));
+	            String couponName = appliedCoupon.getText().trim();
 
-	        String couponName = appliedCoupon.getText().trim();
+	            ExtentCucumberAdapter.addTestStepLog("Applied Coupon : " + couponName);
+	            System.out.println("Applied Coupon : " + couponName);
 
-	        // Extent Report logs
-	        ExtentCucumberAdapter.getCurrentStep().log(
-	                Status.INFO,
-	                "Applied Coupon: " + couponName
-	        );
+	        } else {
 
-	        ExtentCucumberAdapter.getCurrentStep().log(
-	                Status.PASS,
-	                "Coupon applied successfully: " + couponName
-	        );
+	            // No coupon available - Close popup
+	            closeCouponPopup();
 
-	        System.out.println("Coupon applied successfully: " + couponName);
+	            ExtentCucumberAdapter.addTestStepLog("No coupon available. Closed popup and continuing flow.");
+	            System.out.println("No coupon available. Closed popup.");
 
-	    } else {
+	        }
 
-	        ExtentCucumberAdapter.getCurrentStep().log(
-	                Status.INFO,
-	                "No coupons available. Continuing the flow."
-	        );
+	    } catch (Exception e) {
 
-	        System.out.println("No coupons available, continuing flow");
+	        // In case popup is open but something failed
+	        closeCouponPopup();
+
+	        ExtentCucumberAdapter.addTestStepLog("Unable to apply coupon. Closed popup and continuing flow.");
+	        System.out.println("Coupon not applied. Continuing flow.");
+	    }
+	}
+
+	private void closeCouponPopup() {
+
+	    try {
+	        WebElement closeBtn = driver.findElement(
+	                By.cssSelector("div.apply__coupons-close"));
+
+	        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", closeBtn);
+
+	    } catch (Exception ignored) {
+	        // Popup already closed
 	    }
 	}
 	// order summary

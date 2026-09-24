@@ -2,9 +2,12 @@ package stepdefinition;
 
 import org.testng.Assert;
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+
 import commonutilities.ActionClass;
 import commonutilities.ClickElement;
 import commonutilities.CommonMethods;
+import commonutilities.DriverManager;
 import commonutilities.JSExecutor;
 import commonutilities.WebDriverWaitHelper;
 import config.ConfigReader;
@@ -30,6 +33,9 @@ public class End_to_End_Wallpapers_Journey_Step {
 	@Given("User is on wallpaper Product page {string}")
 	public void user_is_on_wallpaper_product_page(String WallpaperProductUrl) {
 		WebsiteLaunch.webLaunch(WallpaperProductUrl);
+		 String currentUrl = DriverManager.getDriver().getCurrentUrl();
+
+		    ExtentCucumberAdapter.addTestStepLog(" Wallpaper URL : " + currentUrl);
 	}
 
 
@@ -102,6 +108,11 @@ public void user_clicks_the_wishlist_icon_for_wallpapers_on_the_product_details_
 	    js.scrollUntilElementVisible(ew.PincodeInputFiled);
 	    wait.waitForElementVisible(ew.PincodeInputFiled);
 	    ew.PincodeInputFiled.sendKeys(string);
+	}
+	
+	@Then("the total payable amount should be correctly calculated and displayed on wallpaper")
+	public void the_total_payable_amount_should_be_correctly_calculated_and_displayed_on_wallpaper() {
+	   ew.verifyTotalPayableAmount();
 	}
 
 }

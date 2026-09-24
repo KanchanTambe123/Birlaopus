@@ -32,26 +32,45 @@ public class Cart_Functionality_Page {
 	
 	@FindBy(id = "cart-icon")
 	private WebElement cartIcon;
-	
-	
+	@FindBy(xpath = "//span[@class='cart__card-qty']")
+	public WebElement cartQuantity;
+	@FindBy(xpath = "//a[@id='open-select-colour']")
+	public WebElement ViewAllColour;
+	@FindBy(xpath = "//input[@id='search-colours']")
+	public WebElement SearchColour;
 	
 	public  Cart_Functionality_Page() {
 		driver = DriverManager.getDriver();
 		PageFactory.initElements(driver, this);
+	}
+	public int getCartQuantity() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+	    wait.until(ExpectedConditions.visibilityOf(cartQuantity));
+
+	    ((JavascriptExecutor) driver).executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});", cartQuantity);
+
+	    return Integer.parseInt(cartQuantity.getText().trim());
 	}
 
 	public int getCartItemCount() {
 	    try {
 	        String countValue = cartIcon.getAttribute("data-count");
 	        return Integer.parseInt(countValue);
-	    } catch (NumberFormatException | NullPointerException e) {
-	        return 0; // cart empty
+	    } catch (Exception e) {
+	        return 0;
 	    }
 	}
-
 	public void waitForCartCountToIncrease(int previousCount) {
-	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(20));
-	    wait.until(driver -> getCartItemCount() > previousCount);
+	    WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(30));
+
+	    wait.until(driver -> {
+	        int currentCount = getCartItemCount();
+	        System.out.println("Previous Count: " + previousCount +
+	                           " | Current Count: " + currentCount);
+	        return currentCount > previousCount;
+	    });
 	}
 
 	
@@ -88,6 +107,29 @@ public class Cart_Functionality_Page {
 	    js.executeScript("arguments[0].click();", productLink);
 
 	    System.out.println("Second visible product clicked successfully");
+	}
+	
+	public void selectColour(String colourName) {
+
+	    WebDriverWait webWait = new WebDriverWait(
+	            DriverManager.getDriver(),
+	            Duration.ofSeconds(30)
+	    );
+
+	    WebElement colourCard = webWait.until(
+	            ExpectedConditions.visibilityOfElementLocated(
+	                    By.xpath("//div[@class='colour-swatch-card' and @data-colorname='" + colourName + "']")
+	            )
+	    );
+
+	    ((JavascriptExecutor) DriverManager.getDriver()).executeScript(
+	            "arguments[0].scrollIntoView({block:'center'});",
+	            colourCard
+	    );
+
+	    webWait.until(ExpectedConditions.elementToBeClickable(colourCard));
+
+	    colourCard.click();
 	}
 
 }
