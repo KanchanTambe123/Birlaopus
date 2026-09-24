@@ -2,8 +2,8 @@ package commonutilities;
 
 import java.util.Map;
 import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v146.network.Network;
-import org.openqa.selenium.devtools.v146.network.model.RequestId;
+import org.openqa.selenium.devtools.v147.network.Network;
+import org.openqa.selenium.devtools.v147.network.model.RequestId;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;

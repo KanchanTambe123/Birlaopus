@@ -9,7 +9,7 @@ Feature: To Validate Short Lead Form (Painting Service)
     And the User clicks on the Sign In button after entering the mobile number
     And User enters valid OTP and clicks on the Verify OTP button
     Then User clicks on the close icon
-@test
+
   #---------------------------------- Scenario 1 ----------------------------------#
   Scenario Outline: To verify Short Lead Form (Painting Service) Request is submitted successfully by a logged-in user with valid data
     And User clicks on the Sign up for free button
@@ -22,17 +22,17 @@ Feature: To Validate Short Lead Form (Painting Service)
       |  400703 |
 
   #---------------------------------- Scenario 1 ----------------------------------#pending
- Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
- 
+  Scenario Outline: To verify pop-up is displayed when an unserviceable PIN code is entered
     And User clicks on the Sign up for free button
     And User enters a unservicable pin code "<PinCode>" in the Painting Service Form
     And User clicks on the Submit button in the Painting Service Form
     And User captures and validates API request and response for "lead/shortForm"
-   Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
+    Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"
+
     Examples: 
       | PinCode |
       |  111222 |
- 
+
   #----------------------------------Scenario 2----------------------------------#
   Scenario Outline: To verify error message is displayed for an invalid pin code for a logged-in user
     And User clicks on the Sign up for free button
@@ -55,6 +55,3 @@ Feature: To Validate Short Lead Form (Painting Service)
     And User clicks on the Sign up for free button
     And User clicks on the Back button
     Then User should be navigated to the previous page
-
-    
-    
