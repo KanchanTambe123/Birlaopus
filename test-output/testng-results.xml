@@ -1,43 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="4" passed="2" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-09-11T13:03:25 IST" name="Default suite" finished-at="2026-09-11T13:04:35 IST" duration-ms="69340">
+  <suite started-at="2026-10-19T16:56:16 IST" name="Default suite" finished-at="2026-10-19T17:04:20 IST" duration-ms="484097">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@c05fddc]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-09-11T13:03:25 IST" name="Default test" finished-at="2026-09-11T13:04:35 IST" duration-ms="69340">
+    <test started-at="2026-10-19T16:56:16 IST" name="Default test" finished-at="2026-10-19T17:04:20 IST" duration-ms="484097">
       <class name="runner.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-09-11T13:03:25 IST" name="setUpClass" finished-at="2026-09-11T13:03:26 IST" duration-ms="998" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:runner.TestRunner@c05fddc]" started-at="2026-10-19T16:56:16 IST" name="setUpClass" finished-at="2026-10-19T16:56:17 IST" duration-ms="1069" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4b0fdbd7]]>
+                <![CDATA[org.testng.TestRunner@7b0a691a]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-09-11T13:03:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-09-11T13:04:22 IST" duration-ms="56006" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@c05fddc]" started-at="2026-10-19T16:56:17 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-10-19T16:57:51 IST" duration-ms="93401" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user"]]>
+                <![CDATA["To verify successful submission of the survey booking form for a logged-in user"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["To Validate Get in Touch Contact Form Subscription"]]>
+                <![CDATA["To Validate Survey Booking Form"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@4d14b6c2]" started-at="2026-09-11T13:04:22 IST" name="tearDownClass" finished-at="2026-09-11T13:04:35 IST" duration-ms="12304" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@c05fddc]" started-at="2026-10-19T16:57:51 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-10-19T17:00:14 IST" duration-ms="142983" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify that the user navigates to the previous step using the Back button on the survey booking form"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Survey Booking Form"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (924341e3de2d5e3ed2d30b586dd88660)] -> xpath: //a[@id='surveyStepBack']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59780}, goog:processID: 10000, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59780/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 924341e3de2d5e3ed2d30b586dd88660]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (924341e3de2d5e3ed2d30b586dd88660)] -> xpath: //a[@id='surveyStepBack']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59780}, goog:processID: 10000, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59780/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 924341e3de2d5e3ed2d30b586dd88660
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+at stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_back_button_on_the_address_section_page(Book_Survey_Form_Step.java:167)
+at ✽.User clicks on the Back button on the Address section page(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:40)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@c05fddc]" started-at="2026-10-19T17:00:14 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-10-19T17:02:39 IST" duration-ms="145213" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify thank you pop-up appears when user selects I’ll do it later option"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Survey Booking Form"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (520c914494ee8dbdf3fac665dbc8f0d3)] -> xpath: //button[@id='doLaterBtnScreenBreak']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50567}, goog:processID: 18840, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50567/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 520c914494ee8dbdf3fac665dbc8f0d3]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (520c914494ee8dbdf3fac665dbc8f0d3)] -> xpath: //button[@id='doLaterBtnScreenBreak']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50567}, goog:processID: 18840, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50567/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 520c914494ee8dbdf3fac665dbc8f0d3
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+at stepdefinition.Painting_Made_Easy_Step.user_clicks_on_the_i_ll_do_it_later_option(Painting_Made_Easy_Step.java:80)
+at ✽.User clicks on the I’ll do it later option(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:48)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:runner.TestRunner@c05fddc]" started-at="2026-10-19T17:02:39 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-10-19T17:03:42 IST" duration-ms="62779" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["To verify pop-up is displayed when an unserviceable PIN code is entered"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["To Validate Survey Booking Form"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:runner.TestRunner@c05fddc]" started-at="2026-10-19T17:03:42 IST" name="tearDownClass" finished-at="2026-10-19T17:04:20 IST" duration-ms="38615" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

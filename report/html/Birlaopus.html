@@ -48,7 +48,7 @@
 </span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sep 11, 2026 13:03:26</span></a>
+<a href="#"><span class="badge badge-primary">Oct 19, 2026 16:56:16</span></a>
 </li>
 </ul>
 </div>
@@ -58,6 +58,11 @@
 <li class="nav-item dropdown" onclick="toggleView('test-view')">
 <a id="nav-test" class="dropdown-toggle" href="#">
 <span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
 </a>
 </li>
 <li class="nav-item dropdown" onclick="toggleView('category-view')">
@@ -84,7 +89,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -98,25 +103,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="fail" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">To Validate Get in Touch Contact Form Subscription</p>
+            <p class="name">To Validate Survey Booking Form</p>
             <p class="text-sm">
-              <span>1:03:27 PM</span> / <span>00:00:55:760</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>4:56:18 PM</span> / <span>00:07:24:064</span>
+              <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">To Validate Get in Touch Contact Form Subscription</h5>
-<span class='badge badge-success'>09.11.2026 1:03:27 PM</span>
-<span class='badge badge-danger'>09.11.2026 1:04:22 PM</span>
-<span class='badge badge-default'>00:00:55:760</span>
+<h5 class="test-status text-fail">To Validate Survey Booking Form</h5>
+<span class='badge badge-success'>10.19.2026 4:56:18 PM</span>
+<span class='badge badge-danger'>10.19.2026 5:03:42 PM</span>
+<span class='badge badge-default'>00:07:24:064</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -128,14 +133,14 @@
   <div class="card">
     <div class="card-header" role="tab">
       <div class="card-title">
-        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</div>
+        <div class="node" id="2"><span class="badge log pass-bg mr-2">Pass</span>To verify successful submission of the survey booking form for a logged-in user</div>
       </div>
     </div>
         <div class="scenario_outline collapse">
             <div class="card-body l1">
               <div class="card-header">
                 <div class="card-title outline-child">
-                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</div>
+                  <div class="node" id="3"><span class="badge log pass-bg mr-2">Pass</span>To verify successful submission of the survey booking form for a logged-in user</div>
                 </div>
               </div>
               <div class="card-body mt-3 collapse">
@@ -177,27 +182,18 @@
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>When User hovers over the Get in Touch popup</span>
+                    <span>And User clicks on the Book a Free Survey button</span>
+      <div>Scrolled to the bottom to check survey buttons.
+      </div>
+      <div>Visible button selected: Book a free survey
+      </div>
+      <div>Successfully clicked button: Book a free survey
+      </div>
       <div>
       </div>
                   </div>
                   <div class="step pass-bg">
-                    <span>And User clicks on the Get in Touch option</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User updates the mandatory field Email</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User updates the mandatory field Pincode "400001"</span>
-      <div>
-      </div>
-                  </div>
-                  <div class="step pass-bg">
-                    <span>And User clicks submits the Get in Touch form</span>
+                    <span>Then User clicks on the Next button on Address section page</span>
       <div>
       </div>
                   </div>
@@ -211,30 +207,451 @@
       </div>
       <div>Status Code: 200
       </div>
-      <div> Response Time: 1815 ms
+      <div> Response Time: 1372 ms
       </div>
       <div>
       </div>
       <div> Request Payload (Encrypted):
       </div>
-      <div>{"data":"MTI4OjoxMDAwMDo6NDY5MmQ3NGYxOGRmMGYxOTc1ZmU4NWQ4NWY3YTcyN2I6OmQ1MDIwODg3YzljY2VhNDk4ZGEzYjRhODM3MWQ2NWI1OjpMK3NWYmc2MFlHMjdvMGtwa0NFM1lCcHRQM1pheUVzMU9GcDM2NW9nQ2tDRFVPYlVydVdJSnFOZHBjTFF3ZUczSVpYRHZ5S25WUFpjaEtEanVDVThLemtBSUpCc083QnVaOEx5WkhTU3liV0pPRnE0b1BoZWZVcXJLYllTajJlQ2s0U1dTNGtRaUNQMVlUS1JyYWlaeE4zOWwvdlhIWGc2c1dYekVGaktPYWpWSUh0bmIwaWRKNkF0OWF2Mzk4Q25vdG1HZEhmSmp6MC9ZSzJ1V2RiU0NPMjRMNW8yNG5GbVc4ekJNMU1zM1RDOUZPa0pnTGZ5NEdjZ0NSUjRESkN1WWtuRU55QVMvb0xaNld2TE4rWW15UUtqVWdxWnZsaU5xRjRUdkJ1TUVrL1B1R3p2cTZLcFhhWjhIZkp0UmpNSUI1NzU2bDJqNGVWM210VVh4SUZTZ1RDOXdMLzhlc2RZSGkvc2FzVjNLZnlHYW42TVoxWjdSaXlUT2N6NGlUNXJkV09YM1lKK3pzakFRTGVTbEdOVms0T0RhajVVYzlNZHptNDRSTDE5eUZxVkpwMDY1SmJhMWNRbytWRlVlR0piZFM0YVZiQ3I3aFhWM3g4UmJWbGlrK0ZueEFnRTRNdEtNTTBJZDgxL3BWRlBldlRqaTBycEFMWnZoVFhURHg5b1hrVXYvR21KMTJGYUtlMnRjakNhU1pOM3V0OXkvSHQ4YVduZU1hU3pBekwzSUtUUDlBTVlUaGxjSWVoclhxYmxnaGxWQjRmUzAxdlZBTGNMMDlWd1RRVDBlS2Jsb20wVGgvMzB0dVAxTXhOSDBBaHd1dFNzTXo1aE04SitqWE1rME1lcnZDYXJwV1ZFUWJvdk03a0dqVDYvN3VFbmk0NWozT0FmeTlSL2lUSXpoZE1FbXJOTXJURG1yWTNSUk0rYWQ2aUl3WDlUZmVCOHFpRjAwYnY1U21tZDNJcDRyVW9nc0NJY0dxT25jSlBic2hrT0JSVTNRN29aeXhqSjBMc05vV0tPRzhXU0FVa2Y2a29MV1JUTFh1dWN2RDFsbTZIRGJWUFRIVUZyaHVpNUVTWHVKK3FGa1hvajhvYlRsZDRWbWVaYzlZOU5EOW50a0MxRU4yTTM4bXhTV0Y2WGVoWDJGNnRMUGhFUTcvekpYTnRKaWszc2NKejlGOHZWeFRGemtSL0NialdocmcrTnNWTE9HcGlUaitLOXhQWE82NFF3OGQ5alU4eFUxdWk0aWUrN0IycjBPVUt4dTluQXRUQWoyUTlkNHhXU1M0d0lxSW5ETHpMendsY05LeEQxbXR5T1ZST000UnJPVTFjL25pSFVUeFNIK3JjQ2RaOG5XRHc0Y2VLOTdzbDVDaURRLzlIZkdiK1FrRVhCa1ZKZU5qdXdoZStBMENZcThPY2RxQ3QrUTZWV216RmlMQkZQL0hVYkc5K1R3eHN3QlZIYzlMVVBNSmlLQkFCRFgrcFdPT0pUQTVnenFZSVBVSStGK2hHbkVKd0IwaTZuMDRyMzZhMThrcmZFT3loVjdnRUFVUW5jaXhjN1M2em9KRnNMcVRwMHVqNjR1SWhsWnRtN0ROdTJ2SVVManpRY211NkNUUmJoRmpBQ1FqajFuK0RpMzAzd1B4UWFJc21FdzVMSExHZmNja3dQYkdETzJuNEtSL2c1UmxOV2tSQXRscVdDcUVoNzBRbFdYUDMvTUF1Ukh3bnFRSmU2a0gzWm1FRXFUZ2lVbGVBa3dDdk5CNnpyazMydVR3TXptN2FMTjdlS3pCYldFMlNGVHZKajl5aTl6RHB1aG5RVENjVGVJdXB1cjJrVmN1MERiSkRxMEgwRUorTytNTDRHaS9jL2NXd21naGdlOFBSUWxLS3FDK1pNNkNHbnE4bHhoYlBUVHlkS1czWENRUFNIRjlaL1VQNzJ0MmlkVVgyWlZZRno2QUVPdHBJTWtuaFEwRUJrNzVoSmpHaENWMmJybWorRkY3L3F3VEVUanJCYkNKRWFPeEg0aktvbGZNRHluT0k2QnZOSEZINXFjUFlYUHZHU0hIRjBlZGx2UEg0ZDZkNW96RkI1aHB1ZFlWNFpFVFhVUUx6R2FxUXBqSk5aZC8yVy9XTndFamdhTlJlUFlSZTRDZFV5VGZndjhmaEIzK3R2TTN5elJGMnF3WkJuYTFLZFdMOEpIeU0rdk5pUUJTNzdhUi9ybkNsTmVkTENlaHN6aTZDS0VmNE81VzMvTmpLWlF6VEM3elZVSk9pSnRBamt0cC9acFBoQndFYWhFeGtjSUlTemtMTGdlOTZ2TDg1eURuM1V1cnh5cVRxaVQyZmxNeWRrWFZSMXZhT0hOWHhLcEFHdTRtQXpKeXFDS0pkNUlWdDBrYWlKRktBdlc2WEM1UFpHNmtaT3JCWE52L0dGeVBtTFJxeE5IZWt1NHFrUmN5ZDdtVnZIRFM2bUphMldlZjA0ZXkyNWpXRHBwc2cyUWRhTDBTQXRZSGpBL3dsRWxDT1BhakFWUWFZMHNkemExSHhoUWxPY0NaTTZaZVhOOEFFMEkxMFZZR2I3dnIyQlh6V2hSaW1zb3VvcUc2Y094b3NXRWtSV1o1c05odUVnbEdmU2w1Qko4QWxVZHFETGFTV0FZUWdmb2RzYTg0dUxWdVhSSDhKYmZiT0JMMFB5c09pT0VOeE16alJJckJkVTJvV2xUOU1XN05POXpKRHpqR1pDeGV5VC8ycmRsc3N6MFBKR3VCbk03aFdBOWFVcURCK3lmeHpVYlBwSld2ZGdYQm5EUUNpT05CMGwzSUlpbkdsN3lvL1U0OEtWR0ZrMG8rckFIK3FXdG0vaVRMWDM5VnU5cHF2V0pkMlBjVk1aTlQwPQ=="}
+      <div>{"data":"MTI4OjoxMDAwMDo6YWI2ZjJiNGU5MDk5MmQwYzU3ODA1ZDU5ZTc1ZGViNDg6OjA4ZTlmNzQ4M2Q1MGQ3MTNkZjY4MjJjNWM3MzNhZWU0OjpqbFpyUGdzY1JtSElacHVqR0hRR3pmRDFNYVRLbFdDT29BYVhFYTlPbzJlSTNFNEY3Y2loYlBJU2wvQzhFQ1F4ME40NlJsQkhyMitpMkwxQURjWWs0U1BpL3VldGpDczhCLzVCbjhBN2lpZk1FZDB2TitoV3VHZE1CYjhWeGtXcitRYmE5dTYzdEZIMS84MDlVN2tsVmlmaUxGcVV6RkIxK3pyaWlzQ09RR2s5NWJSVklnMTc2OS95U09nVU1ocHpQbm1TMUxIcDBmNHA5RUJkZWVMa3lhZlZPcERXUDVDNTg5YXRvWXVBMXdJK0htbWRwSlFXeHVUcHNNNWtsaUREdzc3dWtqWjZsdEIzdGlDMHVyNXFXRmI2bWZ6REFmaU9sbnV3cjRBQVM1UVVTRTloZld2NHJNUWp1Sy9ySGpmV29yUFphS21UUFRYd3NVejhwT0pHVGJsSk5VZkNtbXFCWWZnTXpaWGVZTnVucUVERHU5SldBTjJZMVphUGpTaERxWHo3WTdnOU5aNDJaNG1lUWxtT3hKUWprYitvTy9Kd3plOWl1eFJheEJDRnhncEU0cVNoMVIyYitoRE5XcXZrVDJmN1BSbVVwZ2lXTTY5STBOYzRRMWFNak9SeVZwNFI5S3Q3Yi90YkJDMkZZUkJTQ0ExWGhrbUVqRFZVVFVNZFMvNlRSaCt2Y1Y3ejIvUHRVL1FBNXN3cDlGV3Z5b2hmOXFZTW03QVNHYzFVL2RKQkF2bS9VYWFBSkVXUE5CYndPRVdSLzBuUDdLeXQ0eHFhcUxDZ3BnY3lpcm9HM2ZCK2tzWE5MTCtvak9QaDNXQzJPd0crL0RFaVA2ZXBERnBJTDRvSlA1SnJyQlV4Z2NvYXlMOVBBaEYzckpud0tQeTNWRFZNK2xoRlU4QUNaVGRGMGxldHljWjNmN1I2Tzk2TnNxV2RhZklJVFZNTDV2ZENBaTZIQjdMaVM4YnRsRTFRSElzNHVWOHVCS0FoR2tWMU9RR2lwdFhUY0EvRERPQWx3WXptb1hOeG5KQk0yMXI4NG9DNWdLeDFVSTNrcWQ1djNLWmVYSzZPSTJqVTJsOG1WdUgybnJPaVMycFZ5MlBiNUVFcWVJVEoxUmthNEpVTE85S1Y4VDZhZFg3M202WkxEVVIrYTM0Sk9OYXVUY1hUWFc1c1Njd2FzdGR3Q1ZvdUJtc09RanA3dUVoZkhTY2o2TnBKTGRRenlXd2d6dFN2and4T0xpMklxS0ZId1VjZVJHU3ExaERuVzZVdnJHVlV3eU51clZHNnNEOU5JMlF4M21XSFRlN1hqbHdiSnM3bk5FTERNbVlBS24vYnA1U240WWZNVHE5VXY4VFJwU0RxUVh3VmllSkRnTWNSQi96WnVLaThWeUx6ZkJmYlMyc2ZxY0R2bEhJNU5Tb2VLMEcrTzlyTUYxM21SZnFPS1RXNVFFVjFUSDFoek9leTBjaWpiUGlTSkJCMEhIL2ZOSXFFM0JqT01ud01oQnNxenFEQXFIRm1XVFRLRkd1VXNJam5aZWZzQUZRNkM5VWJ2Rmd4QU1TRnRYSUozeklFQ1ZlMXZkRmhEWmo5YSsxVzhzdmROSmRjdytJUDRNR1NFdkxJNjAzdVNIUjc2Unc0dCthdk9LRjRwdnFLZWZRNC9DOUJWUHVMOHMrbDFTdU9ENE0ramoyaHdJRGRlVXBnNkx1OERZUWJlWld3Y0FYcnRpakhlRWIrSXc4WHI2bzVHb2p1anBXZkhYNjZFQVhmRk9SY2RBYjFGZTVlMFhLVVhFRnoyaWo4V0xHTmZhMmN5bjhtaC9uRkxkWnAxeFd0VWZnbTR4VDI3ZDVwTmswVzJKWnNrZElJL1FGRUxOTHdRN2VvWkdESnk5eEtucEF0VVo1QURjaUxGR0pDQ3FjQkxiL1N6SkFBd3BPaFdEMEtrbW13bFByd2pMSkJ3eDZHOHM2QytxSjFQQXozaGpHL2JFdTBFbkd6ZUZadVBjM1JOOFhmME1vcU1BeGhmRlVjMGVTd3JxLzc5UnhWeUJTZ05jaE9OUDBWOUhOcjJ5bnFoVUNHUXFCYUlIQ2F1VVN1K2lncEtUUWxtUHZHL2hwK2oyRzNCZjdnd3RuVnJGRWdYVThRV3hHMXFmMmpuRWh4TmhvVTlLYWkyc3FWUnVtS3E4WDNZbkoxTllEK3VpNENXY1JiVlF1NnpydEZCZmQ1TFV1YzhqVDg0QWhKQ0pEWHlnQlJ4STRLUEpleEpZSFUzY0lzdEFyVU5TTVV6TlpwLzNKejhZMm1MTnhNaTZYWXZTOUFBY0o0cVRlMVoyU25ESkFmQTkrbG50dFlqMmtPMk9VQ3VMVmxLTW1PVjZ2U0JlT0R2bmNJMFVhejZZSHpzUWFzNUtPTnh1czUxeitlTHl4WWVZK1oxT1JEVEhBd1V0ZmY0OGNlTDEvMWRNVzNreFVSY2d4ZU9YWWlyU2FOWmo4d1l4bHNKT0E1eVhaLzJFbFdPcUFhb2E5YU1PQTVOWHAyVGludU9wRlo0bTFRRVF5M21Dc3FTSUE2UHE0MzJVQ1lkbDB5QWZaMFdDcWNacnVmMVp0aWFieDExdHVPRU1wZElzank1UWZNWlllRmUxcWNRWThYVGJSSVI0czdHVXdnQ1NhMmJiZ2w2NzVHVzNUQ2prSnZJRVRyYmIrVVVmczgyM3hJQkcraGJmZ25EcVU0ZWxkd25UV0pzdWsxTnc2MGlQcmtPbkNuRThDVG9iWlNCY04wVHdXMk1SbHZWS2ZoZVJGQlN5cXVONXhraHNObnlmUEVZeDNuQThEUmp0TEkvQnp2STZoQThVQTRkci9xaWFrUTB5UFZ4Si9BcjdyZU5vQ01tOXRpOWJwb1MxL2RUaG9SRUovYXFHWDNnOG1JUFkyZGtFSFJlcFcvanltY0VLUjNZTG9EYXR6cTk1OTZ0WEtuUzdSdnVHa1htZXpPK0JZNDRSRE9oRHFMbVFFbA=="}
       </div>
       <div> Decrypted Request:
       </div>
-      <div>{"header":{},"body":{"firstName":"sham","lastName":"patil","phone":"7019144066","alternatePhone":"","email":"bruna.fisher@hotmail.com","propertyNameStreet":"","propertyNamePinCode":"","propertyNameCity":"","city":"","state":"","pinCode":"400001","lat":"","long":"","whatsappNumber":"","iclAreaToBePaintedC":"","iclRoomCountC":"","iclCarpetAreaC":"","iclProjectInfo":"","subType":"Paintcraft Service","street":"","iclPreferredModeOfContactC":"","iclDealerCodeC":"","iclOpusIdC":"","iclLeadUniqueIdC":"","iclAvailableService":"","iclLeadJourneyStatusC":"New","iclLeadJourneyDroppedAtC":"","waterproofingRequirementC":"","iclWoodFinishRequirement":"","iclQualificationStatusC":"Un - Qualified","iclLeadContextC":"Paintcraft Service","iclNameOfProjectC":"","iclContractorMobileNoC":"","iclLeadTypeC":"Painting Service Enquiry","firmNameC":"","firmTypeC":"","iclFirmAddressCityS":"","iclFirmAddressPostalCodeS":"","iclFirmAddressStreetS":"","leadSubSource":"Get in Touch","iclHouseTypeC":"","iclBudgetCategoryC":"","totalEstimation":"","interiorEstimation":"","exteriorEstimation":"","selectedProductName":null,"selectedProductQuantity":null,"amountOfProduct":null,"siteVisitDateTimeC":"","iclPreferredTimeOfContactC":"","iclPreferredDateC":"","scheduleInstantVisitC":"","isAreaServiceable":true,"haveMyOwnContractor":false,"pageTitle":"","pageUrlFull":"https://www.birlaopus.com/","utmAdGroup":"","utmCampaign":"","utmMedium":"","utmSource":"","utmContent":"","utmDevice":"","utmMatchType":"","utmNetwork":"","utmPlacement":"","utmTerm":"","fbclId":"","gclId":"","formName":"","formId":"","descriptionWebsite":""}}
+      <div>{"header":{},"body":{"firstName":"sham","lastName":"patil","phone":"7019144066","alternatePhone":"7019144066","email":"sham1@gmail.com","propertyNameStreet":"Mumbai, Mumbai","propertyNamePinCode":"400066","propertyNameCity":"Mumbai","city":"Mumbai","state":"Maharashtra","pinCode":"400066","lat":"","long":"","whatsappNumber":"7019144066","iclAreaToBePaintedC":"","iclRoomCountC":"","iclCarpetAreaC":"","iclProjectInfo":"","subType":"Paintcraft Service","street":"Mumbai, Mumbai","iclPreferredModeOfContactC":"","iclDealerCodeC":"","iclOpusIdC":"","iclLeadUniqueIdC":"","iclAvailableService":"","iclLeadJourneyStatusC":"New","iclLeadJourneyDroppedAtC":"","waterproofingRequirementC":"","iclWoodFinishRequirement":"","iclQualificationStatusC":"Un - Qualified","iclLeadContextC":"Paintcraft Service","iclNameOfProjectC":"sham's ","iclContractorMobileNoC":"","iclLeadTypeC":"Painting Service Enquiry","firmNameC":"","firmTypeC":"","iclFirmAddressCityS":"","iclFirmAddressPostalCodeS":"","iclFirmAddressStreetS":"","leadSubSource":"Book a free survey","iclHouseTypeC":"","iclBudgetCategoryC":"","totalEstimation":"","interiorEstimation":"","exteriorEstimation":"","selectedProductName":null,"selectedProductQuantity":null,"amountOfProduct":null,"siteVisitDateTimeC":"","iclPreferredTimeOfContactC":"","iclPreferredDateC":"","scheduleInstantVisitC":"","isAreaServiceable":true,"haveMyOwnContractor":false,"pageTitle":"","pageUrlFull":"https://www.birlaopus.com/","utmAdGroup":"","utmCampaign":"","utmMedium":"","utmSource":"","utmContent":"","utmDevice":"","utmMatchType":"","utmNetwork":"","utmPlacement":"","utmTerm":"","fbclId":"","gclId":"","formName":"","formId":""}}
       </div>
       <div>
       </div>
       <div> Response Payload (Encrypted):
       </div>
-      <div>{"responseJson":"MTI4OjoxMDAwOjoyYzQzNzY0Y2ZhNDIzY2ViMjIwNjhmODkzNWY5ZDA1ZTo6ZWI5MTBjOGZjMTZlNTllMmZhZGYyMDQ3OWU1ZDMwNTA6OkFmR0hrSGxzQXdVWWJtRWZLNUtyNk1UM0JnY3Q4VTNUVEpDMEtwVGdnSmVWRldwL1kyMlczT04rSVZiN1NaQ3lFMkM4WlAvbGNsOHhQa1RObVZDV29aTEFFWU52bFA3bC9mTmY0dFdFZjQ3NTBGajl6bDZFL2Y3bDBaSVBqbU5hWHVnakozb1JQeEpSUmxKYy83SE03Wmh6ZWNWQ1FzQXNhdi9vbVZndGNQeG05QTdwOVVtSVF6ZmhYWjhONUlzbFUySjR0ejR3VzJhVHhyYjNMdmQ3T1FmL283VTVjQ2N2bzIxRXZvOXhlQm9QM3gwbXhPTThHU01oMjJuR0JBK0V5U1NaL2xVcFdTcWttb2Z3VXlNSVRpY3JEaUtEYXU1dkR3RnVUOWRQem5ieWtmdlB5Q0I5Z0F6RUxHODc5WU1M"}
+      <div>{"responseJson":"MTI4OjoxMDAwOjphOWZkZDRlNzI1MWRjMjAzOGI5ODg5MmJhNWVhMzU4ODo6ZTUxZDk5NTg3YmEwNDk1ZTMwYTc5YmY3YTNkNjZkNGU6OnVDMXgxd0Jsa2NhT3Q1R2NyUVNrWU5uYTJIZk03eUlUR1A4emJEdU9kNFNCNjBsM3M1Z0VjZks0SytZMER2dWJyVFh1RUpGbmlEUUxJb2F6K0hzZ241TWtLNmorbFJHckZBa0ZBODlocXExeWlsM3dLYTlJemozQWljZWhONDVmdmw4bzdpUEhWOFpIMUNNQmk0cURnNS9yR3FsRWNndGNGUFJxZmlCOHpTdVZuaWhtT281d0s3WXZpb0pGdlFnYVFBRFpTbnlpR3J2cU9BdzRWYUZhWkM4V3lnWmtOWlNaVm1yODEyRmtBNUVLZlZ1WjZkSEc2dGRMUUVGQWVDMWdOdjZ2SXR3ZVVqeFVIbGdxOFp1TDZ2c08yL2g5VzZFYzA0NGEvelcveURwM0pvaDhwaWtDRkxmQXV4WGRzVStu"}
       </div>
       <div> Decrypted Response:
       </div>
-      <div>{"header":{"status":"SUCCESS"},"body":{"statuscode":"200","LeadId":"00QS300000g6tT4MAI","LeadNumber":"SR-03033075","Message":"Lead Created/Updated Successfully !!","iclLeadUniqueIdC":"6de7844e-f57e-3729-860a-c850f7b56d2e"},"errorBody":{}}
+      <div>{"header":{"status":"SUCCESS"},"body":{"statuscode":"200","LeadId":"00QS300000hbPI1MAM","LeadNumber":"SR-03229432","Message":"Lead Created/Updated Successfully !!","iclLeadUniqueIdC":"59c719ca-f6b4-37cf-8b4c-b67ec1835bc5"},"errorBody":{}}
       </div>
       <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
       </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And verify the lead API parameters for booking a free survey: iclLeadContextC against value "Paintcraft Service",  iclLeadTypeC against value "Painting Service Enquiry",  iclSubType against value "Paintcraft Service",  leadSubSource against value "Book a free survey"</span>
+      <div>Status Code matched: 200
+      </div>
+      <div>✔ iclLeadContextC matched: Paintcraft Service
+      </div>
+      <div>✔ iclLeadTypeC matched: Painting Service Enquiry
+      </div>
+      <div>✔ subType matched: Paintcraft Service
+      </div>
+      <div>✔ leadSubSource matched: Book a free survey
+      </div>
+      <div>Serviceable flag value: true
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Next button on the Share Few Details section</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User selects the painting requirement type "Exteriors"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the project details next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User select home configuration type "2 BHK"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User enters the carpet area "1200"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the project details next button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User selects a schedule visit date and timeslot "12 PM - 3 PM"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Schedule button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"</span>
+      <div>
+      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="46"><span class="badge log fail-bg mr-2">Fail</span>To verify that the user navigates to the previous step using the Back button on the survey booking form</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_is_on_birla_opus_home_page(java.lang.String)">
+                <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>BirlaOpus home URL : https://www.birlaopus.com/
+      </div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_clicks_on_the_profile_icon()">
+                <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_clicks_on_the_sign_in_button()">
+                <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_enters_valid_mobile_number_on_the_sign_in_page()">
+                <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.the_user_clicks_on_the_sign_in_button_after_entering_the_mobile_number()">
+                <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_and_clicks_on_the_verify_otp_button()">
+                <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_clicks_on_the_close_icon()">
+                <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_book_a_free_survey_button()">
+                <span>When User clicks on the Book a Free Survey button</span>
+      <div>Scrolled to the bottom to check survey buttons.
+      </div>
+      <div>Visible button selected: Book a free survey
+      </div>
+      <div>Successfully clicked button: Book a free survey
+      </div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_next_button_on_address_section_page()">
+                <span>Then User clicks on the Next button on Address section page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_back_button_on_the_address_section_page()">
+                <span>And User clicks on the Back button on the Address section page</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (924341e3de2d5e3ed2d30b586dd88660)] -> xpath: //a[@id='surveyStepBack']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59780}, goog:processID: 10000, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59780/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 924341e3de2d5e3ed2d30b586dd88660
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_back_button_on_the_address_section_page(Book_Survey_Form_Step.java:167)
+	at ✽.User clicks on the Back button on the Address section page(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:40)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</span>
+      <div>[B@68efc230
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded1.png' src="test-output/embedded1.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinition.Book_Survey_Form_Step.user_should_be_redirected_to_the_previous_step_of_the_book_a_free_survey_form()">
+                <span>Then User should be redirected to the previous step of the Book a Free Survey form</span>
+      <div>Step skipped
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="71"><span class="badge log fail-bg mr-2">Fail</span>To verify thank you pop-up appears when user selects I’ll do it later option</div>
+          <div class="status-avatar float-right mr-4">
+            <i class="fa fa-paperclip"></i>
+          </div>
+      </div>
+    </div>
+        <div class="">
+          <div class="card-body">
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_is_on_birla_opus_home_page(java.lang.String)">
+                <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>BirlaOpus home URL : https://www.birlaopus.com/
+      </div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_clicks_on_the_profile_icon()">
+                <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_clicks_on_the_sign_in_button()">
+                <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.user_enters_valid_mobile_number_on_the_sign_in_page()">
+                <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Sign_In_Functionality_Step.the_user_clicks_on_the_sign_in_button_after_entering_the_mobile_number()">
+                <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Create_an_Account_Form_Step.user_enters_valid_otp_and_clicks_on_the_verify_otp_button()">
+                <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.End_To_End_Flow_Step.user_clicks_on_the_close_icon()">
+                <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_book_a_free_survey_button()">
+                <span>And User clicks on the Book a Free Survey button</span>
+      <div>Scrolled to the bottom to check survey buttons.
+      </div>
+      <div>Visible button selected: Get a Free Home Assessment
+      </div>
+      <div>Successfully clicked button: Get a Free Home Assessment
+      </div>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_next_button_on_address_section_page()">
+                <span>Then User clicks on the Next button on Address section page</span>
+      <div>
+      </div>
+              </div>
+              <div class="step pass-bg" title="stepdefinition.All_Lets_Connect_Form_Step.user_captures_and_validates_api(java.lang.String)">
+                <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div> API Type: lead/shortForm
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>Status Code: 200
+      </div>
+      <div> Response Time: 531 ms
+      </div>
+      <div>
+      </div>
+      <div> Request Payload (Encrypted):
+      </div>
+      <div>{"data":"MTI4OjoxMDAwMDo6MGQxNjYyYmQ0ODE4ZWVkYjZkYWU0YzM1YjZkNDY3YzI6OmJjOTUwNDRlYmUzNzM5Mzg1NmRhYzY4ODUzMzIzZjA0OjpOM3lGeEZpcVJycmcwazI1SDM0ak93S29HVnp3ODdTdmtMZ1BReEFBbHNSeVJmMldhTklNeUNiZ0ErUThOaFI3M0NoU2Y4VHNRdHhaOGhjU0crYVdiUDlLWW81UEsvRFRnRk5pMjlnZ1dMZ0lBdHFZR05lYjcrYkNyRXd6K1FKelVjVTk2cXlGamVEZ0ZhQ01pTjd6SXovU2hTQWw0SkVyUzdZZSs3VXpXMnJoNU1TRzh2bmFTcFVDNUdkeDdUOEJSdUJFSlMrMm5RL1NHOE81S3BZTUd0QU1oNnkwM0ZYWlFic2NHSlZ0TjZzakpHMVV3QjJ1bEtSRlJHRSsvZ1d0Wlg1Sm0zWWtseTlZR2ZSbCs5K1FtM1dxalhoY2RvSGhQd0pIamVtQUtjZTMyTWhMRVk3ZDhESWtSN3p5U2QyOURrK2JjV2JMQ3UrbkZYTHBHcTdsV1ZKaHpPeTZYVVByd08wdVdHWUNIeWJWcnU0dmJOaFdob0l2MDNwdzRWV0VUMzBJYkZoVkVqcnoyd0k3L2NmOVFUVkJSQlE3cytYOWdNdWErRWF1dkQxb3kxQkZ5VXdyY1BrRlNDenNDU24zaE5ZV2V6bWlEOURFc2tIeXhEWStUVk1tcFBwTWJXMlQwNlpBWUxUamFmUnpzRjgzV2k0Wlk5MzdWbHU3SjdJZ21oVGZwM051SEZIWnF1c3poaTJyS24yYTBqOWhKMThWZzZXNEpKVHRTMFJtZUFndktYMWZCdmFZWGNuL2dzR3ordzErb2k2eW8xUWkyeWhIMWhKeWpNK1NQZWgySHhTRjRsU3NPVHNJWDNsdWdWSDg0TFpMVDh1Nk1xa3lMSTZsMm9TS2VXdVQ4VUUwa0tYeWFYMDcvVGkxWitpWlgrUGdJMml3YWNyei9IQ0cvaVVoSGZjMFkxVEhHSStxaFo0Qit0RzlnOUdzOXRINGxCWnJDMXY2Q3YyZXVITnhSTFFQd1I1ZkxZSFNhOGxUOHdHOFRZR1VMWFM5cjVWZW0zdzF1aXIxd0g1ankrczFHcHJkQTJiVWoxeVpzUldaTHhjdUpBZXEvSFR0MTZFR0t3SEcvd2VNbG9RVzVkTVNHdDdKRFlwOFdqOGdpUXFma0xZc3NqSW1WMlQvbDRqdjluOGNMUWtaTGtVcEhQZzNOMVpjVzFFekZyZEViMjd1Z1ZsUnB5WURDSndPN3pjL3c1MnNjaWU4UU1xWVFGRHhMQ3JjTk5oMjhhcG02S1dwMzE4elo5aUxjMTRyV3ZjUUYxanNrTC9OKzFrcVlHNmtaRGVrbE5iQW55SWRuKzAzYXJYSEJBVnl6M2M3Z3hwaEhacnpyQkd6TGJJS1V4VmxTVGlwL1hlUjFTRGptcElPL2srZUQ0Z2NsbEJrVktBMDM5OWoyWmt2N1pma3h6NlRQbzM5RHJkcUpINUlnZDByc2FjUnVySDNjODdzVXVKYU0yNVdjU3g1dllYTWJoZ0RieUEydG9vMnRqQVloZk9OUWpETDZVdnQvQVpPbzRucCtkTmZsczJ2c2U1WlhjRmxtaGhnVXVqRElkeW9uSnFDcGpSamJmZU0xRk1Ud1NXMUFsZ2s4QkRrRUlIN1NrQ0FhalY4NUU2Q2FZcVJrMng3aW9UUjJlTVQ5QVBKeklSN3M5Y1FUZTAzZUJseklNRUp4TkhYVm1oOXArbnRtQzNKREFycEZLMW1MODlpZjJwbjMySUVwVU9wLzNzWjVYT3RKSFVIYml6UW5jdmZUaXhjOWp0RE9MTFArMjhDVVo4cGFUM3lTMW9Lb2FkcnhSNzVCSk4vdGZQbmM0ZXc4VnpEUEFvaTVQQWZmNkVES00xSHE5MmppRU83QWNzWVFNdWJvbldMS1laSVgvY3RHREpxRmUrakVPQnFTR3pLZWhiL002a25LR3VCYmNCdVc3Y05PTldtdlZGSE55V3MwZHdNTW5LSTYxWFNOcEhKSUpTM2RwSFZZOUdvR2orVTNFOVM3bDMwK3VrbXh6VWpQTVBxNE4yVkJ1clFZZWlYNVJ5akNtSTFkTDA0MzlJYW1Mcit1SllQSjZ1aFpiZmp4TzhKWEkvVFVWeFBRazdyUW9KSWVzdS9pTzVKQ0xmcVZudVRtQzVxeElkbFpTaGNtY2gvUjZxdzNmbjcxU1JmVWw4U0hnbW4xekU1QUd1NTI2cmh2ajdaTk5RNmJ3M0lSdEI4YlNaVGl3N21mNHMrZU9NRUczeURtc1RNMkl3RUt2SW95ZDdaT2cra25TVlBzMTQ2Y0xvL2tHS0hseVVFTlJENzB2NE5SRjJBVjlYSXNveVlOblQwdFQwVldXb2VUdzE2ZWFOQlNVYWc3akFKcTRDVjR1VXI1SFdDSFQwYVlxUE4ydzZKQnptdzFlTHFWMXdqV0JBUVZHT2t4b2VxTUlrbTB6NzZ2OC9mN3h1Z05qVU5MY0dKalc3ZGozY1V4M3drN2NJU2t6UDFwbHRMRnZMbjdLVjBpamZTaVZtRnh0RjBKLzJoRDZiNDJzRW4wS25TcjBUWnpnMVlERGV0SldLcE12a0pBRFhoUEtmYlVLTWVGdm1hK2JmdDUwRVFVRk8vSGYrTW80emdHcFNHOU1YWFNSUGlPSjZjd01KWjhobWRpeGptU254a0cyb1Q3c3NlUmZPYkVjUEtBQW8wMm9MMTBPc29obUVGWW9aUEJ3V0l3YTNLMENORU5yTStjbUlnZFg3bTF1SlorWVhUQkJwUnNtRW1UbHQybjNnREk1Z1JTSlFVRjlEa0ovanE1ZTRLczZ2V05LSEpYb3M1SmZBRVVlYzlvVzFpV3BlQUZBNjJZanE1WlpQRXJmWUlBY0VtV0FtVUVJQUh6dnJOc3VaWi9wMGxnK3VVOHI0TmRkRkdHVmdsekFhY2pOa3lMZzFhSm0vV1V3R2cyODNDTEJteWgzQlpQbExkNE04YTNlSC9FZ0JrQ2N6VTRxNzJpR1EweWtUcA=="}
+      </div>
+      <div> Decrypted Request:
+      </div>
+      <div>{"header":{},"body":{"firstName":"sham","lastName":"patil","phone":"7019144066","alternatePhone":"7019144066","email":"sham1@gmail.com","propertyNameStreet":"Mumbai, Mumbai","propertyNamePinCode":"400066","propertyNameCity":"Mumbai","city":"Mumbai","state":"Maharashtra","pinCode":"400066","lat":"","long":"","whatsappNumber":"7019144066","iclAreaToBePaintedC":"","iclRoomCountC":"","iclCarpetAreaC":"","iclProjectInfo":"","subType":"Paintcraft Service","street":"Mumbai, Mumbai","iclPreferredModeOfContactC":"","iclDealerCodeC":"","iclOpusIdC":"","iclLeadUniqueIdC":"","iclAvailableService":"","iclLeadJourneyStatusC":"New","iclLeadJourneyDroppedAtC":"","waterproofingRequirementC":"","iclWoodFinishRequirement":"","iclQualificationStatusC":"Un - Qualified","iclLeadContextC":"Paintcraft Service","iclNameOfProjectC":"sham's ","iclContractorMobileNoC":"","iclLeadTypeC":"Painting Service Enquiry","firmNameC":"","firmTypeC":"","iclFirmAddressCityS":"","iclFirmAddressPostalCodeS":"","iclFirmAddressStreetS":"","leadSubSource":"Book a free survey","iclHouseTypeC":"","iclBudgetCategoryC":"","totalEstimation":"","interiorEstimation":"","exteriorEstimation":"","selectedProductName":null,"selectedProductQuantity":null,"amountOfProduct":null,"siteVisitDateTimeC":"","iclPreferredTimeOfContactC":"","iclPreferredDateC":"","scheduleInstantVisitC":"","isAreaServiceable":true,"haveMyOwnContractor":false,"pageTitle":"","pageUrlFull":"https://www.birlaopus.com/","utmAdGroup":"","utmCampaign":"","utmMedium":"","utmSource":"","utmContent":"","utmDevice":"","utmMatchType":"","utmNetwork":"","utmPlacement":"","utmTerm":"","fbclId":"","gclId":"","formName":"","formId":""}}
+      </div>
+      <div>
+      </div>
+      <div> Response Payload (Encrypted):
+      </div>
+      <div>{"responseJson":"MTI4OjoxMDAwOjpiYTM4NDBjOGEwM2VlZDg1ZGZlMTA4Nzg5NTM3MDUwMTo6ODFiYjUzNmI3NTZhYWIxMGZjMGRiNmY3OTMzY2NlMWU6OkdsQVJ5Y1pEV3lVQlhiN3NUWjdFbzgyNU04VWF5RTJUVjN1a0VjZ0RzelJaRjFJVnQrbVdONXZxWHVvOWxtYWVTa1VDNW1KZ1I4Qk05Z2J6ZTQ0NU1MN2JUQ2g5WEN5b3BWS2w5Mk9HclowRkNKY1hRNm1UUTJOeVpjMlVhSXJKTWtMT0VzelFSdkZFSkpwNUgwRVZaUGdEQTdpeDZXL2poT3EvK1Erc040NFNBYmRtUHZZSDM1cTcwTVI1TlZMSmN6UytVcDFVNnJrbDNRVVM2NUZDNFZSeWZRZ2lLWDcrVnQ1aHdsZ0k3LzFhb1psQjI4WFpwUWJ0dGZlaVpwNmZDWE5vVndBTXJZdnJiMTkyR1RyazZDSXlaRFMrWmIxOHVhZ0dVWC8rbGR3UVBZTE84azA5RjBGYTZXZUgwclphRnYxS2tWdTRTZHNoc200QUFYWXFRUlNPUSsxdDhud3NIYlRpMjhxYVcwN2hCdEt2UDBUeGdTYWFXRnJnOWhxc1hzbWNIMi9tSjJJVWtZNnVSVXpVUFZFOWhQbWxpanNPODJOTXJzSlY0ck09"}
+      </div>
+      <div> Decrypted Response:
+      </div>
+      <div>{"header":{"status":"SUCCESS"},"body":{"statuscode":"500","Message":"Upsert failed. First exception on row 0; first error: FIELD_CUSTOM_VALIDATION_EXCEPTION, A duplicate Lead with matching details was created within the last 10 minutes.: []","iclLeadUniqueIdC":"ef002434-8734-3f28-a438-9d83fba958dc"},"errorBody":{}}
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>
+      </div>
+              </div>
+              <div class="step fail-bg" title="stepdefinition.Painting_Made_Easy_Step.user_clicks_on_the_i_ll_do_it_later_option()">
+                <span>Then User clicks on the I’ll do it later option</span>
+      <div>
+        <textarea disabled class="code-block">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (520c914494ee8dbdf3fac665dbc8f0d3)] -> xpath: //button[@id='doLaterBtnScreenBreak']]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: '4.47.0', revision: '9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.19'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50567}, goog:processID: 18840, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50567/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 520c914494ee8dbdf3fac665dbc8f0d3
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Painting_Made_Easy_Step.user_clicks_on_the_i_ll_do_it_later_option(Painting_Made_Easy_Step.java:80)
+	at ✽.User clicks on the I’ll do it later option(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:48)
+</textarea>
+      
+      </div>
+              </div>
+              <div class="step pass-bg" title="AFTER_STEP">
+                <span>stepdefinition.Hook.postEachStep(io.cucumber.java.Scenario)</span>
+      <div>[B@79df484
+          <div class="row mb-3"><div class="col-md-3">
+<img data-featherlight='test-output/embedded2.png' src="test-output/embedded2.png">
+    
+    </div></div>
+</div>
+      <div>
+      </div>
+              </div>
+              <div class="step skip-bg" title="stepdefinition.Book_Survey_Form_Step.a_survey_booking_confirmation_message_should_be_displayed_successfully(java.lang.String)">
+                <span>Then A survey booking confirmation message should be displayed successfully "Thank you for sharing your details & scheduling a survey with us!"</span>
+      <div>Step skipped
+      </div>
+              </div>
+          </div>
+        </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab">
+      <div class="card-title">
+        <div class="node" id="98"><span class="badge log pass-bg mr-2">Pass</span>To verify pop-up is displayed when an unserviceable PIN code is entered</div>
+      </div>
+    </div>
+        <div class="scenario_outline collapse">
+            <div class="card-body l1">
+              <div class="card-header">
+                <div class="card-title outline-child">
+                  <div class="node" id="99"><span class="badge log pass-bg mr-2">Pass</span>To verify pop-up is displayed when an unserviceable PIN code is entered</div>
+                </div>
+              </div>
+              <div class="card-body mt-3 collapse">
+                  <div class="step pass-bg">
+                    <span>Given User is on BirlaOpus HomePage "birlaopusHomeUrl"</span>
+      <div>BirlaOpus home URL : https://www.birlaopus.com/
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>When User clicks on the profile icon</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Sign In button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid mobile number on the Sign In page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And the User clicks on the Sign In button after entering the mobile number</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters valid OTP and clicks on the Verify OTP button</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on the close icon</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User clicks on the Book a Free Survey button</span>
+      <div>Scrolled to the bottom to check survey buttons.
+      </div>
+      <div>Visible button selected: Get a Free Home Assessment
+      </div>
+      <div>Successfully clicked button: Get a Free Home Assessment
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User enters unserviceable Pin code "111222"</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then User clicks on the Next button on Address section page</span>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>And User captures and validates API request and response for "lead/shortForm"</span>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div> API Type: lead/shortForm
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>Status Code: 200
+      </div>
+      <div> Response Time: 647 ms
+      </div>
+      <div>
+      </div>
+      <div> Request Payload (Encrypted):
+      </div>
+      <div>{"data":"MTI4OjoxMDAwMDo6NjFkOTU3ZGU0ZjgxZWEzMzQ2NDQwZTE1ZWQwY2Y4MWY6OmQ1MmM5YmJkYmRlYWQ5ZDE5MzExYjU2OWE4OTIwMGI1OjphU2tWbTVHbWtrck8yVzV1R21iZFBxUEp6MWt1dlp1eks3NURObFp4SmlBZ2xLNFFRZFhKUVByN1BuT1YzMWJaeWhkOUlLNXY3VFFORUlvdGljMVRxck81MXY1RjZGVWNOVE41ajl3eXFQeDM3UVNVc0djaUhpb00wMFZPcmlKa3ZpemRkMFBxMEZJVm9yUDE1Nmg5eWlaNWhNVmNvVHVXSzNiclFpY29LQUFkQjBJT3dWVjNJR2tETnRSOTRzMUxYVzZ1Y09Sc2hZUm5zNzIzOXFreHJRcWI1OVBsQVdYTlFWR1h0MHByNitkSEYyOE5Ec0NQNVFta0NlbkljUkFsSk9QbXRxVFNBb3d6MFp0MXpiQWRDdUMzMmpiNThFdFhNQTh4aVZxOHpYdzNhSXI2cFMwdXk1Yy9DejgvOWVoMHQ4K0dyR2RpeTFMbVhVaEdPTHU3bHRhdmJJU2t4RXZSS0RJNlhuLzlYOGtFZkZMclRtaUdxRE9LVWRCTUJzYThHMFFTaFhYY3BXT2g2bWVXT1M3TGJqbUxKTk9USmZyeDdXL0hYUW94SnRNb2t1RWFoczdoOVErNzlHbHd3TTgwaFZvb0RiYXh0Y1FBbmhXb0Z5MWpUbEZ6RUxKNWZlNEZ4TFVZWGdQS0tlcUZFTUVSN3RNcjNWZnpvKzN0UDZsSlNZeTRzZWJ2aG5rcFYwaWpDckJoRmd3NEZvQVBJdlhkTndjcVFvaFNxQ2JDSnE2MDREZm1iVVNUSk5yOER3RC9VekVNeTk5ZGExTHh2VFBzczJ0WHZ2QzlRMCtDa0FUSWNJUUFTcCszcjc2QlpDTUdqVm1Gd0dDWWNIenRXSGl3VUZYcXE5TGVtWmdnWVVjcjgrMkZXQUpsYUhyZXd0SlNFK2tEb244a3I1a1RlNGJyK2czcmdWZkEvSU4xeXVYY1pJVTJlbzJxTm5uQ1pDR2t6Z1lLT1pYdHd1cjJIQjk5czlZcWxkQ29meXFwMW5YR29tbHVRaWZmUjZWbmNvN0FzRUIycndTQmNtdFZha1N6ZW80WWx2eUIwUC84Z0I5YzRRU3lNcnJWRUpWcGk1TUtBbGJhcUo2bjZGUFYrMzVEbXdFMytYMHArTUl2a1ozQW11bjltTFNYUDVtYS9TNGUvVmFyODJHT1JWM3V2djB2Q0xwL2ErS1dSK1RtanI1VWtJZHdYL0w5UmxjeHIzZlUvVEU5Q2dCRnduMWFRYzR3Wk4yYk1Gb1BRYlFrM3dyL1hvdDBNWDFKRHZBMnNJQ2ppZWdLU3lJS2ZhRzkwVzQrZm02QlNveTh3UVg5WjJ6bnFHZ2lKb3NiV0wxQXorM3MyS1lmVGVBMW5KNU5Zb0VGY1hoUWlrWmpzZC8wQ28zeFpKbXozeHYxMWcxdUVEZVU0bUhnWnhWN3pKcEdVTk9ZRDhnM0J6WkN3ZkJ3b1VpYXE4S1U4TTFGY3BKWHV1REdTaUxQQXg3U2IvN3FBWlUrYmhSNktjWHJBNDlmcU5Nd3oxZVRmUkRpaTI1N1BVcTlMNnRJQjlFWWVZK3kxWmYrVXY0V3h6Z3E0R3pRMG1URmY5RlNJUFloZU5wZzNZM0w2ZjhUVGx5RzQwSXR6MGhObmU2TDNxOXEzdXN6Smh6UzMrbzVkTVNDais4ajRST1AvcTFPTHN1eURTeHNHd0U2NmU4R0V1VUp2c1l2NTRLU2puOXY4QnNEeU9Jc08wanZ0MU44YTlpbEdOUHQ0TElzcXoxQ1dpdm5FR0ZUT0NwVlZoOExiV3Y1Q0E4RVZkSWFVY1FmdlViNU1JcnpxNTc3bnNpNXczVDVXWm1oTkV0RUpnN2ZiQWVjTVB4M09tZ3AxLzFEUlhkdHI4aW1vT1V5MFJtMmRXT1EzVUZDREkrWlRQK0JURzNTSjZDSjJEdkhFS1EvMjBTODZlY29sTDJGSklRWFQ3b2FTbE1Va2lVbzJKZ290d2c3M0l4aHFJTmxaV0JyNURQamRWeE1hb24xQnpscHVRWVh3VWlNbDZ4MWdnOVdqb2dTanp3U05DRk1Qd2ZKS2xRdDA4cVVqdFkrVGhBUUh1MFZ2M2VNd0lNN0R4R3JlaWtoNGJzTnhCWGExUDJRd2lmOGpKR3ZWa2ZUeEowYUVhT0NLMHRYM2tFYnMrcUVQb1ZSZzNjbUZjQWEzd2MzY2dhMWhBbm02VTRrL1g2ZU5talV6dnBTU1F3YXRSWTJMd0lpS2h5dmpXMnArOUF1bkxlRzhaSjNFRkN0MzBvZ1pxUFZyVFdNWHdvc1lFcDI1MGRGcjdkTlJ1bm13eEllSHZzazBjVVJGUVI1Y2xrdlVWZ05INjBUVnJsZkJRVytoayt6WXFJbkkwbjVpQlNYUjJ2S0s2UGlsYnM5UDlEMUJTMTIreVlrck1IN044QjNEUktMQ1Q5OXd2aWZmY3VIcWdUcEVxV3FjbWFHcjRsSE5pNU9ZMWE4N1Jmd1ViTlRMbTd3bDRJRGVxQ1ZOWUdGbDNqN2Rob1VpVi9raGtwSnZEODUva3cxeEsyMXlYVG85V2NBcVNTa3BTb2RRNS9iU3IzUFgyQXRJRTFyL3Ztam9MZFJUNTJhM1VTTEk1M1NvWmlXSHlRRVFQSW8waWNhQTZUT3JGUExOMTVJTTNiSCtKbHFjaitxdDZOdGJyTFRmZHhpcHhFVmJ2YkQ0cm1rc2lZNlRWci9Oa0ZENWZDVnl0djdEMGowVXZ5TTRUVzZJOUU2aGF3NGFNd0lwRERBY0hTZEowRTg5U0dPKzFhaFFybVJSTkRiTlF5dmk5RVJuQmg5SW5vZ0VVQzdPMWdTYW1UWGpQVlNVcERNcUdUVHhIUFZUU0NTVDJGRnkwTFBSdDZ2bWtpYlA0Ym9xeWM2QmNJT1BxL0h4UnBKdlpTYUFhWGlQRlRHN0Y4WU9wQmQ5UkdMa2hTV1JiZERaU0RndFR3elVuNFFub05kYTdmYnZNdGxTamZud2ovQXloZjd1cjNxL0VEUUhVdHdNYk9tTFE9PQ=="}
+      </div>
+      <div> Decrypted Request:
+      </div>
+      <div>{"header":{},"body":{"firstName":"sham","lastName":"patil","phone":"7019144066","alternatePhone":"7019144066","email":"sham1@gmail.com","propertyNameStreet":"Mumbai, Mumbai","propertyNamePinCode":"111222","propertyNameCity":"Ñemby","city":"Ñemby","state":"Central Department","pinCode":"111222","lat":-25.4074941,"long":-57.5235557,"whatsappNumber":"7019144066","iclAreaToBePaintedC":"","iclRoomCountC":"","iclCarpetAreaC":"","iclProjectInfo":"","subType":"Paintcraft Service","street":"Mumbai, Mumbai","iclPreferredModeOfContactC":"","iclDealerCodeC":"","iclOpusIdC":"","iclLeadUniqueIdC":"","iclAvailableService":"","iclLeadJourneyStatusC":"New","iclLeadJourneyDroppedAtC":"","waterproofingRequirementC":"","iclWoodFinishRequirement":"","iclQualificationStatusC":"Un - Qualified","iclLeadContextC":"Paintcraft Service","iclNameOfProjectC":"sham's ","iclContractorMobileNoC":"","iclLeadTypeC":"Painting Service Enquiry","firmNameC":"","firmTypeC":"","iclFirmAddressCityS":"","iclFirmAddressPostalCodeS":"","iclFirmAddressStreetS":"","leadSubSource":"Book a free survey","iclHouseTypeC":"","iclBudgetCategoryC":"","totalEstimation":"","interiorEstimation":"","exteriorEstimation":"","selectedProductName":null,"selectedProductQuantity":null,"amountOfProduct":null,"siteVisitDateTimeC":"","iclPreferredTimeOfContactC":"","iclPreferredDateC":"","scheduleInstantVisitC":"","isAreaServiceable":false,"haveMyOwnContractor":false,"pageTitle":"","pageUrlFull":"https://www.birlaopus.com/","utmAdGroup":"","utmCampaign":"","utmMedium":"","utmSource":"","utmContent":"","utmDevice":"","utmMatchType":"","utmNetwork":"","utmPlacement":"","utmTerm":"","fbclId":"","gclId":"","formName":"","formId":""}}
+      </div>
+      <div>
+      </div>
+      <div> Response Payload (Encrypted):
+      </div>
+      <div>{"responseJson":"MTI4OjoxMDAwOjoxN2YyZmM4MzM3MWI4M2IxMzg1ZGUxZmNkNmI4NTUzMjo6NDUzNTA0ZTg2NTAzMzk4NmEzMTc0ZjVlNTI3OTQ1ZWI6Old6Vzczb0RUaFh2ZnVjOW5OR1dwUE9TbkZxNG5GNzdPN3g0TDVYNWxRejRXVVJUUGh3bGxSb1VwL2dPeDVENEVOTHpDREFYWld2a0w0OXV6M1dTc09CVkRFdndnK1FGVlgxS0NQU3VuRnBjTDY0NHdnVFNTQ2M1Q1pvcHZmTHhJbU93Z1d2emNyOW8zR0VFNm1CS2pGZ3dwZ3dvSk9uYVprbUZIY3dLdGQ0NGxvS3VRTlMwQWV1cVZOclVNaUN5RTRxS3YwQkZWQTlxVU1CUW41Mk9UUm1LMnYvVEdKeTM4aXgyN1QyU0YvZkxKb2pWa2VFMStlU0Z0RStzUmxxeE1XL1ZBakF5djg2L1AycmFXb3pNYXF2NGw5Zmg4bDJmRFF0c2NKRTJwOUljV2NHdThzZC9FVVVXTVNsMGl1VkVRWGRWc2ZEdlpyTktxcm1jL0pPSEo3MWZITitCdmhHd3MzR3pEN3VYVGh0TS9SZXZrNCtjK3REbmRhcUFqMUNxRmNuOVR2WHh5YXltdWVwTDJud0FqZ052cGYzOENZaGpINFR4VWpJR2RkTS9MSUJabE9UTlpCd1B5U0JXL0hQM3k="}
+      </div>
+      <div> Decrypted Response:
+      </div>
+      <div>{"header":{"status":"SUCCESS"},"body":{"statuscode":"500","Message":"Upsert failed. First exception on row 0; first error: FIELD_INTEGRITY_EXCEPTION, A country/territory must be specified before specifying a state value for field: State/Province: [State]","iclLeadUniqueIdC":"b07cc4a5-0611-335d-aff9-1662b3a78a95"},"errorBody":{}}
+      </div>
+      <div>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+      <div>
+      </div>
+                  </div>
+                  <div class="step pass-bg">
+                    <span>Then the unserviceable pin code message should be displayed "Coming soon Painting services are currently not available in your area"</span>
       <div>
       </div>
                   </div>
@@ -254,7 +671,69 @@
 </div>
 <div class="test-content-detail"><div class="detail-body"></div></div>
 </div></div>
-<div class="test-wrapper row view category-view attributes-view">
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>2</span>
+</span>
+<p class="name">org.openqa.selenium.TimeoutException</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>org.openqa.selenium.TimeoutException</h4>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:58:53 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='66'>And User clicks on the Back button on the Address section page</a>
+<div class="">
+<span class="badge badge-default">To Validate Survey Booking Form.To verify that the user navigates to the previous step using the Back button on the survey booking form.And User clicks on the Back button on the Address section page</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:01:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='93'>Then User clicks on the I’ll do it later option</a>
+<div class="">
+<span class="badge badge-default">To Validate Survey Booking Form.To verify thank you pop-up appears when user selects I’ll do it later option.Then User clicks on the I’ll do it later option</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="test-wrapper row view category-view attributes-view">
 <div class="test-list">
 <div class="test-list-tools">
 <ul class="tools pull-left"><li><a href=""><span class="font-size-14">Category</span></a></li></ul>
@@ -265,15 +744,17 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>1</span>
+<span class='badge log pass-bg'>2</span>
+<span class='badge log badge-danger'>2</span>
 </span>
 <p class="name">@module</p>
-<p class="duration text-sm">1 tests</p>
+<p class="duration text-sm">4 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>@module</h4>
-<span status="pass" class='badge log pass-bg'>1 passed</span>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -286,11 +767,41 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>13:03:27 PM</td>
+<td>16:56:18 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify successful submission of the survey booking form for a logged-in user</a>
 <div class="">
-<span class="badge badge-default">To Validate Get in Touch Contact Form Subscription.To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</span>
+<span class="badge badge-default">To Validate Survey Booking Form.To verify successful submission of the survey booking form for a logged-in user</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>16:57:51 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='46'>To verify that the user navigates to the previous step using the Back button on the survey booking form</a>
+<div class="">
+<span class="badge badge-default">To Validate Survey Booking Form.To verify that the user navigates to the previous step using the Back button on the survey booking form</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:00:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='71'>To verify thank you pop-up appears when user selects I’ll do it later option</a>
+<div class="">
+<span class="badge badge-default">To Validate Survey Booking Form.To verify thank you pop-up appears when user selects I’ll do it later option</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>17:02:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='99'>To verify pop-up is displayed when an unserviceable PIN code is entered</a>
+<div class="">
+<span class="badge badge-default">To Validate Survey Booking Form.To verify pop-up is displayed when an unserviceable PIN code is entered</span>
 </div>
 </td>
 </tr>
@@ -322,11 +833,11 @@
 <tbody>
 <tr class="tag-test-status" status="pass">
 <td><span class="badge log pass-bg">Pass</span></td>
-<td>13:03:27 PM</td>
+<td>16:56:18 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='3'>To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</a>
+<a href="#" class="linked" test-id='1' id='3'>To verify successful submission of the survey booking form for a logged-in user</a>
 <div class="">
-<span class="badge badge-default">To Validate Get in Touch Contact Form Subscription.To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user</span>
+<span class="badge badge-default">To Validate Survey Booking Form.To verify successful submission of the survey booking form for a logged-in user</span>
 </div>
 </td>
 </tr>
@@ -347,25 +858,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sep 11, 2026 13:03:26</h3>
+<h3>Oct 19, 2026 16:56:16</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sep 11, 2026 13:04:22</h3>
+<h3>Oct 19, 2026 17:03:42</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Features Passed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Features Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -381,12 +892,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>1</b> features passed
+<div><small data-tooltip='0%'>
+<b>0</b> features passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> features failed,
+<small data-tooltip='100%'><b>1</b> features failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -404,9 +915,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>1</b> scenarios passed</small></div>
+<div><small data-tooltip='50%'><b>2</b> scenarios passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> scenarios failed,
+<small data-tooltip='50%'><b>2</b> scenarios failed,
 <b>0</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
@@ -424,10 +935,10 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'><b>13</b> steps passed</small></div>
+<div><small data-tooltip='92%'><b>53</b> steps passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> steps failed,
-<b>0</b> skipped, <b data-tooltip='%'>0</b> others
+<small data-tooltip='3%'><b>2</b> steps failed,
+<b>2</b> skipped, <b data-tooltip='%'>0</b> others
 </small>
 </div>
 </div>
@@ -443,7 +954,7 @@
 </div></div>
 <script>
 var timeline = {
-"To Validate Get in Touch Contact Form Subscription":55.76
+"To Validate Survey Booking Form":444.064
 };
 </script>
 <div class="row">
@@ -454,11 +965,11 @@ var timeline = {
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
 <td>@module</td>
-<td>1</td>
+<td>2</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>100%</td>
+<td>50%</td>
 </tr>
 <tr>
 <td>@test</td>
@@ -477,21 +988,21 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 0,
+passParent: 0,
+failParent: 1,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
-passChild: 1,
-failChild: 0,
+passChild: 2,
+failChild: 2,
 warningChild: 0,
 skipChild: 0,
 infoChild: 0,
 grandChildCount: 5,
-passGrandChild: 13,
-failGrandChild: 0,
+passGrandChild: 53,
+failGrandChild: 2,
 warningGrandChild: 0,
-skipGrandChild: 0,
+skipGrandChild: 2,
 infoGrandChild: 0,
 eventsCount: 5,
 };

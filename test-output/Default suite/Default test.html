@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>2/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Sep 11 13:03:25 IST 2026</td>
+<td>Started on:</td><td>Mon Oct 19 16:56:16 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>69 seconds (69340 ms)</td>
+<tr><td>Total time:</td><td>484 seconds (484097 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,74 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify thank you pop-up appears when user selects I’ll do it later option", "To Validate Survey Booking Form"</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (520c914494ee8dbdf3fac665dbc8f0d3)] -&gt; xpath: //button[@id=&apos;doLaterBtnScreenBreak&apos;]]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.47.0&apos;, revision: &apos;9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50567}, goog:processID: 18840, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50567/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 520c914494ee8dbdf3fac665dbc8f0d3
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Painting_Made_Easy_Step.user_clicks_on_the_i_ll_do_it_later_option(Painting_Made_Easy_Step.java:80)
+	at ✽.User clicks on the I’ll do it later option(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:48)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1772690195", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1772690195'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (520c914494ee8dbdf3fac665dbc8f0d3)] -&gt; xpath: //button[@id=&apos;doLaterBtnScreenBreak&apos;]]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.47.0&apos;, revision: &apos;9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50567}, goog:processID: 18840, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50567/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 520c914494ee8dbdf3fac665dbc8f0d3
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Painting_Made_Easy_Step.user_clicks_on_the_i_ll_do_it_later_option(Painting_Made_Easy_Step.java:80)
+	at ✽.User clicks on the I’ll do it later option(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:48)
+</pre></div></td>
+<td>145</td>
+<td>runner.TestRunner@c05fddc</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify that the user navigates to the previous step using the Back button on the survey booking form", "To Validate Survey Booking Form"</td>
+<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (924341e3de2d5e3ed2d30b586dd88660)] -&gt; xpath: //a[@id=&apos;surveyStepBack&apos;]]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.47.0&apos;, revision: &apos;9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59780}, goog:processID: 10000, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59780/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 924341e3de2d5e3ed2d30b586dd88660
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_back_button_on_the_address_section_page(Book_Survey_Form_Step.java:167)
+	at ✽.User clicks on the Back button on the Address section page(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:40)
+</pre></div><a href='#' onClick='toggleBox("stack-trace681855928", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace681855928'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (924341e3de2d5e3ed2d30b586dd88660)] -&gt; xpath: //a[@id=&apos;surveyStepBack&apos;]]
+(tried for 80 seconds with 500 milliseconds interval)
+Build info: version: &apos;4.47.0&apos;, revision: &apos;9175ed9 9175ed94d83e87cc3abeb7c9fd91367d17849d35&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;11.0.19&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 155.0.8059.40, chrome: {chromedriverVersion: 155.0.8059.84 (5869fe313571..., userDataDir: C:\Users\KANCHA~1.TAM\AppDa...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59780}, goog:processID: 10000, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:59780/devtoo..., se:cdpVersion: 155.0.8059.40, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:cmtgKey: true, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 924341e3de2d5e3ed2d30b586dd88660
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:85)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:234)
+	at commonutilities.WebDriverWaitHelper.waitForElementVisible(WebDriverWaitHelper.java:72)
+	at stepdefinition.Book_Survey_Form_Step.user_clicks_on_the_back_button_on_the_address_section_page(Book_Survey_Form_Step.java:167)
+	at ✽.User clicks on the Back button on the Address section page(file:///C:/Backup/Birla_Prod/Birlaopus/Birlaopus/src/test/resources/features/Booking_Free_Survey_Form.feature:40)
+</pre></div></td>
+<td>142</td>
+<td>runner.TestRunner@c05fddc</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -75,10 +143,15 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify successful submission of the Get in Touch form with updated mandatory data for a logged-in user", "To Validate Get in Touch Contact Form Subscription"</td>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify pop-up is displayed when an unserviceable PIN code is entered", "To Validate Survey Booking Form"</td>
 <td></td>
-<td>56</td>
-<td>runner.TestRunner@4d14b6c2</td></tr>
+<td>62</td>
+<td>runner.TestRunner@c05fddc</td></tr>
+<tr>
+<td title='runner.TestRunner.runScenario()'><b>runScenario</b><br>Test class: runner.TestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "To verify successful submission of the survey booking form for a logged-in user", "To Validate Survey Booking Form"</td>
+<td></td>
+<td>93</td>
+<td>runner.TestRunner@c05fddc</td></tr>
 </table><p>
 </body>
 </html>

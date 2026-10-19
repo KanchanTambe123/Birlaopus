@@ -38,8 +38,17 @@ public class Book_Survey_Form_Page {
 
 	// ------------------- Scenario 1 ------------------------
 
-	@FindBy(xpath = "//a[contains(@class,'site-visit-btn') and .//span[text()='Book a free survey']]")
+	/*
+	 * @FindBy(xpath =
+	 * "//a[contains(@class,'site-visit-btn') and .//span[text()='Book a free survey']]"
+	 * ) public WebElement BookfreesurveyButton;
+	 */
+
+	@FindBy(xpath = "//a[contains(@class,'site-visit-btn') and .//span[normalize-space()='Book a free survey']]")
 	public WebElement BookfreesurveyButton;
+
+	@FindBy(xpath = "//div[@id='bookasurveyStickyBarText']//a[contains(@class,'cmp-text-link')]")
+	public WebElement GetFreeHomeAssessmentButton;
 	@FindBy(xpath = "(//div[@class='button login-form-btn']//button[normalize-space()='Next'])[1]")
 	public WebElement SiteDetailsNextButton;
 
@@ -150,88 +159,88 @@ public class Book_Survey_Form_Page {
 
 	public static void logLeadApiDetails(String apiType) {
 
-	    try {
-	        String requestPayload = DriverManager.getLeadRequestPayload();
-	        String responsePayload = DriverManager.getLeadResponsePayload();
-	        int statusCode = DriverManager.getLeadStatusCode();
-	        long responseTime = DriverManager.getResponseTime();
+		try {
+			String requestPayload = DriverManager.getLeadRequestPayload();
+			String responsePayload = DriverManager.getLeadResponsePayload();
+			int statusCode = DriverManager.getLeadStatusCode();
+			long responseTime = DriverManager.getResponseTime();
 
-	        // ===== HEADER =====
-	        ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
-	        ExtentCucumberAdapter.addTestStepLog(" API Type: " + apiType);
-	        ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+			// ===== HEADER =====
+			ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+			ExtentCucumberAdapter.addTestStepLog(" API Type: " + apiType);
+			ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-	        // ===== BASIC INFO =====
-	        ExtentCucumberAdapter.addTestStepLog("Status Code: " + statusCode);
-	        ExtentCucumberAdapter.addTestStepLog(" Response Time: " + responseTime + " ms");
-	        ExtentCucumberAdapter.addTestStepLog("");
+			// ===== BASIC INFO =====
+			ExtentCucumberAdapter.addTestStepLog("Status Code: " + statusCode);
+			ExtentCucumberAdapter.addTestStepLog(" Response Time: " + responseTime + " ms");
+			ExtentCucumberAdapter.addTestStepLog("");
 
-	        // ===== REQUEST =====
-	        if (requestPayload != null && !requestPayload.isEmpty()) {
+			// ===== REQUEST =====
+			if (requestPayload != null && !requestPayload.isEmpty()) {
 
-	            ExtentCucumberAdapter.addTestStepLog(" Request Payload (Encrypted):");
-	            ExtentCucumberAdapter.addTestStepLog(requestPayload);
+				ExtentCucumberAdapter.addTestStepLog(" Request Payload (Encrypted):");
+				ExtentCucumberAdapter.addTestStepLog(requestPayload);
 
-	            try {
-	                JSONObject reqJson = new JSONObject(requestPayload);
-	                String encryptedReq = extractEncryptedValue(reqJson);
+				try {
+					JSONObject reqJson = new JSONObject(requestPayload);
+					String encryptedReq = extractEncryptedValue(reqJson);
 
-	                if (encryptedReq != null) {
-	                    String decryptedReq = crypto.decryptData(encryptedReq);
-	                    ExtentCucumberAdapter.addTestStepLog(" Decrypted Request:");
-	                    ExtentCucumberAdapter.addTestStepLog(decryptedReq);
-	                }
+					if (encryptedReq != null) {
+						String decryptedReq = crypto.decryptData(encryptedReq);
+						ExtentCucumberAdapter.addTestStepLog(" Decrypted Request:");
+						ExtentCucumberAdapter.addTestStepLog(decryptedReq);
+					}
 
-	            } catch (Exception e) {
-	                ExtentCucumberAdapter.addTestStepLog(" Request Decryption Failed");
-	            }
-	        }
+				} catch (Exception e) {
+					ExtentCucumberAdapter.addTestStepLog(" Request Decryption Failed");
+				}
+			}
 
-	        ExtentCucumberAdapter.addTestStepLog("");
+			ExtentCucumberAdapter.addTestStepLog("");
 
-	        // ===== RESPONSE =====
-	        if (responsePayload != null && !responsePayload.isEmpty()) {
+			// ===== RESPONSE =====
+			if (responsePayload != null && !responsePayload.isEmpty()) {
 
-	            ExtentCucumberAdapter.addTestStepLog(" Response Payload (Encrypted):");
-	            ExtentCucumberAdapter.addTestStepLog(responsePayload);
+				ExtentCucumberAdapter.addTestStepLog(" Response Payload (Encrypted):");
+				ExtentCucumberAdapter.addTestStepLog(responsePayload);
 
-	            try {
-	                JSONObject resJson = new JSONObject(responsePayload);
-	                String encryptedRes = extractEncryptedValue(resJson);
+				try {
+					JSONObject resJson = new JSONObject(responsePayload);
+					String encryptedRes = extractEncryptedValue(resJson);
 
-	                if (encryptedRes != null) {
-	                    String decryptedRes = crypto.decryptData(encryptedRes);
-	                    ExtentCucumberAdapter.addTestStepLog(" Decrypted Response:");
-	                    ExtentCucumberAdapter.addTestStepLog(decryptedRes);
-	                }
+					if (encryptedRes != null) {
+						String decryptedRes = crypto.decryptData(encryptedRes);
+						ExtentCucumberAdapter.addTestStepLog(" Decrypted Response:");
+						ExtentCucumberAdapter.addTestStepLog(decryptedRes);
+					}
 
-	            } catch (Exception e) {
-	                ExtentCucumberAdapter.addTestStepLog(" Response Decryption Failed");
-	            }
-	        }
+				} catch (Exception e) {
+					ExtentCucumberAdapter.addTestStepLog(" Response Decryption Failed");
+				}
+			}
 
-	        // ===== FOOTER =====
-	        ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+			// ===== FOOTER =====
+			ExtentCucumberAdapter.addTestStepLog("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-	    } catch (Exception e) {
-	        ExtentCucumberAdapter.addTestStepLog(" Error logging API: " + e.getMessage());
-	    }
+		} catch (Exception e) {
+			ExtentCucumberAdapter.addTestStepLog(" Error logging API: " + e.getMessage());
+		}
 	}
 
 	/**
 	 * Extract encrypted value from known keys
 	 */
 	private static String extractEncryptedValue(JSONObject json) {
-	    if (json.has("data")) {
-	        return json.getString("data");
-	    }
-	    if (json.has("responseJson")) {
-	        return json.getString("responseJson");
-	    }
-	    if (json.has("requestJson")) {
-	        return json.getString("requestJson");
-	    }
-	    return null;
+		if (json.has("data")) {
+			return json.getString("data");
+		}
+		if (json.has("responseJson")) {
+			return json.getString("responseJson");
+		}
+		if (json.has("requestJson")) {
+			return json.getString("requestJson");
+		}
+		return null;
 	}
 
 	public void verifyLeadApiParameters(String expectedLeadContext, String expectedLeadType, String expectedSubType,
@@ -397,6 +406,59 @@ public class Book_Survey_Form_Page {
 		} catch (Exception e) {
 			ExtentCucumberAdapter.addTestStepLog("❌ Error comparing encrypted data: " + e.getMessage());
 		}
+	}
+
+	public void clickAvailableSurveyButton() {
+
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+		By bookSurveyLocator = By.xpath(
+				"//a[contains(@class,'site-visit-btn') " + "and .//span[normalize-space()='Book a free survey']]");
+
+		By homeAssessmentLocator = By
+				.xpath("//div[@id='bookasurveyStickyBarText']" + "//a[contains(@class,'cmp-text-link')]");
+
+		// Wait for page loading
+		wait.until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
+
+		// Scroll to the bottom
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
+		ExtentCucumberAdapter.addTestStepLog("Scrolled to the bottom to check survey buttons.");
+
+		// Give priority to Book a free survey
+		WebElement selectedButton = wait.until(d -> {
+
+			List<WebElement> surveyButtons = d.findElements(bookSurveyLocator);
+
+			for (WebElement element : surveyButtons) {
+				if (element.isDisplayed() && element.isEnabled()) {
+					return element;
+				}
+			}
+
+			// Check the second button only if the first is unavailable
+			List<WebElement> assessmentButtons = d.findElements(homeAssessmentLocator);
+
+			for (WebElement element : assessmentButtons) {
+				if (element.isDisplayed() && element.isEnabled()) {
+					return element;
+				}
+			}
+
+			return null;
+		});
+
+		String buttonText = selectedButton.getText().trim();
+
+		ExtentCucumberAdapter.addTestStepLog("Visible button selected: " + buttonText);
+
+		wait.until(ExpectedConditions.elementToBeClickable(selectedButton)).click();
+
+		ExtentCucumberAdapter.addTestStepLog("Successfully clicked button: " + buttonText);
+
+		System.out.println("Successfully clicked button: " + buttonText);
 	}
 
 }

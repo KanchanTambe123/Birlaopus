@@ -11,11 +11,14 @@ import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
+import java.util.List;
 import java.util.Map;
 import org.awaitility.Awaitility;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,12 +63,9 @@ public class Book_Survey_Form_Step {
 
 	@Then("User clicks on the Book a Free Survey button")
 	public void user_clicks_on_the_book_a_free_survey_button() throws InterruptedException {
-		wait.waitForElementVisible(bs.BookfreesurveyButton);
-		Thread.sleep(2000);
-		js.scrollUntilElementVisible(bs.BookfreesurveyButton);
-		Thread.sleep(2000);
-		js.jsClickWithWait(bs.BookfreesurveyButton);
-		Thread.sleep(2000);
+
+	bs.clickAvailableSurveyButton();
+	    Thread.sleep(2000);
 	}
 
 	@Then("User clicks on the Next button on the Book a Free Survey form")
