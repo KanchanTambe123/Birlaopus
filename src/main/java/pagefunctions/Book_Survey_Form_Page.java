@@ -38,8 +38,12 @@ public class Book_Survey_Form_Page {
 
 	// ------------------- Scenario 1 ------------------------
 
-	@FindBy(xpath = "//a[contains(@class,'site-visit-btn') and .//span[text()='Book a free survey']]")
+	@FindBy(xpath = "//a[contains(@class,'site-visit-btn') and .//span[normalize-space()='Book a free survey']]")
 	public WebElement BookfreesurveyButton;
+
+	@FindBy(xpath = "//div[@id='bookasurveyStickyBarText']//a[contains(@class,'cmp-text-link')]")
+	public WebElement GetFreeHomeAssessmentButton;
+	
 	@FindBy(xpath = "(//div[@class='button login-form-btn']//button[normalize-space()='Next'])[1]")
 	public WebElement SiteDetailsNextButton;
 
@@ -397,6 +401,59 @@ public class Book_Survey_Form_Page {
 		} catch (Exception e) {
 			ExtentCucumberAdapter.addTestStepLog("❌ Error comparing encrypted data: " + e.getMessage());
 		}
+	}
+	
+	public void clickAvailableSurveyButton() {
+
+		WebDriver driver = DriverManager.getDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+		By bookSurveyLocator = By.xpath(
+				"//a[contains(@class,'site-visit-btn') " + "and .//span[normalize-space()='Book a free survey']]");
+
+		By homeAssessmentLocator = By
+				.xpath("//div[@id='bookasurveyStickyBarText']" + "//a[contains(@class,'cmp-text-link')]");
+
+		// Wait for page loading
+		wait.until(d -> ((JavascriptExecutor) d).executeScript("return document.readyState").equals("complete"));
+
+		// Scroll to the bottom
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+
+		ExtentCucumberAdapter.addTestStepLog("Scrolled to the bottom to check survey buttons.");
+
+		// Give priority to Book a free survey
+		WebElement selectedButton = wait.until(d -> {
+
+			List<WebElement> surveyButtons = d.findElements(bookSurveyLocator);
+
+			for (WebElement element : surveyButtons) {
+				if (element.isDisplayed() && element.isEnabled()) {
+					return element;
+				}
+			}
+
+			// Check the second button only if the first is unavailable
+			List<WebElement> assessmentButtons = d.findElements(homeAssessmentLocator);
+
+			for (WebElement element : assessmentButtons) {
+				if (element.isDisplayed() && element.isEnabled()) {
+					return element;
+				}
+			}
+
+			return null;
+		});
+
+		String buttonText = selectedButton.getText().trim();
+
+		ExtentCucumberAdapter.addTestStepLog("Visible button selected: " + buttonText);
+
+		wait.until(ExpectedConditions.elementToBeClickable(selectedButton)).click();
+
+		ExtentCucumberAdapter.addTestStepLog("Successfully clicked button: " + buttonText);
+
+		System.out.println("Successfully clicked button: " + buttonText);
 	}
 
 }

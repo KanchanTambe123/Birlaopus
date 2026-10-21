@@ -60,11 +60,8 @@ public class Book_Survey_Form_Step {
 
 	@Then("User clicks on the Book a Free Survey button")
 	public void user_clicks_on_the_book_a_free_survey_button() throws InterruptedException {
-		wait.waitForElementVisible(bs.BookfreesurveyButton);
-		Thread.sleep(2000);
-		js.scrollUntilElementVisible(bs.BookfreesurveyButton);
-		Thread.sleep(2000);
-		js.jsClickWithWait(bs.BookfreesurveyButton);
+		bs.clickAvailableSurveyButton();
+	  
 		Thread.sleep(2000);
 	}
 
